@@ -1,0 +1,13 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/Library
+/Logs
+/obj
+/Temp
+/UserSettings
+/Assembly-CSharp.csproj
+/ElementalWar.sln
+/.vscode
+/.vs
