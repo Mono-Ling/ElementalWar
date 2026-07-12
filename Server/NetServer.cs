@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Server
 {
-    internal class Server
+    internal class NetServer
     {
         private Socket _socket;
         private SocketAsyncEventArgs _eventArgs;
-        public Server(IPEndPoint iPEndPoint,int maxCount)
+        public NetServer(IPEndPoint iPEndPoint,int maxCount)
         {
             _socket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _socket.Bind(iPEndPoint);
@@ -25,7 +25,9 @@ namespace Server
                 (socket as Socket)?.AcceptAsync(args);
                 return;
             }
-            Socket? client = args.AcceptSocket;
+            Socket? clientSocket = args.AcceptSocket;
+            TCPClient client = new(clientSocket);
+            client.StartReveice();
 
             (socket as Socket)?.AcceptAsync(args);
         }

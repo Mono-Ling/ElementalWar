@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
+using Google.Protobuf;
+using Message;
+using Server.Event;
 
 namespace Server
 {
@@ -12,8 +15,8 @@ namespace Server
         private SocketAsyncEventArgs _sendEventArgs = new();
         private SocketAsyncEventArgs _receiveEventArgs = new();
         private byte[] _receiveBuffer = new byte[MAX_PACKAGE_SIZE];
-        private byte[] _tempBytes = new byte[MAX_PACKAGE_SIZE];
-        private int _tempBytesLength = 0;
+
+        private Package? _bufferPackage;
         public TCPClient(Socket socket)
         {
             if(socket == null || !socket.Connected)
@@ -28,6 +31,10 @@ namespace Server
 
             _sendEventArgs.Completed += SendCallback;
             Console.WriteLine($"【客户端接入成功】客户端：{_socket.RemoteEndPoint}");
+
+            TextMessage text = new();
+            text.Content = $"客户端{_socket.RemoteEndPoint}欢迎接入服务器";
+            Send(new Package(text));
         }
         public void StartReveice()
         {
@@ -41,14 +48,14 @@ namespace Server
                 Console.WriteLine("【客户端接收启动异常】" + e.SocketErrorCode);
             }
         }
-        public void Send(byte[] bytes)
+        public void Send(Package package)
         {
-            if (bytes == null)
+            if (package == null)
             {
                 Console.WriteLine("【无效数据】字节数组为空");
                 return;
             }
-
+            byte[] bytes = package.data;
             try
             {
                 _sendEventArgs.SetBuffer(bytes, 0, bytes.Length);
@@ -89,14 +96,34 @@ namespace Server
                 Console.WriteLine($"【接收失败】客户端：{_socket?.RemoteEndPoint}错误代码：{args?.SocketError}");
                 return;
             }
-            byte[] message = args.Buffer;
+            byte[]? message = args.Buffer;
             int messageSize = args.BytesTransferred;
             if(messageSize == 0)
             {
                 Close();
                 return;
             }
+            ProcessReceive(message,messageSize);
             _socket.ReceiveAsync(_receiveEventArgs);
+        }
+        private void ProcessReceive(byte[]? bytes,int length)
+        {
+            if (bytes == null || bytes.Length == 0)
+                return;
+            int offset = 0;
+            while (offset < length)
+            {
+                if(_bufferPackage == null)
+                    _bufferPackage = new Package(bytes,ref offset);        
+                else
+                    _bufferPackage.Append(bytes, ref offset);
+
+                if (_bufferPackage.IsCompleted)
+                {
+                    EventBus.Instance.Trigger<IMessage>(EventType.OnReceive, _bufferPackage.message);
+                    _bufferPackage = null;
+                }
+            }
         }
     }
 }
