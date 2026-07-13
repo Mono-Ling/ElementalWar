@@ -11,6 +11,7 @@ class Program
         EventBus.Instance.AddListener<IMessage>(EventType.OnReceive, OnTextMessage);
         IPEndPoint iPEndPoint = new(IPAddress.Parse("127.0.0.1"), 2026);
         NetServer server = new(iPEndPoint,100);
+        server.StartAccept();
         while (true) { }
     }
     private static void OnTextMessage(IMessage message)

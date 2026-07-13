@@ -13,11 +13,21 @@ namespace Server
         public NetServer(IPEndPoint iPEndPoint,int maxCount)
         {
             _socket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _socket.Bind(iPEndPoint);
-            _socket.Listen(maxCount);
+            try
+            {
+                _socket.Bind(iPEndPoint);
+                _socket.Listen(maxCount);
+            }
+            catch(SocketException e)
+            {
+                Console.WriteLine("【服务器启动失败】套接字初始化异常" + e);
+                return;
+            }
             _eventArgs = new SocketAsyncEventArgs();
             _eventArgs.Completed += Accept;
+            Console.WriteLine("【服务器启动】");
         }
+        public void StartAccept() => _socket.AcceptAsync(_eventArgs);
         private void Accept(object? socket,SocketAsyncEventArgs args)
         {
             if (args.SocketError != SocketError.Success)
@@ -25,11 +35,12 @@ namespace Server
                 (socket as Socket)?.AcceptAsync(args);
                 return;
             }
-            Socket? clientSocket = args.AcceptSocket;
-            TCPClient client = new(clientSocket);
+            Socket clientSocket = args.AcceptSocket;
+            TcpClient client = new TcpClient(clientSocket);
             client.StartReveice();
 
-            (socket as Socket)?.AcceptAsync(args);
+            _eventArgs.AcceptSocket = null;
+            _socket.AcceptAsync(args);
         }
     }
 }

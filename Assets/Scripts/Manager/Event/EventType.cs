@@ -4,6 +4,9 @@ using UnityEngine;
 
 public enum EventType
 {
-    Test,
-    Test2,
+    /// <summary>
+    /// IMessage类型参数
+    /// 消息接收回调
+    /// </summary>
+    OnReceive,
 }

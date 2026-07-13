@@ -8,7 +8,7 @@ using Server.Event;
 
 namespace Server
 {
-    internal class TCPClient
+    internal class TcpClient
     {
         private const int MAX_PACKAGE_SIZE = 1024;
         private Socket _socket;
@@ -17,7 +17,7 @@ namespace Server
         private byte[] _receiveBuffer = new byte[MAX_PACKAGE_SIZE];
 
         private Package? _bufferPackage;
-        public TCPClient(Socket socket)
+        public TcpClient(Socket socket)
         {
             if(socket == null || !socket.Connected)
             {
