@@ -11,15 +11,19 @@ public class Test : MonoBehaviour
     {
         EventBus.Instance.AddListener<IMessage>(EventType.OnReceive, OnTextMessage);
         NetManager.Instance.StartClient();
-        TextMessage textMessage = new();
-        textMessage.Content = "我他妈来了嗷";
-        NetManager.Instance.Send(new TcpPackage(textMessage));
+        var heart = HeartManager.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // TextMessage textMessage = new();
+            // textMessage.Content = "我他妈来了嗷";
+            // NetManager.Instance.Send(new TcpPackage(textMessage));
+            NetManager.Instance.Close();
+        }
     }
     private void OnTextMessage(IMessage message)
     {

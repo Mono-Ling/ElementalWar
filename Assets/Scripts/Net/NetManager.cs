@@ -67,7 +67,7 @@ public class NetManager : SingleMono<NetManager>
         IsStart = false;
         try
         {
-            Debug.LogError($"【断连】服务器：{_socket?.RemoteEndPoint}连接断开");
+            Debug.LogWarning($"【断连】服务器：{_socket?.RemoteEndPoint}连接断开");
             _socket?.Shutdown(SocketShutdown.Both);
         }
         catch { }
@@ -130,6 +130,7 @@ public class NetManager : SingleMono<NetManager>
     }
     private void SendCallback(object socket, SocketAsyncEventArgs args)
     {
+        if (!IsStart) return;
         if (args.SocketError != SocketError.Success)
         {
             Debug.LogError("【消息发送失败】" + args.SocketError);
@@ -139,6 +140,7 @@ public class NetManager : SingleMono<NetManager>
     }
     private void ReceiveCallback(object socket, SocketAsyncEventArgs args)
     {
+        if (!IsStart) return;
         if (args.SocketError != SocketError.Success)
         {
             Debug.LogError("【消息接收失败】" + args.SocketError);
@@ -152,6 +154,7 @@ public class NetManager : SingleMono<NetManager>
             return;
         }
         ProcessReceive(bytes, length);
+        (socket as Socket).ReceiveAsync(_receiveArgs);
     }
     private void ProcessReceive(byte[] bytes, int length)
     {

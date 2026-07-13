@@ -6,7 +6,7 @@ using Google.Protobuf;
 
 namespace Server
 {
-    internal class Package
+    internal class TcpPackage
     {
         public bool IsCompleted => totalLength != 0 && totalLength == _currTotalLength;
         public int totalLength { get; private set; }
@@ -14,7 +14,7 @@ namespace Server
         public IMessage? message { get; private set; }
         public byte[] data { get; private set; }
         private int _currTotalLength = 0;
-        public Package(byte[] bytes,ref int offset)
+        public TcpPackage(byte[] bytes,ref int offset)
         {
             if (bytes == null)
                 return;
@@ -48,7 +48,7 @@ namespace Server
             }
             BitConverter.GetBytes(length).CopyTo(data, 0);
         }
-        public Package(IMessage message)
+        public TcpPackage(IMessage message)
         {
             if (message == null)
                 return;

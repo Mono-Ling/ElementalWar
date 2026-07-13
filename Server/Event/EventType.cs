@@ -6,6 +6,9 @@ namespace Server.Event
 {
     public enum EventType
     {
+        /// <summary>
+        /// ClientPackage类型参数
+        /// </summary>
         OnReceive,
     }
 }

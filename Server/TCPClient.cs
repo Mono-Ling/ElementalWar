@@ -10,35 +10,44 @@ namespace Server
 {
     internal class TcpClient
     {
+        public bool IsConnected { get; private set; }
+        public DateTime preHeartTime;
+        private int _id;
         private const int MAX_PACKAGE_SIZE = 1024;
         private Socket _socket;
         private SocketAsyncEventArgs _sendEventArgs = new();
         private SocketAsyncEventArgs _receiveEventArgs = new();
         private byte[] _receiveBuffer = new byte[MAX_PACKAGE_SIZE];
 
-        private Package? _bufferPackage;
-        public TcpClient(Socket socket)
+        private TcpPackage? _bufferPackage;
+        public TcpClient(Socket socket,int id)
         {
             if(socket == null || !socket.Connected)
             {
                 Console.WriteLine("【客户端连接失败】无效Socket");
                 return;
             }
+
+            this._id = id;
             _socket = socket;
+            preHeartTime = DateTime.Now;
 
             _receiveEventArgs.SetBuffer(_receiveBuffer, 0, MAX_PACKAGE_SIZE);
             _receiveEventArgs.Completed += ReceiveCallback;
 
             _sendEventArgs.Completed += SendCallback;
+
+            IsConnected = true;
+
             Console.WriteLine($"【客户端接入成功】客户端：{_socket.RemoteEndPoint}");
 
             TextMessage text = new();
             text.Content = $"客户端{_socket.RemoteEndPoint}欢迎接入服务器";
-            Send(new Package(text));
+            Send(new TcpPackage(text));
         }
         public void StartReveice()
         {
-            if (_socket == null) return;
+            if (_socket == null || !IsConnected) return;
             try
             {
                 _socket.ReceiveAsync(_receiveEventArgs);
@@ -48,8 +57,9 @@ namespace Server
                 Console.WriteLine("【客户端接收启动异常】" + e.SocketErrorCode);
             }
         }
-        public void Send(Package package)
+        public void Send(TcpPackage package)
         {
+            if (!IsConnected) return;
             if (package == null)
             {
                 Console.WriteLine("【无效数据】字节数组为空");
@@ -68,6 +78,7 @@ namespace Server
         }
         public void Close()
         {
+            IsConnected = false;
             try
             {
                 Console.WriteLine($"【客户端断连】客户端：{_socket?.RemoteEndPoint}连接断开");
@@ -82,6 +93,7 @@ namespace Server
         }
         private void SendCallback(object? socket,SocketAsyncEventArgs args)
         {
+            if(!IsConnected) return;
             if (args.SocketError != SocketError.Success)
             {
                 Console.WriteLine($"【发送失败】客户端：{_socket?.RemoteEndPoint}错误代码：{args?.SocketError}");
@@ -91,9 +103,19 @@ namespace Server
         }
         private void ReceiveCallback(object? socket, SocketAsyncEventArgs args)
         {
+            if (!IsConnected) return;
             if (args.SocketError != SocketError.Success)
             {
-                Console.WriteLine($"【接收失败】客户端：{_socket?.RemoteEndPoint}错误代码：{args?.SocketError}");
+                try
+                {
+                    var endpoint = _socket.RemoteEndPoint;
+                    Console.WriteLine($"【接收失败】客户端：{endpoint} 错误代码：{args.SocketError}");
+                }
+                catch (ObjectDisposedException)
+                {
+                    Console.WriteLine($"【接收失败】Socket已释放，错误代码：{args.SocketError}");
+                }
+                Close();
                 return;
             }
             byte[]? message = args.Buffer;
@@ -114,13 +136,13 @@ namespace Server
             while (offset < length)
             {
                 if(_bufferPackage == null)
-                    _bufferPackage = new Package(bytes,ref offset);        
+                    _bufferPackage = new TcpPackage(bytes,ref offset);        
                 else
                     _bufferPackage.Append(bytes, ref offset);
 
                 if (_bufferPackage.IsCompleted)
                 {
-                    EventBus.Instance.Trigger<IMessage>(EventType.OnReceive, _bufferPackage.message);
+                    EventBus.Instance.Trigger<ClientPackage>(EventType.OnReceive,new(_id,_bufferPackage.message));
                     _bufferPackage = null;
                 }
             }
