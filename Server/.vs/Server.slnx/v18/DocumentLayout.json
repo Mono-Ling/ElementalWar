@@ -15,10 +15,6 @@
       "RelativeMoniker": "D:0:0:{F3EE6B2D-0B19-306C-2C68-AB272C4E49C6}|Server.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3EE6B2D-0B19-306C-2C68-AB272C4E49C6}|Server.csproj|d:\\unity\\project\\elementalwar\\server\\textmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3EE6B2D-0B19-306C-2C68-AB272C4E49C6}|Server.csproj|solutionrelative:textmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F3EE6B2D-0B19-306C-2C68-AB272C4E49C6}|Server.csproj|d:\\unity\\project\\elementalwar\\server\\package.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3EE6B2D-0B19-306C-2C68-AB272C4E49C6}|Server.csproj|solutionrelative:package.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -46,7 +42,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "EventType.cs",
               "DocumentMoniker": "D:\\Unity\\Project\\ElementalWar\\Server\\Event\\EventType.cs",
               "RelativeDocumentMoniker": "Event\\EventType.cs",
@@ -58,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "EventBus.cs",
               "DocumentMoniker": "D:\\Unity\\Project\\ElementalWar\\Server\\Event\\EventBus.cs",
               "RelativeDocumentMoniker": "Event\\EventBus.cs",
@@ -70,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Package.cs",
               "DocumentMoniker": "D:\\Unity\\Project\\ElementalWar\\Server\\Package.cs",
               "RelativeDocumentMoniker": "Package.cs",
@@ -78,8 +74,7 @@
               "RelativeToolTip": "Package.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T08:53:48.244Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T08:53:48.244Z"
             },
             {
               "$type": "Document",
@@ -104,21 +99,7 @@
               "RelativeToolTip": "NetServer.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAAACkAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T14:57:58.021Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TextMessage.cs",
-              "DocumentMoniker": "D:\\Unity\\Project\\ElementalWar\\Server\\TextMessage.cs",
-              "RelativeDocumentMoniker": "TextMessage.cs",
-              "ToolTip": "D:\\Unity\\Project\\ElementalWar\\Server\\TextMessage.cs",
-              "RelativeToolTip": "TextMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T14:47:46.229Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-11T14:57:58.021Z"
             },
             {
               "$type": "Document",
@@ -130,8 +111,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T13:46:32.53Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-11T13:46:32.53Z"
             }
           ]
         }
