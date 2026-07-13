@@ -1,13 +1,99 @@
-﻿################################################################################
-# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+# 根 .gitignore — Unity + .NET + Visual Studio + 系统文件
 ################################################################################
 
-/Library
-/Logs
-/obj
-/Temp
-/UserSettings
+# ==============================
+# Unity
+# ==============================
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 /Assembly-CSharp.csproj
+/Assembly-CSharp-Editor.csproj
 /ElementalWar.sln
-/.vscode
-/.vs
+
+# Unity 资源序列化缓存
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Unity 崩溃/临时文件
+sysinfo.txt
+crashlytics-*.txt
+
+# Asset Store Tools
+/AssetStoreTools/
+
+# ==============================
+# Visual Studio / Rider
+# ==============================
+.vs/
+*.sln.DotSettings.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# ==============================
+# .NET / C# 构建产物
+# ==============================
+**/[Bb]in/
+**/[Oo]bj/
+*.user
+*.cache
+*.vspscc
+*.vssscc
+
+# NuGet
+**/[Pp]ackages/*
+!**/[Pp]ackages/repositories.config
+*.nupkg
+# NuGet 包还原目录 (如果启用了 packages.config)
+/packages/*/
+
+# .NET 本地工具
+.dotnet/
+
+# ==============================
+# 系统 & 编辑器
+# ==============================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains Rider
+.idea/
+
+# ==============================
+# 杂项
+# ==============================
+# 覆盖率报告
+/coverage/
+*.coverage
+*.coveragexml
+
+# 发布文件
+/publish/
+*.pubxml
+*.azurePubxml
