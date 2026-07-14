@@ -24,12 +24,13 @@ namespace Message {
     static UdpHeaderReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9VZHBIZWFkZXIucHJvdG8SB01lc3NhZ2UiLQoJVWRwSGVhZGVyEhIKCmlz",
-            "UmVzcG9uc2UYASABKAgSDAoEdGltZRgCIAEoA2IGcHJvdG8z"));
+            "Cg9VZHBIZWFkZXIucHJvdG8SB01lc3NhZ2UiRwoJVWRwSGVhZGVyEgoKAmlk",
+            "GAEgASgNEhIKCmlzUmVzcG9uc2UYAiABKAgSDAoEdGltZRgDIAEoAxIMCgR0",
+            "eXBlGAQgASgJYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.UdpHeader), global::Message.UdpHeader.Parser, new[]{ "IsResponse", "Time" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.UdpHeader), global::Message.UdpHeader.Parser, new[]{ "Id", "IsResponse", "Time", "Type" }, null, null, null, null)
           }));
     }
     #endregion
@@ -71,8 +72,10 @@ namespace Message {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UdpHeader(UdpHeader other) : this() {
+      id_ = other.id_;
       isResponse_ = other.isResponse_;
       time_ = other.time_;
+      type_ = other.type_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,8 +85,20 @@ namespace Message {
       return new UdpHeader(this);
     }
 
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private uint id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
     /// <summary>Field number for the "isResponse" field.</summary>
-    public const int IsResponseFieldNumber = 1;
+    public const int IsResponseFieldNumber = 2;
     private bool isResponse_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,7 +110,7 @@ namespace Message {
     }
 
     /// <summary>Field number for the "time" field.</summary>
-    public const int TimeFieldNumber = 2;
+    public const int TimeFieldNumber = 3;
     private long time_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -103,6 +118,18 @@ namespace Message {
       get { return time_; }
       set {
         time_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 4;
+    private string type_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Type {
+      get { return type_; }
+      set {
+        type_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -121,8 +148,10 @@ namespace Message {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Id != other.Id) return false;
       if (IsResponse != other.IsResponse) return false;
       if (Time != other.Time) return false;
+      if (Type != other.Type) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +159,10 @@ namespace Message {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
       if (IsResponse != false) hash ^= IsResponse.GetHashCode();
       if (Time != 0L) hash ^= Time.GetHashCode();
+      if (Type.Length != 0) hash ^= Type.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -150,13 +181,21 @@ namespace Message {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsResponse != false) {
+      if (Id != 0) {
         output.WriteRawTag(8);
+        output.WriteUInt32(Id);
+      }
+      if (IsResponse != false) {
+        output.WriteRawTag(16);
         output.WriteBool(IsResponse);
       }
       if (Time != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt64(Time);
+      }
+      if (Type.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Type);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -168,13 +207,21 @@ namespace Message {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsResponse != false) {
+      if (Id != 0) {
         output.WriteRawTag(8);
+        output.WriteUInt32(Id);
+      }
+      if (IsResponse != false) {
+        output.WriteRawTag(16);
         output.WriteBool(IsResponse);
       }
       if (Time != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt64(Time);
+      }
+      if (Type.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Type);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -186,11 +233,17 @@ namespace Message {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
       if (IsResponse != false) {
         size += 1 + 1;
       }
       if (Time != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Time);
+      }
+      if (Type.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Type);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -204,11 +257,17 @@ namespace Message {
       if (other == null) {
         return;
       }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
       if (other.IsResponse != false) {
         IsResponse = other.IsResponse;
       }
       if (other.Time != 0L) {
         Time = other.Time;
+      }
+      if (other.Type.Length != 0) {
+        Type = other.Type;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,11 +289,19 @@ namespace Message {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            IsResponse = input.ReadBool();
+            Id = input.ReadUInt32();
             break;
           }
           case 16: {
+            IsResponse = input.ReadBool();
+            break;
+          }
+          case 24: {
             Time = input.ReadInt64();
+            break;
+          }
+          case 34: {
+            Type = input.ReadString();
             break;
           }
         }
@@ -257,11 +324,19 @@ namespace Message {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            IsResponse = input.ReadBool();
+            Id = input.ReadUInt32();
             break;
           }
           case 16: {
+            IsResponse = input.ReadBool();
+            break;
+          }
+          case 24: {
             Time = input.ReadInt64();
+            break;
+          }
+          case 34: {
+            Type = input.ReadString();
             break;
           }
         }
