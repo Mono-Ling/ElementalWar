@@ -10,5 +10,9 @@ namespace Server.Event
         /// ClientPackage类型参数
         /// </summary>
         OnReceive,
+        /// <summary>
+        /// ClientPackage类型参数
+        /// </summary>
+        SendTo,
     }
 }

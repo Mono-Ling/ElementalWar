@@ -6,6 +6,7 @@ namespace Server.Event
 {
     internal class EventBus
     {
+        private static object _lockObj = new();
         private static EventBus? _instance;
         public static EventBus Instance => _instance ?? (_instance = new EventBus());
         private abstract class BaseEventItem { }
@@ -24,31 +25,37 @@ namespace Server.Event
         private Dictionary<EventType, BaseEventItem> _eventDic = new();
         public void AddListener(EventType eventType,Action action)
         {
-            if (_eventDic.ContainsKey(eventType))
+            lock (_lockObj)
             {
-                if (_eventDic[eventType] is EventItem item)
+                if (_eventDic.ContainsKey(eventType))
                 {
-                    item.action += action;
+                    if (_eventDic[eventType] is EventItem item)
+                    {
+                        item.action += action;
+                    }
+                    else
+                        Console.WriteLine($"【事件总线】【监听事件】事件{eventType}类型不匹配");
                 }
                 else
-                    Console.WriteLine($"【事件总线】【监听事件】事件{eventType}类型不匹配");
+                    _eventDic.Add(eventType, new EventItem(action));
             }
-            else
-                _eventDic.Add(eventType,new EventItem(action));
         }
-        public void AddListener<T>(EventType eventType,Action<T> action)
+        public void AddListener<T>(EventType eventType, Action<T> action)
         {
-            if (_eventDic.ContainsKey(eventType))
+            lock (_lockObj)
             {
-                if (_eventDic[eventType] is EventItem<T> item)
+                if (_eventDic.ContainsKey(eventType))
                 {
-                    item.action += action;
+                    if (_eventDic[eventType] is EventItem<T> item)
+                    {
+                        item.action += action;
+                    }
+                    else
+                        Console.WriteLine($"【事件总线】【监听事件】事件{eventType}类型不匹配");
                 }
                 else
-                    Console.WriteLine($"【事件总线】【监听事件】事件{eventType}类型不匹配");
+                    _eventDic.Add(eventType, new EventItem<T>(action));
             }
-            else
-                _eventDic.Add(eventType, new EventItem<T>(action));
         }
         public void Trigger(EventType eventType)
         {
@@ -76,22 +83,28 @@ namespace Server.Event
         }
         public void RemoveListener(EventType eventType, Action action)
         {
-            if (_eventDic.ContainsKey(eventType))
+            lock (_lockObj)
             {
-                if (_eventDic[eventType] is EventItem item)
-                    item.action -= action;
-                else
-                    Console.WriteLine($"【事件总线】【注销事件】事件{eventType}类型不匹配");
+                if (_eventDic.ContainsKey(eventType))
+                {
+                    if (_eventDic[eventType] is EventItem item)
+                        item.action -= action;
+                    else
+                        Console.WriteLine($"【事件总线】【注销事件】事件{eventType}类型不匹配");
+                }
             }
         }
         public void RemoveListener<T>(EventType eventType, Action<T> action)
         {
-            if (_eventDic.ContainsKey(eventType))
+            lock (_lockObj)
             {
-                if (_eventDic[eventType] is EventItem<T> item)
-                    item.action -= action;
-                else
-                    Console.WriteLine($"【事件总线】【注销事件】事件{eventType}类型不匹配");
+                if (_eventDic.ContainsKey(eventType))
+                {
+                    if (_eventDic[eventType] is EventItem<T> item)
+                        item.action -= action;
+                    else
+                        Console.WriteLine($"【事件总线】【注销事件】事件{eventType}类型不匹配");
+                }
             }
         }
     }

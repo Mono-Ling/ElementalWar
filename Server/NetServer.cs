@@ -11,47 +11,94 @@ namespace Server
     internal class NetServer
     {
         private const float MAX_OUTTIME = 10;
+        private const int CLEAR_OVERTIME_DELAY = 1000;// ms
+
         private static int _playerId;
+
+        private object _lockObj = new();
         private Dictionary<int, TcpClient> _clientDic = new();
+
+        private Dictionary<int, IPEndPoint> _udpSendDic = new();
+        private Dictionary<IPEndPoint,int> _udpReceiveDic = new();
 
         private Socket _socket;
         private SocketAsyncEventArgs _eventArgs;
 
         private CancellationTokenSource _cancel = new();
-        public NetServer(IPEndPoint iPEndPoint,int maxCount)
+
+        private UdpServer _udpServer;
+        public NetServer()
         {
+            _udpServer = new(_udpSendDic, _udpReceiveDic);
+        }
+        public void Start(IPEndPoint tcpIPEndPoint, IPEndPoint udpIPEndPoint, int maxCount = 100)
+        {
+            _cancel = new();
+
+            _eventArgs = new SocketAsyncEventArgs();
+            _eventArgs.Completed += AcceptCallback;
+
             _socket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
             try
             {
-                _socket.Bind(iPEndPoint);
+                _socket.Bind(tcpIPEndPoint);
                 _socket.Listen(maxCount);
+                _socket.AcceptAsync(_eventArgs);
             }
-            catch(SocketException e)
+            catch (SocketException e)
             {
-                Console.WriteLine("【服务器启动失败】套接字初始化异常" + e);
+                Console.WriteLine($"【服务器长连接启动失败】{e.Message}");
                 return;
             }
-            _eventArgs = new SocketAsyncEventArgs();
-            _eventArgs.Completed += Accept;
-            Console.WriteLine("【服务器启动】");
 
-            Task.Run(ServerLoop);
+            _udpServer.StartUdpServer(udpIPEndPoint);
+
+            Task.Run(ClearOverTimeLoop);
+            EventBus.Instance.AddListener<ClientPackage>(EventType.SendTo,SendTo);
             EventBus.Instance.AddListener<ClientPackage>(EventType.OnReceive, OnHeartMessage);
+            Console.WriteLine("【服务器启动】");
         }
         public void Close()
         {
+            EventBus.Instance.RemoveListener<ClientPackage>(EventType.SendTo, SendTo);
             EventBus.Instance.RemoveListener<ClientPackage>(EventType.OnReceive, OnHeartMessage);
             _cancel.Cancel();
             _socket?.Close();
+            _socket?.Dispose();
             _eventArgs?.Dispose();
+
+            _udpServer.Close();
 
             foreach (var item in _clientDic.Values)
                 item.Close();
             _clientDic.Clear();
+
+            _udpSendDic?.Clear();
+            _udpReceiveDic?.Clear();
+
             Console.WriteLine("【服务器关闭】");
         }
-        public void StartAccept() => _socket.AcceptAsync(_eventArgs);
-        private void Accept(object? socket,SocketAsyncEventArgs args)
+        private void SendTo(ClientPackage clientPackage)
+        {
+            if (clientPackage.message == null)
+                return;
+            if (_clientDic.TryGetValue(clientPackage.playerId, out var item))
+            {
+                switch (clientPackage.sendType)
+                {
+                    case SendType.Tcp:
+                        item.Send(new TcpPackage(clientPackage.message));
+                        break;
+                    case SendType.Udp:
+                        _udpServer.Send(clientPackage);
+                        break;
+                }
+            }
+            else
+                Console.WriteLine($"【找不到发送对象】TargetID:{clientPackage.playerId}");
+        }
+        private void AcceptCallback(object? socket,SocketAsyncEventArgs args)
         {
             if (args.SocketError != SocketError.Success)
             {
@@ -63,30 +110,44 @@ namespace Server
             TcpClient client = new TcpClient(clientSocket,id);
             client.StartReveice();
 
-            lock(_clientDic)
+            lock (_lockObj)
+            {
                 _clientDic.Add(id, client);
+
+                IPEndPoint remote = clientSocket.RemoteEndPoint as IPEndPoint;
+                remote = new(remote.Address,remote.Port);
+                _udpSendDic.Add(id, remote);
+                _udpReceiveDic.Add(remote, id);
+            }
 
             _eventArgs.AcceptSocket = null;
             _socket.AcceptAsync(args);
         }
-        private void ServerLoop()
+        private async Task ClearOverTimeLoop()
         {
             List<int> lostList = new();
             while (!_cancel.IsCancellationRequested)
             {
-                foreach (var client in _clientDic)
+                await Task.Delay(CLEAR_OVERTIME_DELAY);
+                lock (_lockObj)
                 {
-                    if ((DateTime.Now - client.Value.preHeartTime).TotalSeconds > MAX_OUTTIME)
+                    foreach (var client in _clientDic)
                     {
-                        lostList.Add(client.Key);
-                        Console.WriteLine($"【客户端超时】客户端ID：{client.Key}");
-                        client.Value.Close();
+                        if ((DateTime.Now - client.Value.preHeartTime).TotalSeconds > MAX_OUTTIME)
+                        {
+                            lostList.Add(client.Key);
+                            Console.WriteLine($"【客户端超时】客户端ID：{client.Key}");
+                            client.Value.Close();
+                        }
                     }
-                }
-                lock (_clientDic)
-                {
-                    foreach(int id in lostList)
+
+                    foreach (int id in lostList)
+                    {
                         _clientDic.Remove(id);
+
+                        _udpReceiveDic.Remove(_udpSendDic[id]);
+                        _udpSendDic.Remove(id);
+                    }
                 }
                 lostList.Clear();
             }
@@ -96,11 +157,11 @@ namespace Server
         {
             if(package.message is HeartMessage message)
             {
-                if (_clientDic.TryGetValue(package.id, out var client))
+                if (_clientDic.TryGetValue(package.playerId, out var client))
                 {
                     lock (_clientDic)
                         client.preHeartTime = DateTime.Now;
-                    Console.WriteLine($"【心跳消息】客户端ID：{package.id}");
+                    Console.WriteLine($"【心跳消息】客户端ID：{package.playerId}");
                 }
             }
         }

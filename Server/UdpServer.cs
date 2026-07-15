@@ -70,6 +70,7 @@ namespace Server
 
             _receiveEventArgs = new();
             _receiveEventArgs.SetBuffer(_receiveBuffer, 0, MAX_SIZE);
+            _receiveEventArgs.RemoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
             _receiveEventArgs.Completed += ReceiveCallback;
 
             _cancel = new();
@@ -121,7 +122,7 @@ namespace Server
                 {
                     if (clientPackage.header == null || clientPackage.message == null)
                         continue;
-                    if(_sendDic.TryGetValue(clientPackage.id,out var target) && clientPackage.header is UdpHeader header)
+                    if(_sendDic.TryGetValue(clientPackage.playerId,out var target) && clientPackage.header is UdpHeader header)
                     {
                         header.Time = DateTime.UtcNow.Ticks;
                         header.Type = clientPackage.message.GetType().ToString();
