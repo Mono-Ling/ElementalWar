@@ -219,7 +219,7 @@ public class EventBus : Single<EventBus>
             if (baseItem is EventItem item)
                 item.AddListener(action, filePath, lineNumber);
             else
-                Debug.LogError($"【事件参数不匹配】期待参数：{baseItem.type}，实际传入类型：无参");
+                Debug.LogError($"【事件参数不匹配】{eventType}期待参数：{baseItem.type}，实际传入类型：无参");
         }
         else
         {
@@ -237,7 +237,7 @@ public class EventBus : Single<EventBus>
             if (baseItem is EventItem<T> item)
                 item.AddListener(action, filePath, lineNumber);
             else
-                Debug.LogError($"【事件参数不匹配】期待参数：{baseItem.type}，实际传入类型：{typeof(T)}");
+                Debug.LogError($"【事件参数不匹配】{eventType}期待参数：{baseItem.type}，实际传入类型：{typeof(T)}");
         }
         else
         {
@@ -254,7 +254,7 @@ public class EventBus : Single<EventBus>
             if (baseItem is EventItem item)
                 item.Trigger();
             else
-                Debug.LogError($"【事件参数不匹配】期待参数：{baseItem.type}，实际传入类型：无参");
+                Debug.LogError($"【事件参数不匹配】{eventType}期待参数：{baseItem.type}，实际传入类型：无参");
         }
         else
             Debug.LogWarning($"【事件暂无监听】事件：{eventType} 无监听");
@@ -267,7 +267,7 @@ public class EventBus : Single<EventBus>
             if (baseItem is EventItem<T> item)
                 item.Trigger(arg);
             else
-                Debug.LogError($"【事件参数不匹配】期待参数：{baseItem.type}，实际传入类型：{typeof(T)}");
+                Debug.LogError($"【事件参数不匹配】{eventType}期待参数：{baseItem.type}，实际传入类型：{typeof(T)}");
         }
         else
             Debug.LogWarning($"【事件暂无监听】事件：{eventType} 无监听");
@@ -281,7 +281,7 @@ public class EventBus : Single<EventBus>
             if (baseItem is EventItem item)
                 item.RemoveListener(action, filePath, lineNumber);
             else
-                Debug.LogError($"【事件参数不匹配】期待参数：{baseItem.type}，实际传入类型：无参");
+                Debug.LogError($"【事件参数不匹配】{eventType}期待参数：{baseItem.type}，实际传入类型：无参");
         }
         else
             Debug.LogWarning($"【事件暂无监听】事件：{eventType} 无监听");
@@ -295,7 +295,7 @@ public class EventBus : Single<EventBus>
             if (baseItem is EventItem<T> item)
                 item.RemoveListener(action, filePath, lineNumber);
             else
-                Debug.LogError($"【事件参数不匹配】期待参数：{baseItem.type}，实际传入类型：{typeof(T)}");
+                Debug.LogError($"【事件参数不匹配】{eventType}期待参数：{baseItem.type}，实际传入类型：{typeof(T)}");
         }
         else
             Debug.LogWarning($"【事件暂无监听】事件：{eventType} 无监听");

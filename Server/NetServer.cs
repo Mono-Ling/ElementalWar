@@ -57,12 +57,14 @@ namespace Server
             Task.Run(ClearOverTimeLoop);
             EventBus.Instance.AddListener<ClientPackage>(EventType.SendTo,SendTo);
             EventBus.Instance.AddListener<ClientPackage>(EventType.OnReceive, OnHeartMessage);
+            EventBus.Instance.AddListener<ClientPackage>(EventType.OnReceive, OnNeedResponseMessage);
             Console.WriteLine("【服务器启动】");
         }
         public void Close()
         {
             EventBus.Instance.RemoveListener<ClientPackage>(EventType.SendTo, SendTo);
             EventBus.Instance.RemoveListener<ClientPackage>(EventType.OnReceive, OnHeartMessage);
+            EventBus.Instance.RemoveListener<ClientPackage>(EventType.OnReceive, OnNeedResponseMessage);
             _cancel.Cancel();
             _socket?.Close();
             _socket?.Dispose();
@@ -163,6 +165,16 @@ namespace Server
                         client.preHeartTime = DateTime.Now;
                     Console.WriteLine($"【心跳消息】客户端ID：{package.playerId}");
                 }
+            }
+        }
+        private void OnNeedResponseMessage(ClientPackage package)
+        {
+            if(package.header is UdpHeader udpHeader && udpHeader.IsResponse)
+            {
+                UdpResponseMessage responseMessage = new();
+                responseMessage.PackageId = udpHeader.Id;
+                SendTo(new(package.playerId, new UdpHeader(), responseMessage,SendType.Udp));
+                Console.WriteLine($"【UDP重要消息】PackageID:{udpHeader.Id}");
             }
         }
     }

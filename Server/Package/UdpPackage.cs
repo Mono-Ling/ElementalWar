@@ -29,7 +29,7 @@ namespace Server
             Type? type = Type.GetType(header.Type);
             if(type == null)
             {
-                Console.WriteLine("【UDP消息解析失败】Type解析失败");
+                Console.WriteLine($"【UDP消息解析失败】Type解析失败Content:{header.Type}");
                 return;
             }
 

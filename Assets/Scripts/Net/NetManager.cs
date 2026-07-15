@@ -2,181 +2,91 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net;
-using System.Net.Sockets;
-using Google.Protobuf;
+using System.Threading;
+using System.Threading.Tasks;
+using Message;
 using UnityEngine;
 
 public class NetManager : SingleMono<NetManager>
 {
     public bool IsStart { get; private set; }
-    private const string SERVER_IP = "127.0.0.1";
-    private const int SERVER_PORT = 2026;
-    private const int MAX_SIZE = 1024;
-    private IPEndPoint _serverIPEndPoint = new(IPAddress.Parse(SERVER_IP), SERVER_PORT);
-    private Socket _socket;
-    private SocketAsyncEventArgs _connectArgs;
-    private SocketAsyncEventArgs _sendArgs;
-    private SocketAsyncEventArgs _receiveArgs;
-    private byte[] _receiveBuffer = new byte[MAX_SIZE];
-    private TcpPackage _bufferPackage;
+    private const int HEART_DELAY = 5000;// ms
+    private static IPEndPoint _localIPEndPoint = new(IPAddress.Parse("127.0.0.1"), 0);
+    private static IPEndPoint _tcpServerIPEndPoint = new(IPAddress.Parse("127.0.0.1"), 2026);
+    private static IPEndPoint _udpServerIPEndPoint = new(IPAddress.Parse("127.0.0.1"), 2027);
+    private ConcurrentQueue<NetPackage> _receiveQueue = new();
 
-    private ConcurrentQueue<TcpPackage> _sendQueue = new();
-    private ConcurrentQueue<TcpPackage> _receiveQueue = new();
+    private CancellationTokenSource _cancel;
+    // Update is called once per frame
     void Update()
     {
         if (!IsStart)
             return;
-
-        while (_sendQueue.TryDequeue(out TcpPackage package))
-            SendToServer(package);
-
-        while (_receiveQueue.TryDequeue(out TcpPackage package))
-            EventBus.Instance.Trigger<IMessage>(EventType.OnReceive, package.message);
+        while (_receiveQueue.TryDequeue(out var package))
+            EventBus.Instance.Trigger<NetPackage>(EventType.OnReceive, package);
     }
     public void StartClient()
     {
-        _socket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        TcpManager.Instance.StartClient(_localIPEndPoint, _tcpServerIPEndPoint);
+        var ipEndPoint = TcpManager.Instance.LocalIPEndPoint;
+        UdpManager.Instance.StartClient(ipEndPoint, _udpServerIPEndPoint);
 
-        _connectArgs = new();
-        _connectArgs.Completed += ConnectCallback;
-
-        _sendArgs = new();
-        _sendArgs.Completed += SendCallback;
-
-        _receiveArgs = new();
-        _receiveArgs.Completed += ReceiveCallback;
-        _receiveArgs.SetBuffer(_receiveBuffer, 0, MAX_SIZE);
-
-        try
-        {
-            _connectArgs.RemoteEndPoint = _serverIPEndPoint;
-            _socket.ConnectAsync(_connectArgs);
-        }
-        catch (SocketException e)
-        {
-            Debug.LogError("【连接失败】" + e);
-            Close();
-            return;
-        }
-
+        EventBus.Instance.AddListener<NetPackage>(EventType.SendTo, SendToServe);
+        EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnNeedResponseMessage);
+        _cancel = new();
+        Task.Run(TcpHeartLoop);
         IsStart = true;
-        Debug.Log("【客户端启动】");
     }
     public void Close()
     {
         IsStart = false;
-        try
-        {
-            Debug.LogWarning($"【断连】服务器：{_socket?.RemoteEndPoint}连接断开");
-            _socket?.Shutdown(SocketShutdown.Both);
-        }
-        catch { }
+        _cancel.Cancel();
+        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnNeedResponseMessage);
+        EventBus.Instance.RemoveListener<NetPackage>(EventType.SendTo, SendToServe);
 
-        _socket?.Close();
-        _socket?.Dispose();
-        _sendArgs?.Dispose();
-        _receiveArgs?.Dispose();
+        TcpManager.Instance.Close();
+        UdpManager.Instance.Close();
     }
-    public void Send(TcpPackage package)
+    public void AddReceivePackage(NetPackage package) => _receiveQueue.Enqueue(package);
+    private void SendToServe(NetPackage netPackage)
     {
-        if (package == null)
-            return;
-        _sendQueue.Enqueue(package);
-    }
-    private void StartReceive()
-    {
-        if (_socket == null) return;
-        try
-        {
-            _socket.ReceiveAsync(_receiveArgs);
-        }
-        catch (SocketException e)
-        {
-            Debug.LogError("【消息接收启动异常】" + e.SocketErrorCode);
-            Close();
-            return;
-        }
-        Debug.Log("【启动TCP消息接收】");
-    }
-    private void SendToServer(TcpPackage package)
-    {
-        if (package == null)
-            return;
         if (!IsStart)
         {
-            Debug.LogWarning("【消息发送失败】连接断开");
+            Debug.LogError("【发送失败】客户端网络未启动");
             return;
         }
-        byte[] bytes = package.data;
-        try
+        if (netPackage.message == null)
+            return;
+        switch (netPackage.sendType)
         {
-            _sendArgs.SetBuffer(bytes, 0, bytes.Length);
-            _socket.SendAsync(_sendArgs);
-        }
-        catch (SocketException e)
-        {
-            Debug.LogError("【消息发送失败】" + e);
+            case SendType.Tcp:
+                TcpManager.Instance.Send(new TcpPackage(netPackage.message));
+                break;
+            case SendType.Udp:
+                UdpManager.Instance.Send(netPackage);
+                break;
         }
     }
-    private void ConnectCallback(object socket, SocketAsyncEventArgs args)
+    private void OnNeedResponseMessage(NetPackage package)
     {
-        if (args.SocketError != SocketError.Success)
+        if (package.header is UdpHeader udpHeader && udpHeader.IsResponse)
         {
-            Debug.LogError("【连接失败】" + args.SocketError);
-            return;
+            UdpResponseMessage responseMessage = new();
+            responseMessage.PackageId = udpHeader.Id;
+            SendToServe(new(new UdpHeader(), responseMessage, SendType.Udp));
+            Debug.Log($"【UDP重要消息】PackageID:{udpHeader.Id}");
         }
-        StartReceive();
-        Debug.Log($"【连接成功】Target:{_socket?.RemoteEndPoint}");
     }
-    private void SendCallback(object socket, SocketAsyncEventArgs args)
+    private async Task TcpHeartLoop()
     {
-        if (!IsStart) return;
-        if (args.SocketError != SocketError.Success)
+        var heartPackage = new TcpPackage(new HeartMessage());
+        while (!_cancel.IsCancellationRequested)
         {
-            Debug.LogError("【消息发送失败】" + args.SocketError);
-            return;
-        }
-        Debug.Log($"【消息发送成功】Target：{_socket.RemoteEndPoint}");
-    }
-    private void ReceiveCallback(object socket, SocketAsyncEventArgs args)
-    {
-        if (!IsStart) return;
-        if (args.SocketError != SocketError.Success)
-        {
-            Debug.LogError("【消息接收失败】" + args.SocketError);
-            return;
-        }
-        byte[] bytes = args.Buffer;
-        int length = args.BytesTransferred;
-        if (length == 0)
-        {
-            Close();
-            return;
-        }
-        ProcessReceive(bytes, length);
-        (socket as Socket).ReceiveAsync(_receiveArgs);
-    }
-    private void ProcessReceive(byte[] bytes, int length)
-    {
-        if (bytes == null || bytes.Length == 0)
-            return;
-        int offset = 0;
-        while (offset < length)
-        {
-            if (_bufferPackage == null)
-                _bufferPackage = new TcpPackage(bytes, ref offset);
-            else
-                _bufferPackage.Append(bytes, ref offset);
-
-            if (_bufferPackage.IsCompleted)
-            {
-                //EventBus.Instance.Trigger<IMessage>(EventType.OnReceive, _bufferPackage.message);
-                _receiveQueue.Enqueue(_bufferPackage);
-                _bufferPackage = null;
-            }
+            await Task.Delay(HEART_DELAY);
+            TcpManager.Instance.Send(heartPackage);
         }
     }
-    private void OnDestroy()
+    private void Oestroy()
     {
         Close();
     }

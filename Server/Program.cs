@@ -27,6 +27,6 @@ class Program
     {
         if (package.message is not TextMessage text)
             return;
-        Console.WriteLine($"【玩家{package.playerId}消息】" + text.Content);
+        Console.WriteLine($"【玩家{package.playerId}消息】Contant:{text.Content}|SendType:{package.sendType}");
     }
 }

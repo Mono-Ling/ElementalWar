@@ -118,53 +118,71 @@ namespace Server
         {
             while(!_cancel.IsCancellationRequested)
             {
-                while(_sendQueue.TryDequeue(out var clientPackage))
+                try
                 {
-                    if (clientPackage.header == null || clientPackage.message == null)
-                        continue;
-                    if(_sendDic.TryGetValue(clientPackage.playerId,out var target) && clientPackage.header is UdpHeader header)
+                    while(_sendQueue.TryDequeue(out var clientPackage))
                     {
-                        header.Time = DateTime.UtcNow.Ticks;
-                        header.Type = clientPackage.message.GetType().ToString();
-                        uint packageId = _packageId++;
-                        header.Id = packageId;
+                        if (clientPackage.header == null || clientPackage.message == null)
+                            continue;
+                        if(_sendDic.TryGetValue(clientPackage.playerId,out var target) && clientPackage.header is UdpHeader header)
+                        {
+                            header.Time = DateTime.UtcNow.Ticks;
+                            header.Type = clientPackage.message.GetType().ToString();
+                            uint packageId = _packageId++;
+                            header.Id = packageId;
 
-                        UdpPackage package = new(header, clientPackage.message);
-                        SendToTarget(target, package);
+                            UdpPackage package = new(header, clientPackage.message);
+                            // 使用同步 SendTo，避免 _sendEventArgs 重用冲突
+                            // UDP SendTo 是非阻塞的，仅拷贝到内核缓冲区
+                            _socket?.SendTo(package.data, target);
 
-                        if (header.IsResponse)
-                            lock(_overSendPackageDic)
-                                _overSendPackageDic.Add(packageId, (package, target, DEFAULT_OVER_SEND_TIMES));
+                            if (header.IsResponse)
+                                lock(_overSendPackageDic)
+                                    _overSendPackageDic.Add(packageId, (package, target, DEFAULT_OVER_SEND_TIMES));
+                        }
                     }
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"【UDP发送循环异常】{e.Message}");
+                }
+                // 避免队列空时 100% CPU 忙等
+                Thread.Sleep(1);
             }
         }
         private async Task OverSend()
         {
             List<uint> lostPackageList = new();
+            await Task.Delay(OVER_SEND_DELAY).ConfigureAwait(false);
             while(!_cancel.IsCancellationRequested)
             {
-                await Task.Delay(OVER_SEND_DELAY);
-                lock (_overSendPackageDic)
+                try
                 {
-                    foreach (var item in _overSendPackageDic)
+                    lock (_overSendPackageDic)
                     {
-                        (UdpPackage package, IPEndPoint target, int times) = item.Value;
-
-                        //SendToTarget(target, package);
-                        _socket.SendTo(package.data, target);
-                        times--;
-                        if (times == 0)
+                        foreach (var item in _overSendPackageDic)
                         {
-                            lostPackageList.Add(item.Key);
-                            continue;
+                            (UdpPackage package, IPEndPoint target, int times) = item.Value;
+
+                            _socket?.SendTo(package.data, target);
+                            times--;
+                            if (times == 0)
+                            {
+                                lostPackageList.Add(item.Key);
+                                continue;
+                            }
+                            _overSendPackageDic[item.Key] = (package, target, times);
                         }
-                        _overSendPackageDic[item.Key] = (package, target, times);
+                        foreach (uint item in lostPackageList)
+                            _overSendPackageDic.Remove(item);
                     }
-                    foreach (uint item in lostPackageList)
-                        _overSendPackageDic.Remove(item);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"【UDP超时重传异常】{e.Message}");
                 }
                 lostPackageList.Clear();
+                await Task.Delay(OVER_SEND_DELAY).ConfigureAwait(false);
             }
         }
         private void SendToTarget(IPEndPoint target,UdpPackage package)
@@ -205,7 +223,7 @@ namespace Server
                 Console.WriteLine("【UDP接收失败】" + args.SocketError);
                 return;
             }
-            if(_receiveDic.TryGetValue(args.RemoteEndPoint as IPEndPoint,out int id))
+            if (_receiveDic.TryGetValue(args.RemoteEndPoint as IPEndPoint, out int id))
             {
                 int length = args.BytesTransferred;
                 if (length == 0)
@@ -214,21 +232,28 @@ namespace Server
                     return;
                 }
                 byte[] bytes = new byte[length];
-                Array.Copy(args.Buffer,0, bytes, 0, length);
+                Array.Copy(args.Buffer, 0, bytes, 0, length);
 
                 UdpPackage udpPackage = new(bytes);
+                if (udpPackage.header == null || udpPackage.message == null)
+                {
+                    _socket?.ReceiveFromAsync(_receiveEventArgs);
+                    Console.WriteLine("【UDP消息解析失败】");
+                    return;
+                }
+                ClientPackage? newPackage = null;
                 lock (_historyPackageDic)
                 {
                     if (!_historyPackageDic.ContainsKey(udpPackage.header.Id))
                     {
                         _historyPackageDic.Add(udpPackage.header.Id, udpPackage.header.Time);
-
-                        ClientPackage clientPackage = new(id, udpPackage.header, udpPackage.message, SendType.Udp);
-                        EventBus.Instance.Trigger<ClientPackage>(EventType.OnReceive, clientPackage);
+                        newPackage = new ClientPackage(id, udpPackage.header, udpPackage.message, SendType.Udp);
                     }
                     else
                         Console.Write($"【UDP重复消息】PackageId:{udpPackage.header.Id}");
                 }
+                if (newPackage != null)
+                    EventBus.Instance.Trigger<ClientPackage>(EventType.OnReceive, (ClientPackage)newPackage);
             }
             else
                 Console.WriteLine($"【UDP未知消息源】From：{args.RemoteEndPoint}");
@@ -243,18 +268,25 @@ namespace Server
             List<uint> lostPackageList = new();
             while(!_cancel.IsCancellationRequested)
             {
-                await Task.Delay(CLEAR_HISTORY_PACKAGE_DELAY);
+                await Task.Delay(CLEAR_HISTORY_PACKAGE_DELAY).ConfigureAwait(false);
 
-                lock(_historyPackageDic)
+                try
                 {
-                    foreach(var item in _historyPackageDic)
+                    lock(_historyPackageDic)
                     {
-                        DateTime packaeTime = new(item.Value);
-                        if((DateTime.UtcNow - packaeTime).TotalSeconds > HISTORY_PACKAGE_WINDOW)
-                            lostPackageList.Add(item.Key);
+                        foreach(var item in _historyPackageDic)
+                        {
+                            DateTime packaeTime = new(item.Value);
+                            if((DateTime.UtcNow - packaeTime).TotalSeconds > HISTORY_PACKAGE_WINDOW)
+                                lostPackageList.Add(item.Key);
+                        }
+                        foreach(uint id in lostPackageList)
+                            _historyPackageDic.Remove(id);
                     }
-                    foreach(uint id in lostPackageList)
-                        _historyPackageDic.Remove(id);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"【UDP历史包清除异常】{e.Message}");
                 }
                 lostPackageList.Clear();
             }
