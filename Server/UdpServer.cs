@@ -151,7 +151,8 @@ namespace Server
                     {
                         (UdpPackage package, IPEndPoint target, int times) = item.Value;
 
-                        SendToTarget(target, package);
+                        //SendToTarget(target, package);
+                        _socket.SendTo(package.data, target);
                         times--;
                         if (times == 0)
                         {
