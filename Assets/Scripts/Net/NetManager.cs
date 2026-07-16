@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Message;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NetManager : SingleMono<NetManager>
@@ -86,7 +87,7 @@ public class NetManager : SingleMono<NetManager>
             TcpManager.Instance.Send(heartPackage);
         }
     }
-    private void Oestroy()
+    private void OnDestroy()
     {
         Close();
     }
