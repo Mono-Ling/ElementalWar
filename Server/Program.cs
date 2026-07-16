@@ -21,12 +21,18 @@ class Program
                 server.Close();
                 break;
             }
+            UdpHeader udpHeader = new();
+            udpHeader.IsResponse = true;
+            TextMessage message = new();
+            message.Content = input;
+            ClientPackage clientPackage = new(0, udpHeader, message);
+            EventBus.Instance.Trigger(EventType.SendTo, clientPackage);
         }
     }
     private static void OnTextMessage(ClientPackage package)
     {
         if (package.message is not TextMessage text)
             return;
-        Console.WriteLine($"【玩家{package.playerId}消息】Contant:{text.Content}|SendType:{package.sendType}");
+        Console.WriteLine($"【玩家{package.playerId}消息】Content:{text.Content}|SendType:{package.sendType}");
     }
 }

@@ -30,7 +30,7 @@ public class Test : MonoBehaviour
     private void OnTextMessage(NetPackage package)
     {
         if (package.message is TextMessage text)
-            Debug.Log($"【服务器消息】Contant:{text.Content}|SendType:{package.sendType}");
+            Debug.Log($"【服务器消息】Content:{text.Content}|SendType:{package.sendType}");
     }
     void OnDestroy()
     {
