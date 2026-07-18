@@ -11,7 +11,7 @@ public class SingleMono<T> : MonoBehaviour where T : Component
         {
             if (_instance == null)
             {
-                GameObject obj = new GameObject(nameof(T));
+                GameObject obj = new GameObject(typeof(T).ToString());
                 DontDestroyOnLoad(obj);
                 _instance = obj.AddComponent<T>();
             }
