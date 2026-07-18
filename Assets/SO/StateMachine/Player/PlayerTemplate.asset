@@ -10,6 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aa4b937ffb87e64386388672625b767, type: 3}
-  m_Name: NewBlackboardTemplate
+  m_Name: PlayerTemplate
   m_EditorClassIdentifier: 
-  argList: []
+  argList:
+  - name: Position
+    type: 8
+  - name: Rotation
+    type: 9
+  - name: Animator
+    type: 12

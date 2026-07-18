@@ -41,6 +41,7 @@ public class BlackboardTemplate : ScriptableObject
         BlackboardArgType.Quaternion => new BlackboardArg<Quaternion>(),
         BlackboardArgType.GameObject => new BlackboardArg<GameObject>(),
         BlackboardArgType.Transform => new BlackboardArg<Transform>(),
+        BlackboardArgType.Animator => new BlackboardArg<Animator>(),
         _ => null,
     };
 }
@@ -64,4 +65,5 @@ public enum BlackboardArgType
     Quaternion,
     GameObject,
     Transform,
+    Animator,
 }
