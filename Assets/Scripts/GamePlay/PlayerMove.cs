@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     public string positionArgName = "Position";
     public string rotationArgName = "Rotation";
     public string animatorName = "Animator";
+    public string pitchArgName = "Pitch";
     private Blackboard _blackboard;
     private Rigidbody _rigidbody;
     private void Start()
@@ -37,6 +38,9 @@ public class PlayerMove : MonoBehaviour
         animator?.SetFloat("MoveX", v.x);
         animator?.SetFloat("MoveY", v.z);
         animator?.SetFloat("MoveSpeed", v.magnitude);
+
+        _blackboard.GetValue<float>(pitchArgName, out var pitch);
+        animator?.SetFloat("AimY", pitch);
     }
     void FixedUpdate()
     {

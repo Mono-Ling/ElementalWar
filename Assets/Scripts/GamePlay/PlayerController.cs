@@ -21,4 +21,6 @@ public class PlayerController : MonoBehaviour
         _blackboard.SetValue<Animator>(animatorName, animator);
     }
     public void SetPosition(Vector3 pos) => _blackboard.SetValue("Position", pos);
+    public void SetRotation(Quaternion rot) => _blackboard.SetValue("Rotation", rot);
+    public void SetPitch(float pitch) => _blackboard.SetValue("Pitch", pitch);
 }
