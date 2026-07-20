@@ -17,5 +17,7 @@ MonoBehaviour:
     type: 8
   - name: Rotation
     type: 9
+  - name: Pitch
+    type: 3
   - name: Animator
     type: 12

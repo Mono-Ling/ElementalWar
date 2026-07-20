@@ -32,6 +32,7 @@ public class MainPlayer : MonoBehaviour
     void Update()
     {
         var pos = new Vector3(_moveInput.x, 0, _moveInput.y) * moveSpeed * Time.deltaTime;
+        pos = transform.rotation * pos;
         transform.position += pos;
         playerController.SetPosition(transform.position);
 

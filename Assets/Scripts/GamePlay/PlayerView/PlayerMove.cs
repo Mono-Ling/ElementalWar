@@ -35,6 +35,7 @@ public class PlayerMove : MonoBehaviour
     {
         _blackboard.GetValue<Animator>(animatorName, out var animator);
         Vector3 v = _rigidbody.velocity;
+        v = transform.InverseTransformDirection(v);
         animator?.SetFloat("MoveX", v.x);
         animator?.SetFloat("MoveY", v.z);
         animator?.SetFloat("MoveSpeed", v.magnitude);
