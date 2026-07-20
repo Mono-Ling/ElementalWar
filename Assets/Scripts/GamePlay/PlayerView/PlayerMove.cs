@@ -9,8 +9,14 @@ public class PlayerMove : MonoBehaviour
     public string rotationArgName = "Rotation";
     public string animatorName = "Animator";
     public string pitchArgName = "Pitch";
+    public float velocitySmoothTime = 0.1f;
+
     private Blackboard _blackboard;
     private Rigidbody _rigidbody;
+
+    private Vector3 _smoothedVelocity;
+    private Vector3 _velocitySmoothRef;
+
     private void Start()
     {
         _blackboard = GetComponent<Blackboard>();
@@ -27,32 +33,36 @@ public class PlayerMove : MonoBehaviour
             return;
         }
         _rigidbody.isKinematic = true;
-        _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        _blackboard.GetValue<Animator>(animatorName, out var animator);
-        Vector3 v = _rigidbody.velocity;
-        v = transform.InverseTransformDirection(v);
-        animator?.SetFloat("MoveX", v.x);
-        animator?.SetFloat("MoveY", v.z);
-        animator?.SetFloat("MoveSpeed", v.magnitude);
-
-        _blackboard.GetValue<float>(pitchArgName, out var pitch);
-        animator?.SetFloat("AimY", pitch);
+        _rigidbody.interpolation = RigidbodyInterpolation.None;
     }
     void FixedUpdate()
     {
-        if (_blackboard.GetValue<Vector3>(positionArgName, out var pos))
-            _rigidbody.MovePosition(pos);
-        else
+        if (!_blackboard.GetValue<Vector3>(positionArgName, out var targetPos))
+        {
             Debug.LogError("【Player】位置设置失败");
-
-        if (_blackboard.GetValue<Quaternion>(rotationArgName, out var rot))
-            _rigidbody.MoveRotation(rot.normalized);
-        else
+            return;
+        }
+        if (!_blackboard.GetValue<Quaternion>(rotationArgName, out var targetRot))
+        {
             Debug.LogError("【Player】旋转设置失败");
+            return;
+        }
+        // SmoothDamp 平滑
+        Vector3 instantVelocity = _rigidbody.velocity;
+        _smoothedVelocity = Vector3.SmoothDamp(
+            _smoothedVelocity, instantVelocity,
+            ref _velocitySmoothRef, velocitySmoothTime);
+
+        _rigidbody.MovePosition(targetPos);
+        _rigidbody.MoveRotation(targetRot);
+
+        _blackboard.GetValue<Animator>(animatorName, out var animator);
+        Vector3 localVelocity = transform.InverseTransformDirection(_smoothedVelocity);
+        animator?.SetFloat("MoveX", localVelocity.x);
+        animator?.SetFloat("MoveY", localVelocity.z);
+        animator?.SetFloat("MoveSpeed", _smoothedVelocity.magnitude);
+
+        _blackboard.GetValue<float>(pitchArgName, out var pitch);
+        animator?.SetFloat("AimY", pitch);
     }
 }

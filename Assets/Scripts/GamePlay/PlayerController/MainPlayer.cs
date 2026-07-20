@@ -13,6 +13,7 @@ public class MainPlayer : MonoBehaviour
     public float rotationSpeed;
     public float cameraRotationSpeed;
     private PlayerInput _playerInput;
+    private Rigidbody _rigidbody;
     private Vector2 _moveInput;
     private float _rotationXInput;
     private float _cameraRotationYInput;
@@ -20,26 +21,33 @@ public class MainPlayer : MonoBehaviour
     void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
+        _rigidbody = GetComponent<Rigidbody>();
         if (_playerInput == null)
         {
             Debug.LogError("【主玩家】玩家输入组件获取失败");
+            return;
+        }
+        if (_rigidbody == null)
+        {
+            Debug.LogError("【主玩家】刚体获取失败");
             return;
         }
         _playerInput.onActionTriggered += OnTrigger;
 
         EventBus.Instance.AddListener<float>(EventType.OnCameraPitchChange, SetPlayerPitch);
     }
-    void Update()
+    void FixedUpdate()
     {
-        var pos = new Vector3(_moveInput.x, 0, _moveInput.y) * moveSpeed * Time.deltaTime;
-        pos = transform.rotation * pos;
-        transform.position += pos;
-        playerController.SetPosition(transform.position);
+        var pos = new Vector3(_moveInput.x, 0, _moveInput.y) * moveSpeed * Time.fixedDeltaTime;
+        pos = _rigidbody.rotation * pos;
+        _rigidbody.MovePosition(_rigidbody.position + pos);
+        playerController.SetPosition(_rigidbody.position);
 
-        transform.rotation *= Quaternion.AngleAxis(_rotationXInput * rotationSpeed * Time.deltaTime, Vector3.up);
-        playerController.SetRotation(transform.rotation);
+        Quaternion rotation = Quaternion.AngleAxis(_rotationXInput * rotationSpeed * Time.fixedDeltaTime, Vector3.up);
+        _rigidbody.MoveRotation(_rigidbody.rotation * rotation);
+        playerController.SetRotation(_rigidbody.rotation);
 
-        EventBus.Instance.Trigger(EventType.CameraPitchDelta, _cameraRotationYInput * cameraRotationSpeed * Time.deltaTime);
+        EventBus.Instance.Trigger(EventType.CameraPitchDelta, _cameraRotationYInput * cameraRotationSpeed * Time.fixedDeltaTime);
     }
     private void OnTrigger(InputAction.CallbackContext context)
     {
