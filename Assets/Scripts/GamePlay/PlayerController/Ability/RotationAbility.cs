@@ -19,7 +19,7 @@ public class RotationAbility : BaseAbility
 
         AddInputPerformedListener("Rotation", OnRotationPerformed);
         AddInputCanceledListener("Rotation", OnRotationCanceled);
-        EventBus.Instance.AddListener<float>(EventType.OnCameraPitchChange, OnCameraPitchChange);
+        //EventBus.Instance.AddListener<float>(EventType.OnCameraPitchChange, OnCameraPitchChange);
     }
     private void OnRotationPerformed(InputAction.CallbackContext context)
     => _rotationInput = context.ReadValue<Vector2>();
@@ -31,7 +31,7 @@ public class RotationAbility : BaseAbility
         _rigidbody.MoveRotation(_rigidbody.rotation * rotation);
         blackboard.SetValue<Quaternion>("Rotation", _rigidbody.rotation);
 
-        EventBus.Instance.Trigger(EventType.CameraPitchDelta, _rotationInput.y * cameraRotationSpeed * Time.fixedDeltaTime);
+        //EventBus.Instance.Trigger(EventType.CameraPitchDelta, _rotationInput.y * cameraRotationSpeed * Time.fixedDeltaTime);
     }
 
     private void OnCameraPitchChange(float pitch)
@@ -39,7 +39,7 @@ public class RotationAbility : BaseAbility
 
     public override void OnRemove()
     {
-        EventBus.Instance.RemoveListener<float>(EventType.OnCameraPitchChange, OnCameraPitchChange);
+        //EventBus.Instance.RemoveListener<float>(EventType.OnCameraPitchChange, OnCameraPitchChange);
         RemoveInputPerformedListener("Rotation", OnRotationPerformed);
         RemoveInputCanceledListener("Rotation", OnRotationCanceled);
     }

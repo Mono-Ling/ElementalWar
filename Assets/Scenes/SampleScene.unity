@@ -188,6 +188,7 @@ MonoBehaviour:
   abilities:
   - rid: 4855355872216875008
   - rid: 4855355872216875009
+  - rid: 4855355872216875011
   references:
     version: 2
     RefIds:
@@ -200,6 +201,20 @@ MonoBehaviour:
       data:
         rotationSpeed: 5
         cameraRotationSpeed: 3
+    - rid: 4855355872216875011
+      type: {class: CameraControlAbility, ns: , asm: Assembly-CSharp}
+      data:
+        h: 1.5
+        length: 2
+        pitch: 15
+        maxPitch: 50
+        minPitch: -70
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 128
+        posSmoothTime: 0.05
+        rotSmoothTime: 0.1
+        pitchSpeed: 3
 --- !u!4 &50067450
 Transform:
   m_ObjectHideFlags: 0
@@ -370,7 +385,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -417,7 +432,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -452,24 +467,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
+--- !u!135 &963194230
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3080b3a700b35468a40e576365ec4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  followTarget: {fileID: 50067450}
-  h: 1.5
-  length: 2
-  pitch: 15
-  maxPitch: 50
-  minPitch: -50
+  serializedVersion: 3
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1638499442
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +500,7 @@ GameObject:
   - component: {fileID: 1638499445}
   - component: {fileID: 1638499444}
   - component: {fileID: 1638499443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,8 +587,8 @@ Transform:
   m_GameObject: {fileID: 1638499442}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 3.095}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 2.733}
+  m_LocalScale: {x: 2, y: 3, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
