@@ -185,9 +185,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 2507423962727818137}
-  moveSpeed: 5
-  rotationSpeed: 5
-  cameraRotationSpeed: 3
+  abilities:
+  - rid: 4855355872216875008
+  - rid: 4855355872216875009
+  references:
+    version: 2
+    RefIds:
+    - rid: 4855355872216875008
+      type: {class: MoveAbility, ns: , asm: Assembly-CSharp}
+      data:
+        moveSpeed: 5
+    - rid: 4855355872216875009
+      type: {class: RotationAbility, ns: , asm: Assembly-CSharp}
+      data:
+        rotationSpeed: 5
+        cameraRotationSpeed: 3
 --- !u!4 &50067450
 Transform:
   m_ObjectHideFlags: 0

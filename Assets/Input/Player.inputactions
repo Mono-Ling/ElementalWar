@@ -18,17 +18,8 @@
                 {
                     "name": "Rotation",
                     "type": "Value",
-                    "id": "ac23051c-0c5d-4f2a-ba09-086ee8416c3b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "CameraRotation",
-                    "type": "Value",
-                    "id": "6a6e877f-a205-4e59-a178-05af639bc652",
-                    "expectedControlType": "",
+                    "id": "bda65579-14cc-47da-a161-b41d4ca1d32a",
+                    "expectedControlType": "Delta",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -92,23 +83,12 @@
                 },
                 {
                     "name": "",
-                    "id": "8221c4a2-96e7-46b9-a3be-cf0739ba0832",
-                    "path": "<Mouse>/delta/x",
+                    "id": "c6fc5948-9aeb-4a2a-9938-fc849114ce0b",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7a303e1d-ce54-42fe-a1d3-7453a178c97d",
-                    "path": "<Mouse>/delta/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CameraRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
