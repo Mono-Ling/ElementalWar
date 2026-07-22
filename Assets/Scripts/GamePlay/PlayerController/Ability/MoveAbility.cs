@@ -26,9 +26,14 @@ public class MoveAbility : BaseAbility
 
     public override void OnFixedUpdate()
     {
-        var pos = new Vector3(_moveInput.x, 0, _moveInput.y) * moveSpeed * Time.fixedDeltaTime;
-        pos = _rigidbody.rotation * pos;
-        _rigidbody.MovePosition(_rigidbody.position + pos);
+        // 只修改水平速度，保留 Y 轴由物理系统控制（重力、跳跃等）
+        var horizontalVelocity = new Vector3(_moveInput.x, 0f, _moveInput.y);
+        horizontalVelocity = _rigidbody.rotation * horizontalVelocity;
+        if (horizontalVelocity != Vector3.zero)
+        {
+            horizontalVelocity = horizontalVelocity.normalized * moveSpeed;
+        }
+        _rigidbody.velocity = new Vector3(horizontalVelocity.x, _rigidbody.velocity.y, horizontalVelocity.z);
         blackboard.SetValue<Vector3>("Position", _rigidbody.position);
     }
     public override void OnRemove()

@@ -64,5 +64,17 @@ public class PlayerMove : MonoBehaviour
 
         _blackboard.GetValue<float>(pitchArgName, out var pitch);
         animator?.SetFloat("AimY", pitch);
+
+        SetJumpAnimation(animator);
+    }
+    private void SetJumpAnimation(Animator animator)
+    {
+        _blackboard.GetValue<bool>("IsJump", out var isJump);
+        _blackboard.GetValue<bool>("IsGrounded", out var isGrounded);
+        _blackboard.GetValue<float>("DisToGround", out var disToGround);
+        animator?.SetBool("IsJump", isJump);
+        animator?.SetBool("IsGrounded", isGrounded);
+        animator?.SetFloat("VerticalVelocity", _rigidbody.velocity.y);
+        animator?.SetFloat("DisToGround", disToGround);
     }
 }
