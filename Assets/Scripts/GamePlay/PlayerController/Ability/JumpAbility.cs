@@ -31,7 +31,7 @@ public class JumpAbility : BaseAbility
         if (Physics.Raycast(new Ray(_rigidbody.position, Vector3.down),
             out var hit, 100, layerMask))
         {
-            var _isGrounded = hit.distance < groundCheckDistance;
+            _isGrounded = hit.distance < groundCheckDistance;
             blackboard.SetValue("DisToGround", hit.distance);
             blackboard.SetValue("IsGrounded", _isGrounded);
         }

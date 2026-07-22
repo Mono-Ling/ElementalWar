@@ -29,10 +29,6 @@ public class RotationAbility : BaseAbility
         _rigidbody.MoveRotation(_rigidbody.rotation * rotation);
         blackboard.SetValue<Quaternion>("Rotation", _rigidbody.rotation);
     }
-
-    private void OnCameraPitchChange(float pitch)
-    => blackboard.SetValue<float>("Pitch", pitch);
-
     public override void OnRemove()
     {
         RemoveInputPerformedListener("Rotation", OnRotationPerformed);
