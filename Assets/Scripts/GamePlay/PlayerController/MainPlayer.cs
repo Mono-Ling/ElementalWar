@@ -1,15 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MainPlayer : MonoBehaviour
+public class MainPlayer : MonoBehaviour, ISerializationCallbackReceiver
 {
     public PlayerController playerController;
+
+    [SerializeField]
     [SerializeReference]
-    public List<BaseAbility> abilities = new();
+    private List<BaseAbility> _abilitiesSerialized = new();
+
+    public HashSet<BaseAbility> abilities = new();
+
     private PlayerInput _playerInput;
     private Blackboard _blackboard;
+
+    public void OnBeforeSerialize()
+    {
+        if (abilities.Count > 0)
+        {
+            _abilitiesSerialized.Clear();
+            _abilitiesSerialized.AddRange(abilities);
+        }
+    }
+
+    public void OnAfterDeserialize()
+    {
+        abilities = new HashSet<BaseAbility>(_abilitiesSerialized.Where(a => a != null));
+    }
+
     // Start is called before the first frame update
     void Start()
     {

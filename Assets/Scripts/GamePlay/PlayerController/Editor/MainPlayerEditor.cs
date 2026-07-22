@@ -19,8 +19,8 @@ public class MainPlayerEditor : Editor
 
         EditorGUILayout.Space();
 
-        // 绘制 abilities 列表（SerializeReference 多态支持）
-        var abilitiesProp = serializedObject.FindProperty("abilities");
+        // 绘制 abilities 列表（SerializeReference 多态支持，操作序列化桥接 List）
+        var abilitiesProp = serializedObject.FindProperty("_abilitiesSerialized");
         DrawAbilityList(abilitiesProp);
 
         serializedObject.ApplyModifiedProperties();
