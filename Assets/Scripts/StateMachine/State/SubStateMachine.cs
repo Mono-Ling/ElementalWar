@@ -6,10 +6,12 @@ using UnityEngine;
 public class SubStateMachine : State
 {
     public string lockStateArgName = "IsLockState";
+    public bool isWriteLockArg = true;
     public State anyState;
     public State currState;
     public State endState;
     public bool isDebug;
+    private State _initState;
     public override void OnEnter(Blackboard blackboard)
     {
         if (currState == null)
@@ -22,14 +24,15 @@ public class SubStateMachine : State
             Debug.LogError("【子状态机】退出状态为空");
             return;
         }
-        blackboard.SetValue<bool>(lockStateArgName, true);
+        if (isWriteLockArg) blackboard.SetValue<bool>(lockStateArgName, true);
         currState?.OnEnter(blackboard);
+        _initState = currState;
     }
     public override void OnUpdate(Blackboard blackboard)
     {
         if (!TryChangeState(anyState, blackboard))
-            TryChangeState(currState, blackboard);
-        currState?.OnUpdate(blackboard);
+            if (!TryChangeState(currState, blackboard))
+                currState?.OnUpdate(blackboard);
     }
     public override void OnLateUpdate(Blackboard blackboard) => currState?.OnLateUpdate(blackboard);
     public override void OnFixedUpdate(Blackboard blackboard) => currState?.OnFixedUpdate(blackboard);
@@ -47,7 +50,10 @@ public class SubStateMachine : State
             if (edge.condition.IsCompleted(blackboard))
             {
                 if (state == anyState)
+                {
                     currState.OnExit(blackboard);
+                    if (isDebug) Debug.Log("【子状态机】任意状态切换");
+                }
                 else
                     state.OnExit(blackboard);
 
@@ -57,7 +63,12 @@ public class SubStateMachine : State
                 {
                     if (isDebug)
                         Debug.Log("【子状态机】退出子状态机");
-                    blackboard.SetValue<bool>(lockStateArgName, false);
+
+                    if (isWriteLockArg)
+                        blackboard.SetValue<bool>(lockStateArgName, false);
+
+                    // 回退初始状态，为下一次进入子状态机做准备
+                    currState = _initState;
                     return true;
                 }
                 currState.OnEnter(blackboard);

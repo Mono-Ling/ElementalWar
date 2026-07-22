@@ -29,8 +29,8 @@ public class StateMachine : MonoBehaviour
     void Update()
     {
         if (!TryChangeState(anyState))
-            TryChangeState(currState);
-        currState?.OnUpdate(_blackboard);
+            if (!TryChangeState(currState))
+                currState?.OnUpdate(_blackboard);
     }
     void LateUpdate() => currState?.OnLateUpdate(_blackboard);
     void FixedUpdate() => currState?.OnFixedUpdate(_blackboard);

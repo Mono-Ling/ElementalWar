@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4cdcbf3e7ad7f043a3ed7b28e0779d9, type: 3}
+  m_Name: NotShoot&&NotLock
+  m_EditorClassIdentifier: 
+  A: {fileID: 11400000, guid: bad51d4f40736ed4e9d96b461ae9cdfb, type: 2}
+  B: {fileID: 11400000, guid: a36ba1a011b7da547976356b4ba0c458, type: 2}

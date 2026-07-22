@@ -11,8 +11,8 @@ public class Edge : ScriptableObject
     void OnValidate()
     {
         if (condition == null)
-            Debug.LogError("【状态机边】转换条件为空");
+            Debug.LogError("【状态机边】转换条件为空", this);
         if (targetState == null)
-            Debug.LogError("【状态机边】目标状态为空");
+            Debug.LogError("【状态机边】目标状态为空", this);
     }
 }

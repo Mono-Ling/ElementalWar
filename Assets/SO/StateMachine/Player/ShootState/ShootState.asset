@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa78076b12f11bb49bd5cd112af21364, type: 3}
+  m_Name: ShootState
+  m_EditorClassIdentifier: 
+  edgeList:
+  - {fileID: 11400000, guid: 639f37d2ba867aa4d81465b53be180d0, type: 2}
+  lockStateArgName: ShootStateLock
+  isWriteLockArg: 1
+  anyState: {fileID: 11400000, guid: 790c67116bc1f6446954be02d3128950, type: 2}
+  currState: {fileID: 11400000, guid: 4e4097dd8a4800642981362c07631a20, type: 2}
+  endState: {fileID: 11400000, guid: a1dda1e3d5c235e4d8efa683f2355cbd, type: 2}
+  isDebug: 1

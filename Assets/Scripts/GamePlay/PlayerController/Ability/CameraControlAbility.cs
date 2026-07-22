@@ -21,6 +21,10 @@ public class CameraControlAbility : BaseAbility
     public float rotSmoothTime = 0.1f;
     [Header("俯仰角改变速度")]
     public float pitchSpeed = 3;
+    [Header("射击抖动范围")]
+    public float maxRadius = 0.5f;
+    [Header("射击俯仰角增加速度")]
+    public float pitchAddSpeed = 1f;
     private Vector3 _smoothedCameraPos;
     private Vector3 _smoothCameraPosVelocity;
     private Quaternion _smoothCameraRotation;
@@ -46,8 +50,6 @@ public class CameraControlAbility : BaseAbility
         blackboard.GetValue<Quaternion>("Rotation", out var rot);
         blackboard.GetValue<Vector3>("Position", out var pos);
 
-        blackboard.SetValue<float>("Pitch", SetPitch(_pitchDelta * pitchSpeed * Time.deltaTime));
-
         float yaw = rot.eulerAngles.y;
         // 合成相机的目标旋转：俯仰角 + 跟随的偏航角
         Quaternion targetRot = Quaternion.Euler(pitch, yaw, 0f);
@@ -66,6 +68,14 @@ public class CameraControlAbility : BaseAbility
         }
 
         targetPos = fowardPos + dir.normalized * armLength;
+
+        blackboard.GetValue<float>("FireProgress", out var shootOffsetPower);
+        targetPos = OnShoot(targetPos, shootOffsetPower);
+
+        var pitchShootOffset = pitchAddSpeed * shootOffsetPower * Time.deltaTime;
+        var pitchDelta = _pitchDelta * pitchSpeed * Time.deltaTime + pitchShootOffset;
+        blackboard.SetValue<float>("Pitch", SetPitch(pitchDelta));
+
         _smoothedCameraPos = Vector3.SmoothDamp(_smoothedCameraPos, targetPos, ref _smoothCameraPosVelocity, posSmoothTime);
         _camera.position = _smoothedCameraPos;
 
@@ -82,5 +92,19 @@ public class CameraControlAbility : BaseAbility
         else
             pitchNum /= Mathf.Max(maxPitch, 0.01f);
         return pitchNum;
+    }
+    private Vector3 OnShoot(Vector3 currPos, float progress)
+    {
+        if (progress == 0)
+            return currPos;
+        var angle = Random.Range(0, Mathf.PI * 2);
+        var radius = Random.Range(0, maxRadius);
+        Vector2 offset = new(Mathf.Cos(angle) * radius,
+                            Mathf.Sin(angle) * radius);
+        var length = offset.magnitude;
+
+        length = Mathf.Lerp(0, length, progress);
+        offset = offset.normalized * length;
+        return currPos + new Vector3(offset.x, offset.y, 0);
     }
 }

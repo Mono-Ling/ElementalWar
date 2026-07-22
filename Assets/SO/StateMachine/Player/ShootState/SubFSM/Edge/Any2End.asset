@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ffa173b7d21f5f44b3f311be01e1a25, type: 3}
+  m_Name: Any2End
+  m_EditorClassIdentifier: 
+  condition: {fileID: 11400000, guid: bad51d4f40736ed4e9d96b461ae9cdfb, type: 2}
+  targetState: {fileID: 11400000, guid: a1dda1e3d5c235e4d8efa683f2355cbd, type: 2}
+  weight: 10

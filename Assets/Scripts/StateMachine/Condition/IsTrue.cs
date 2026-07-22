@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsLockState : BaseCondition
+[CreateAssetMenu(fileName = "NewOrCondition", menuName = "StateMachine/Condition/IsTrue")]
+public class IsTrue : BaseCondition
 {
     public string lockStateArgName = "IsLockState";
     private BlackboardArg<bool> _isLockArg;
