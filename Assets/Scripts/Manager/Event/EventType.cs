@@ -13,12 +13,4 @@ public enum EventType
     /// NetPackage类型参数
     /// </summary>
     SendTo,
-    /// <summary>
-    /// float类型
-    /// </summary>
-    CameraPitchDelta,
-    /// <summary>
-    /// float类型[-1,1]
-    /// </summary>
-    OnCameraPitchChange,
 }

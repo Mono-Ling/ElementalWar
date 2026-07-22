@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewOrCondition", menuName = "StateMachine/Condition/IsTrue")]
+[CreateAssetMenu(fileName = "NewIsTrueCondition", menuName = "StateMachine/Condition/IsTrue")]
 public class IsTrue : BaseCondition
 {
     public string lockStateArgName = "IsLockState";

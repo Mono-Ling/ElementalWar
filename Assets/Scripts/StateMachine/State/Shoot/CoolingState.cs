@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEmptyState", menuName = "StateMachine/State/ShootState/CoolingState")]
+[CreateAssetMenu(fileName = "NewCoolingState", menuName = "StateMachine/State/ShootState/CoolingState")]
 public class CoolingState : State
 {
     public string isCoolingArgName = "IsShootCooling";
