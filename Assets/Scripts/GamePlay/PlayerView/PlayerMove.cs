@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     public string animatorName = "Animator";
     public string pitchArgName = "Pitch";
     public float velocitySmoothTime = 0.1f;
+    public LayerMask layerMask;
 
     private Blackboard _blackboard;
     private Rigidbody _rigidbody;
@@ -71,10 +72,15 @@ public class PlayerMove : MonoBehaviour
     {
         _blackboard.GetValue<bool>("IsJump", out var isJump);
         _blackboard.GetValue<bool>("IsGrounded", out var isGrounded);
-        _blackboard.GetValue<float>("DisToGround", out var disToGround);
+        // _blackboard.GetValue<float>("DisToGround", out var disToGround);
         animator?.SetBool("IsJump", isJump);
         animator?.SetBool("IsGrounded", isGrounded);
         animator?.SetFloat("VerticalVelocity", _rigidbody.velocity.y);
-        animator?.SetFloat("DisToGround", disToGround);
+
+        if (Physics.Raycast(new Ray(_rigidbody.position, Vector3.down),
+            out var hit, 100, layerMask))
+        {
+            animator?.SetFloat("DisToGround", hit.distance);
+        }
     }
 }

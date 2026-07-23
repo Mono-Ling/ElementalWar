@@ -13,6 +13,9 @@ public class MainPlayer : MonoBehaviour, ISerializationCallbackReceiver
     private List<BaseAbility> _abilitiesSerialized = new();
 
     public HashSet<BaseAbility> abilities = new();
+    [SerializeField]
+    [SerializeReference]
+    public List<BaseSynSend> stateSynSends = new();
 
     private PlayerInput _playerInput;
     private Blackboard _blackboard;
@@ -54,25 +57,40 @@ public class MainPlayer : MonoBehaviour, ISerializationCallbackReceiver
 
         foreach (var ability in abilities)
             ability.InitAbility(this, _playerInput, _blackboard);
+
+        foreach (var send in stateSynSends)
+            send.Init(_blackboard);
     }
     void Update()
     {
         foreach (var ability in abilities)
             ability.OnUpdate();
+
+        foreach (var send in stateSynSends)
+            send.OnUpdate();
     }
     void LateUpdate()
     {
         foreach (var ability in abilities)
             ability.OnLateUpdate();
+
+        foreach (var send in stateSynSends)
+            send.OnLateUpdate();
     }
     void FixedUpdate()
     {
         foreach (var ability in abilities)
             ability.OnFixedUpdate();
+
+        foreach (var send in stateSynSends)
+            send.OnFixedUpdate();
     }
     void OnDestroy()
     {
         foreach (var ability in abilities)
             ability.OnRemove();
+
+        foreach (var send in stateSynSends)
+            send.OnRemove();
     }
 }

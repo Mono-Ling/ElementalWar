@@ -1,0 +1,7 @@
+syntax = "proto3";
+package Message;
+message JumpStateMessage
+{
+	bool isJump = 1;
+	bool isGrounded = 2;
+}

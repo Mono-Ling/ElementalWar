@@ -1,0 +1,10 @@
+syntax = "proto3";
+package Message;
+import "Vector3Message.proto";
+import "QuaternionMessage.proto";
+message PositionStateMessage
+{
+	Vector3Message pos = 1;
+	QuaternionMessage rot = 2;
+	float pitch = 3;
+}

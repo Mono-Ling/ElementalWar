@@ -32,7 +32,7 @@ public class JumpAbility : BaseAbility
             out var hit, 100, layerMask))
         {
             _isGrounded = hit.distance < groundCheckDistance;
-            blackboard.SetValue("DisToGround", hit.distance);
+            //blackboard.SetValue("DisToGround", hit.distance);
             blackboard.SetValue("IsGrounded", _isGrounded);
         }
         _isJump = _rigidbody.velocity.y > verticalVelocityThreshold;
