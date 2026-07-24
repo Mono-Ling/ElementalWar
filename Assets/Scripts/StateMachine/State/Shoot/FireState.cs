@@ -15,8 +15,8 @@ public class FireState : State
     {
         blackboard.SetValue(isCoolingArgName, false);
         _enterTime = Time.time;
-        blackboard.GetValue("Animator", out _animator);
-        _animator.SetLayerWeight(_animator.GetLayerIndex(shootAdditiveLayerName), 1);
+        blackboard.GetValue<Animator>("Animator", out var animator);
+        animator.SetLayerWeight(animator.GetLayerIndex(shootAdditiveLayerName), 1);
     }
     public override void OnUpdate(Blackboard blackboard)
     {
@@ -33,6 +33,8 @@ public class FireState : State
     public override void OnExit(Blackboard blackboard)
     {
         blackboard.SetValue(fireProgressArgName, 0f);
-        _animator.SetLayerWeight(_animator.GetLayerIndex(shootAdditiveLayerName), 0);
+
+        blackboard.GetValue<Animator>("Animator", out var animator);
+        animator.SetLayerWeight(animator.GetLayerIndex(shootAdditiveLayerName), 0);
     }
 }

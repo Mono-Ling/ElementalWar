@@ -10,15 +10,14 @@ public class CoolingState : State
     public string shootAdditiveLayerName = "Shoot Additive";
     public float delayTime = 0.2f;
     private float _enterTime;
-    private Animator _animator;
     public override void OnEnter(Blackboard blackboard)
     {
         blackboard.SetValue(isCoolingArgName, true);
         blackboard.SetValue(fireProgressArgName, 1f);
         _enterTime = Time.time;
 
-        blackboard.GetValue("Animator", out _animator);
-        _animator.SetLayerWeight(_animator.GetLayerIndex(shootAdditiveLayerName), 1);
+        blackboard.GetValue<Animator>("Animator", out var animator);
+        animator.SetLayerWeight(animator.GetLayerIndex(shootAdditiveLayerName), 1);
     }
     public override void OnUpdate(Blackboard blackboard)
     {
@@ -36,6 +35,8 @@ public class CoolingState : State
     public override void OnExit(Blackboard blackboard)
     {
         blackboard.SetValue(fireProgressArgName, 0f);
-        _animator.SetLayerWeight(_animator.GetLayerIndex(shootAdditiveLayerName), 0);
+
+        blackboard.GetValue<Animator>("Animator", out var animator);
+        animator.SetLayerWeight(animator.GetLayerIndex(shootAdditiveLayerName), 0);
     }
 }

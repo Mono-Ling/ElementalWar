@@ -5,9 +5,10 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     public State anyState;
-    public State currState;
+    public State initState;
     public bool isDebug;
     private Blackboard _blackboard;
+    private State _currState;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,23 +18,24 @@ public class StateMachine : MonoBehaviour
             Debug.LogError("【状态机】黑板获取失败");
             return;
         }
-        if (currState == null)
+        if (initState == null)
         {
             Debug.LogWarning("【状态机】初始状态为空");
             return;
         }
-        currState.OnEnter(_blackboard);
+        _currState = GameObject.Instantiate(initState);
+        _currState.OnEnter(_blackboard);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!TryChangeState(anyState))
-            if (!TryChangeState(currState))
-                currState?.OnUpdate(_blackboard);
+            if (!TryChangeState(_currState))
+                _currState?.OnUpdate(_blackboard);
     }
-    void LateUpdate() => currState?.OnLateUpdate(_blackboard);
-    void FixedUpdate() => currState?.OnFixedUpdate(_blackboard);
+    void LateUpdate() => _currState?.OnLateUpdate(_blackboard);
+    void FixedUpdate() => _currState?.OnFixedUpdate(_blackboard);
     private bool TryChangeState(State state)
     {
         if (state == null)
@@ -48,14 +50,14 @@ public class StateMachine : MonoBehaviour
             if (edge.condition.IsCompleted(_blackboard))
             {
                 if (state == anyState)
-                    currState.OnExit(_blackboard);
+                    _currState.OnExit(_blackboard);
                 else
                     state.OnExit(_blackboard);
 
-                currState = edge.targetState;
-                currState.OnEnter(_blackboard);
+                _currState = GameObject.Instantiate(edge.targetState);
+                _currState.OnEnter(_blackboard);
                 if (isDebug)
-                    Debug.Log($"【状态机】转换至：{currState}");
+                    Debug.Log($"【状态机】转换至：{_currState}");
                 return true;
             }
         }

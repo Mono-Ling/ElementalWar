@@ -11,9 +11,11 @@ public class OtherPlayer : MonoBehaviour
     [SerializeReference]
     public List<BaseSynReceive> stateSynReceiveList = new();
     private Dictionary<Type, ITriggerStateSynReceiveEvent> _stateSynEventDic = new();
-    // Start is called before the first frame update
-    void Start()
+    public void InitOtherPlayer(int id, PlayerController playerController)
     {
+        this.playerId = id;
+        this.playerController = playerController;
+
         if (playerController == null)
         {
             Debug.LogError($"【网络玩家{playerId}】玩家控制组件为空");
@@ -34,11 +36,7 @@ public class OtherPlayer : MonoBehaviour
         foreach (var synReceive in stateSynReceiveList)
             synReceive.OnRemove();
     }
-    public void InitOtherPlayer(int id, PlayerController playerController)
-    {
-        this.playerId = id;
-        this.playerController = playerController;
-    }
+
     public void AddListener<T>(Action<T> action) where T : IMessage
     {
         if (_stateSynEventDic.TryGetValue(typeof(T), out var baseEvent))

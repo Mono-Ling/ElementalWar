@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("【玩家控制器】玩家黑板为空");
             return;
         }
+    }
+    void Start()
+    {
         Animator animator = GetComponent<Animator>();
         if (animator == null)
             Debug.LogError("【角色控制器】动画组件获取失败");

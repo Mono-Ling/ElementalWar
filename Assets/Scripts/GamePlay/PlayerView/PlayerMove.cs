@@ -55,7 +55,7 @@ public class PlayerMove : MonoBehaviour
             ref _velocitySmoothRef, velocitySmoothTime);
 
         _rigidbody.MovePosition(targetPos);
-        _rigidbody.MoveRotation(targetRot);
+        _rigidbody.MoveRotation(targetRot.normalized);
 
         _blackboard.GetValue<Animator>(animatorName, out var animator);
         Vector3 localVelocity = transform.InverseTransformDirection(_smoothedVelocity);

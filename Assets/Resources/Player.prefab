@@ -4171,6 +4171,9 @@ MonoBehaviour:
   animatorName: Animator
   pitchArgName: Pitch
   velocitySmoothTime: 0.05
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &7626702061047287789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4197,8 +4200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anyState: {fileID: 0}
-  currState: {fileID: 11400000, guid: c1b9cd5e400ba464483f876d223c7dd5, type: 2}
-  isDebug: 1
+  initState: {fileID: 11400000, guid: c1b9cd5e400ba464483f876d223c7dd5, type: 2}
+  isDebug: 0
 --- !u!114 &2203013148637092927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4240,7 +4243,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &3312940692308630042

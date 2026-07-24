@@ -24,13 +24,13 @@ namespace Message {
     static UdpHeaderReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9VZHBIZWFkZXIucHJvdG8SB01lc3NhZ2UiRwoJVWRwSGVhZGVyEgoKAmlk",
+            "Cg9VZHBIZWFkZXIucHJvdG8SB01lc3NhZ2UiWQoJVWRwSGVhZGVyEgoKAmlk",
             "GAEgASgNEhIKCmlzUmVzcG9uc2UYAiABKAgSDAoEdGltZRgDIAEoAxIMCgR0",
-            "eXBlGAQgASgJYgZwcm90bzM="));
+            "eXBlGAQgASgJEhAKCHBsYXllcklkGAUgASgFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.UdpHeader), global::Message.UdpHeader.Parser, new[]{ "Id", "IsResponse", "Time", "Type" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.UdpHeader), global::Message.UdpHeader.Parser, new[]{ "Id", "IsResponse", "Time", "Type", "PlayerId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,6 +76,7 @@ namespace Message {
       isResponse_ = other.isResponse_;
       time_ = other.time_;
       type_ = other.type_;
+      playerId_ = other.playerId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -133,6 +134,18 @@ namespace Message {
       }
     }
 
+    /// <summary>Field number for the "playerId" field.</summary>
+    public const int PlayerIdFieldNumber = 5;
+    private int playerId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -152,6 +165,7 @@ namespace Message {
       if (IsResponse != other.IsResponse) return false;
       if (Time != other.Time) return false;
       if (Type != other.Type) return false;
+      if (PlayerId != other.PlayerId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -163,6 +177,7 @@ namespace Message {
       if (IsResponse != false) hash ^= IsResponse.GetHashCode();
       if (Time != 0L) hash ^= Time.GetHashCode();
       if (Type.Length != 0) hash ^= Type.GetHashCode();
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -197,6 +212,10 @@ namespace Message {
         output.WriteRawTag(34);
         output.WriteString(Type);
       }
+      if (PlayerId != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(PlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -223,6 +242,10 @@ namespace Message {
         output.WriteRawTag(34);
         output.WriteString(Type);
       }
+      if (PlayerId != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(PlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -244,6 +267,9 @@ namespace Message {
       }
       if (Type.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Type);
+      }
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -268,6 +294,9 @@ namespace Message {
       }
       if (other.Type.Length != 0) {
         Type = other.Type;
+      }
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -304,6 +333,10 @@ namespace Message {
             Type = input.ReadString();
             break;
           }
+          case 40: {
+            PlayerId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -337,6 +370,10 @@ namespace Message {
           }
           case 34: {
             Type = input.ReadString();
+            break;
+          }
+          case 40: {
+            PlayerId = input.ReadInt32();
             break;
           }
         }
