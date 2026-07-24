@@ -45,7 +45,7 @@ public class ManagedPlayerMgr : SingleMono<ManagedPlayerMgr>
     void OnDestroy()
     {
 #if LOCALDEBUG
-        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnLocalStateSynMessage);
+        EventBus.Instance.RemoveListener<NetPackage>(EventType.SendTo, OnLocalStateSynMessage);
 #else
         EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnRemoteStateSynMessage);
 #endif
