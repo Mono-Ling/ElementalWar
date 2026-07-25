@@ -24,12 +24,13 @@ namespace Message {
     static ShootStateMessageReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdTaG9vdFN0YXRlTWVzc2FnZS5wcm90bxIHTWVzc2FnZSIkChFTaG9vdFN0",
-            "YXRlTWVzc2FnZRIPCgdpc1Nob290GAEgASgIYgZwcm90bzM="));
+            "ChdTaG9vdFN0YXRlTWVzc2FnZS5wcm90bxIHTWVzc2FnZSI2ChFTaG9vdFN0",
+            "YXRlTWVzc2FnZRIPCgdpc1Nob290GAEgASgIEhAKCHBsYXllcklkGAIgASgF",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ShootStateMessage), global::Message.ShootStateMessage.Parser, new[]{ "IsShoot" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ShootStateMessage), global::Message.ShootStateMessage.Parser, new[]{ "IsShoot", "PlayerId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,6 +73,7 @@ namespace Message {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ShootStateMessage(ShootStateMessage other) : this() {
       isShoot_ = other.isShoot_;
+      playerId_ = other.playerId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -93,6 +95,18 @@ namespace Message {
       }
     }
 
+    /// <summary>Field number for the "playerId" field.</summary>
+    public const int PlayerIdFieldNumber = 2;
+    private int playerId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -109,6 +123,7 @@ namespace Message {
         return true;
       }
       if (IsShoot != other.IsShoot) return false;
+      if (PlayerId != other.PlayerId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,6 +132,7 @@ namespace Message {
     public override int GetHashCode() {
       int hash = 1;
       if (IsShoot != false) hash ^= IsShoot.GetHashCode();
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -139,6 +155,10 @@ namespace Message {
         output.WriteRawTag(8);
         output.WriteBool(IsShoot);
       }
+      if (PlayerId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -153,6 +173,10 @@ namespace Message {
         output.WriteRawTag(8);
         output.WriteBool(IsShoot);
       }
+      if (PlayerId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -165,6 +189,9 @@ namespace Message {
       int size = 0;
       if (IsShoot != false) {
         size += 1 + 1;
+      }
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -180,6 +207,9 @@ namespace Message {
       }
       if (other.IsShoot != false) {
         IsShoot = other.IsShoot;
+      }
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -204,6 +234,10 @@ namespace Message {
             IsShoot = input.ReadBool();
             break;
           }
+          case 16: {
+            PlayerId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -225,6 +259,10 @@ namespace Message {
             break;
           case 8: {
             IsShoot = input.ReadBool();
+            break;
+          }
+          case 16: {
+            PlayerId = input.ReadInt32();
             break;
           }
         }

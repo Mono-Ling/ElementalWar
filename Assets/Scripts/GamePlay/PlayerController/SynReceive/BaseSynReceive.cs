@@ -8,15 +8,15 @@ using UnityEngine;
 public abstract class BaseSynReceive
 {
     protected OtherPlayer otherPlayer;
-    protected Blackboard blackboard;
-    public virtual void Init(OtherPlayer otherPlayer, Blackboard blackboard)
+    protected Dictionary<int, Blackboard> blackboardDic;
+    public virtual void Init(OtherPlayer otherPlayer, Dictionary<int, Blackboard> blackboardDic)
     {
         this.otherPlayer = otherPlayer;
-        this.blackboard = blackboard;
+        this.blackboardDic = blackboardDic;
     }
     public virtual void OnRemove() { }
     protected void AddListener<T>(Action<T> action) where T : IMessage
-    => otherPlayer.AddListener<T>(action);
+    => otherPlayer?.AddListener<T>(action);
     protected void RemoveListener<T>(Action<T> action) where T : IMessage
-    => otherPlayer.RemoveListener<T>(action);
+    => otherPlayer?.RemoveListener<T>(action);
 }

@@ -6,5 +6,4 @@ message UdpHeader
 	bool isResponse = 2;
 	int64 time = 3;
 	string type = 4;
-	int32 playerId = 5;
 }

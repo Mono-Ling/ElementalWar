@@ -6,35 +6,61 @@ using UnityEngine;
 
 public class OtherPlayer : MonoBehaviour
 {
-    public int playerId { get; private set; }
-    public PlayerController playerController;
     [SerializeReference]
     public List<BaseSynReceive> stateSynReceiveList = new();
+    private Dictionary<int, PlayerController> _otherPlayerDic = new();
     private Dictionary<Type, ITriggerStateSynReceiveEvent> _stateSynEventDic = new();
-    public void InitOtherPlayer(int id, PlayerController playerController)
+    void Start()
     {
-        this.playerId = id;
-        this.playerController = playerController;
-
-        if (playerController == null)
+        EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnStateSynMessageReceive);
+    }
+    public void InitOtherPlayer(Dictionary<int, PlayerController> playerDic)
+    {
+        if (playerDic == null)
         {
-            Debug.LogError($"【网络玩家{playerId}】玩家控制组件为空");
+            Debug.LogError("【网络玩家】玩家字典为空");
             return;
         }
-        var blackboard = playerController.blackboard;
-        if (blackboard == null)
+        Clear();
+        Dictionary<int, Blackboard> blackboardDic = new();
+        foreach (var item in playerDic)
         {
-            Debug.LogError($"【网络玩家{playerId}】玩家黑板获取失败");
-            return;
+            int id = item.Key;
+            var controller = item.Value;
+            if (controller == null)
+            {
+                Debug.LogError($"【网络玩家{id}】玩家控制器为空");
+                continue;
+            }
+            if (blackboardDic.ContainsKey(id))
+            {
+                Debug.LogWarning($"【网络玩家{id}】重复注册");
+                continue;
+            }
+            var blackboard = controller.blackboard;
+            if (blackboard == null)
+            {
+                Debug.LogError($"【网络玩家{id}】黑板获取失败");
+                return;
+            }
+            blackboardDic.Add(id, blackboard);
         }
 
         foreach (var synReceive in stateSynReceiveList)
-            synReceive.Init(this, blackboard);
+            synReceive.Init(this, blackboardDic);
     }
-    void OnDestroy()
+    public void Clear()
     {
         foreach (var synReceive in stateSynReceiveList)
             synReceive.OnRemove();
+
+        _otherPlayerDic.Clear();
+        _stateSynEventDic.Clear();
+    }
+    void OnDestroy()
+    {
+        Clear();
+        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnStateSynMessageReceive);
     }
 
     public void AddListener<T>(Action<T> action) where T : IMessage
@@ -44,7 +70,7 @@ public class OtherPlayer : MonoBehaviour
             if (baseEvent is StateSynReceiveEvent<T> synEvent)
                 synEvent.action += action;
             else
-                Debug.LogError($"【网络玩家{playerId}】消息类型匹配失败");
+                Debug.LogError($"【网络玩家】消息类型匹配失败");
         }
         else
         {
@@ -60,19 +86,22 @@ public class OtherPlayer : MonoBehaviour
             if (baseEvent is StateSynReceiveEvent<T> synEvent)
                 synEvent.action -= action;
             else
-                Debug.LogError($"【网络玩家{playerId}】消息类型匹配失败");
+                Debug.LogError($"【网络玩家】消息类型匹配失败");
         }
         else
-            Debug.LogWarning($"【网络玩家{playerId}】不存在{typeof(T)}消息的监听");
+            Debug.LogWarning($"【网络玩家】不存在{typeof(T)}消息的监听");
     }
-    public void OnStateSynMessageReceive(IMessage message)
+    private void OnStateSynMessageReceive(NetPackage package)
     {
+        if (package.sendType != SendType.Udp || package.message == null)
+            return;
+        IMessage message = package.message;
         if (_stateSynEventDic.TryGetValue(message.GetType(), out var baseEvent))
         {
             baseEvent.Trigger(message);
         }
         else
-            Debug.LogWarning($"【网络玩家{playerId}】不存在{message.GetType()}消息的监听");
+            Debug.LogWarning($"【网络玩家】不存在{message.GetType()}消息的监听");
     }
 }
 public interface ITriggerStateSynReceiveEvent

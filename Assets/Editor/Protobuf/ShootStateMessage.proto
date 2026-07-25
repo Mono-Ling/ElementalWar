@@ -3,4 +3,5 @@ package Message;
 message ShootStateMessage
 {
 	bool isShoot = 1;
+	int32 playerId = 2;
 }

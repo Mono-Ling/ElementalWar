@@ -24,13 +24,13 @@ namespace Message {
     static JumpStateMessageReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZKdW1wU3RhdGVNZXNzYWdlLnByb3RvEgdNZXNzYWdlIjYKEEp1bXBTdGF0",
-            "ZU1lc3NhZ2USDgoGaXNKdW1wGAEgASgIEhIKCmlzR3JvdW5kZWQYAiABKAhi",
-            "BnByb3RvMw=="));
+            "ChZKdW1wU3RhdGVNZXNzYWdlLnByb3RvEgdNZXNzYWdlIkgKEEp1bXBTdGF0",
+            "ZU1lc3NhZ2USDgoGaXNKdW1wGAEgASgIEhIKCmlzR3JvdW5kZWQYAiABKAgS",
+            "EAoIcGxheWVySWQYAyABKAViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.JumpStateMessage), global::Message.JumpStateMessage.Parser, new[]{ "IsJump", "IsGrounded" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.JumpStateMessage), global::Message.JumpStateMessage.Parser, new[]{ "IsJump", "IsGrounded", "PlayerId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,6 +74,7 @@ namespace Message {
     public JumpStateMessage(JumpStateMessage other) : this() {
       isJump_ = other.isJump_;
       isGrounded_ = other.isGrounded_;
+      playerId_ = other.playerId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -107,6 +108,18 @@ namespace Message {
       }
     }
 
+    /// <summary>Field number for the "playerId" field.</summary>
+    public const int PlayerIdFieldNumber = 3;
+    private int playerId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -124,6 +137,7 @@ namespace Message {
       }
       if (IsJump != other.IsJump) return false;
       if (IsGrounded != other.IsGrounded) return false;
+      if (PlayerId != other.PlayerId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,6 +147,7 @@ namespace Message {
       int hash = 1;
       if (IsJump != false) hash ^= IsJump.GetHashCode();
       if (IsGrounded != false) hash ^= IsGrounded.GetHashCode();
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -159,6 +174,10 @@ namespace Message {
         output.WriteRawTag(16);
         output.WriteBool(IsGrounded);
       }
+      if (PlayerId != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -177,6 +196,10 @@ namespace Message {
         output.WriteRawTag(16);
         output.WriteBool(IsGrounded);
       }
+      if (PlayerId != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -192,6 +215,9 @@ namespace Message {
       }
       if (IsGrounded != false) {
         size += 1 + 1;
+      }
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -210,6 +236,9 @@ namespace Message {
       }
       if (other.IsGrounded != false) {
         IsGrounded = other.IsGrounded;
+      }
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -238,6 +267,10 @@ namespace Message {
             IsGrounded = input.ReadBool();
             break;
           }
+          case 24: {
+            PlayerId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -263,6 +296,10 @@ namespace Message {
           }
           case 16: {
             IsGrounded = input.ReadBool();
+            break;
+          }
+          case 24: {
+            PlayerId = input.ReadInt32();
             break;
           }
         }

@@ -1,0 +1,9 @@
+syntax = "proto3";
+package Message;
+// 玩家注册表 S -> C
+// TCP
+message PlayerRegistryMes
+{
+	// 玩家ID列表
+	repeated int32 playerList = 1;
+}

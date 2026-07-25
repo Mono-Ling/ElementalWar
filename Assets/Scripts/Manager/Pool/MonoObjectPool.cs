@@ -23,9 +23,9 @@ public class MonoObjectPool : Single<MonoObjectPool>
         }
         GameObject root = new GameObject(path);
         MonoPoolItem item = new(prefab, root, maxCount);
+        _objPoolDic.Add(path, item);
         for (int i = 0; i < initCount; i++)
             item.Put(CreateObject(path));
-        _objPoolDic.Add(path, item);
     }
     public GameObject GetObject(string path, Action<GameObject> init = null)
     {
@@ -38,6 +38,8 @@ public class MonoObjectPool : Single<MonoObjectPool>
                 CreatePool(path, DEFAULT_COUNT, 1);
             if (_objPoolDic.TryGetValue(path, out var newItem))
                 obj = newItem.Get();
+            else
+                Debug.LogError($"【Mono对象池】不存在{path}的对象池");
         }
         if (obj != null)
             init?.Invoke(obj);

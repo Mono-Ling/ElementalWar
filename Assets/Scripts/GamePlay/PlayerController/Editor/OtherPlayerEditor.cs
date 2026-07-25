@@ -14,10 +14,10 @@ public class OtherPlayerEditor : Editor
         serializedObject.Update();
 
         // 绘制 playerController 字段
-        var playerControllerProp = serializedObject.FindProperty("playerController");
-        EditorGUILayout.PropertyField(playerControllerProp);
+        // var playerControllerProp = serializedObject.FindProperty("playerController");
+        // EditorGUILayout.PropertyField(playerControllerProp);
 
-        EditorGUILayout.Space();
+        // EditorGUILayout.Space();
 
         // 绘制 stateSynReceiveList 列表（SerializeReference 多态支持）
         var synReceiveListProp = serializedObject.FindProperty("stateSynReceiveList");

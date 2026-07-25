@@ -25,15 +25,14 @@ namespace Message {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpQb3NpdGlvblN0YXRlTWVzc2FnZS5wcm90bxIHTWVzc2FnZRoUVmVjdG9y",
-            "M01lc3NhZ2UucHJvdG8aF1F1YXRlcm5pb25NZXNzYWdlLnByb3RvIocBChRQ",
-            "b3NpdGlvblN0YXRlTWVzc2FnZRIkCgNwb3MYASABKAsyFy5NZXNzYWdlLlZl",
-            "Y3RvcjNNZXNzYWdlEicKA3JvdBgCIAEoCzIaLk1lc3NhZ2UuUXVhdGVybmlv",
-            "bk1lc3NhZ2USDQoFcGl0Y2gYAyABKAISEQoJbG9jYWxUaW1lGAQgASgDYgZw",
-            "cm90bzM="));
+            "M01lc3NhZ2UucHJvdG8aF1F1YXRlcm5pb25NZXNzYWdlLnByb3RvInQKFFBv",
+            "c2l0aW9uU3RhdGVNZXNzYWdlEiQKA3BvcxgBIAEoCzIXLk1lc3NhZ2UuVmVj",
+            "dG9yM01lc3NhZ2USJwoDcm90GAIgASgLMhouTWVzc2FnZS5RdWF0ZXJuaW9u",
+            "TWVzc2FnZRINCgVwaXRjaBgDIAEoAmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Message.Vector3MessageReflection.Descriptor, global::Message.QuaternionMessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PositionStateMessage), global::Message.PositionStateMessage.Parser, new[]{ "Pos", "Rot", "Pitch", "LocalTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PositionStateMessage), global::Message.PositionStateMessage.Parser, new[]{ "Pos", "Rot", "Pitch" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,7 +77,6 @@ namespace Message {
       pos_ = other.pos_ != null ? other.pos_.Clone() : null;
       rot_ = other.rot_ != null ? other.rot_.Clone() : null;
       pitch_ = other.pitch_;
-      localTime_ = other.localTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -124,18 +122,6 @@ namespace Message {
       }
     }
 
-    /// <summary>Field number for the "localTime" field.</summary>
-    public const int LocalTimeFieldNumber = 4;
-    private long localTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long LocalTime {
-      get { return localTime_; }
-      set {
-        localTime_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -154,7 +140,6 @@ namespace Message {
       if (!object.Equals(Pos, other.Pos)) return false;
       if (!object.Equals(Rot, other.Rot)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Pitch, other.Pitch)) return false;
-      if (LocalTime != other.LocalTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -165,7 +150,6 @@ namespace Message {
       if (pos_ != null) hash ^= Pos.GetHashCode();
       if (rot_ != null) hash ^= Rot.GetHashCode();
       if (Pitch != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Pitch);
-      if (LocalTime != 0L) hash ^= LocalTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -196,10 +180,6 @@ namespace Message {
         output.WriteRawTag(29);
         output.WriteFloat(Pitch);
       }
-      if (LocalTime != 0L) {
-        output.WriteRawTag(32);
-        output.WriteInt64(LocalTime);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -222,10 +202,6 @@ namespace Message {
         output.WriteRawTag(29);
         output.WriteFloat(Pitch);
       }
-      if (LocalTime != 0L) {
-        output.WriteRawTag(32);
-        output.WriteInt64(LocalTime);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -244,9 +220,6 @@ namespace Message {
       }
       if (Pitch != 0F) {
         size += 1 + 4;
-      }
-      if (LocalTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(LocalTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -274,9 +247,6 @@ namespace Message {
       }
       if (other.Pitch != 0F) {
         Pitch = other.Pitch;
-      }
-      if (other.LocalTime != 0L) {
-        LocalTime = other.LocalTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -315,10 +285,6 @@ namespace Message {
             Pitch = input.ReadFloat();
             break;
           }
-          case 32: {
-            LocalTime = input.ReadInt64();
-            break;
-          }
         }
       }
     #endif
@@ -354,10 +320,6 @@ namespace Message {
           }
           case 29: {
             Pitch = input.ReadFloat();
-            break;
-          }
-          case 32: {
-            LocalTime = input.ReadInt64();
             break;
           }
         }

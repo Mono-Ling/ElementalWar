@@ -7,5 +7,4 @@ message PositionStateMessage
 	Vector3Message pos = 1;
 	QuaternionMessage rot = 2;
 	float pitch = 3;
-	int64 localTime = 4;
 }

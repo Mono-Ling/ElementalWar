@@ -6,59 +6,53 @@ using UnityEngine;
 
 public class ManagedPlayerMgr : SingleMono<ManagedPlayerMgr>
 {
-    private Dictionary<int, OtherPlayer> _managedPlayerDic = new();
+    private OtherPlayer _otherPlayer;
+    private List<GameObject> _playerObjList = new();
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-#if LOCALDEBUG
-        CreateManagedPlayer(-1);
-        EventBus.Instance.AddListener<NetPackage>(EventType.SendTo, OnLocalStateSynMessage);
-#else
-        EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnRemoteStateSynMessage);
-#endif
+        var playerObj = Instantiate(Resources.Load<GameObject>("OtherPlayer"));
+        playerObj.name = "OtherPlayer";
+        _otherPlayer = playerObj.GetComponent<OtherPlayer>();
+
+        _otherPlayer.transform.SetParent(transform);
+        EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnPlayerRegistryMes);
     }
-    private void OnRemoteStateSynMessage(NetPackage package)
-    {
-        if (package.sendType != SendType.Udp || package.header == null)
-            return;
-        if (package.header is UdpHeader udpHeader)
-        {
-            if (_managedPlayerDic.TryGetValue(udpHeader.PlayerId, out var otherPlayer))
-                otherPlayer.OnStateSynMessageReceive(package.message);
-            else
-                Debug.LogWarning($"【托管玩家管理器】不存在玩家{udpHeader.PlayerId}");
-        }
-        else
-            Debug.LogWarning("【托管玩家管理器】无效UDP消息");
-    }
-#if LOCALDEBUG
-    private void OnLocalStateSynMessage(NetPackage package)
-    {
-        if (package.sendType != SendType.Udp || package.header == null)
-            return;
-        if (_managedPlayerDic.TryGetValue(-1, out var otherPlayer))
-            otherPlayer.OnStateSynMessageReceive(package.message);
-        else
-            Debug.LogWarning($"【托管玩家管理器】不存在玩家{-1}");
-    }
-#endif
     void OnDestroy()
     {
-#if LOCALDEBUG
-        EventBus.Instance.RemoveListener<NetPackage>(EventType.SendTo, OnLocalStateSynMessage);
-#else
-        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnRemoteStateSynMessage);
-#endif
+        Clear();
+        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnPlayerRegistryMes);
     }
-    private void CreateManagedPlayer(int id)
+    private void OnPlayerRegistryMes(NetPackage package)
     {
-        var playerViewObj = Instantiate(Resources.Load<GameObject>("Player"));
-        var controller = playerViewObj.GetComponent<PlayerController>();
+        if (package.sendType != SendType.Tcp || package.message is not PlayerRegistryMes mes)
+            return;
+        CreateManagedPlayer(mes);
+    }
+    private void CreateManagedPlayer(PlayerRegistryMes mes)
+    {
+        Clear();
 
-        var playerObj = Instantiate(Resources.Load<GameObject>("OtherPlayer"));
-        playerObj.name = $"OtherPlayer_{id}";
-        var otherPlayer = playerObj.GetComponent<OtherPlayer>();
-        otherPlayer.InitOtherPlayer(id, controller);
-        _managedPlayerDic.Add(id, otherPlayer);
+        Dictionary<int, PlayerController> playerDic = new();
+        foreach (int id in mes.PlayerList)
+        {
+            if (playerDic.ContainsKey(id))
+            {
+                Debug.LogWarning($"【托管玩家管理器】玩家{id}重复注册");
+                continue;
+            }
+            var playerViewObj = MonoObjectPool.Instance.GetObject("Player");
+            var controller = playerViewObj.GetComponent<PlayerController>();
+            playerDic.Add(id, controller);
+
+            _playerObjList.Add(playerViewObj);
+        }
+        _otherPlayer.InitOtherPlayer(playerDic);
+    }
+    private void Clear()
+    {
+        foreach (var obj in _playerObjList)
+            MonoObjectPool.Instance.PutObject(obj);
+        _playerObjList.Clear();
     }
 }
