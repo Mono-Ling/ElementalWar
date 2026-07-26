@@ -24,7 +24,22 @@ public class NetManager : SingleMono<NetManager>
         if (!IsStart)
             return;
         while (_receiveQueue.TryDequeue(out var package))
-            EventBus.Instance.Trigger<NetPackage>(EventType.OnReceive, package);
+        {
+            try
+            {
+                if (package.message == null)
+                {
+                    Debug.LogWarning($"【网络管理器】收到空消息，sendType:{package.sendType}，已跳过");
+                    continue;
+                }
+                EventBus.Instance.Trigger<NetPackage>(EventType.OnReceive, package);
+                //Debug.Log($"【网络管理器】{package.sendType}消息{package.message.GetType()}");
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"【网络管理器】消息处理异常：{e}");
+            }
+        }
     }
     public void StartClient()
     {

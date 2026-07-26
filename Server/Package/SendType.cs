@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Server
 {
-    internal enum SendType
+    public enum SendType
     {
         Tcp,
         Udp,

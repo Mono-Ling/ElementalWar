@@ -78,7 +78,10 @@ namespace Server
             try
             {
                 _socket.Bind(local);
-                _socket.ReceiveFromAsync(_receiveEventArgs);
+                IsStart = true;
+                // 检查同步完成：若 ReceiveFromAsync 返回 false，需要手动调用回调
+                if (!_socket.ReceiveFromAsync(_receiveEventArgs))
+                    ReceiveCallback(_socket, _receiveEventArgs);
             }
             catch (SocketException e)
             {
@@ -90,8 +93,6 @@ namespace Server
             Task.Run(OverSend);
             Task.Run(ClearHistoryPackage);
             EventBus.Instance.AddListener<ClientPackage>(EventType.OnReceive, OnUdpResponseMessage);
-
-            IsStart = true;
         }
         public void Close()
         {
@@ -216,30 +217,37 @@ namespace Server
         }
         private void ReceiveCallback(object? socketObj, SocketAsyncEventArgs args)
         {
+            // 接收链保护：任何分支都必须重新挂载异步接收，防止永久断裂。
+            // 错误/无效包分支不单独重启，统一 fall-through 到末尾的重启逻辑，
+            // 避免在同一回调内并发启动新操作导致 SocketAsyncEventArgs 冲突。
             if (!IsStart)
-                return;
-            if(args.SocketError != SocketError.Success)
+                goto exit;
+            if (args.SocketError != SocketError.Success)
             {
-                Console.WriteLine("【UDP接收失败】" + args.SocketError);
-                return;
+                if (args.SocketError == SocketError.ConnectionReset)
+                {
+                    Console.WriteLine("【UDP接收】ConnectionReset（忽略），重置远端");
+                    args.RemoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
+                }
+                else
+                    Console.WriteLine("【UDP接收失败】" + args.SocketError);
+                goto exit;
             }
-            if (_receiveDic.TryGetValue(args.RemoteEndPoint as IPEndPoint, out int id))
+            if (args.RemoteEndPoint is not IPEndPoint remoteEp)
+                goto exit;
+            if (_receiveDic.TryGetValue(remoteEp, out int id))
             {
                 int length = args.BytesTransferred;
                 if (length == 0)
-                {
-                    _socket?.ReceiveFromAsync(_receiveEventArgs);
-                    return;
-                }
+                    goto exit;
                 byte[] bytes = new byte[length];
                 Array.Copy(args.Buffer, 0, bytes, 0, length);
 
                 UdpPackage udpPackage = new(bytes);
                 if (udpPackage.header == null || udpPackage.message == null)
                 {
-                    _socket?.ReceiveFromAsync(_receiveEventArgs);
                     Console.WriteLine("【UDP消息解析失败】");
-                    return;
+                    goto exit;
                 }
                 ClientPackage? newPackage = null;
                 lock (_historyPackageDic)
@@ -258,10 +266,35 @@ namespace Server
             else
                 Console.WriteLine($"【UDP未知消息源】From：{args.RemoteEndPoint}");
 
-            if (socketObj is Socket socket)
-                socket.ReceiveFromAsync(args);
-            else
-                Console.WriteLine("【UDP接收启动失败】");
+        exit:
+            RestartReceive(args);
+        }
+        /// <summary>
+        /// 重新挂载异步接收。在 Completed 回调内部调用是安全的（上一个操作已完成）。
+        /// 若同步完成则提交到线程池处理，避免调用栈递归过深或重入冲突。
+        /// </summary>
+        private void RestartReceive(SocketAsyncEventArgs args)
+        {
+            if (!IsStart || _socket == null)
+                return;
+            try
+            {
+                if (!_socket.ReceiveFromAsync(args))
+                {
+                    // 同步完成 → 不在当前回调栈内递归，提交线程池处理
+                    ThreadPool.QueueUserWorkItem(_ => ReceiveCallback(_socket, args));
+                }
+            }
+            catch (ObjectDisposedException) { }
+            catch (InvalidOperationException)
+            {
+                // 极少数并发竞态导致 args 仍在挂起中，忽略此次重试；
+                // 下一个完成的回调会再次调用 RestartReceive
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine("【UDP接收重启失败】" + e.SocketErrorCode);
+            }
         }
         private async Task ClearHistoryPackage()
         {

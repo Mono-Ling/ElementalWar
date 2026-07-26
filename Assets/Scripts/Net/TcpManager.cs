@@ -150,6 +150,12 @@ public class TcpManager : SingleMono<TcpManager>
 
             if (_bufferPackage.IsCompleted)
             {
+                if (_bufferPackage.message == null)
+                {
+                    Debug.LogWarning("【TCP消息解析失败】消息为空，已丢弃");
+                    _bufferPackage = null;
+                    continue;
+                }
                 NetPackage netPackage = new(_bufferPackage.message, SendType.Tcp);
                 NetManager.Instance.AddReceivePackage(netPackage);
                 _bufferPackage = null;

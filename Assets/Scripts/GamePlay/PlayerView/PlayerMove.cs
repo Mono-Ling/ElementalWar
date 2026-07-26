@@ -9,12 +9,21 @@ public class PlayerMove : MonoBehaviour
     public string rotationArgName = "Rotation";
     public string animatorName = "Animator";
     public string pitchArgName = "Pitch";
+    public float positionSmoothTime = 0.1f;
+    public float rotationSmoothTime = 0.1f;
     public float velocitySmoothTime = 0.1f;
     public LayerMask layerMask;
 
     private Blackboard _blackboard;
     private Rigidbody _rigidbody;
 
+    //位置缓动相关
+    private Vector3 _smoothedPos;
+    private Vector3 _posSmoothRef;
+    //旋转缓动相关
+    private Quaternion _smoothedRot;
+    private Quaternion _rotSmoothRef;
+    //速度缓动相关
     private Vector3 _smoothedVelocity;
     private Vector3 _velocitySmoothRef;
 
@@ -48,8 +57,11 @@ public class PlayerMove : MonoBehaviour
             Debug.LogError("【Player】旋转设置失败");
             return;
         }
+
+        targetPos = GetCurrPos(targetPos);
+        targetRot = GetCurrRot(targetRot);
         // SmoothDamp 平滑
-        Vector3 instantVelocity = _rigidbody.velocity;
+        Vector3 instantVelocity = _posSmoothRef;
         _smoothedVelocity = Vector3.SmoothDamp(
             _smoothedVelocity, instantVelocity,
             ref _velocitySmoothRef, velocitySmoothTime);
@@ -67,6 +79,18 @@ public class PlayerMove : MonoBehaviour
         animator?.SetFloat("AimY", pitch);
 
         SetJumpAnimation(animator);
+    }
+    private Vector3 GetCurrPos(Vector3 targetPos)
+    {
+        _smoothedPos = Vector3.SmoothDamp(_smoothedPos,
+        targetPos, ref _posSmoothRef, positionSmoothTime);
+        return _smoothedPos;
+    }
+    private Quaternion GetCurrRot(Quaternion targetRot)
+    {
+        _smoothedRot = Tools.Math.SmoothDamp(_smoothedRot,
+        targetRot, ref _rotSmoothRef, rotationSmoothTime, deltaTime: Time.fixedDeltaTime);
+        return _smoothedRot;
     }
     private void SetJumpAnimation(Animator animator)
     {

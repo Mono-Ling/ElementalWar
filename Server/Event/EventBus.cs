@@ -1,111 +1,147 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Server.Event
 {
     internal class EventBus
     {
-        private static object _lockObj = new();
+        #region Singleton (double-checked locking)
+        private static readonly object _instanceLock = new();
         private static EventBus? _instance;
-        public static EventBus Instance => _instance ?? (_instance = new EventBus());
-        private abstract class BaseEventItem { }
-        private class EventItem : BaseEventItem
+        public static EventBus Instance
         {
-            public event Action action;
-            public EventItem(Action action) => this.action = action;
-            public void Trigger() => action?.Invoke();
-        }
-        private class EventItem<T> : BaseEventItem
-        {
-            public event Action<T> action;
-            public EventItem(Action<T> action) => this.action = action;
-            public void Trigger(T arg) => action?.Invoke(arg);
-        }
-        private Dictionary<EventType, BaseEventItem> _eventDic = new();
-        public void AddListener(EventType eventType,Action action)
-        {
-            lock (_lockObj)
+            get
             {
-                if (_eventDic.ContainsKey(eventType))
+                if (_instance == null)
                 {
-                    if (_eventDic[eventType] is EventItem item)
+                    lock (_instanceLock)
                     {
-                        item.action += action;
+                        _instance ??= new EventBus();
                     }
-                    else
-                        Console.WriteLine($"【事件总线】【监听事件】事件{eventType}类型不匹配");
                 }
-                else
-                    _eventDic.Add(eventType, new EventItem(action));
+                return _instance;
             }
         }
+        #endregion
+
+        /// <summary>
+        /// 直接存储 Delegate（Action 或 Action&lt;T&gt;），委托本身是不可变的，读取快照后安全调用。
+        /// </summary>
+        private readonly ConcurrentDictionary<EventType, Delegate?> _eventDic = new();
+
+        #region AddListener
+        public void AddListener(EventType eventType, Action action)
+        {
+            _eventDic.AddOrUpdate(
+                eventType,
+                _ => action,
+                (_, existing) =>
+                {
+                    if (existing is Action a)
+                        return a + action;
+                    Console.WriteLine($"【事件总线】【监听事件】事件{eventType}类型不匹配");
+                    return existing;
+                });
+        }
+
         public void AddListener<T>(EventType eventType, Action<T> action)
         {
-            lock (_lockObj)
-            {
-                if (_eventDic.ContainsKey(eventType))
+            _eventDic.AddOrUpdate(
+                eventType,
+                _ => action,
+                (_, existing) =>
                 {
-                    if (_eventDic[eventType] is EventItem<T> item)
-                    {
-                        item.action += action;
-                    }
-                    else
-                        Console.WriteLine($"【事件总线】【监听事件】事件{eventType}类型不匹配");
-                }
-                else
-                    _eventDic.Add(eventType, new EventItem<T>(action));
-            }
+                    if (existing is Action<T> a)
+                        return a + action;
+                    Console.WriteLine($"【事件总线】【监听事件】事件{eventType}类型不匹配");
+                    return existing;
+                });
         }
+        #endregion
+
+        #region Trigger
         public void Trigger(EventType eventType)
         {
-            if( _eventDic.ContainsKey(eventType))
+            if (_eventDic.TryGetValue(eventType, out var del) && del is Action action)
             {
-                if (_eventDic[eventType] is EventItem item)
-                {
-                    item.Trigger();
-                }
-                else
-                    Console.WriteLine($"【事件总线】【触发事件】事件{eventType}类型不匹配");
+                action.Invoke();
+            }
+            else if (del != null)
+            {
+                Console.WriteLine($"【事件总线】【触发事件】事件{eventType}类型不匹配");
             }
         }
-        public void Trigger<T>(EventType eventType,T? arg)
+
+        public void Trigger<T>(EventType eventType, T? arg)
         {
-            if (_eventDic.ContainsKey(eventType))
+            if (_eventDic.TryGetValue(eventType, out var del) && del is Action<T> action)
             {
-                if (_eventDic[eventType] is EventItem<T> item)
-                {
-                    item.Trigger(arg);
-                }
-                else
-                    Console.WriteLine($"【事件总线】【触发事件】事件{eventType}类型不匹配");
+                action.Invoke(arg);
+            }
+            else if (del != null)
+            {
+                Console.WriteLine($"【事件总线】【触发事件】事件{eventType}类型不匹配");
             }
         }
+        #endregion
+
+        #region RemoveListener
         public void RemoveListener(EventType eventType, Action action)
         {
-            lock (_lockObj)
+            if (!_eventDic.TryGetValue(eventType, out var existing)) return;
+            if (existing is not Action)
             {
-                if (_eventDic.ContainsKey(eventType))
+                Console.WriteLine($"【事件总线】【注销事件】事件{eventType}类型不匹配");
+                return;
+            }
+
+            // CAS 循环：确保并发添加/移除场景下原子操作
+            while (true)
+            {
+                var newValue = Delegate.Remove(existing, action);
+                if (newValue == null)
                 {
-                    if (_eventDic[eventType] is EventItem item)
-                        item.action -= action;
-                    else
-                        Console.WriteLine($"【事件总线】【注销事件】事件{eventType}类型不匹配");
+                    if (_eventDic.TryRemove(new KeyValuePair<EventType, Delegate?>(eventType, existing)))
+                        return;
                 }
+                else
+                {
+                    if (_eventDic.TryUpdate(eventType, newValue, existing))
+                        return;
+                }
+                // CAS 失败 → 重新读取后重试；中途若类型变化或 key 被删除则退出
+                if (!_eventDic.TryGetValue(eventType, out existing) || existing is not Action)
+                    return;
             }
         }
+
         public void RemoveListener<T>(EventType eventType, Action<T> action)
         {
-            lock (_lockObj)
+            if (!_eventDic.TryGetValue(eventType, out var existing)) return;
+            if (existing is not Action<T>)
             {
-                if (_eventDic.ContainsKey(eventType))
+                Console.WriteLine($"【事件总线】【注销事件】事件{eventType}类型不匹配");
+                return;
+            }
+
+            while (true)
+            {
+                var newValue = Delegate.Remove(existing, action);
+                if (newValue == null)
                 {
-                    if (_eventDic[eventType] is EventItem<T> item)
-                        item.action -= action;
-                    else
-                        Console.WriteLine($"【事件总线】【注销事件】事件{eventType}类型不匹配");
+                    if (_eventDic.TryRemove(new KeyValuePair<EventType, Delegate?>(eventType, existing)))
+                        return;
                 }
+                else
+                {
+                    if (_eventDic.TryUpdate(eventType, newValue, existing))
+                        return;
+                }
+                if (!_eventDic.TryGetValue(eventType, out existing) || existing is not Action<T>)
+                    return;
             }
         }
+        #endregion
     }
 }

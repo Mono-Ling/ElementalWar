@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -36,17 +36,17 @@ public class UdpManager : SingleMono<UdpManager>
     private Dictionary<uint, long> _historyPackageDic = new();
 
     private Socket _socket;
-    private SocketAsyncEventArgs _sendEventArgs;
     private SocketAsyncEventArgs _receiveEventArgs;
     private byte[] _receiveBuffer = new byte[MAX_SIZE];
+
+    private ConcurrentQueue<NetPackage> _sendQueue = new();
+
     private CancellationTokenSource _cancel;
     public void StartClient(IPEndPoint local, IPEndPoint target)
     {
         _serverIpEndPoint = target;
 
         _socket = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-        _sendEventArgs = new();
-        _sendEventArgs.Completed += SendCallback;
 
         _receiveEventArgs = new();
         _receiveEventArgs.SetBuffer(_receiveBuffer, 0, MAX_SIZE);
@@ -58,7 +58,10 @@ public class UdpManager : SingleMono<UdpManager>
         try
         {
             _socket.Bind(local);
-            _socket.ReceiveFromAsync(_receiveEventArgs);
+            IsStart = true;
+            // 检查同步完成：若 ReceiveFromAsync 返回 false，需要手动调用回调
+            if (!_socket.ReceiveFromAsync(_receiveEventArgs))
+                ReceiveCallback(_socket, _receiveEventArgs);
         }
         catch (SocketException e)
         {
@@ -66,8 +69,7 @@ public class UdpManager : SingleMono<UdpManager>
             return;
         }
 
-        IsStart = true;
-
+        Task.Run(SendLoop);
         Task.Run(OverSendLoop);
         Task.Run(ClearHistoryPackageLoop);
 
@@ -90,32 +92,56 @@ public class UdpManager : SingleMono<UdpManager>
         _socket?.Close();
         _socket?.Dispose();
         _receiveEventArgs?.Dispose();
-        _sendEventArgs?.Dispose();
     }
     public void Send(NetPackage netPackage)
     {
         if (!IsStart)
             return;
-        if (netPackage.message == null || netPackage.header is not UdpHeader header)
+        if (netPackage.message == null || netPackage.header is not UdpHeader)
         {
             Debug.LogWarning("【UDP发送失败】消息为空");
             return;
         }
-        header.Time = DateTime.UtcNow.Ticks;
-        header.Type = netPackage.message.GetType().ToString();
-        uint packageId = (uint)Interlocked.Increment(ref _packageId) - 1;
-        header.Id = packageId;
-
-        UdpPackage udpPackage = new(header, netPackage.message);
-        SendToTarget(_serverIpEndPoint, udpPackage);
-
-        if (header.IsResponse)
-            lock (_overSendPackageDic)
-                _overSendPackageDic.Add(packageId, (udpPackage, DEFAULT_OVER_SEND_TIMES));
+        _sendQueue.Enqueue(netPackage);
     }
-    private async void OverSendLoop()
+    private void SendLoop()
+    {
+        while (!_cancel.IsCancellationRequested)
+        {
+            try
+            {
+                while (_sendQueue.TryDequeue(out var netPackage))
+                {
+                    if (netPackage.message == null || netPackage.header is not UdpHeader header)
+                        continue;
+
+                    header.Time = DateTime.UtcNow.Ticks;
+                    header.Type = netPackage.message.GetType().ToString();
+                    uint packageId = (uint)Interlocked.Increment(ref _packageId) - 1;
+                    header.Id = packageId;
+
+                    UdpPackage udpPackage = new(header, netPackage.message);
+                    // 使用同步 SendTo，避免 _sendEventArgs 重用冲突
+                    // UDP SendTo 是非阻塞的，仅拷贝到内核缓冲区
+                    _socket.SendTo(udpPackage.data, _serverIpEndPoint);
+
+                    if (header.IsResponse)
+                        lock (_overSendPackageDic)
+                            _overSendPackageDic.Add(packageId, (udpPackage, DEFAULT_OVER_SEND_TIMES));
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"【UDP发送循环异常】{e.Message}");
+            }
+            // 避免队列空时 100% CPU 忙等
+            Thread.Sleep(1);
+        }
+    }
+    private async Task OverSendLoop()
     {
         List<uint> lostPackageList = new();
+        List<(uint key, UdpPackage package, int times)> updateList = new();
         await Task.Delay(OVER_SEND_DELAY).ConfigureAwait(true);
         while (!_cancel.IsCancellationRequested)
         {
@@ -134,10 +160,12 @@ public class UdpManager : SingleMono<UdpManager>
                             lostPackageList.Add(item.Key);
                             continue;
                         }
-                        _overSendPackageDic[item.Key] = (package, times);
+                        updateList.Add((item.Key, package, times));
                     }
                     foreach (uint id in lostPackageList)
                         _overSendPackageDic.Remove(id);
+                    foreach (var (key, package, times) in updateList)
+                        _overSendPackageDic[key] = (package, times);
                 }
             }
             catch (Exception e)
@@ -145,55 +173,36 @@ public class UdpManager : SingleMono<UdpManager>
                 Debug.LogError($"【UDP超时重传异常】{e.Message}");
             }
             lostPackageList.Clear();
+            updateList.Clear();
             await Task.Delay(OVER_SEND_DELAY).ConfigureAwait(true);
         }
     }
-    private void SendToTarget(IPEndPoint target, UdpPackage package)
-    {
-        if (!IsStart)
-            return;
-        byte[] bytes = package.data;
-        if (bytes == null)
-            return;
-        try
-        {
-            _sendEventArgs.RemoteEndPoint = target;
-            _sendEventArgs.SetBuffer(bytes, 0, bytes.Length);
-            _socket.SendToAsync(_sendEventArgs);
-        }
-        catch (SocketException e)
-        {
-            Debug.LogError("【UDP发送失败】" + e);
-        }
-    }
-    private void SendCallback(object socket, SocketAsyncEventArgs args)
-    {
-        if (!IsStart)
-            return;
-        if (args.SocketError != SocketError.Success)
-        {
-            Debug.LogError("【UDP发送失败】" + args.SocketError);
-            return;
-        }
-        Debug.Log($"【UDP发送成功】Target：{args.RemoteEndPoint}");
-    }
     private void ReceiveCallback(object socketObj, SocketAsyncEventArgs args)
     {
+        // 接收链保护：所有分支不要独立重启接收，统一在末尾重启，
+        // 避免在同一回调内并发启动多个异步操作导致 SocketAsyncEventArgs 冲突。
         if (!IsStart)
-            return;
+            goto exit;
         if (args.SocketError != SocketError.Success)
         {
-            Debug.LogError("【UDP接收失败】" + args.SocketError);
-            return;
+            if (args.SocketError == SocketError.ConnectionReset)
+            {
+                Debug.LogWarning("【UDP接收】ConnectionReset（忽略），重置远端");
+                args.RemoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
+            }
+            else
+                Debug.LogError("【UDP接收失败】" + args.SocketError);
+            goto exit;
         }
-        if ((args.RemoteEndPoint as IPEndPoint).Equals(_serverIpEndPoint))
+        if (args.RemoteEndPoint is not IPEndPoint remoteEp)
+            goto exit;
+        if (remoteEp.Equals(_serverIpEndPoint))
         {
             int length = args.BytesTransferred;
             if (length == 0)
             {
-                _socket?.ReceiveFromAsync(_receiveEventArgs);
                 Debug.LogWarning("【UDP消息】无效数据包");
-                return;
+                goto exit;
             }
             byte[] bytes = new byte[length];
             Array.Copy(args.Buffer, 0, bytes, 0, length);
@@ -201,9 +210,8 @@ public class UdpManager : SingleMono<UdpManager>
             UdpPackage udpPackage = new(bytes);
             if (udpPackage.header == null || udpPackage.message == null)
             {
-                _socket?.ReceiveFromAsync(_receiveEventArgs);
                 Debug.LogError("【UDP消息解析失败】");
-                return;
+                goto exit;
             }
             bool isNewPackage = false;
             lock (_historyPackageDic)
@@ -226,10 +234,35 @@ public class UdpManager : SingleMono<UdpManager>
         else
             Debug.LogWarning($"【UDP未知消息源】From：{args.RemoteEndPoint}");
 
-        if (socketObj is Socket socket)
-            socket.ReceiveFromAsync(args);
-        else
-            Debug.LogError("【UDP接收重启失败】");
+    exit:
+        RestartReceive(args);
+    }
+    /// <summary>
+    /// 重新挂载异步接收。在 Completed 回调内部调用是安全的。
+    /// 若同步完成则提交到线程池处理，避免调用栈递归过深或重入冲突。
+    /// </summary>
+    private void RestartReceive(SocketAsyncEventArgs args)
+    {
+        if (!IsStart || _socket == null)
+            return;
+        try
+        {
+            if (!_socket.ReceiveFromAsync(args))
+            {
+                // 同步完成 → 不在当前回调栈内递归，提交线程池处理
+                ThreadPool.QueueUserWorkItem(_ => ReceiveCallback(_socket, args));
+            }
+        }
+        catch (ObjectDisposedException) { }
+        catch (InvalidOperationException)
+        {
+            // 极少数并发竞态导致 args 仍在挂起中，忽略；
+            // 下一个完成的回调会再次调用 RestartReceive
+        }
+        catch (SocketException e)
+        {
+            Debug.LogError("【UDP接收重启失败】" + e.SocketErrorCode);
+        }
     }
     private async Task ClearHistoryPackageLoop()
     {

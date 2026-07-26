@@ -14,5 +14,15 @@ namespace Server.Event
         /// ClientPackage类型参数
         /// </summary>
         SendTo,
+        /// <summary>
+        /// int类型参数
+        /// playerID
+        /// </summary>
+        OnPlayerConnect,
+        /// <summary>
+        /// int类型参数
+        /// playerID
+        /// </summary>
+        OnPlayerDisconnect,
     }
 }

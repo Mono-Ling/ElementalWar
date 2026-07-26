@@ -122,6 +122,8 @@ namespace Server
                 _udpReceiveDic.Add(remote, id);
             }
 
+            EventBus.Instance.Trigger(EventType.OnPlayerConnect, id);
+
             _eventArgs.AcceptSocket = null;
             _socket.AcceptAsync(args);
         }
@@ -151,6 +153,9 @@ namespace Server
                         _udpSendDic.Remove(id);
                     }
                 }
+                // 在 lock 之外触发事件，避免监听方回调内死锁
+                foreach (int id in lostList)
+                    EventBus.Instance.Trigger(EventType.OnPlayerDisconnect, id);
                 lostList.Clear();
             }
             Console.WriteLine("【客户端心跳监测结束】");

@@ -4170,6 +4170,8 @@ MonoBehaviour:
   rotationArgName: Rotation
   animatorName: Animator
   pitchArgName: Pitch
+  positionSmoothTime: 0.05
+  rotationSmoothTime: 0.05
   velocitySmoothTime: 0.05
   layerMask:
     serializedVersion: 2

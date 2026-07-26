@@ -5,7 +5,7 @@ using Google.Protobuf;
 
 namespace Server
 {
-    internal struct ClientPackage
+    public struct ClientPackage
     {
         public int playerId {  get; private set; }
         public SendType sendType { get; private set; }

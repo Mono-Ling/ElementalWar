@@ -3,6 +3,8 @@ using Google.Protobuf;
 using Message;
 using Server;
 using Server.Event;
+using Server.GamePlay;
+using Server.Test;
 
 class Program
 {
@@ -13,6 +15,9 @@ class Program
         IPEndPoint udpIpEndPoint = new(IPAddress.Parse("127.0.0.1"), 2027);
         NetServer server = new();
         server.Start(tcpIpEndPoint,udpIpEndPoint);
+
+        RemoteTest test = new();
+
         while (true)
         {
             var input = Console.ReadLine();
@@ -21,12 +26,12 @@ class Program
                 server.Close();
                 break;
             }
-            UdpHeader udpHeader = new();
-            udpHeader.IsResponse = true;
-            TextMessage message = new();
-            message.Content = input;
-            ClientPackage clientPackage = new(0, udpHeader, message);
-            EventBus.Instance.Trigger(EventType.SendTo, clientPackage);
+            //UdpHeader udpHeader = new();
+            //udpHeader.IsResponse = true;
+            //TextMessage message = new();
+            //message.Content = input;
+            //ClientPackage clientPackage = new(0, message);
+            //EventBus.Instance.Trigger(EventType.SendTo, clientPackage);
         }
     }
     private static void OnTextMessage(ClientPackage package)

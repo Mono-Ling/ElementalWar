@@ -36,8 +36,18 @@ namespace Tools
             currentVelocity = new Quaternion(vx, vy, vz, vw);
 
             // 归一化保证结果仍是单位四元数
-            float invMag = 1f / Mathf.Sqrt(resultX * resultX + resultY * resultY +
-                                           resultZ * resultZ + resultW * resultW);
+            float sqrMag = resultX * resultX + resultY * resultY +
+                           resultZ * resultZ + resultW * resultW;
+
+            // 防止模长过小导致 1/sqrt(≈0) 产生无穷大或 NaN
+            const float minSqrMag = 1e-8f;
+            if (sqrMag < minSqrMag)
+            {
+                // 退化情况：分量平滑后接近零向量，直接返回目标旋转
+                return target;
+            }
+
+            float invMag = 1f / Mathf.Sqrt(sqrMag);
             return new Quaternion(resultX * invMag, resultY * invMag,
                                   resultZ * invMag, resultW * invMag);
         }

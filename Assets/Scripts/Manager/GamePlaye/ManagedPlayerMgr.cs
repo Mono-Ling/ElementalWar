@@ -27,6 +27,7 @@ public class ManagedPlayerMgr : SingleMono<ManagedPlayerMgr>
         if (package.sendType != SendType.Tcp || package.message is not PlayerRegistryMes mes)
             return;
         CreateManagedPlayer(mes);
+        Debug.LogWarning("【托管玩家管理器】玩家注册");
     }
     private void CreateManagedPlayer(PlayerRegistryMes mes)
     {
