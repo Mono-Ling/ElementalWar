@@ -24,6 +24,7 @@ namespace Server.Test
 
             PlayerRegistryMes mes = new();
             mes.PlayerList.Add(playerId);
+            mes.ClientId = playerId;
 
             List<int> players = new() { playerId };
             var transfer = new PlayerStateTransfer(players);

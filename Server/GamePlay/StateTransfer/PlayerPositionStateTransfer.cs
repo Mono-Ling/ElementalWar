@@ -35,9 +35,9 @@ namespace Server.GamePlay.StateTransfer
         }
         public override void Update()
         {
-            // 先收集所有玩家的当前状态快照
-            Dictionary<int, PositionStateMessage> allStates = new();
-            DateTime serverTime = DateTime.UtcNow;
+            PlayerPosStateMesMap message = new();
+            message.ServerTime = DateTime.UtcNow.Ticks;
+            // 收集所有玩家的当前状态快照
             foreach (var item in _posStateDic)
             {
                 var pos = item.Value.pos;
@@ -45,21 +45,11 @@ namespace Server.GamePlay.StateTransfer
                 Vector3Message posMes = new() { X = pos.X, Y = pos.Y, Z = pos.Z };
                 QuaternionMessage rotMes = new() { X = rot.X, Y = rot.Y, Z = rot.Z, W = rot.W };
                 PositionStateMessage stateMes = new() { Pos = posMes, Rot = rotMes, Pitch = item.Value.pitch };
-                allStates[item.Key] = stateMes;
+                message.PlayerPosStateMap.Add(item.Key, stateMes);
             }
 
-            // 逐玩家广播独立 map 实例，避免引用竞态（多个 ClientPackage 共享同一 mesMap 引用）
             foreach (var item in _posStateDic)
-            {
-                PlayerPosStateMesMap mesMap = new();
-                mesMap.ServerTime = serverTime.Ticks;
-                mesMap.ClientId = item.Key;
-                foreach (var kv in allStates)
-                    mesMap.PlayerPosStateMap.Add(kv.Key, kv.Value);
-
-                udpHeader = new();
-                EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(item.Key, udpHeader, mesMap));
-            }
+                EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(item.Key, SetHeader(false), message));
         }
         public override void Stop()
             => RemoveListener<PositionStateMessage>(OnPositionStateSyn);

@@ -24,12 +24,13 @@ namespace Message {
     static PlayerRegistryMesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdQbGF5ZXJSZWdpc3RyeU1lcy5wcm90bxIHTWVzc2FnZSInChFQbGF5ZXJS",
-            "ZWdpc3RyeU1lcxISCgpwbGF5ZXJMaXN0GAEgAygFYgZwcm90bzM="));
+            "ChdQbGF5ZXJSZWdpc3RyeU1lcy5wcm90bxIHTWVzc2FnZSI5ChFQbGF5ZXJS",
+            "ZWdpc3RyeU1lcxISCgpwbGF5ZXJMaXN0GAEgAygFEhAKCGNsaWVudElkGAIg",
+            "ASgFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PlayerRegistryMes), global::Message.PlayerRegistryMes.Parser, new[]{ "PlayerList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PlayerRegistryMes), global::Message.PlayerRegistryMes.Parser, new[]{ "PlayerList", "ClientId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,6 +77,7 @@ namespace Message {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerRegistryMes(PlayerRegistryMes other) : this() {
       playerList_ = other.playerList_.Clone();
+      clientId_ = other.clientId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -99,6 +101,18 @@ namespace Message {
       get { return playerList_; }
     }
 
+    /// <summary>Field number for the "clientId" field.</summary>
+    public const int ClientIdFieldNumber = 2;
+    private int clientId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ClientId {
+      get { return clientId_; }
+      set {
+        clientId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -115,6 +129,7 @@ namespace Message {
         return true;
       }
       if(!playerList_.Equals(other.playerList_)) return false;
+      if (ClientId != other.ClientId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -123,6 +138,7 @@ namespace Message {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= playerList_.GetHashCode();
+      if (ClientId != 0) hash ^= ClientId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -142,6 +158,10 @@ namespace Message {
       output.WriteRawMessage(this);
     #else
       playerList_.WriteTo(output, _repeated_playerList_codec);
+      if (ClientId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ClientId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -153,6 +173,10 @@ namespace Message {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       playerList_.WriteTo(ref output, _repeated_playerList_codec);
+      if (ClientId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ClientId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -164,6 +188,9 @@ namespace Message {
     public int CalculateSize() {
       int size = 0;
       size += playerList_.CalculateSize(_repeated_playerList_codec);
+      if (ClientId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ClientId);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -177,6 +204,9 @@ namespace Message {
         return;
       }
       playerList_.Add(other.playerList_);
+      if (other.ClientId != 0) {
+        ClientId = other.ClientId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -201,6 +231,10 @@ namespace Message {
             playerList_.AddEntriesFrom(input, _repeated_playerList_codec);
             break;
           }
+          case 16: {
+            ClientId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -223,6 +257,10 @@ namespace Message {
           case 10:
           case 8: {
             playerList_.AddEntriesFrom(ref input, _repeated_playerList_codec);
+            break;
+          }
+          case 16: {
+            ClientId = input.ReadInt32();
             break;
           }
         }

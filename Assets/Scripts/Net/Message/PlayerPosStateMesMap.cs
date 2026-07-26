@@ -25,16 +25,16 @@ namespace Message {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpQbGF5ZXJQb3NTdGF0ZU1lc01hcC5wcm90bxIHTWVzc2FnZRoaUG9zaXRp",
-            "b25TdGF0ZU1lc3NhZ2UucHJvdG8i5gEKFFBsYXllclBvc1N0YXRlTWVzTWFw",
+            "b25TdGF0ZU1lc3NhZ2UucHJvdG8i1AEKFFBsYXllclBvc1N0YXRlTWVzTWFw",
             "Ek8KEXBsYXllclBvc1N0YXRlTWFwGAEgAygLMjQuTWVzc2FnZS5QbGF5ZXJQ",
             "b3NTdGF0ZU1lc01hcC5QbGF5ZXJQb3NTdGF0ZU1hcEVudHJ5EhIKCnNlcnZl",
-            "clRpbWUYAiABKAMSEAoIY2xpZW50SWQYAyABKAUaVwoWUGxheWVyUG9zU3Rh",
-            "dGVNYXBFbnRyeRILCgNrZXkYASABKAUSLAoFdmFsdWUYAiABKAsyHS5NZXNz",
-            "YWdlLlBvc2l0aW9uU3RhdGVNZXNzYWdlOgI4AWIGcHJvdG8z"));
+            "clRpbWUYAiABKAMaVwoWUGxheWVyUG9zU3RhdGVNYXBFbnRyeRILCgNrZXkY",
+            "ASABKAUSLAoFdmFsdWUYAiABKAsyHS5NZXNzYWdlLlBvc2l0aW9uU3RhdGVN",
+            "ZXNzYWdlOgI4AWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Message.PositionStateMessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PlayerPosStateMesMap), global::Message.PlayerPosStateMesMap.Parser, new[]{ "PlayerPosStateMap", "ServerTime", "ClientId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PlayerPosStateMesMap), global::Message.PlayerPosStateMesMap.Parser, new[]{ "PlayerPosStateMap", "ServerTime" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -78,7 +78,6 @@ namespace Message {
     public PlayerPosStateMesMap(PlayerPosStateMesMap other) : this() {
       playerPosStateMap_ = other.playerPosStateMap_.Clone();
       serverTime_ = other.serverTime_;
-      clientId_ = other.clientId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -115,18 +114,6 @@ namespace Message {
       }
     }
 
-    /// <summary>Field number for the "clientId" field.</summary>
-    public const int ClientIdFieldNumber = 3;
-    private int clientId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int ClientId {
-      get { return clientId_; }
-      set {
-        clientId_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -144,7 +131,6 @@ namespace Message {
       }
       if (!PlayerPosStateMap.Equals(other.PlayerPosStateMap)) return false;
       if (ServerTime != other.ServerTime) return false;
-      if (ClientId != other.ClientId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -154,7 +140,6 @@ namespace Message {
       int hash = 1;
       hash ^= PlayerPosStateMap.GetHashCode();
       if (ServerTime != 0L) hash ^= ServerTime.GetHashCode();
-      if (ClientId != 0) hash ^= ClientId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -178,10 +163,6 @@ namespace Message {
         output.WriteRawTag(16);
         output.WriteInt64(ServerTime);
       }
-      if (ClientId != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(ClientId);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -197,10 +178,6 @@ namespace Message {
         output.WriteRawTag(16);
         output.WriteInt64(ServerTime);
       }
-      if (ClientId != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(ClientId);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -214,9 +191,6 @@ namespace Message {
       size += playerPosStateMap_.CalculateSize(_map_playerPosStateMap_codec);
       if (ServerTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(ServerTime);
-      }
-      if (ClientId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ClientId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -233,9 +207,6 @@ namespace Message {
       playerPosStateMap_.MergeFrom(other.playerPosStateMap_);
       if (other.ServerTime != 0L) {
         ServerTime = other.ServerTime;
-      }
-      if (other.ClientId != 0) {
-        ClientId = other.ClientId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -264,10 +235,6 @@ namespace Message {
             ServerTime = input.ReadInt64();
             break;
           }
-          case 24: {
-            ClientId = input.ReadInt32();
-            break;
-          }
         }
       }
     #endif
@@ -293,10 +260,6 @@ namespace Message {
           }
           case 16: {
             ServerTime = input.ReadInt64();
-            break;
-          }
-          case 24: {
-            ClientId = input.ReadInt32();
             break;
           }
         }

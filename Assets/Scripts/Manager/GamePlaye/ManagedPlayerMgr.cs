@@ -1,3 +1,4 @@
+#define LOCALDEBUG
 using System.Collections;
 using System.Collections.Generic;
 using Message;
@@ -36,6 +37,10 @@ public class ManagedPlayerMgr : SingleMono<ManagedPlayerMgr>
         Dictionary<int, PlayerController> playerDic = new();
         foreach (int id in mes.PlayerList)
         {
+#if !LOCALDEBUG
+            if(id == mes.ClientId)
+                continue;
+#endif
             if (playerDic.ContainsKey(id))
             {
                 Debug.LogWarning($"【托管玩家管理器】玩家{id}重复注册");

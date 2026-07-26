@@ -6,4 +6,5 @@ message PlayerRegistryMes
 {
 	// 玩家ID列表
 	repeated int32 playerList = 1;
+	int32 clientId = 2;
 }
