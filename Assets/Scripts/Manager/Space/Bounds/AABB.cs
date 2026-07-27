@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,6 +54,18 @@ namespace Space
                 && point.y >= Min.y && point.y <= Max.y
                 && point.z >= Min.z && point.z <= Max.z;
         }
+        public static bool operator ==(AABB left, AABB right)
+        {
+            return left.center == right.center
+                && left.extents == right.extents;
+        }
+        public static bool operator !=(AABB left, AABB right)
+        {
+            return !(left == right);
+        }
+        public bool Equals(AABB other) => center == other.center && extents == other.extents;
+        public override bool Equals(object obj) => obj is AABB other && Equals(other);
+        public override int GetHashCode() => HashCode.Combine(center, extents);
         public void Draw(Color color)
         {
             Gizmos.color = color;

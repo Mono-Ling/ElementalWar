@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using Space;
 using UnityEngine;
 
@@ -30,11 +29,11 @@ public class SpaceTreeNode
         itemSet.Add(item);
         TrySplit();
     }
-    public void Remove(TreeItem item)
+    public void Remove(TreeItem item, bool isTryMerge = true)
     {
         itemSet.Remove(item);
-        TryMerge();
-        parent?.TryMerge();
+        if (isTryMerge)
+            TryMergeUpward();
     }
     public bool TrySplit()
     {
@@ -70,7 +69,17 @@ public class SpaceTreeNode
 
         return true;
     }
-    public bool TryMerge()
+    /// <summary>
+    /// 从当前节点开始逐级向上尝试合并
+    /// </summary>
+    public void TryMergeUpward()
+    {
+        bool merged = TryMerge();
+        // 合并成功（自身变叶子）或自身本是叶子时，父级才可能满足合并条件；
+        if (merged || IsLeaf)
+            parent?.TryMergeUpward();
+    }
+    private bool TryMerge()
     {
         if (IsLeaf)
             return false;
