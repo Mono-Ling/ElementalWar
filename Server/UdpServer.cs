@@ -39,10 +39,10 @@ namespace Server
         private Dictionary<uint, (UdpPackage package,IPEndPoint target,int times)> _overSendPackageDic = new();
         /// <summary>
         /// 已接收包序号字典
-        /// key -> packageId
+        /// key -> (playerId,packageId)
         /// value -> time
         /// </summary>
-        private Dictionary<uint,long> _historyPackageDic = new();
+        private Dictionary<(int playerId,uint packageId),long> _historyPackageDic = new();
 
         private Socket? _socket;
         private SocketAsyncEventArgs _sendEventArgs;
@@ -252,9 +252,10 @@ namespace Server
                 ClientPackage? newPackage = null;
                 lock (_historyPackageDic)
                 {
-                    if (!_historyPackageDic.ContainsKey(udpPackage.header.Id))
+                    var packageKey = (id, udpPackage.header.Id);
+                    if (!_historyPackageDic.ContainsKey(packageKey))
                     {
-                        _historyPackageDic.Add(udpPackage.header.Id, udpPackage.header.Time);
+                        _historyPackageDic.Add(packageKey, udpPackage.header.Time);
                         newPackage = new ClientPackage(id, udpPackage.header, udpPackage.message, SendType.Udp);
                     }
                     else
@@ -298,7 +299,7 @@ namespace Server
         }
         private async Task ClearHistoryPackage()
         {
-            List<uint> lostPackageList = new();
+            List<(int playerId,uint packageId)> lostPackageList = new();
             while(!_cancel.IsCancellationRequested)
             {
                 await Task.Delay(CLEAR_HISTORY_PACKAGE_DELAY).ConfigureAwait(false);
@@ -313,8 +314,8 @@ namespace Server
                             if((DateTime.UtcNow - packaeTime).TotalSeconds > HISTORY_PACKAGE_WINDOW)
                                 lostPackageList.Add(item.Key);
                         }
-                        foreach(uint id in lostPackageList)
-                            _historyPackageDic.Remove(id);
+                        foreach(var packageKey in lostPackageList)
+                            _historyPackageDic.Remove(packageKey);
                     }
                 }
                 catch (Exception e)
