@@ -16,7 +16,7 @@ public abstract class BaseSynReceive
     }
     public virtual void OnRemove() { }
     protected void AddListener<T>(Action<T> action) where T : IMessage
-    => otherPlayer?.AddListener<T>(action);
+    => otherPlayer.netReceiver?.AddListener<T>(action);
     protected void RemoveListener<T>(Action<T> action) where T : IMessage
-    => otherPlayer?.RemoveListener<T>(action);
+    => otherPlayer?.netReceiver?.RemoveListener<T>(action);
 }

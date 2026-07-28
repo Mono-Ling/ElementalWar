@@ -12,10 +12,10 @@ public class JumpAbility : BaseAbility
     private Rigidbody _rigidbody;
     private bool _isGrounded = true;
     private bool _isJump;
-    public override void InitAbility(MainPlayer mainPlayer, PlayerInput playerInput, Blackboard blackboard)
+    public override void InitAbility(AbilitySystem abilitySystem, PlayerInput playerInput, Blackboard blackboard)
     {
-        base.InitAbility(mainPlayer, playerInput, blackboard);
-        _rigidbody = mainPlayer.gameObject.GetComponent<Rigidbody>();
+        base.InitAbility(abilitySystem, playerInput, blackboard);
+        _rigidbody = abilitySystem.gameObject.GetComponent<Rigidbody>();
         AddInputStartedListener("Jump", OnJumpInput);
         blackboard.SetValue("IsJump", false);
     }

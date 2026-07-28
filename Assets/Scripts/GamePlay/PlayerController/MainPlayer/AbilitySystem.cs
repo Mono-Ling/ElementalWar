@@ -4,22 +4,15 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MainPlayer : MonoBehaviour, ISerializationCallbackReceiver
+public class AbilitySystem : MonoBehaviour, ISerializationCallbackReceiver
 {
-    public PlayerController playerController;
-
     [SerializeField]
     [SerializeReference]
     private List<BaseAbility> _abilitiesSerialized = new();
-
+    public bool IsStart { get; private set; }
     public HashSet<BaseAbility> abilities = new();
-    [SerializeField]
-    [SerializeReference]
-    public List<BaseSynSend> stateSynSends = new();
-
     private PlayerInput _playerInput;
     private Blackboard _blackboard;
-
     public void OnBeforeSerialize()
     {
         if (abilities.Count > 0)
@@ -33,67 +26,66 @@ public class MainPlayer : MonoBehaviour, ISerializationCallbackReceiver
     {
         abilities = new HashSet<BaseAbility>(_abilitiesSerialized.Where(a => a != null));
     }
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        if (playerController == null)
-        {
-            Debug.LogError("【主玩家】玩家控制器为空");
-            return;
-        }
         _playerInput = GetComponent<PlayerInput>();
         if (_playerInput == null)
+            Debug.LogError("【【AbilitySystem】玩家输入组件获取失败");
+    }
+    public void StartAbilitySystem(Blackboard blackboard)
+    {
+        if (blackboard == null)
         {
-            Debug.LogError("【主玩家】玩家输入组件获取失败");
+            Debug.LogError("【AbilitySystem】主玩家黑板为空，初始化失败");
             return;
         }
-        _blackboard = playerController.blackboard;
-        if (_blackboard == null)
-        {
-            Debug.LogError("【主玩家】主玩家黑板为空");
-            return;
-        }
+
+        this._blackboard = blackboard;
+        IsStart = true;
 
         foreach (var ability in abilities)
             ability.InitAbility(this, _playerInput, _blackboard);
-
-        foreach (var send in stateSynSends)
-        {
-            send.Init(_blackboard);
-            send.Init(this);
-        }
     }
+    // Update is called once per frame
     void Update()
     {
+        if (!IsStart)
+            return;
         foreach (var ability in abilities)
             ability.OnUpdate();
-
-        foreach (var send in stateSynSends)
-            send.OnUpdate();
     }
     void LateUpdate()
     {
+        if (!IsStart)
+            return;
         foreach (var ability in abilities)
             ability.OnLateUpdate();
-
-        foreach (var send in stateSynSends)
-            send.OnLateUpdate();
     }
     void FixedUpdate()
     {
+        if (!IsStart)
+            return;
         foreach (var ability in abilities)
             ability.OnFixedUpdate();
-
-        foreach (var send in stateSynSends)
-            send.OnFixedUpdate();
     }
     void OnDestroy()
+    {
+        if (!IsStart)
+            return;
+        foreach (var ability in abilities)
+            ability.OnRemove();
+    }
+    public void SetAbilities(List<BaseAbility> abilitityList)
     {
         foreach (var ability in abilities)
             ability.OnRemove();
 
-        foreach (var send in stateSynSends)
-            send.OnRemove();
+        abilities.Clear();
+        foreach (var ability in abilitityList)
+            if (ability != null)
+                abilities.Add(ability);
+
+        foreach (var ability in abilities)
+            ability.InitAbility(this, _playerInput, _blackboard);
     }
 }

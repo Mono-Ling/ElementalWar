@@ -42,6 +42,7 @@ public class BlackboardTemplate : ScriptableObject
         BlackboardArgType.GameObject => new BlackboardArg<GameObject>(),
         BlackboardArgType.Transform => new BlackboardArg<Transform>(),
         BlackboardArgType.Animator => new BlackboardArg<Animator>(),
+        BlackboardArgType.AbilitySystem => new BlackboardArg<AbilitySystem>(),
         _ => null,
     };
 }
@@ -66,4 +67,5 @@ public enum BlackboardArgType
     GameObject,
     Transform,
     Animator,
+    AbilitySystem,
 }

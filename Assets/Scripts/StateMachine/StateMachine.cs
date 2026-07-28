@@ -7,13 +7,13 @@ public class StateMachine : MonoBehaviour
     public State anyState;
     public State initState;
     public bool isDebug;
-    private Blackboard _blackboard;
-    private State _currState;
+    protected Blackboard blackboard;
+    protected State currState;
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        _blackboard = GetComponent<Blackboard>();
-        if (_blackboard == null)
+        blackboard = GetComponent<Blackboard>();
+        if (blackboard == null)
         {
             Debug.LogError("【状态机】黑板获取失败");
             return;
@@ -23,20 +23,20 @@ public class StateMachine : MonoBehaviour
             Debug.LogWarning("【状态机】初始状态为空");
             return;
         }
-        _currState = GameObject.Instantiate(initState);
-        _currState.OnEnter(_blackboard);
+        currState = GameObject.Instantiate(initState);
+        currState.OnEnter(blackboard);
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (!TryChangeState(anyState))
-            if (!TryChangeState(_currState))
-                _currState?.OnUpdate(_blackboard);
+            if (!TryChangeState(currState))
+                currState?.OnUpdate(blackboard);
     }
-    void LateUpdate() => _currState?.OnLateUpdate(_blackboard);
-    void FixedUpdate() => _currState?.OnFixedUpdate(_blackboard);
-    private bool TryChangeState(State state)
+    protected virtual void LateUpdate() => currState?.OnLateUpdate(blackboard);
+    protected virtual void FixedUpdate() => currState?.OnFixedUpdate(blackboard);
+    protected virtual bool TryChangeState(State state)
     {
         if (state == null)
             return false;
@@ -47,17 +47,17 @@ public class StateMachine : MonoBehaviour
                 Debug.LogWarning("【状态机】无效出边");
                 continue;
             }
-            if (edge.condition.IsCompleted(_blackboard))
+            if (edge.condition.IsCompleted(blackboard))
             {
                 if (state == anyState)
-                    _currState.OnExit(_blackboard);
+                    currState.OnExit(blackboard);
                 else
-                    state.OnExit(_blackboard);
+                    state.OnExit(blackboard);
 
-                _currState = GameObject.Instantiate(edge.targetState);
-                _currState.OnEnter(_blackboard);
+                currState = GameObject.Instantiate(edge.targetState);
+                currState.OnEnter(blackboard);
                 if (isDebug)
-                    Debug.Log($"【状态机】转换至：{_currState}");
+                    Debug.Log($"【状态机】转换至：{currState}");
                 return true;
             }
         }

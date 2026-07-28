@@ -13,9 +13,9 @@ public class ShootAbility : BaseAbility
     private Vector3Message _originMes = new();
     private Vector3Message _dirMes = new();
     private ShootRequestMessage _shootReqMes = new();
-    public override void InitAbility(MainPlayer mainPlayer, PlayerInput playerInput, Blackboard blackboard)
+    public override void InitAbility(AbilitySystem abilitySystem, PlayerInput playerInput, Blackboard blackboard)
     {
-        base.InitAbility(mainPlayer, playerInput, blackboard);
+        base.InitAbility(abilitySystem, playerInput, blackboard);
         AddInputStartedListener("Fire", OnFireStarted);
         AddInputCanceledListener("Fire", OnFireCanceled);
         _mainCamera = Camera.main;

@@ -31,9 +31,9 @@ public class CameraControlAbility : BaseAbility
     private Quaternion _smoothCameraRotVelocity;
     private Transform _camera;
     private float _pitchDelta;
-    public override void InitAbility(MainPlayer mainPlayer, PlayerInput playerInput, Blackboard blackboard)
+    public override void InitAbility(AbilitySystem abilitySystem, PlayerInput playerInput, Blackboard blackboard)
     {
-        base.InitAbility(mainPlayer, playerInput, blackboard);
+        base.InitAbility(abilitySystem, playerInput, blackboard);
         _camera = Camera.main.transform;
         AddInputPerformedListener("Rotation", OnRotationPerformed);
         AddInputCanceledListener("Rotation", OnRotationCanceled);

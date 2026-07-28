@@ -7,12 +7,12 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public abstract class BaseAbility
 {
-    protected MainPlayer mainPlayer;
+    protected AbilitySystem abilitySystem;
     protected PlayerInput playerInput;
     protected Blackboard blackboard;
-    public virtual void InitAbility(MainPlayer mainPlayer, PlayerInput playerInput, Blackboard blackboard)
+    public virtual void InitAbility(AbilitySystem abilitySystem, PlayerInput playerInput, Blackboard blackboard)
     {
-        this.mainPlayer = mainPlayer;
+        this.abilitySystem = abilitySystem;
         this.playerInput = playerInput;
         this.blackboard = blackboard;
     }

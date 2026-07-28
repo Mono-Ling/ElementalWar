@@ -8,12 +8,11 @@ public class OtherPlayer : MonoBehaviour
 {
     [SerializeReference]
     public List<BaseSynReceive> stateSynReceiveList = new();
+    public NetReceiver netReceiver { get; private set; } = new();
     private Dictionary<int, PlayerController> _otherPlayerDic = new();
     private Dictionary<Type, ITriggerReceiveEvent> _stateSynEventDic = new();
     void Start()
-    {
-        EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnStateSynMessageReceive);
-    }
+    => netReceiver.StartReceive();
     public void InitOtherPlayer(Dictionary<int, PlayerController> playerDic)
     {
         if (playerDic == null)
@@ -55,52 +54,11 @@ public class OtherPlayer : MonoBehaviour
             synReceive.OnRemove();
 
         _otherPlayerDic.Clear();
-        _stateSynEventDic.Clear();
+        netReceiver.Clear();
     }
     void OnDestroy()
     {
         Clear();
-        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnStateSynMessageReceive);
-    }
-
-    public void AddListener<T>(Action<T> action) where T : IMessage
-    {
-        if (_stateSynEventDic.TryGetValue(typeof(T), out var baseEvent))
-        {
-            if (baseEvent is ReceiveEvent<T> synEvent)
-                synEvent.action += action;
-            else
-                Debug.LogError($"【网络玩家】消息类型匹配失败");
-        }
-        else
-        {
-            ReceiveEvent<T> synEvent = new();
-            synEvent.action += action;
-            _stateSynEventDic.Add(typeof(T), synEvent);
-        }
-    }
-    public void RemoveListener<T>(Action<T> action) where T : IMessage
-    {
-        if (_stateSynEventDic.TryGetValue(typeof(T), out var baseEvent))
-        {
-            if (baseEvent is ReceiveEvent<T> synEvent)
-                synEvent.action -= action;
-            else
-                Debug.LogError($"【网络玩家】消息类型匹配失败");
-        }
-        else
-            Debug.LogWarning($"【网络玩家】不存在{typeof(T)}消息的监听");
-    }
-    private void OnStateSynMessageReceive(NetPackage package)
-    {
-        if (package.sendType != SendType.Udp || package.message == null)
-            return;
-        IMessage message = package.message;
-        if (_stateSynEventDic.TryGetValue(message.GetType(), out var baseEvent))
-        {
-            baseEvent.Trigger(message);
-        }
-        else
-            Debug.LogWarning($"【网络玩家】不存在{message.GetType()}消息的监听");
+        netReceiver.StopReceive();
     }
 }

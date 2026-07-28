@@ -9,12 +9,12 @@ public class RotationAbility : BaseAbility
     public float rotationSpeed;
     private Rigidbody _rigidbody;
     private Vector2 _rotationInput;
-    public override void InitAbility(MainPlayer mainPlayer, PlayerInput playerInput, Blackboard blackboard)
+    public override void InitAbility(AbilitySystem abilitySystem, PlayerInput playerInput, Blackboard blackboard)
     {
-        base.InitAbility(mainPlayer, playerInput, blackboard);
-        _rigidbody = mainPlayer.GetComponent<Rigidbody>();
+        base.InitAbility(abilitySystem, playerInput, blackboard);
+        _rigidbody = abilitySystem.GetComponent<Rigidbody>();
         if (_rigidbody == null)
-            _rigidbody = mainPlayer.gameObject.AddComponent<Rigidbody>();
+            _rigidbody = abilitySystem.gameObject.AddComponent<Rigidbody>();
 
         AddInputPerformedListener("Rotation", OnRotationPerformed);
         AddInputCanceledListener("Rotation", OnRotationCanceled);
