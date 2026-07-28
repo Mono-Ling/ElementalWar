@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 50067450}
   - component: {fileID: 50067449}
+  - component: {fileID: 50067453}
   - component: {fileID: 50067448}
   - component: {fileID: 50067451}
   - component: {fileID: 50067452}
@@ -195,6 +196,7 @@ MonoBehaviour:
   - rid: 4855355872216875018
   - rid: 4855355872216875019
   - rid: 4855355872216875020
+  - rid: 4855356032389742592
   references:
     version: 2
     RefIds:
@@ -247,6 +249,10 @@ MonoBehaviour:
       type: {class: JumpStateSynSend, ns: , asm: Assembly-CSharp}
       data:
         isDebug: 0
+    - rid: 4855356032389742592
+      type: {class: BoundStateSynSend, ns: , asm: Assembly-CSharp}
+      data:
+        delayTime: 0.02
 --- !u!4 &50067450
 Transform:
   m_ObjectHideFlags: 0
@@ -312,6 +318,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &50067453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50067447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23995054d504b694889e687f3bda6829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0.8, z: 0}
+  extents: {x: 0.3, y: 0.8, z: 0.3}
+  debugColor: {r: 0, g: 0.7185533, b: 1, a: 1}
 --- !u!1 &161104267
 GameObject:
   m_ObjectHideFlags: 0

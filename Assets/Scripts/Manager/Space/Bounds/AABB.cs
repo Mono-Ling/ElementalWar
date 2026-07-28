@@ -69,7 +69,7 @@ namespace Space
         public void Draw(Color color)
         {
             Gizmos.color = color;
-            Gizmos.DrawCube(center, extents * 2);
+            Gizmos.DrawWireCube(center, extents * 2);
         }
     }
 }

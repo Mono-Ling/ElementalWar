@@ -9,7 +9,7 @@ public class OtherPlayer : MonoBehaviour
     [SerializeReference]
     public List<BaseSynReceive> stateSynReceiveList = new();
     private Dictionary<int, PlayerController> _otherPlayerDic = new();
-    private Dictionary<Type, ITriggerStateSynReceiveEvent> _stateSynEventDic = new();
+    private Dictionary<Type, ITriggerReceiveEvent> _stateSynEventDic = new();
     void Start()
     {
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnStateSynMessageReceive);
@@ -67,14 +67,14 @@ public class OtherPlayer : MonoBehaviour
     {
         if (_stateSynEventDic.TryGetValue(typeof(T), out var baseEvent))
         {
-            if (baseEvent is StateSynReceiveEvent<T> synEvent)
+            if (baseEvent is ReceiveEvent<T> synEvent)
                 synEvent.action += action;
             else
                 Debug.LogError($"【网络玩家】消息类型匹配失败");
         }
         else
         {
-            StateSynReceiveEvent<T> synEvent = new();
+            ReceiveEvent<T> synEvent = new();
             synEvent.action += action;
             _stateSynEventDic.Add(typeof(T), synEvent);
         }
@@ -83,7 +83,7 @@ public class OtherPlayer : MonoBehaviour
     {
         if (_stateSynEventDic.TryGetValue(typeof(T), out var baseEvent))
         {
-            if (baseEvent is StateSynReceiveEvent<T> synEvent)
+            if (baseEvent is ReceiveEvent<T> synEvent)
                 synEvent.action -= action;
             else
                 Debug.LogError($"【网络玩家】消息类型匹配失败");
@@ -102,21 +102,5 @@ public class OtherPlayer : MonoBehaviour
         }
         else
             Debug.LogWarning($"【网络玩家】不存在{message.GetType()}消息的监听");
-    }
-}
-public interface ITriggerStateSynReceiveEvent
-{
-    void Trigger(IMessage message);
-}
-public class StateSynReceiveEvent<T> : ITriggerStateSynReceiveEvent where T : IMessage
-{
-    public event Action<T> action;
-
-    public void Trigger(IMessage message)
-    {
-        if (message is not T statesynMessage)
-            Debug.LogError("【状态同步接收事件】类型转换失败");
-        else
-            action?.Invoke(statesynMessage);
     }
 }

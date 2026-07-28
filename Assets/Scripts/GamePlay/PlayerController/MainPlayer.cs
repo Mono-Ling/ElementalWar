@@ -59,7 +59,10 @@ public class MainPlayer : MonoBehaviour, ISerializationCallbackReceiver
             ability.InitAbility(this, _playerInput, _blackboard);
 
         foreach (var send in stateSynSends)
+        {
             send.Init(_blackboard);
+            send.Init(this);
+        }
     }
     void Update()
     {

@@ -1,0 +1,9 @@
+syntax = "proto3";
+package Message;
+import "Vector3Message.proto";
+// 包围盒同步消息，C -> S
+message BoundStateMessage
+{
+	Vector3Message center = 1;
+	Vector3Message extents = 2;
+}
