@@ -104,7 +104,10 @@ namespace Server
         {
             if (args.SocketError != SocketError.Success)
             {
-                (socket as Socket)?.AcceptAsync(args);
+                try { (socket as Socket)?.AcceptAsync(args); }
+                catch (SocketException e)
+                { Console.WriteLine(e.ToString()); }
+                catch (ObjectDisposedException) { }
                 return;
             }
             Socket clientSocket = args.AcceptSocket;
@@ -168,7 +171,7 @@ namespace Server
                 {
                     lock (_clientDic)
                         client.preHeartTime = DateTime.Now;
-                    Console.WriteLine($"【心跳消息】客户端ID：{package.playerId}");
+                    //Console.WriteLine($"【心跳消息】客户端ID：{package.playerId}");
                 }
             }
         }
@@ -179,7 +182,7 @@ namespace Server
                 UdpResponseMessage responseMessage = new();
                 responseMessage.PackageId = udpHeader.Id;
                 SendTo(new(package.playerId, new UdpHeader(), responseMessage,SendType.Udp));
-                Console.WriteLine($"【UDP重要消息】PackageID:{udpHeader.Id}");
+                //Console.WriteLine($"【UDP重要消息】PackageID:{udpHeader.Id}");
             }
         }
     }

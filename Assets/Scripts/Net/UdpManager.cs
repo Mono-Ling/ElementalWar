@@ -298,7 +298,7 @@ public class UdpManager : SingleMono<UdpManager>
         {
             lock (_overSendPackageDic)
                 _overSendPackageDic.Remove(udpResponse.PackageId);
-            Debug.Log($"【UDP回复消息】package:{udpResponse.PackageId}");
+            //Debug.Log($"【UDP回复消息】package:{udpResponse.PackageId}");
         }
     }
 }

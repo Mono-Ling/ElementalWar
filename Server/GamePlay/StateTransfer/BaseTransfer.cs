@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Google.Protobuf;
 using Message;
+using Server.Event;
 
 namespace Server.GamePlay.StateTransfer
 {
@@ -24,5 +25,7 @@ namespace Server.GamePlay.StateTransfer
             => playerStateTransfer?.AddListener<T>(action);
         protected void RemoveListener<T>(Action<ClientPackage> action) where T : IMessage
             => playerStateTransfer?.RemoveListener<T>(action);
+        protected void SendTo(ClientPackage message)
+            => EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, message);
     }
 }

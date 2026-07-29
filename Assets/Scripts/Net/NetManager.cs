@@ -90,7 +90,7 @@ public class NetManager : SingleMono<NetManager>
             UdpResponseMessage responseMessage = new();
             responseMessage.PackageId = udpHeader.Id;
             SendToServe(new(new UdpHeader(), responseMessage, SendType.Udp));
-            Debug.Log($"【UDP重要消息】PackageID:{udpHeader.Id}");
+            //Debug.Log($"【UDP重要消息】PackageID:{udpHeader.Id}");
         }
     }
     private async Task TcpHeartLoop()

@@ -66,7 +66,16 @@ public class SpaceTree
             }
         _itemDic[spaceItem.spaceId] = new(newItem.bound, spaceItem);
     }
-    public bool RayCast(Ray ray, out SpaceItem? hit, out float distance)
+    /// <summary>
+    /// 射线检测
+    /// 返回最近命中
+    /// </summary>
+    /// <param name="ray">射线</param>
+    /// <param name="hit">命中物体</param>
+    /// <param name="distance">距离</param>
+    /// <param name="hitMaskId">检测ID遮罩（-1全部纳入检测）</param>
+    /// <returns></returns>
+    public bool RayCast(Ray ray, out SpaceItem? hit, out float distance,int hitMaskId = -1)
     {
         float minDis = float.MaxValue;
         TreeItem treeItem = default(TreeItem);
@@ -79,7 +88,7 @@ public class SpaceTree
             if (!ray.IntersectAABB(node.bound, out _))
                 continue;
             foreach (var item in node.itemSet)
-                if (ray.IntersectAABB(item.bound, out var currDis))
+                if (ray.IntersectAABB(item.bound, out var currDis) && item.id != hitMaskId)
                     if (currDis < minDis)
                     {
                         minDis = currDis;

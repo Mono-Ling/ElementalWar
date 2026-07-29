@@ -19,6 +19,7 @@ namespace Server.GamePlay
             _stateTransferList.Add(new PlayerPositionStateTransfer());
             _stateTransferList.Add(new PlayerShootStateTransfer());
             _stateTransferList.Add(new PlayerJumpStateTransfer());
+            _stateTransferList.Add(new PlayerHitTransfer());
 
             foreach (var stateTransfer in _stateTransferList)
                 stateTransfer.Start(this,playerIdList);
