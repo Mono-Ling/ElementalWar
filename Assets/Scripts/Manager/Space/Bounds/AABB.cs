@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Space
 {
+    [Serializable]
     public struct AABB
     {
         public Vector3 center;
