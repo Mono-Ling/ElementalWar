@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RemoteStateSynTest : MonoBehaviour
 {
+    public StaticSceneAsset sceneAsset;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,8 @@ public class RemoteStateSynTest : MonoBehaviour
         // mes.PlayerList.Add(0);
         // EventBus.Instance.Trigger<NetPackage>(EventType.OnReceive, new(mes));
         var managedMgr = ManagedPlayerMgr.Instance;
+        StaticSceneManager.Instance.LoadWall(sceneAsset);
         NetManager.Instance.StartClient();
+        Cursor.lockState = CursorLockMode.Confined;
     }
 }

@@ -6,6 +6,8 @@ using System.Text;
 using Message;
 using Space;
 using Server.Message.Tools;
+using System.Text.Json;
+using Server.Scene;
 
 namespace Server.GamePlay.StateTransfer
 {
@@ -23,11 +25,13 @@ namespace Server.GamePlay.StateTransfer
     }
     public class PlayerHitTransfer : BaseTransfer
     {
+        private const string SCENE_PATH = @"D:\Unity\Project\ElementalWar\Server\Scene\Scene_1.json";
         private const float SCENE_CENTER_OFFSET = 10;
         private const float SCENE_X = 100;
         private const float SCENE_Y = 20;
         private const float SCENE_Z = 100;
         private Dictionary<int, PlayerSpaceItem> _playerSpaceItemDic = new();
+        private List<WallSpaceItem> _wallSpaceItemList = new();
         private SpaceTree _spaceTree = new(new AABB(Vector3.UnitY * SCENE_CENTER_OFFSET,new(SCENE_X,SCENE_Y,SCENE_Z)));
 
         private ConcurrentQueue<PlayerSpaceItem> _playerBoundUpdateQueue = new();
@@ -49,6 +53,8 @@ namespace Server.GamePlay.StateTransfer
             }
             AddListener<BoundStateMessage>(OnPlayerBoundStateSyn);
             AddListener<ShootRequestMessage>(OnShootReqReceive);
+
+            LoadStaticScene();
         }
         public override void Update()
         {
@@ -62,6 +68,25 @@ namespace Server.GamePlay.StateTransfer
         {
             RemoveListener<BoundStateMessage>(OnPlayerBoundStateSyn);
             RemoveListener<ShootRequestMessage>(OnShootReqReceive);
+        }
+        private void LoadStaticScene()
+        {
+            var json = File.ReadAllText(SCENE_PATH);
+            var sceneAsset = JsonSerializer.Deserialize<StaticSceneAsset>(json);
+            if(sceneAsset == null )
+            {
+                Console.WriteLine($"【命中检测中转】场景加载失败");
+                return;
+            }
+            for(int i = 0; i < sceneAsset.sceneInfoList.Count; i++)
+            {
+                var info = sceneAsset.sceneInfoList[i];
+                var bound = info.bound.Switch();
+                WallSpaceItem spaceItem = new(i, bound);
+
+                _wallSpaceItemList.Add(spaceItem);
+                _spaceTree.Add(spaceItem);
+            }
         }
         private void OnPlayerBoundStateSyn(ClientPackage package)
         {
@@ -124,11 +149,13 @@ namespace Server.GamePlay.StateTransfer
         {
             // 启用时需将mask设为玩家spaceId
             int mask = -1;
-            // mask = req.maskSpaceId;
+            mask = req.maskSpaceId;
             if (_spaceTree.RayCast(req.ray, out var hit, out _,mask))
             {
                 if (hit is PlayerSpaceItem playerSpace)
                     OnHitPlayer(playerSpace.playerId, req.ray);
+                else if(hit is WallSpaceItem wallSpace)
+                    OnHitWall(wallSpace.wallId, req.ray);
             }
         }
         private void OnHitPlayer(int playerId,Ray ray)
@@ -142,6 +169,20 @@ namespace Server.GamePlay.StateTransfer
             PlayerShootHitMessage hitMes = new() { Origin = originMes ,Dir = dirMes};
             SendTo(new(playerId, SetHeader(), hitMes));
             Console.WriteLine($"【命中检测中转】命中玩家{playerId}");
+        }
+        private void OnHitWall(int wallId,Ray ray)
+        {
+            Vector3Message originMes = new();
+            Vector3Message dirMes = new();
+
+            originMes.Switch(ray.origin);
+            dirMes.Switch(ray.dir);
+
+            WallShootHitMessage hitMes = new() { WallId = wallId , Origin = originMes ,Dir=dirMes};
+            // 后期可优化为AOI控制流量
+            foreach(int player in _playerSpaceItemDic.Keys)
+                SendTo(new(player, SetHeader(), hitMes));
+            Console.WriteLine($"【命中检测中转】命中Wall{wallId}");
         }
     }
 }

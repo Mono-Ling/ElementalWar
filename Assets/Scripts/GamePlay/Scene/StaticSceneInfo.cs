@@ -9,4 +9,5 @@ public class StaticSceneInfo
 {
     public AABB bound;
     public Vector3 position;
+    public Vector3 scale;
 }
