@@ -314,6 +314,7 @@ MonoBehaviour:
   - rid: 4855356032389742600
   - rid: 4855356032389742601
   - rid: 4855356032389742602
+  - rid: 4855356032389742605
   references:
     version: 2
     RefIds:
@@ -354,6 +355,9 @@ MonoBehaviour:
       type: {class: ShootAbility, ns: , asm: Assembly-CSharp}
       data:
         delayTime: 0.2
+    - rid: 4855356032389742605
+      type: {class: ThrowAbility, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!1 &161104267
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &161104268
 MonoBehaviour:
   m_ObjectHideFlags: 0

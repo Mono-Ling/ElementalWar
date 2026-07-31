@@ -33,3 +33,11 @@ MonoBehaviour:
     type: 5
   - name: IsGrounded
     type: 5
+  - name: IsThrow
+    type: 5
+  - name: IsThrowFire
+    type: 5
+  - name: ThrowStateLock
+    type: 5
+  - name: PlayerGunController
+    type: 14

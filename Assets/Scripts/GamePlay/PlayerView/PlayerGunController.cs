@@ -27,7 +27,13 @@ public class PlayerGunController : MonoBehaviour
         if (firedPos == null)
             Debug.LogError("【角色枪械控制器】开火后座点为空");
         _gunInitPos = gun.localPosition;
+
+        _blackboard.SetValue<PlayerGunController>("PlayerGunController", this);
     }
+    void OnEnable()
+    => gun.gameObject.SetActive(true);
+    void OnDisable()
+    => gun.gameObject.SetActive(false);
     void Update()
     {
         _blackboard.GetValue<float>("FireProgress", out var progress);

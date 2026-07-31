@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53c9ba31eab9904bb8534e1da9d0be7, type: 3}
-  m_Name: IdleState
+  m_Script: {fileID: 11500000, guid: 991844c705d2e9f499161923baa01e6d, type: 3}
+  m_Name: IsThrow
   m_EditorClassIdentifier: 
-  edgeList:
-  - {fileID: 11400000, guid: 96818f222a2a9434ab4e5fae1f1cf393, type: 2}
-  - {fileID: 11400000, guid: eabf8f804c89df5458b1e591373ab969, type: 2}
+  lockStateArgName: IsThrow
