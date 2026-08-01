@@ -74,7 +74,7 @@ public class ThrowAbility : BaseAbility
     => _throwAngleDelta = 0;
     override public void OnLateUpdate()
     {
-        if (!_isThrowing || _throwAngleDelta.Equals(0f) || _throwTrack == null)
+        if (!_isThrowing || _throwTrack == null)
             return;
 
         _throwAngle += _throwAngleDelta * Time.deltaTime * throwAngleSpeed;

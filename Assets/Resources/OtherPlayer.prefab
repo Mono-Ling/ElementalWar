@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee54d2c2241fa94d939e16fc6c4198a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
   stateSynReceiveList:
   - rid: 4855355946654236672
   - rid: 4855355946654236673
   - rid: 4855355946654236674
+  - rid: 4855356032389742689
   references:
     version: 2
     RefIds:
@@ -61,4 +61,7 @@ MonoBehaviour:
       data: 
     - rid: 4855355946654236674
       type: {class: JumpStateSynReceive, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 4855356032389742689
+      type: {class: ThrowStateSynReceive, ns: , asm: Assembly-CSharp}
       data: 

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991844c705d2e9f499161923baa01e6d, type: 3}
   m_Name: IsThrow
   m_EditorClassIdentifier: 
-  lockStateArgName: IsLockState
+  lockStateArgName: IsThrow

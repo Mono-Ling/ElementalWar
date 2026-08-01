@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ffa173b7d21f5f44b3f311be01e1a25, type: 3}
   m_Name: Throw2Idle
   m_EditorClassIdentifier: 
-  condition: {fileID: 0}
-  targetState: {fileID: 0}
+  condition: {fileID: 11400000, guid: 42d2c4f383aa57343bff44a38fbcdeba, type: 2}
+  targetState: {fileID: 11400000, guid: 20e22ea12005f114888437b24fc31664, type: 2}
   weight: 0

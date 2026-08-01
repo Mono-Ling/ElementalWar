@@ -193,6 +193,7 @@ MonoBehaviour:
   - rid: 4855355872216875019
   - rid: 4855355872216875020
   - rid: 4855356032389742592
+  - rid: 4855356032389742688
   feedbackReceives:
   - rid: 4855356032389742603
   references:
@@ -216,6 +217,9 @@ MonoBehaviour:
         delayTime: 0.02
     - rid: 4855356032389742603
       type: {class: HitFeedbackReceive, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 4855356032389742688
+      type: {class: ThrowStateSynSend, ns: , asm: Assembly-CSharp}
       data: 
 --- !u!4 &50067450
 Transform:
@@ -344,7 +348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &161104268
 MonoBehaviour:
   m_ObjectHideFlags: 0

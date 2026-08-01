@@ -1,0 +1,8 @@
+syntax = "proto3";
+package Message;
+message ThrowStateMessage
+{
+	bool isThrow = 1;
+	bool isThrowFire = 2;
+	int32 playerId = 3;
+}

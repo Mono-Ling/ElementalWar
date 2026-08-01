@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d1ec4950a30844a949256541e89981, type: 3}
   m_Name: IdleState
   m_EditorClassIdentifier: 
-  edgeList: []
+  edgeList:
+  - {fileID: 11400000, guid: cc345a1b791bd564fb5cac5f41ac9de9, type: 2}
   abilitySystemArgName: AbilitySystem
   abilities:
   - rid: 4855356032389742606

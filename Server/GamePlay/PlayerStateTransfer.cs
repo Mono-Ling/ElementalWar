@@ -1,16 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Numerics;
 using System.Text;
 using Google.Protobuf;
 using Server.Event;
 using Server.GamePlay.StateTransfer;
+using Space;
 
 namespace Server.GamePlay
 {
     public class PlayerStateTransfer : IDisposable
     {
         private const int UPDATE_DELTA_TIMR = 10;// ms
+
         private Dictionary<Type, StateSynReceiveEvent> _stateSynEventDic = new();
         private List<BaseTransfer> _stateTransferList = new();
         private CancellationTokenSource _cancel = new();
@@ -19,7 +22,8 @@ namespace Server.GamePlay
             _stateTransferList.Add(new PlayerPositionStateTransfer());
             _stateTransferList.Add(new PlayerShootStateTransfer());
             _stateTransferList.Add(new PlayerJumpStateTransfer());
-            _stateTransferList.Add(new PlayerHitTransfer());
+            _stateTransferList.Add(new PlayerThrowStateTransfer());
+            _stateTransferList.Add(new SpaceStateTransfer());
 
             foreach (var stateTransfer in _stateTransferList)
                 stateTransfer.Start(this,playerIdList);
