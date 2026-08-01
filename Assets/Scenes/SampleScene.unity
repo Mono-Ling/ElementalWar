@@ -357,7 +357,13 @@ MonoBehaviour:
         delayTime: 0.2
     - rid: 4855356032389742605
       type: {class: ThrowAbility, ns: , asm: Assembly-CSharp}
-      data: 
+      data:
+        offset: {x: -0.5, y: 1, z: 0}
+        throwAngleSpeed: 3
+        throwForce: 8
+        defaultThrowAngle: 45
+        maxThrowAngle: 80
+        minThrowAngle: 10
 --- !u!1 &161104267
 GameObject:
   m_ObjectHideFlags: 0

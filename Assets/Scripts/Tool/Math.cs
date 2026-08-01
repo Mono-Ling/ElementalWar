@@ -51,6 +51,27 @@ namespace Tools
             return new Quaternion(resultX * invMag, resultY * invMag,
                                   resultZ * invMag, resultW * invMag);
         }
+        /// <summary>
+        /// 二阶贝塞尔曲线采样，非分配版本。points 数组长度为采样点数。
+        /// 采样点包含起点和终点，采样点数至少为 2。
+        /// </summary>
+        /// <param name="p0">起点</param>
+        /// <param name="p1">控制点</param>
+        /// <param name="p2">终点</param>
+        /// <param name="points"></param>
+        public static void BezierCurveNonAlloc(Vector3 p0, Vector3 p1, Vector3 p2, Vector3[] points)
+        {
+            int sampleCount = points.Length;
+            if (sampleCount <= 1)
+                return;
+            for (int i = 0; i < sampleCount; i++)
+            {
+                float s = (float)i / (sampleCount - 1);
+                points[i] = (1f - s) * (1f - s) * p0 +
+                            2f * (1f - s) * s * p1 +
+                            s * s * p2;
+            }
+        }
 
         // 单分量临界阻尼平滑，与 Vector3.SmoothDamp 使用相同的 Game Programming Gems 4 公式
         private static float SmoothDampComponent(float current, float target,
