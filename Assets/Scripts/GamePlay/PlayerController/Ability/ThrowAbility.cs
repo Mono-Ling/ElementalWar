@@ -86,4 +86,12 @@ public class ThrowAbility : BaseAbility
     }
     public override void OnRemove()
     => RemoveInputStartedListener("Throw", OnThrowStarted);
+    public override bool Equals(object obj)
+    {
+        if (obj is not ThrowAbility other)
+            return false;
+        return this.GetType() == other.GetType();
+    }
+    public override int GetHashCode()
+    => this.GetType().GetHashCode();
 }

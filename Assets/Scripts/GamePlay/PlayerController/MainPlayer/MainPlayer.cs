@@ -13,7 +13,6 @@ public class MainPlayer : MonoBehaviour
     [SerializeReference]
     public List<BaseFeedbackReceive> feedbackReceives = new();
     public NetReceiver netReceiver { get; private set; } = new();
-    private PlayerInput _playerInput;
     private Blackboard _blackboard;
 
     // Start is called before the first frame update
@@ -23,12 +22,6 @@ public class MainPlayer : MonoBehaviour
         if (playerController == null)
         {
             Debug.LogError("【主玩家】玩家控制器为空");
-            return;
-        }
-        _playerInput = GetComponent<PlayerInput>();
-        if (_playerInput == null)
-        {
-            Debug.LogError("【主玩家】玩家输入组件获取失败");
             return;
         }
         _blackboard = playerController.blackboard;

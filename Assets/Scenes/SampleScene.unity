@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 50067450}
   - component: {fileID: 50067449}
   - component: {fileID: 50067454}
+  - component: {fileID: 50067455}
   - component: {fileID: 50067453}
   - component: {fileID: 50067448}
   - component: {fileID: 50067451}
@@ -308,62 +309,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3180d8a90f47aff41a4b2dd6e280db7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _abilitiesSerialized:
-  - rid: 4855356032389742598
-  - rid: 4855356032389742599
-  - rid: 4855356032389742600
-  - rid: 4855356032389742601
-  - rid: 4855356032389742602
-  - rid: 4855356032389742605
+  _abilitiesSerialized: []
   references:
     version: 2
-    RefIds:
-    - rid: 4855356032389742598
-      type: {class: MoveAbility, ns: , asm: Assembly-CSharp}
-      data:
-        moveSpeed: 5
-    - rid: 4855356032389742599
-      type: {class: RotationAbility, ns: , asm: Assembly-CSharp}
-      data:
-        rotationSpeed: 5
-    - rid: 4855356032389742600
-      type: {class: CameraControlAbility, ns: , asm: Assembly-CSharp}
-      data:
-        h: 1.5
-        length: 2
-        pitch: 15
-        maxPitch: 50
-        minPitch: -50
-        layerMask:
-          serializedVersion: 2
-          m_Bits: 128
-        posSmoothTime: 0.05
-        rotSmoothTime: 0.1
-        pitchSpeed: 3
-        maxRadius: 0.1
-        pitchAddSpeed: -3
-    - rid: 4855356032389742601
-      type: {class: JumpAbility, ns: , asm: Assembly-CSharp}
-      data:
-        jumpPower: 5
-        groundCheckDistance: 0.2
-        verticalVelocityThreshold: 0.2
-        layerMask:
-          serializedVersion: 2
-          m_Bits: 128
-    - rid: 4855356032389742602
-      type: {class: ShootAbility, ns: , asm: Assembly-CSharp}
-      data:
-        delayTime: 0.2
-    - rid: 4855356032389742605
-      type: {class: ThrowAbility, ns: , asm: Assembly-CSharp}
-      data:
-        offset: {x: -0.5, y: 1, z: 0}
-        throwAngleSpeed: 3
-        throwForce: 8
-        defaultThrowAngle: 45
-        maxThrowAngle: 80
-        minThrowAngle: 10
+    RefIds: []
+--- !u!114 &50067455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50067447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51849815c23023d4c8f9bd8cacf343a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anyState: {fileID: 0}
+  initState: {fileID: 11400000, guid: 20e22ea12005f114888437b24fc31664, type: 2}
+  isDebug: 0
 --- !u!1 &161104267
 GameObject:
   m_ObjectHideFlags: 0

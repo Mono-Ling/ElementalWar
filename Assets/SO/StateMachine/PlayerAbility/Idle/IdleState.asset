@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1ec4950a30844a949256541e89981, type: 3}
+  m_Name: IdleState
+  m_EditorClassIdentifier: 
+  edgeList: []
+  abilitySystemArgName: AbilitySystem
+  abilities:
+  - rid: 4855356032389742606
+  - rid: 4855356032389742607
+  - rid: 4855356032389742608
+  - rid: 4855356032389742609
+  - rid: 4855356032389742610
+  - rid: 4855356032389742611
+  references:
+    version: 2
+    RefIds:
+    - rid: 4855356032389742606
+      type: {class: MoveAbility, ns: , asm: Assembly-CSharp}
+      data:
+        moveSpeed: 5
+    - rid: 4855356032389742607
+      type: {class: CameraControlAbility, ns: , asm: Assembly-CSharp}
+      data:
+        followOffset: {x: 0, y: 1, z: 0}
+        targetOffset: {x: 0, y: 1.5, z: -2}
+        pitch: 15
+        maxPitch: 50
+        minPitch: -50
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 128
+        posSmoothTime: 0.05
+        rotSmoothTime: 0.1
+        pitchSpeed: 3
+        maxRadius: 0.1
+        pitchAddSpeed: -3
+    - rid: 4855356032389742608
+      type: {class: JumpAbility, ns: , asm: Assembly-CSharp}
+      data:
+        jumpPower: 5
+        groundCheckDistance: 0.2
+        verticalVelocityThreshold: 0.2
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 128
+    - rid: 4855356032389742609
+      type: {class: RotationAbility, ns: , asm: Assembly-CSharp}
+      data:
+        rotationSpeed: 5
+    - rid: 4855356032389742610
+      type: {class: ShootAbility, ns: , asm: Assembly-CSharp}
+      data:
+        delayTime: 0.2
+    - rid: 4855356032389742611
+      type: {class: ThrowAbility, ns: , asm: Assembly-CSharp}
+      data:
+        offset: {x: -0.5, y: 1, z: 0}
+        throwAngleSpeed: 3
+        throwForce: 10
+        defaultThrowAngle: 45
+        maxThrowAngle: 80
+        minThrowAngle: 10

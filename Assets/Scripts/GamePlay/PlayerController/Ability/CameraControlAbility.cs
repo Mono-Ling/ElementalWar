@@ -6,10 +6,11 @@ using UnityEngine.InputSystem;
 
 public class CameraControlAbility : BaseAbility
 {
-    [Header("高度偏移")]
-    public float h;
-    [Header("Z轴偏移距离")]
-    public float length = 5f;
+    [Header("相机跟随点偏移（相对角色位置）")]
+    public Vector3 followOffset = new Vector3(0, 1, 0);
+    [Header("相机目标点偏移（相对角色位置）")]
+    public Vector3 targetOffset = new Vector3(0, 1.5f, -2);
+    [Header("俯仰度")]
     public float pitch = 15;
     [Header("俯仰区间")]
     public float maxPitch = 50f;
@@ -54,12 +55,9 @@ public class CameraControlAbility : BaseAbility
         // 合成相机的目标旋转：俯仰角 + 跟随的偏航角
         Quaternion targetRot = Quaternion.Euler(pitch, yaw, 0f);
 
-        // 计算相机位置：角色位置 + 旋转后的偏移向量
-        // 偏移：基础高度向上 + 沿角色后方向后退length
-        Vector3 offset = new Vector3(0, h, -length);
-        Vector3 targetPos = pos + targetRot * offset;
+        Vector3 targetPos = pos + targetRot * targetOffset;
 
-        Vector3 fowardPos = pos + Vector3.up * h;
+        Vector3 fowardPos = abilitySystem.transform.TransformPoint(followOffset);
         Vector3 dir = targetPos - fowardPos;
         float armLength = dir.magnitude;
         if (Physics.Raycast(new Ray(fowardPos, dir.normalized), out var hit, armLength, layerMask))

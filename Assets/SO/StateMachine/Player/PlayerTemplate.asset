@@ -41,3 +41,5 @@ MonoBehaviour:
     type: 5
   - name: PlayerGunController
     type: 14
+  - name: AbilitySystem
+    type: 13

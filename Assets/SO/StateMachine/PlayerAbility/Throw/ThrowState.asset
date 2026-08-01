@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1ec4950a30844a949256541e89981, type: 3}
+  m_Name: ThrowState
+  m_EditorClassIdentifier: 
+  edgeList: []
+  abilitySystemArgName: AbilitySystem
+  abilities:
+  - rid: 4855356032389742618
+  - rid: 4855356032389742619
+  - rid: 4855356032389742620
+  references:
+    version: 2
+    RefIds:
+    - rid: 4855356032389742618
+      type: {class: MoveAbility, ns: , asm: Assembly-CSharp}
+      data:
+        moveSpeed: 2
+    - rid: 4855356032389742619
+      type: {class: RotationAbility, ns: , asm: Assembly-CSharp}
+      data:
+        rotationSpeed: 5
+    - rid: 4855356032389742620
+      type: {class: ThrowAbility, ns: , asm: Assembly-CSharp}
+      data:
+        offset: {x: -0.5, y: 1, z: 0}
+        throwAngleSpeed: 3
+        throwForce: 10
+        defaultThrowAngle: 45
+        maxThrowAngle: 80
+        minThrowAngle: 10
