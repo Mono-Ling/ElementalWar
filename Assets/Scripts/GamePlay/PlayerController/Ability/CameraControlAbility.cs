@@ -103,6 +103,6 @@ public class CameraControlAbility : BaseAbility
 
         length = Mathf.Lerp(0, length, progress);
         offset = offset.normalized * length;
-        return currPos + new Vector3(offset.x, offset.y, 0);
+        return currPos + abilitySystem.transform.TransformVector(new Vector3(offset.x, offset.y, 0));
     }
 }
