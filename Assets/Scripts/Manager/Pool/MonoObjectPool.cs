@@ -35,9 +35,12 @@ public class MonoObjectPool : Single<MonoObjectPool>
         if (obj == null)
         {
             if (!_objPoolDic.ContainsKey(path))
-                CreatePool(path, DEFAULT_COUNT, 1);
-            if (_objPoolDic.TryGetValue(path, out var newItem))
-                obj = newItem.Get();
+                CreatePool(path, DEFAULT_COUNT);
+            if (_objPoolDic.TryGetValue(path, out var poolItem))
+            {
+                obj = GameObject.Instantiate(poolItem.prefab);
+                obj.name = path;
+            }
             else
                 Debug.LogError($"【Mono对象池】不存在{path}的对象池");
         }

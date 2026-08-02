@@ -259,7 +259,7 @@ namespace Server
                         newPackage = new ClientPackage(id, udpPackage.header, udpPackage.message, SendType.Udp);
                     }
                     else
-                        Console.Write($"【UDP重复消息】PackageId:{udpPackage.header.Id}");
+                        Console.Write($"【UDP重复消息】PackageId:{udpPackage.header.Id}，Type:{udpPackage.header.Type}");
                 }
                 if (newPackage != null)
                     EventBus.Instance.Trigger<ClientPackage>(EventType.OnReceive, (ClientPackage)newPackage);

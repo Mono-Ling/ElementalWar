@@ -14,6 +14,7 @@ public class RemoteStateSynTest : MonoBehaviour
         // mes.PlayerList.Add(0);
         // EventBus.Instance.Trigger<NetPackage>(EventType.OnReceive, new(mes));
         var managedMgr = ManagedPlayerMgr.Instance;
+        var dynamicMgr = DynamicSceneItemMgr.Instance;
         StaticSceneManager.Instance.LoadWall(sceneAsset);
         NetManager.Instance.StartClient();
         Cursor.lockState = CursorLockMode.Confined;

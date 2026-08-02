@@ -24,5 +24,13 @@ namespace Server.Event
         /// playerID
         /// </summary>
         OnPlayerDisconnect,
+        /// <summary>
+        /// DynamicSceneItem类型参数
+        /// </summary>
+        OnDynamicSceneItemAdd,
+        /// <summary>
+        /// DynamicSceneItem类型参数
+        /// </summary>
+        OnDynamicSceneItemRemove,
     }
 }

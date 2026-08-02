@@ -20,22 +20,33 @@ public class CreateCSharpMessage
         {
             if (file.Extension != ".proto")
                 continue;
-            using (Process process = new())
-            {
-                process.StartInfo.FileName = PROTOC_PATH;
-                string arg = $"-I={PROTOBUF_PATH} --csharp_out={OUTPUT_PATH_1} {file.Name}";
-                process.StartInfo.Arguments = arg;
-                process.Start();
-            }
-            using (Process process = new())
-            {
-                process.StartInfo.FileName = PROTOC_PATH;
-                string arg = $"-I={PROTOBUF_PATH} --csharp_out={OUTPUT_PATH_2} {file.Name}";
-                process.StartInfo.Arguments = arg;
-                process.Start();
-                UnityEngine.Debug.Log("【生成C#消息代码】");
-            }
+            string arg = $"-I={PROTOBUF_PATH} --csharp_out={OUTPUT_PATH_1} {file.Name}";
+            RunProtoc(arg);
+            arg = $"-I={PROTOBUF_PATH} --csharp_out={OUTPUT_PATH_2} {file.Name}";
+            RunProtoc(arg);
+            UnityEngine.Debug.Log($"【生成C#消息代码】{file.Name}");
         }
         AssetDatabase.Refresh();
+    }
+
+    private static void RunProtoc(string arg)
+    {
+        using (Process process = new())
+        {
+            process.StartInfo.FileName = PROTOC_PATH;
+            process.StartInfo.Arguments = arg;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
+            process.WaitForExit();
+
+            string stderr = process.StandardError.ReadToEnd();
+            if (process.ExitCode != 0)
+            {
+                UnityEngine.Debug.LogError($"protoc 执行失败: {arg}\n{stderr}");
+            }
+        }
     }
 }

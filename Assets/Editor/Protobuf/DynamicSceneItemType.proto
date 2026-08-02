@@ -1,0 +1,7 @@
+syntax = "proto3";
+package Message;
+enum DynamicSceneItemType
+{
+	ItemNone = 0;
+	Grenade = 1;
+}

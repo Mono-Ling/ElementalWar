@@ -1,0 +1,15 @@
+syntax = "proto3";
+package Message;
+import "DynamicSceneItemType.proto";
+message DynamicItemStateMes
+{
+	enum DynamicItemStateType
+	{
+		None = 0;
+		Create = 1;
+		Destroy = 2;
+	}
+	int32 dynamicItemId = 1;
+	DynamicItemStateType stateType = 2;
+	DynamicSceneItemType itemType = 3;
+}

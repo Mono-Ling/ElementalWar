@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class StaticSceneManager : SingleMono<StaticSceneManager>
 {
-    private const string HIT_EFF_PATH = "HitWallEff";
-    private const int HIT_EFFECT_MAX_COUNT = 30;
     private List<StaticSceneItem> _sceneItemList = new();
     private NetReceiver _netReceiver = new();
     void Start()
@@ -25,8 +23,6 @@ public class StaticSceneManager : SingleMono<StaticSceneManager>
             return;
         }
         int count = sceneAsset.sceneInfoList.Count;
-        MonoObjectPool.Instance.CreatePool(HIT_EFF_PATH, HIT_EFFECT_MAX_COUNT, HIT_EFFECT_MAX_COUNT);
-        MonoObjectPool.Instance.CreatePool("Wall", count, count);
         foreach (var info in sceneAsset.sceneInfoList)
             CreateWall(info);
 

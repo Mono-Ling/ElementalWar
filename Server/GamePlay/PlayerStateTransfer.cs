@@ -25,6 +25,9 @@ namespace Server.GamePlay
             _stateTransferList.Add(new PlayerThrowStateTransfer());
             _stateTransferList.Add(new SpaceStateTransfer());
 
+            _stateTransferList.Add(new DynamicSceneItemTransfer());
+            _stateTransferList.Add(new GrenadePositionTransfer());
+
             foreach (var stateTransfer in _stateTransferList)
                 stateTransfer.Start(this,playerIdList);
 
