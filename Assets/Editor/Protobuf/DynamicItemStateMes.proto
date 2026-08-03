@@ -1,6 +1,7 @@
 syntax = "proto3";
 package Message;
 import "DynamicSceneItemType.proto";
+import "google/protobuf/any.proto";
 message DynamicItemStateMes
 {
 	enum DynamicItemStateType
@@ -12,4 +13,5 @@ message DynamicItemStateMes
 	int32 dynamicItemId = 1;
 	DynamicItemStateType stateType = 2;
 	DynamicSceneItemType itemType = 3;
+	google.protobuf.Any customParams = 4;
 }

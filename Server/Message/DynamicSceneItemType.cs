@@ -24,9 +24,9 @@ namespace Message {
     static DynamicSceneItemTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpEeW5hbWljU2NlbmVJdGVtVHlwZS5wcm90bxIHTWVzc2FnZSoxChREeW5h",
-            "bWljU2NlbmVJdGVtVHlwZRIMCghJdGVtTm9uZRAAEgsKB0dyZW5hZGUQAWIG",
-            "cHJvdG8z"));
+            "ChpEeW5hbWljU2NlbmVJdGVtVHlwZS5wcm90bxIHTWVzc2FnZSpBChREeW5h",
+            "bWljU2NlbmVJdGVtVHlwZRIMCghJdGVtTm9uZRAAEgsKB0dyZW5hZGUQARIO",
+            "CgpHcmVuYWRlRXhwEAJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Message.DynamicSceneItemType), }, null, null));
@@ -38,6 +38,7 @@ namespace Message {
   public enum DynamicSceneItemType {
     [pbr::OriginalName("ItemNone")] ItemNone = 0,
     [pbr::OriginalName("Grenade")] Grenade = 1,
+    [pbr::OriginalName("GrenadeExp")] GrenadeExp = 2,
   }
 
   #endregion

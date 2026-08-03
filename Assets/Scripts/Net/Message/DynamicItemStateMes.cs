@@ -25,16 +25,18 @@ namespace Message {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlEeW5hbWljSXRlbVN0YXRlTWVzLnByb3RvEgdNZXNzYWdlGhpEeW5hbWlj",
-            "U2NlbmVJdGVtVHlwZS5wcm90byLeAQoTRHluYW1pY0l0ZW1TdGF0ZU1lcxIV",
-            "Cg1keW5hbWljSXRlbUlkGAEgASgFEkQKCXN0YXRlVHlwZRgCIAEoDjIxLk1l",
-            "c3NhZ2UuRHluYW1pY0l0ZW1TdGF0ZU1lcy5EeW5hbWljSXRlbVN0YXRlVHlw",
-            "ZRIvCghpdGVtVHlwZRgDIAEoDjIdLk1lc3NhZ2UuRHluYW1pY1NjZW5lSXRl",
-            "bVR5cGUiOQoURHluYW1pY0l0ZW1TdGF0ZVR5cGUSCAoETm9uZRAAEgoKBkNy",
-            "ZWF0ZRABEgsKB0Rlc3Ryb3kQAmIGcHJvdG8z"));
+            "U2NlbmVJdGVtVHlwZS5wcm90bxoZZ29vZ2xlL3Byb3RvYnVmL2FueS5wcm90",
+            "byKKAgoTRHluYW1pY0l0ZW1TdGF0ZU1lcxIVCg1keW5hbWljSXRlbUlkGAEg",
+            "ASgFEkQKCXN0YXRlVHlwZRgCIAEoDjIxLk1lc3NhZ2UuRHluYW1pY0l0ZW1T",
+            "dGF0ZU1lcy5EeW5hbWljSXRlbVN0YXRlVHlwZRIvCghpdGVtVHlwZRgDIAEo",
+            "DjIdLk1lc3NhZ2UuRHluYW1pY1NjZW5lSXRlbVR5cGUSKgoMY3VzdG9tUGFy",
+            "YW1zGAQgASgLMhQuZ29vZ2xlLnByb3RvYnVmLkFueSI5ChREeW5hbWljSXRl",
+            "bVN0YXRlVHlwZRIICgROb25lEAASCgoGQ3JlYXRlEAESCwoHRGVzdHJveRAC",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Message.DynamicSceneItemTypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Message.DynamicSceneItemTypeReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.DynamicItemStateMes), global::Message.DynamicItemStateMes.Parser, new[]{ "DynamicItemId", "StateType", "ItemType" }, null, new[]{ typeof(global::Message.DynamicItemStateMes.Types.DynamicItemStateType) }, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.DynamicItemStateMes), global::Message.DynamicItemStateMes.Parser, new[]{ "DynamicItemId", "StateType", "ItemType", "CustomParams" }, null, new[]{ typeof(global::Message.DynamicItemStateMes.Types.DynamicItemStateType) }, null, null)
           }));
     }
     #endregion
@@ -79,6 +81,7 @@ namespace Message {
       dynamicItemId_ = other.dynamicItemId_;
       stateType_ = other.stateType_;
       itemType_ = other.itemType_;
+      customParams_ = other.customParams_ != null ? other.customParams_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -124,6 +127,18 @@ namespace Message {
       }
     }
 
+    /// <summary>Field number for the "customParams" field.</summary>
+    public const int CustomParamsFieldNumber = 4;
+    private global::Google.Protobuf.WellKnownTypes.Any customParams_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Any CustomParams {
+      get { return customParams_; }
+      set {
+        customParams_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -142,6 +157,7 @@ namespace Message {
       if (DynamicItemId != other.DynamicItemId) return false;
       if (StateType != other.StateType) return false;
       if (ItemType != other.ItemType) return false;
+      if (!object.Equals(CustomParams, other.CustomParams)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -152,6 +168,7 @@ namespace Message {
       if (DynamicItemId != 0) hash ^= DynamicItemId.GetHashCode();
       if (StateType != global::Message.DynamicItemStateMes.Types.DynamicItemStateType.None) hash ^= StateType.GetHashCode();
       if (ItemType != global::Message.DynamicSceneItemType.ItemNone) hash ^= ItemType.GetHashCode();
+      if (customParams_ != null) hash ^= CustomParams.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,6 +199,10 @@ namespace Message {
         output.WriteRawTag(24);
         output.WriteEnum((int) ItemType);
       }
+      if (customParams_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(CustomParams);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -204,6 +225,10 @@ namespace Message {
         output.WriteRawTag(24);
         output.WriteEnum((int) ItemType);
       }
+      if (customParams_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(CustomParams);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -222,6 +247,9 @@ namespace Message {
       }
       if (ItemType != global::Message.DynamicSceneItemType.ItemNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ItemType);
+      }
+      if (customParams_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CustomParams);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -243,6 +271,12 @@ namespace Message {
       }
       if (other.ItemType != global::Message.DynamicSceneItemType.ItemNone) {
         ItemType = other.ItemType;
+      }
+      if (other.customParams_ != null) {
+        if (customParams_ == null) {
+          CustomParams = new global::Google.Protobuf.WellKnownTypes.Any();
+        }
+        CustomParams.MergeFrom(other.CustomParams);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -275,6 +309,13 @@ namespace Message {
             ItemType = (global::Message.DynamicSceneItemType) input.ReadEnum();
             break;
           }
+          case 34: {
+            if (customParams_ == null) {
+              CustomParams = new global::Google.Protobuf.WellKnownTypes.Any();
+            }
+            input.ReadMessage(CustomParams);
+            break;
+          }
         }
       }
     #endif
@@ -304,6 +345,13 @@ namespace Message {
           }
           case 24: {
             ItemType = (global::Message.DynamicSceneItemType) input.ReadEnum();
+            break;
+          }
+          case 34: {
+            if (customParams_ == null) {
+              CustomParams = new global::Google.Protobuf.WellKnownTypes.Any();
+            }
+            input.ReadMessage(CustomParams);
             break;
           }
         }

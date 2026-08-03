@@ -19,6 +19,13 @@ public static class ExpandFunc
         message.Z = quaternion.z;
         message.W = quaternion.w;
     }
+    public static void Switch(this ColorMessage message, Color color)
+    {
+        message.R = color.r;
+        message.G = color.g;
+        message.B = color.b;
+        message.A = color.a;
+    }
     public static void Deconstruct(this Vector3Message message, out Vector3 vector, out object _)
     {
         vector = new(message.X, message.Y, message.Z);
@@ -27,6 +34,11 @@ public static class ExpandFunc
     public static void Deconstruct(this QuaternionMessage message, out Quaternion quaternion, out object _)
     {
         quaternion = new(message.X, message.Y, message.Z, message.W);
+        _ = default;
+    }
+    public static void Deconstruct(this ColorMessage message, out Color color, out object _)
+    {
+        color = new(message.R, message.G, message.B, message.A);
         _ = default;
     }
 }

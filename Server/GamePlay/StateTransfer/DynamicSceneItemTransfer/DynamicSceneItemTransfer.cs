@@ -68,19 +68,19 @@ namespace Server.GamePlay.StateTransfer
             switch(message.StateType)
             {
                 case DynamicItemStateMes.Types.DynamicItemStateType.Create:
-                    OnDynamicCreateMes(key, message.ItemType);
+                    OnDynamicCreateMes(key, message);
                     break;
                 case DynamicItemStateMes.Types.DynamicItemStateType.Destroy:
-                    OnDynamicDestroyMes(key, message.ItemType);
+                    OnDynamicDestroyMes(key, message);
                     break;
                 default:
                     Console.WriteLine($"【场景动态物体中转】玩家{package.playerId}发送动态物体{message.DynamicItemId}状态{message.StateType}错误");
                     break;
             }
         }
-        private void OnDynamicCreateMes((int, int) key, DynamicSceneItemType type)
+        private void OnDynamicCreateMes((int, int) key, DynamicItemStateMes message)
         {
-            if(type == DynamicSceneItemType.ItemNone)
+            if(message.ItemType == DynamicSceneItemType.ItemNone)
             {
                 Console.WriteLine($"【场景动态物体中转】玩家{key.Item1}创建动态物体{key.Item2}类型错误");
                 return;
@@ -94,12 +94,14 @@ namespace Server.GamePlay.StateTransfer
             int dynamicItemId = _nextDynamicItemId++;
             _dynamicItemDic.Add(key, dynamicItemId);
 
-            DynamicItemStateMes mes = new()
-            {
-                DynamicItemId = dynamicItemId,
-                StateType = DynamicItemStateMes.Types.DynamicItemStateType.Create,
-                ItemType = type
-            };
+            //DynamicItemStateMes mes = new()
+            //{
+            //    DynamicItemId = dynamicItemId,
+            //    StateType = DynamicItemStateMes.Types.DynamicItemStateType.Create,
+            //    ItemType = message.ItemType,
+            //};
+            message.DynamicItemId = dynamicItemId;
+            message.CustomParams = message.CustomParams;
 
             foreach (var player in _playerSet)
             {
@@ -107,13 +109,13 @@ namespace Server.GamePlay.StateTransfer
                 iif (player == key.Item1)
                     continue;
 #endif
-                SendTo(new(player, SetHeader(), mes));
+                SendTo(new(player, SetHeader(), message));
             }
-            Console.WriteLine($"【场景动态物体中转】玩家{key.Item1}创建动态物体{key.Item2}类型{type}，分配动态物体Id{dynamicItemId}");
+            Console.WriteLine($"【场景动态物体中转】玩家{key.Item1}创建动态物体{key.Item2}类型{message.ItemType}，分配动态物体Id{dynamicItemId}");
 
-            EventBus.Instance.Trigger(EventType.OnDynamicSceneItemAdd, new DynamicSceneItem(key.Item1, key.Item2, dynamicItemId, type));
+            EventBus.Instance.Trigger(EventType.OnDynamicSceneItemAdd, new DynamicSceneItem(key.Item1, key.Item2, dynamicItemId, message.ItemType));
         }
-        private void OnDynamicDestroyMes((int, int) key, DynamicSceneItemType type)
+        private void OnDynamicDestroyMes((int, int) key, DynamicItemStateMes message)
         {
             if (!_dynamicItemDic.ContainsKey(key))
             {
@@ -123,12 +125,14 @@ namespace Server.GamePlay.StateTransfer
             int dynamicItemId = _dynamicItemDic[key];
             _dynamicItemDic.Remove(key);
 
-            DynamicItemStateMes mes = new()
-            {
-                DynamicItemId = dynamicItemId,
-                StateType = DynamicItemStateMes.Types.DynamicItemStateType.Destroy,
-                ItemType = type
-            };
+            //DynamicItemStateMes mes = new()
+            //{
+            //    DynamicItemId = dynamicItemId,
+            //    StateType = DynamicItemStateMes.Types.DynamicItemStateType.Destroy,
+            //    ItemType = type
+            //};
+            message.DynamicItemId = dynamicItemId;
+            message.CustomParams = message.CustomParams;
 
             foreach (var player in _playerSet)
             {
@@ -136,10 +140,10 @@ namespace Server.GamePlay.StateTransfer
                 if (player == key.Item1)
                     continue;
 #endif
-                SendTo(new(player, SetHeader(), mes));
+                SendTo(new(player, SetHeader(), message));
             }
 
-            EventBus.Instance.Trigger(EventType.OnDynamicSceneItemRemove, new DynamicSceneItem(key.Item1, key.Item2, dynamicItemId, type));
+            EventBus.Instance.Trigger(EventType.OnDynamicSceneItemRemove, new DynamicSceneItem(key.Item1, key.Item2, dynamicItemId, message.ItemType));
         }
     }
 }

@@ -1,0 +1,11 @@
+syntax = "proto3";
+package Message;
+import "ColorMessage.proto";
+import "Vector3Message.proto";
+
+// 手榴弹爆炸特效初始化数据包
+message GrenadeExpInitMes
+{
+	Vector3Message pos = 1;
+	ColorMessage color = 2;
+}

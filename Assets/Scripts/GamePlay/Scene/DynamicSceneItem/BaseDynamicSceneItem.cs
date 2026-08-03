@@ -32,8 +32,6 @@ public abstract class BaseDynamicSceneItem : MonoBehaviour
         isRemote = false;
         this.itemType = itemType;
         dynamicSceneItemId = id;
-
-        return;
     }
     public virtual void LocalDestroy()
     {
@@ -50,13 +48,13 @@ public abstract class BaseDynamicSceneItem : MonoBehaviour
         };
         SendTo(mes);
     }
-    public virtual void OnRemoteCreate(NetReceiver netReceiver, int id)
+    public virtual void OnRemoteCreate(NetReceiver netReceiver, DynamicItemStateMes mes)
     {
         this.netReceiver = netReceiver;
         isRemote = true;
-        dynamicSceneItemId = id;
+        dynamicSceneItemId = mes.DynamicItemId;
     }
-    public virtual void OnRemoteDestroy() { }
+    public virtual void OnRemoteDestroy(DynamicItemStateMes mes) { }
     protected void SendTo(IMessage message, bool isResponse = false)
     {
         if (message == null)

@@ -59,7 +59,7 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
             MonoObjectPool.Instance.PutObject(obj);
             return;
         }
-        item.OnRemoteCreate(_netReceiver, mes.DynamicItemId);
+        item.OnRemoteCreate(_netReceiver, mes);
         _remoteDynamicItemDic.Add(mes.DynamicItemId, item);
         Debug.Log($"【动态物体管理器】远程动态物体注册{mes.DynamicItemId}");
     }
@@ -67,7 +67,7 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
     {
         if (_remoteDynamicItemDic.TryGetValue(mes.DynamicItemId, out var item))
         {
-            item.OnRemoteDestroy();
+            item.OnRemoteDestroy(mes);
             _remoteDynamicItemDic.Remove(mes.DynamicItemId);
             MonoObjectPool.Instance.PutObject(item.gameObject);
         }
@@ -118,6 +118,7 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
     private string GetItemPath(DynamicSceneItemType type) => type switch
     {
         DynamicSceneItemType.Grenade => "Grenade",
+        DynamicSceneItemType.GrenadeExp => "GrenadeExp",
         _ => null,
     };
 }

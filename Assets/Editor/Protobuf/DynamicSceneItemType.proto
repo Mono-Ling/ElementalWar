@@ -4,4 +4,5 @@ enum DynamicSceneItemType
 {
 	ItemNone = 0;
 	Grenade = 1;
+	GrenadeExp = 2;
 }

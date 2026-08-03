@@ -20,7 +20,7 @@ public class Grenade : BaseDynamicSceneItem
 
     private Vector3Message _posMes = new();
     private GrenadePositionMessage _grenadeMes = new();
-    private Color _expEffColor = Color.red;
+    private Color _expEffColor = Color.blue;
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -62,9 +62,9 @@ public class Grenade : BaseDynamicSceneItem
     }
     #endregion
     #region  Remote
-    public override void OnRemoteCreate(NetReceiver netReceiver, int id)
+    public override void OnRemoteCreate(NetReceiver netReceiver, DynamicItemStateMes mes)
     {
-        base.OnRemoteCreate(netReceiver, id);
+        base.OnRemoteCreate(netReceiver, mes);
         _isInitRemoteSyn = true;
         _rigidbody.isKinematic = true;
         AddListener<GrenadePositionMessage>(OnGrenadePosMes);
@@ -83,16 +83,13 @@ public class Grenade : BaseDynamicSceneItem
         {
             _smoothedPos = remotePos;
             transform.position = remotePos;
-            Debug.Log(remotePos);
-            Debug.Log(mes.DynamicItemId);
         }
         _targetPos = remotePos;
         _isInitRemoteSyn = false;
     }
-    public override void OnRemoteDestroy()
+    public override void OnRemoteDestroy(DynamicItemStateMes mes)
     {
         RemoveListener<GrenadePositionMessage>(OnGrenadePosMes);
-        CreateExpEff(_expEffColor);
         Reset();
     }
     void FixedUpdate()
@@ -115,16 +112,9 @@ public class Grenade : BaseDynamicSceneItem
     }
     private void CreateExpEff(Color effColor)
     {
-        var obj = MonoObjectPool.Instance.GetObject(EXP_EFF_PATH);
-        if (obj == null)
-            Debug.LogError("【手榴弹】爆炸特效创建失败");
-
-        GrenadeExp exp = null;
-        if (obj != null)
-            exp = obj.GetComponent<GrenadeExp>();
-        if (exp == null)
-            Debug.LogError("【手榴弹】爆炸特效组件获取失败");
-        exp?.Init(_rigidbody.position, effColor);
+        var item = DynamicSceneItemMgr.Instance.CreateLocalDynamicSceneItem(DynamicSceneItemType.GrenadeExp);
+        if (item is GrenadeExp exp)
+            exp.ManualCreate(_rigidbody.position, effColor);
     }
     private void Reset()
     {
