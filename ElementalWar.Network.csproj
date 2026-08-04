@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Net\Message\ColorMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\HeartMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\DynamicItemStateMes.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\PlayerExpHitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ShootStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Package\SendType.cs" />
     <Compile Include="Assets\Scripts\Net\Package\TcpPackage.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\Net\UdpManager.cs" />
     <Compile Include="Assets\Scripts\Net\Package\UdpPackage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ThrowStateMessage.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\ExplosionRequestMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\GrenadePositionMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\WallShootHitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\GrenadeExpInitMes.cs" />

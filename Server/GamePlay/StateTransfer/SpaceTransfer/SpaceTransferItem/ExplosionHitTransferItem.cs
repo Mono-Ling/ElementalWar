@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Message;
+using Server.Event;
+using Server.Message.Tools;
+using Space;
+
+namespace Server.GamePlay.StateTransfer.SpaceTransfer
+{
+    public struct ExplosionHitReq
+    {
+        public DynamicSceneItem dynamicItem;
+        public Sphere range;
+        public ExplosionHitReq(DynamicSceneItem item, Sphere range)
+        {
+            this.dynamicItem = item;
+            this.range = range;
+        }
+    }
+    public interface IOnExplosionHit
+    {
+        void OnExplosionHit(Sphere range, List<int> sendList);
+    }
+    public class ExplosionHitTransferItem : BaseSpaceTransferItem
+    {
+        private PriorityQueue<ExplosionHitReq, long> _explosionHitReqQueue = new();
+        private object _explosionHitReqLock = new();
+
+        private List<int> _sendList = new();
+
+        private HashSet<DynamicSceneItem> _grenadeItemSet = new();
+
+        public override void Start(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
+        {
+            base.Start(playerStateTransfer, playerList);
+            _sendList = playerList;
+
+            EventBus.Instance.AddListener<DynamicSceneItem>(EventType.OnDynamicSceneItemAdd, OnDynamicAdd);
+            AddListener<ExplosionRequestMessage>(OnExpReqReceive);
+        }
+        public override void Update()
+        {
+            while(_explosionHitReqQueue.TryGet(out var req,_explosionHitReqLock))
+                OnExpHitCheck(req);
+        }
+        public override void Stop()
+        {
+            RemoveListener<ExplosionRequestMessage>(OnExpReqReceive);
+            EventBus.Instance.RemoveListener<DynamicSceneItem>(EventType.OnDynamicSceneItemAdd, OnDynamicAdd);
+        }
+        private void OnDynamicAdd(DynamicSceneItem item)
+        {
+            if (item.itemType == DynamicSceneItemType.Grenade)
+            {
+                _grenadeItemSet.Add(item);
+            }
+        }
+        private void OnExpReqReceive(ClientPackage package)
+        {
+            if (package.message is not ExplosionRequestMessage boundMes)
+                return;
+            if (package.header is not UdpHeader udpHeader)
+                return;
+            DynamicSceneItem item = new(package.playerId, boundMes.ClientDynamicItemId, default, DynamicSceneItemType.Grenade);
+            if (!_grenadeItemSet.TryGetValue(item, out var foundItem))
+                return;
+            var (center, _) = boundMes.Center;
+            var radius = boundMes.Radius;
+            Sphere range = new(center, radius);
+            ExplosionHitReq req = new(foundItem, range);
+            lock (_explosionHitReqLock)
+                _explosionHitReqQueue.Enqueue(req, udpHeader.Time);
+        }
+        private void OnExpHitCheck(ExplosionHitReq req)
+        {
+            if(spaceTree == null)
+            {
+                Console.WriteLine("【爆炸命中检测中转】空间树未初始化");
+                return;
+            }
+            if(!_grenadeItemSet.TryGetValue(req.dynamicItem,out var foundItem))
+                return;
+            _grenadeItemSet.Remove(foundItem);
+
+            var hitSpaceItem = spaceTree.SphereOverlap(req.range);
+
+            foreach (var item in hitSpaceItem)
+                if (item is IOnExplosionHit hitItem)
+                    hitItem.OnExplosionHit(req.range, _sendList);
+        }
+    }
+}

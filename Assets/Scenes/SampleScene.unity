@@ -196,6 +196,7 @@ MonoBehaviour:
   - rid: 4855356032389742688
   feedbackReceives:
   - rid: 4855356032389742603
+  - rid: 5110485043599376463
   references:
     version: 2
     RefIds:
@@ -220,6 +221,9 @@ MonoBehaviour:
       data: 
     - rid: 4855356032389742688
       type: {class: ThrowStateSynSend, ns: , asm: ElementalWar.GamePlay}
+      data: 
+    - rid: 5110485043599376463
+      type: {class: ExpHitFeedbackReceive, ns: , asm: ElementalWar.GamePlay}
       data: 
 --- !u!4 &50067450
 Transform:

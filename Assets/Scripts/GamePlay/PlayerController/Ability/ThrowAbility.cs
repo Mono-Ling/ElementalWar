@@ -51,7 +51,7 @@ public class ThrowAbility : BaseAbility
         var throwItem = DynamicSceneItemMgr.Instance.CreateLocalDynamicSceneItem(DynamicSceneItemType.Grenade);
         if (throwItem is Grenade grenade)
         {
-            Vector3 throwDir = Quaternion.Euler(-_throwAngle, 0, 0) * abilitySystem.transform.forward;
+            Vector3 throwDir = Quaternion.AngleAxis(-_throwAngle, abilitySystem.transform.right) * abilitySystem.transform.forward;
             Vector3 force = throwDir * throwForce;
             Vector3 throwPos = abilitySystem.transform.TransformPoint(offset);
             grenade.Fire(throwPos, force);
@@ -87,7 +87,7 @@ public class ThrowAbility : BaseAbility
 
         _throwAngle += _throwAngleDelta * Time.deltaTime * throwAngleSpeed;
         _throwAngle = Mathf.Clamp(_throwAngle, minThrowAngle, maxThrowAngle);
-        Vector3 throwDir = Quaternion.Euler(-_throwAngle, 0, 0) * abilitySystem.transform.forward;
+        Vector3 throwDir = Quaternion.AngleAxis(-_throwAngle, abilitySystem.transform.right) * abilitySystem.transform.forward;
         Vector3 throwPos = abilitySystem.transform.TransformPoint(offset);
 
         _throwTrack.UpdateTrack(throwDir.normalized, throwForce, throwPos);

@@ -226,7 +226,7 @@ public class UdpManager : SingleMono<UdpManager>
             {
                 NetPackage netPackage = new(udpPackage.header, udpPackage.message, SendType.Udp);
                 NetManager.Instance.AddReceivePackage(netPackage);
-                Debug.Log("【服务器UDP消息】");
+                // Debug.Log("【服务器UDP消息】");
             }
             else
                 Debug.LogWarning($"【UDP重复消息】PackageId:{udpPackage.header.Id}");

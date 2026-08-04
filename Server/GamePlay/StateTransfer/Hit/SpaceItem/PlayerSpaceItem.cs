@@ -9,7 +9,7 @@ using Space;
 
 namespace Server.GamePlay.StateTransfer
 {
-    public class PlayerSpaceItem : SpaceItem,IOnShootHit
+    public class PlayerSpaceItem : SpaceItem,IOnShootHit,IOnExplosionHit
     {
         public int playerId { get;private set;  }
         public DateTime preTime;
@@ -29,6 +29,17 @@ namespace Server.GamePlay.StateTransfer
 
             EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(playerId, udpHeader, hitMes));
             Console.WriteLine($"【玩家空间物体】命中玩家{playerId}");
+        }
+
+        public void OnExplosionHit(Sphere range, List<int> sendList)
+        {
+            PlayerExpHitMessage hitMes = new() { Center = new(), Radius = range.radius };
+            hitMes.Center.Switch(range.center);
+
+            UdpHeader udpHeader = new() { IsResponse = true };
+
+            EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(playerId, udpHeader, hitMes));
+            Console.WriteLine($"【玩家空间物体】爆炸命中玩家{playerId}");
         }
     }
 }

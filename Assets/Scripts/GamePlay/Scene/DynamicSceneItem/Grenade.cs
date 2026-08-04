@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class Grenade : BaseDynamicSceneItem
 {
-    private const string EXP_EFF_PATH = "GrenadeExp";
-    public float delayDestroy = 5f;
+    [Header("爆炸延时")]
+    public float delayExp = 5f;
+    [Header("爆炸半径")]
+    public float expRadius = 5f;
+    [Header("位置同步发送时间间隔")]
     public float delaySend = 0.02f;
     public float positionSmoothTime = 0.06f;
     private Rigidbody _rigidbody;
@@ -36,6 +39,8 @@ public class Grenade : BaseDynamicSceneItem
         StartCoroutine(DelayToDestroy(() =>
         {
             Debug.Log("Local Grenade Exp");
+            OnGrendeExplosion();
+
             DynamicSceneItemMgr.Instance.DestroyLocalDynamicSceneItem(this);
         }, _expEffColor));
     }
@@ -59,6 +64,21 @@ public class Grenade : BaseDynamicSceneItem
     {
         base.LocalDestroy();
         Reset();
+    }
+    /// <summary>
+    /// 爆炸
+    /// </summary>
+    private void OnGrendeExplosion()
+    {
+        ExplosionRequestMessage mes = new()
+        {
+            ClientDynamicItemId = dynamicSceneItemId,
+            Center = new(),
+            Radius = expRadius
+        };
+        mes.Center.Switch(_rigidbody.position);
+
+        SendTo(mes, true);
     }
     #endregion
     #region  Remote
@@ -104,7 +124,7 @@ public class Grenade : BaseDynamicSceneItem
     #region General
     private IEnumerator DelayToDestroy(Action action, Color effColor)
     {
-        yield return new WaitForSeconds(delayDestroy);
+        yield return new WaitForSeconds(delayExp);
 
         CreateExpEff(effColor);
 

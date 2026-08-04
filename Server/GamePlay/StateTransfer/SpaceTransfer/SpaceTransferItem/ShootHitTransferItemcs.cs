@@ -37,7 +37,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
         public override void Update()
         {
 
-            while (TryGetShootHitReq(out var shootHitReq))
+            while (_shootHitReqQueue.TryGet(out var shootHitReq,_shootHitReqLock))
                 OnShootHitCheck(shootHitReq);
         }
         public override void Stop()

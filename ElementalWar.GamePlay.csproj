@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\StateMachine\State\Throw\ThrowLoopState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\PlayerController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\BaseAbility.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\ExpHitFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ThrowStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\HitFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraControlAbility.cs" />
