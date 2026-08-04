@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9127393389593624006}
   - component: {fileID: 8273616214655155640}
   - component: {fileID: 4394512078176763111}
+  - component: {fileID: -8692776902911895920}
   m_Layer: 0
   m_Name: ThrowTrack
   m_TagString: Untagged
@@ -154,3 +155,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   lineMaterial: {fileID: 2100000, guid: b61ba63740dabc8418e2d84855008cb7, type: 2}
+--- !u!114 &-8692776902911895920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9063787372560363216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50841add0eec90428efd1057f23be7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

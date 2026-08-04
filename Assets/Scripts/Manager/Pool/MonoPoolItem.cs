@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MonoPoolItem
 {
+    public bool Enable { get; private set; } = true;
     public GameObject prefab { get; private set; }
     public GameObject rootObj { get; private set; }
-    private Queue<GameObject> _queue = new();
+    private Stack<GameObject> _stack = new();
     private int _maxCount;
     public MonoPoolItem(GameObject prefab, GameObject root, int maxCount)
     {
@@ -16,7 +17,7 @@ public class MonoPoolItem
     }
     public GameObject Get()
     {
-        if (!_queue.TryDequeue(out var obj))
+        if (!_stack.TryPop(out var obj))
             return null;
         //GameObject obj = _queue.Dequeue();
         obj.SetActive(true);
@@ -25,12 +26,16 @@ public class MonoPoolItem
     }
     public bool Put(GameObject obj)
     {
-        if (_queue.Count >= _maxCount)
+        if (_stack.Count >= _maxCount)
             return false;
         obj.transform.SetParent(rootObj.transform);
         obj.SetActive(false);
-        _queue.Enqueue(obj);
+        _stack.Push(obj);
         return true;
     }
-    public void ClearAll() => GameObject.Destroy(rootObj);
+    public void ClearAll()
+    {
+        GameObject.Destroy(rootObj);
+        Enable = false;
+    }
 }

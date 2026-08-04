@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7692633055216738580}
   - component: {fileID: 565176932104874370}
   - component: {fileID: 447418880214207306}
+  - component: {fileID: 6690984462691632919}
   m_Layer: 0
   m_Name: GrenadeExp
   m_TagString: Untagged
@@ -120,3 +121,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalTime: 0.5
   _progress: 0
+--- !u!114 &6690984462691632919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222698510113938974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50841add0eec90428efd1057f23be7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

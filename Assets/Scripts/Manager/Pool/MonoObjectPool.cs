@@ -36,13 +36,7 @@ public class MonoObjectPool : Single<MonoObjectPool>
         {
             if (!_objPoolDic.ContainsKey(path))
                 CreatePool(path, DEFAULT_COUNT);
-            if (_objPoolDic.TryGetValue(path, out var poolItem))
-            {
-                obj = GameObject.Instantiate(poolItem.prefab);
-                obj.name = path;
-            }
-            else
-                Debug.LogError($"【Mono对象池】不存在{path}的对象池");
+            obj = CreateObject(path);
         }
         if (obj != null)
             init?.Invoke(obj);
@@ -52,17 +46,15 @@ public class MonoObjectPool : Single<MonoObjectPool>
     {
         if (obj == null) return;
         reset?.Invoke(obj);
-        if (_objPoolDic.TryGetValue(obj.name, out var item))
+        var poolObj = obj.GetComponent<PoolObj>();
+        if (poolObj == null)
         {
-            if (!item.Put(obj))
-                GameObject.Destroy(obj);
+            Debug.LogWarning("【Mono对象池】PoolObj获取失败");
+            GameObject.Destroy(obj);
+            return;
         }
-        else
-        {
-            CreatePool(obj.name, DEFAULT_COUNT);
-            if (_objPoolDic.TryGetValue(obj.name, out var newItem))
-                newItem.Put(obj);
-        }
+        if (!poolObj.PutObj())
+            GameObject.Destroy(obj);
     }
     public void ClearPool(string path)
     {
@@ -90,7 +82,14 @@ public class MonoObjectPool : Single<MonoObjectPool>
                 return null;
             }
             var obj = GameObject.Instantiate(item.prefab);
-            obj.name = path;
+            // obj.name = path;
+            var poolObj = obj.GetComponent<PoolObj>();
+            if (poolObj == null)
+            {
+                Debug.LogWarning("【Mono对象池】PoolObj获取失败");
+                return obj;
+            }
+            poolObj.poolItem = item;
             return obj;
         }
         else

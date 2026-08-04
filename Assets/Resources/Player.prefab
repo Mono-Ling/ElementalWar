@@ -4088,6 +4088,7 @@ GameObject:
   - component: {fileID: 7626702061047287789}
   - component: {fileID: 310976570760935225}
   - component: {fileID: 2203013148637092927}
+  - component: {fileID: 7102001684802562159}
   - component: {fileID: 7605992845348808515}
   m_Layer: 6
   m_Name: Player
@@ -4221,6 +4222,18 @@ MonoBehaviour:
   rightHandPos: {fileID: 3193201569833510856}
   firedPos: {fileID: 3954711198206482029}
   _backwardProgress: 0
+--- !u!114 &7102001684802562159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307565717817295942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50841add0eec90428efd1057f23be7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &7605992845348808515
 Rigidbody:
   m_ObjectHideFlags: 0
