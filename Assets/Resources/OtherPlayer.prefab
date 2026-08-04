@@ -53,15 +53,15 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 4855355946654236672
-      type: {class: PosStateSynReceive, ns: , asm: Assembly-CSharp}
+      type: {class: PosStateSynReceive, ns: , asm: ElementalWar.GamePlay}
       data:
         posOffset: {x: 2, y: 0, z: 0}
     - rid: 4855355946654236673
-      type: {class: ShootStateSynReceive, ns: , asm: Assembly-CSharp}
+      type: {class: ShootStateSynReceive, ns: , asm: ElementalWar.GamePlay}
       data: 
     - rid: 4855355946654236674
-      type: {class: JumpStateSynReceive, ns: , asm: Assembly-CSharp}
+      type: {class: JumpStateSynReceive, ns: , asm: ElementalWar.GamePlay}
       data: 
     - rid: 4855356032389742689
-      type: {class: ThrowStateSynReceive, ns: , asm: Assembly-CSharp}
+      type: {class: ThrowStateSynReceive, ns: , asm: ElementalWar.GamePlay}
       data: 

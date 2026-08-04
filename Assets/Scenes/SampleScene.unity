@@ -200,26 +200,26 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 4855355872216875018
-      type: {class: PosStateSynSend, ns: , asm: Assembly-CSharp}
+      type: {class: PosStateSynSend, ns: , asm: ElementalWar.GamePlay}
       data:
         delayTime: 0.01
     - rid: 4855355872216875019
-      type: {class: ShootStateSynSend, ns: , asm: Assembly-CSharp}
+      type: {class: ShootStateSynSend, ns: , asm: ElementalWar.GamePlay}
       data:
         isDebug: 0
     - rid: 4855355872216875020
-      type: {class: JumpStateSynSend, ns: , asm: Assembly-CSharp}
+      type: {class: JumpStateSynSend, ns: , asm: ElementalWar.GamePlay}
       data:
         isDebug: 0
     - rid: 4855356032389742592
-      type: {class: BoundStateSynSend, ns: , asm: Assembly-CSharp}
+      type: {class: BoundStateSynSend, ns: , asm: ElementalWar.GamePlay}
       data:
         delayTime: 0.02
     - rid: 4855356032389742603
-      type: {class: HitFeedbackReceive, ns: , asm: Assembly-CSharp}
+      type: {class: HitFeedbackReceive, ns: , asm: ElementalWar.GamePlay}
       data: 
     - rid: 4855356032389742688
-      type: {class: ThrowStateSynSend, ns: , asm: Assembly-CSharp}
+      type: {class: ThrowStateSynSend, ns: , asm: ElementalWar.GamePlay}
       data: 
 --- !u!4 &50067450
 Transform:

@@ -24,15 +24,15 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 4855356032389742618
-      type: {class: MoveAbility, ns: , asm: Assembly-CSharp}
+      type: {class: MoveAbility, ns: , asm: ElementalWar.GamePlay}
       data:
         moveSpeed: 1
     - rid: 4855356032389742619
-      type: {class: RotationAbility, ns: , asm: Assembly-CSharp}
+      type: {class: RotationAbility, ns: , asm: ElementalWar.GamePlay}
       data:
         rotationSpeed: 5
     - rid: 4855356032389742620
-      type: {class: ThrowAbility, ns: , asm: Assembly-CSharp}
+      type: {class: ThrowAbility, ns: , asm: ElementalWar.GamePlay}
       data:
         offset: {x: -0.5, y: 1, z: 0}
         throwAngleSpeed: 3
@@ -41,7 +41,7 @@ MonoBehaviour:
         maxThrowAngle: 80
         minThrowAngle: 10
     - rid: 4855356032389742621
-      type: {class: CameraControlAbility, ns: , asm: Assembly-CSharp}
+      type: {class: CameraControlAbility, ns: , asm: ElementalWar.GamePlay}
       data:
         followOffset: {x: 0.5, y: 0.8, z: 0}
         targetOffset: {x: 0.5, y: 1, z: -1.5}
