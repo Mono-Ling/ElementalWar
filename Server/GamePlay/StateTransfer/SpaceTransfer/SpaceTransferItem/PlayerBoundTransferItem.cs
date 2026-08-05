@@ -10,6 +10,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
 {
     public class PlayerBoundTransferItem : BaseSpaceTransferItem
     {
+        private const float EXPAND_TIMES = 2f;
         private ConcurrentQueue<PlayerSpaceItem> _playerBoundUpdateQueue = new();
         public override void Start(Dictionary<int, PlayerSpaceItem>? playerSpaceItemDic, SpaceTree? spaceTree)
         {
@@ -35,7 +36,9 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 (Vector3 center, _) = boundMes.Center;
                 (Vector3 extents, _) = boundMes.Extents;
 
-                playerSpace.bound = new(center, extents);
+                playerSpace.bound = new(center, extents * EXPAND_TIMES);
+
+                playerSpace.history.Add(udpHeader.Time, new(center, extents));
 
                 _playerBoundUpdateQueue.Enqueue(playerSpace);
 

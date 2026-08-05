@@ -117,13 +117,13 @@ public class SpaceTree
         hit = hitItem;
         return isHit;
     }
-    public List<SpaceItem> BoxOverlap(AABB bound)
-    => Overlap((aabb) => SpaceUtility.IsIntersect(bound, aabb));
-    public List<SpaceItem> SphereOverlap(Sphere sphere)
-    => Overlap((aabb) => SpaceUtility.IsIntersect(sphere, aabb));
-    public List<SpaceItem> RayOverlap(Space.Ray ray)
-    => Overlap((aabb) => SpaceUtility.IsIntersect(ray, aabb));
-    private List<SpaceItem> Overlap(Func<AABB, bool> func)
+    public List<SpaceItem> BoxOverlap(AABB bound, int hitMaskId = -1)
+    => Overlap((aabb) => SpaceUtility.IsIntersect(bound, aabb),hitMaskId);
+    public List<SpaceItem> SphereOverlap(Sphere sphere, int hitMaskId = -1)
+    => Overlap((aabb) => SpaceUtility.IsIntersect(sphere, aabb),hitMaskId);
+    public List<SpaceItem> RayOverlap(Ray ray, int hitMaskId = -1)
+    => Overlap((aabb) => SpaceUtility.IsIntersect(ray, aabb),hitMaskId);
+    private List<SpaceItem> Overlap(Func<AABB, bool> func, int hitMaskId = -1)
     {
         List<TreeItem> itemList = new();
         Stack<SpaceTreeNode> stack = new();
@@ -134,7 +134,7 @@ public class SpaceTree
             if (!func.Invoke(node.bound))
                 continue;
             foreach (var item in node.itemSet)
-                if (func.Invoke(item.bound))
+                if (func.Invoke(item.bound) && item.id != hitMaskId)
                     itemList.Add(item);
 
             if (node.IsLeaf)

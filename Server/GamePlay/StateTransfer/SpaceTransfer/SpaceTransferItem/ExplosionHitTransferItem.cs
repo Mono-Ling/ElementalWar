@@ -11,15 +11,18 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     public struct ExplosionHitReq
     {
         public DynamicSceneItem dynamicItem;
+        public long tick;
         public Sphere range;
-        public ExplosionHitReq(DynamicSceneItem item, Sphere range)
+        public ExplosionHitReq(DynamicSceneItem item, Sphere range,long tick)
         {
             this.dynamicItem = item;
             this.range = range;
+            this.tick = tick;
         }
     }
     public interface IOnExplosionHit
     {
+        bool TryExplosionHit(ExplosionHitReq req);
         void OnExplosionHit(Sphere range, List<int> sendList);
     }
     public class ExplosionHitTransferItem : BaseSpaceTransferItem
@@ -68,7 +71,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             var (center, _) = boundMes.Center;
             var radius = boundMes.Radius;
             Sphere range = new(center, radius);
-            ExplosionHitReq req = new(foundItem, range);
+            ExplosionHitReq req = new(foundItem, range,udpHeader.Time);
             lock (_explosionHitReqLock)
                 _explosionHitReqQueue.Enqueue(req, udpHeader.Time);
         }
@@ -87,7 +90,8 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
 
             foreach (var item in hitSpaceItem)
                 if (item is IOnExplosionHit hitItem)
-                    hitItem.OnExplosionHit(req.range, _sendList);
+                    if(hitItem.TryExplosionHit(req))
+                        hitItem.OnExplosionHit(req.range, _sendList);
         }
     }
 }

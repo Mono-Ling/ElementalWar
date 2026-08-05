@@ -36,5 +36,12 @@ namespace Server.GamePlay.StateTransfer
             }
             Console.WriteLine($"【围墙空间物体】命中Wall{wallId}");
         }
+
+        public float TryShootHit(ShootHitReq req)
+        {
+            if (req.ray.IntersectAABB(bound, out var dis))
+                return dis;
+            return -1;
+        }
     }
 }

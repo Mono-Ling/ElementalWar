@@ -66,5 +66,11 @@ namespace Space
         public bool Equals(AABB other) => center == other.center && extents == other.extents;
         public override bool Equals(object? obj) => obj is AABB other && Equals(other);
         public override int GetHashCode() => HashCode.Combine(center, extents);
+        public static AABB Lerp(AABB left, AABB right, float amount)
+        {
+            var newCenter = Vector3.Lerp(left.center, right.center, amount);
+            var newExtents = Vector3.Lerp(left.extents, right.extents, amount);
+            return new(newCenter, newExtents);
+        }
     }
 }

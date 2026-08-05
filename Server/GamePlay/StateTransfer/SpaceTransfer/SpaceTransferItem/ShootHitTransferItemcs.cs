@@ -10,17 +10,20 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     public struct ShootHitReq
     {
         public int playerId;
+        public long tick;
         public int maskSpaceId;
         public Ray ray;
-        public ShootHitReq(int playerId, Ray ray, int maskSpaceId)
+        public ShootHitReq(int playerId, Ray ray, int maskSpaceId,long tick)
         {
             this.playerId = playerId;
             this.ray = ray;
             this.maskSpaceId = maskSpaceId;
+            this.tick = tick;
         }
     }
     public interface IOnShootHit
     {
+        float TryShootHit(ShootHitReq req);
         void OnShootHit(Ray ray, List<int> sendList);
     }
     public class ShootHitTransferItemcs : BaseSpaceTransferItem
@@ -55,7 +58,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 var (origin, _) = boundMes.Origin;
                 var (dir, _) = boundMes.Dir;
                 Ray ray = new(origin, dir);
-                ShootHitReq req = new(package.playerId, ray, playerSpace.spaceId);
+                ShootHitReq req = new(package.playerId, ray, playerSpace.spaceId,udpHeader.Time);
 
                 lock (_shootHitReqLock)
                     _shootHitReqQueue.Enqueue(req, udpHeader.Time);
@@ -63,18 +66,6 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             }
             else
                 Console.WriteLine($"【命中检测中转】玩家{package.playerId}不存在，无效射击判定请求");
-        }
-        private bool TryGetShootHitReq(out ShootHitReq req)
-        {
-            lock (_shootHitReqLock)
-            {
-                if (_shootHitReqQueue.Count == 0)
-                {
-                    req = default;
-                    return false;
-                }
-                return _shootHitReqQueue.TryDequeue(out req, out _);
-            }
         }
         private void OnShootHitCheck(ShootHitReq req)
         {
@@ -86,11 +77,23 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             // 启用时需将mask设为玩家spaceId
             int mask = -1;
             mask = req.maskSpaceId;
-            if (spaceTree.RayCast(req.ray, out var hit, out _, mask))
+
+            var hitList = spaceTree.RayOverlap(req.ray, mask);
+            float minDis = float.MaxValue;
+            IOnShootHit minHitItem = null;
+            foreach ( var hit in hitList )
             {
-                if (hit != null && hit is IOnShootHit onHit)
-                    onHit.OnShootHit(req.ray, _sendList);
+                if (hit is not IOnShootHit hitItem)
+                    continue;
+                var dis = hitItem.TryShootHit(req);
+                if(dis > 0 && dis < minDis)
+                {
+                    minDis = dis;
+                    minHitItem = hitItem;
+                }
             }
+
+            minHitItem?.OnShootHit(req.ray, _sendList);
         }
     }
 }
