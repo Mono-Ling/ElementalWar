@@ -20,6 +20,7 @@ MonoBehaviour:
   - rid: 4855356032389742619
   - rid: 4855356032389742620
   - rid: 4855356032389742621
+  - rid: 5110485043599376475
   references:
     version: 2
     RefIds:
@@ -56,3 +57,8 @@ MonoBehaviour:
         pitchSpeed: 0
         maxRadius: 0.5
         pitchAddSpeed: 0
+    - rid: 5110485043599376475
+      type: {class: CameraFOVAbility, ns: , asm: ElementalWar.GamePlay}
+      data:
+        FOV: 65
+        smoothTime: 0.1

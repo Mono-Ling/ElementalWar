@@ -43,3 +43,9 @@ MonoBehaviour:
     type: 14
   - name: AbilitySystem
     type: 13
+  - name: IsReload
+    type: 5
+  - name: ReloadProgress
+    type: 3
+  - name: IsAim
+    type: 5

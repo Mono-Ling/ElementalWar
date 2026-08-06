@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Tools;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CameraControlAbility : BaseAbility
+using Math = Tools.Math;
+using Random = UnityEngine.Random;
+
+public class CameraControlAbility : BaseAbility, IEquatable<CameraControlAbility>
 {
     [Header("相机跟随点偏移（相对角色位置）")]
     public Vector3 followOffset = new Vector3(0, 1, 0);
@@ -104,5 +108,19 @@ public class CameraControlAbility : BaseAbility
         length = Mathf.Lerp(0, length, progress);
         offset = offset.normalized * length;
         return currPos + abilitySystem.transform.TransformVector(new Vector3(offset.x, offset.y, 0));
+    }
+    public override bool Equals(object obj)
+    {
+        if (obj is not CameraControlAbility ccAbility)
+            return false;
+        return followOffset == ccAbility.followOffset
+            && targetOffset == ccAbility.targetOffset;
+    }
+    public override int GetHashCode()
+    => (followOffset, targetOffset).GetHashCode();
+    public bool Equals(CameraControlAbility other)
+    {
+        return followOffset == other.followOffset
+            && targetOffset == other.targetOffset;
     }
 }
