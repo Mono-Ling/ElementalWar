@@ -7,9 +7,9 @@ using UnityEngine;
 [Serializable]
 public abstract class BaseFeedbackReceive
 {
-    protected MainPlayer mainPlayer;
+    protected MainPlayerNetSyn mainPlayer;
     protected Blackboard blackboard;
-    public virtual void Init(MainPlayer mainPlayer, Blackboard blackboard)
+    public virtual void Init(MainPlayerNetSyn mainPlayer, Blackboard blackboard)
     {
         this.mainPlayer = mainPlayer;
         this.blackboard = blackboard;

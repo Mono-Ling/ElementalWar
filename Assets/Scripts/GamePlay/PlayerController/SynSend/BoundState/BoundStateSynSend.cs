@@ -11,7 +11,7 @@ public class BoundStateSynSend : BaseSynSend
     private BoundStateMessage _stateMes = new();
     private Vector3Message _centerMes = new();
     private Vector3Message _extentsMes = new();
-    public override void Init(MainPlayer mainPlayer)
+    public override void Init(MainPlayerNetSyn mainPlayer)
     {
         base.Init(mainPlayer);
         _boxBound = mainPlayer.gameObject.GetComponent<BoxBound>();

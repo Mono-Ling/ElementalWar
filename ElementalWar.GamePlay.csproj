@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\StateMachine\Condition\Base\BaseCondition.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\JumpAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\RotationAbility.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AutoInject\IAutoInject.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\AimAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraFOVAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ShootStateSynSend.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ShootStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Edge\Edge.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Blackboard\BlackboardTemplate.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayerNetSyn.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Manager\ManagedPlayerMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ReloadAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BoundState\BoundStateSynSend.cs" />

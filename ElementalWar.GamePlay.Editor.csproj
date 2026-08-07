@@ -64,7 +64,7 @@
     <Analyzer Include="D:\Unity\2022.3.62\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Editor\MainPlayerEditor.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Editor\MainPlayerNetSynEditor.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Editor\AbilitySystemEditor.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Editor\OtherPlayerEditor.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Editor\AbilityListDrawer.cs" />

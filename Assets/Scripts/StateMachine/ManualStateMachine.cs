@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManualStateMachine : StateMachine
+public class ManualStateMachine : StateMachine, IAutoInject<Blackboard>
 {
     private bool _isStart => blackboard != null;
     protected override void Start()
@@ -10,7 +10,7 @@ public class ManualStateMachine : StateMachine
         if (initState == null)
             Debug.LogWarning("手动启动状态机】初始状态为空");
     }
-    public void InitStateMachine(Blackboard blackboard)
+    public void AutoInject(Blackboard blackboard)
     {
         if (blackboard == null)
         {

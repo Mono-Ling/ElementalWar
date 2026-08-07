@@ -1,24 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MainPlayer : MonoBehaviour
 {
     public PlayerController playerController;
-
-    [SerializeField]
-    [SerializeReference]
-    public List<BaseSynSend> stateSynSends = new();
-    [SerializeField]
-    [SerializeReference]
-    public List<BaseFeedbackReceive> feedbackReceives = new();
-    public NetReceiver netReceiver { get; private set; } = new();
     private Blackboard _blackboard;
-
-    // Start is called before the first frame update
     void Start()
     {
-        netReceiver.StartReceive();
         if (playerController == null)
         {
             Debug.LogError("【主玩家】玩家控制器为空");
@@ -31,43 +20,14 @@ public class MainPlayer : MonoBehaviour
             return;
         }
 
-        var abilitySystem = GetComponent<AbilitySystem>();
-        if (abilitySystem == null)
-            Debug.LogError("【主玩家】AbilitySystem初始化失败");
-        else
-            abilitySystem.StartAbilitySystem(_blackboard);
-
-        foreach (var send in stateSynSends)
-        {
-            send.Init(_blackboard);
-            send.Init(this);
-        }
-        foreach (var receiver in feedbackReceives)
-            receiver.Init(this, _blackboard);
+        InjectBlackboard();
     }
-    void Update()
+    private void InjectBlackboard()
     {
-        foreach (var send in stateSynSends)
-            send.OnUpdate();
-    }
-    void LateUpdate()
-    {
-        foreach (var send in stateSynSends)
-            send.OnLateUpdate();
-    }
-    void FixedUpdate()
-    {
-        foreach (var send in stateSynSends)
-            send.OnFixedUpdate();
-    }
-    void OnDestroy()
-    {
-        foreach (var send in stateSynSends)
-            send.OnRemove();
-
-        foreach (var receiver in feedbackReceives)
-            receiver.OnRemove();
-
-        netReceiver.StopReceive();
+        if (_blackboard == null)
+            return;
+        var components = GetComponents<IAutoInject<Blackboard>>();
+        foreach (var item in components)
+            item.AutoInject(_blackboard);
     }
 }

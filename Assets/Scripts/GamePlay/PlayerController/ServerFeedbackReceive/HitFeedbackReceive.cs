@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HitFeedbackReceive : BaseFeedbackReceive
 {
-    public override void Init(MainPlayer mainPlayer, Blackboard blackboard)
+    public override void Init(MainPlayerNetSyn mainPlayer, Blackboard blackboard)
     {
         base.Init(mainPlayer, blackboard);
         AddListener<PlayerShootHitMessage>(OnShootHit);

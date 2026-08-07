@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
-[RequireComponent(typeof(ManualStateMachine))]
-public class AbilitySystem : MonoBehaviour, ISerializationCallbackReceiver
+public class AbilitySystem : MonoBehaviour, ISerializationCallbackReceiver, IAutoInject<Blackboard>
 {
     [SerializeField]
     [SerializeReference]
@@ -15,7 +14,6 @@ public class AbilitySystem : MonoBehaviour, ISerializationCallbackReceiver
     public HashSet<BaseAbility> abilities = new();
     private PlayerInput _playerInput;
     private Blackboard _blackboard;
-    private ManualStateMachine _manualStateMachine;
 
     private List<BaseAbility> _abilitiesToRemove = new();
     private List<BaseAbility> _abilitiesToAdd = new();
@@ -34,14 +32,11 @@ public class AbilitySystem : MonoBehaviour, ISerializationCallbackReceiver
     }
     void Awake()
     {
-        _manualStateMachine = GetComponent<ManualStateMachine>();
-        if (_manualStateMachine == null)
-            Debug.LogError("【AbilitySystem】手动状态机组件获取失败");
         _playerInput = GetComponent<PlayerInput>();
         if (_playerInput == null)
             Debug.LogError("【【AbilitySystem】玩家输入组件获取失败");
     }
-    public void StartAbilitySystem(Blackboard blackboard)
+    public void AutoInject(Blackboard blackboard)
     {
         if (blackboard == null)
         {
@@ -52,8 +47,6 @@ public class AbilitySystem : MonoBehaviour, ISerializationCallbackReceiver
         blackboard.SetValue<AbilitySystem>("AbilitySystem", this);
         this._blackboard = blackboard;
         IsStart = true;
-
-        _manualStateMachine.InitStateMachine(_blackboard);
 
         foreach (var ability in abilities)
             ability.InitAbility(this, _playerInput, _blackboard);

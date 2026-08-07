@@ -131,6 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 50067450}
+  - component: {fileID: 50067456}
   - component: {fileID: 50067449}
   - component: {fileID: 50067454}
   - component: {fileID: 50067455}
@@ -187,7 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d03220543686d47a8fc90fc343b9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 8091095110145918300}
   stateSynSends:
   - rid: 4855355872216875018
   - rid: 4855355872216875019
@@ -336,6 +336,19 @@ MonoBehaviour:
   anyState: {fileID: 0}
   initState: {fileID: 11400000, guid: 20e22ea12005f114888437b24fc31664, type: 2}
   isDebug: 0
+--- !u!114 &50067456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50067447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac338f389f735442b6461ce91b19000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 8091095110145918300}
 --- !u!1 &161104267
 GameObject:
   m_ObjectHideFlags: 0

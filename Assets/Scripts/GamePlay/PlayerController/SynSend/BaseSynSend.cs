@@ -8,7 +8,7 @@ using UnityEngine;
 [System.Serializable]
 public abstract class BaseSynSend
 {
-    protected MainPlayer mainPlayer;
+    protected MainPlayerNetSyn mainPlayer;
     protected Blackboard blackboard;
     protected UdpHeader udpHeader;
     protected void SetHeader(bool isResponse = false)
@@ -28,7 +28,7 @@ public abstract class BaseSynSend
         this.blackboard = blackboard;
         SetHeader();
     }
-    public virtual void Init(MainPlayer mainPlayer)
+    public virtual void Init(MainPlayerNetSyn mainPlayer)
     {
         this.mainPlayer = mainPlayer;
         SetHeader();

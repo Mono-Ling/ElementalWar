@@ -4,8 +4,8 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(MainPlayer))]
-public class MainPlayerEditor : Editor
+[CustomEditor(typeof(MainPlayerNetSyn))]
+public class MainPlayerNetSynEditor : Editor
 {
     private static List<Type> _cachedSynSendTypes;
     private static List<Type> _cachedFeedbackReceiveTypes;
@@ -13,12 +13,6 @@ public class MainPlayerEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-
-        // 绘制 playerController 字段
-        var playerControllerProp = serializedObject.FindProperty("playerController");
-        EditorGUILayout.PropertyField(playerControllerProp);
-
-        EditorGUILayout.Space();
 
         // 绘制 stateSynSends 列表
         var synSendsProp = serializedObject.FindProperty("stateSynSends");
