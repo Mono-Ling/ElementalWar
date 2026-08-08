@@ -48,7 +48,7 @@ public class ThrowAbility : BaseAbility
             return;
         blackboard.SetValue<bool>("IsThrowFire", true);
 
-        blackboard.GetValue<ElementType>("ElementType", out var elementType);
+        blackboard.GetValue<ElementType>("AttackElementType", out var elementType);
 
         var throwItem = DynamicSceneItemMgr.Instance.CreateLocalDynamicSceneItem(DynamicSceneItemType.Grenade);
         if (throwItem is Grenade grenade)

@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\StateMachine\Condition\And.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\OtherPlayer.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\SubStateMachine.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\Editor\ElementReactionMapEditor.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\PosStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\JumpStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\BaseSynReceive.cs" />
@@ -79,11 +80,13 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BoundState\BoxBound.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\LocalStateSynTest.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayer.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\BaseElementReaction.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\Editor\ElementReactionListDrawer.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\Grenade.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\Base\BaseCondition.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\JumpAbility.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\RotationAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AutoInject\IAutoInject.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\RotationAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\AimAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraFOVAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementUtility.cs" />
@@ -101,10 +104,10 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\BaseAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\ExpHitFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ThrowStateSynSend.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Obj\Eff\ThrowTrack.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\HitFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraControlAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ThrowStateSynReceive.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Obj\Eff\ThrowTrack.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\AbilitySystemState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\GrenadeTempItem\GrenadeExp.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\BaseDynamicSceneItem.cs" />
@@ -121,10 +124,12 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BoundState\BoundStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\JumpStateSynSend.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReceiver.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ElementTypeSelectAbility.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Shoot\FireState.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\State.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneItem.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReactionMap.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneAsset.cs" />
     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BaseSynSend.cs" />

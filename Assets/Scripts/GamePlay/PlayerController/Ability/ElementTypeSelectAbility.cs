@@ -13,7 +13,7 @@ public class ElementTypeSelectAbility : BaseAbility
         base.InitAbility(abilitySystem, playerInput, blackboard);
         AddInputStartedListener("ElementType", OnElementTypeStarted);
 
-        blackboard.SetValue("ElementType", _elementType);
+        blackboard.SetValue("AttackElementType", _elementType);
     }
     private void OnElementTypeStarted(InputAction.CallbackContext context)
     {
@@ -32,7 +32,7 @@ public class ElementTypeSelectAbility : BaseAbility
         if (!ElementUtility.TryToElementType(index, out var element))
             return;
         _elementType = element;
-        blackboard.SetValue("ElementType", _elementType);
+        blackboard.SetValue("AttackElementType", _elementType);
         if (isDebug)
             Debug.Log($"【ElementTypeSelectAbility】{_elementType}");
     }

@@ -49,5 +49,9 @@ MonoBehaviour:
     type: 3
   - name: IsAim
     type: 5
-  - name: ElementType
+  - name: AttackElementType
     type: 15
+  - name: AttachTotalElement
+    type: 15
+  - name: ElementReceiver
+    type: 16
