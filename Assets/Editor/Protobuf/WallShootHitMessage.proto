@@ -7,4 +7,5 @@ message WallShootHitMessage
 	int32 wallId = 1;
 	Vector3Message origin = 2;
 	Vector3Message dir = 3;
+	int32 elementType = 4;
 }

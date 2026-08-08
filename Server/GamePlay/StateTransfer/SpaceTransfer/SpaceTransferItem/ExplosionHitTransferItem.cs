@@ -11,19 +11,21 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     public struct ExplosionHitReq
     {
         public DynamicSceneItem dynamicItem;
+        public int elementType;
         public long tick;
         public Sphere range;
-        public ExplosionHitReq(DynamicSceneItem item, Sphere range,long tick)
+        public ExplosionHitReq(DynamicSceneItem item,int elementType, Sphere range,long tick)
         {
             this.dynamicItem = item;
             this.range = range;
+            this.elementType = elementType;
             this.tick = tick;
         }
     }
     public interface IOnExplosionHit
     {
         bool TryExplosionHit(ExplosionHitReq req);
-        void OnExplosionHit(Sphere range, List<int> sendList);
+        void OnExplosionHit(ExplosionHitReq req, List<int> sendList);
     }
     public class ExplosionHitTransferItem : BaseSpaceTransferItem
     {
@@ -61,17 +63,17 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
         }
         private void OnExpReqReceive(ClientPackage package)
         {
-            if (package.message is not ExplosionRequestMessage boundMes)
+            if (package.message is not ExplosionRequestMessage reqMes)
                 return;
             if (package.header is not UdpHeader udpHeader)
                 return;
-            DynamicSceneItem item = new(package.playerId, boundMes.ClientDynamicItemId, default, DynamicSceneItemType.Grenade);
+            DynamicSceneItem item = new(package.playerId, reqMes.ClientDynamicItemId, default, DynamicSceneItemType.Grenade);
             if (!_grenadeItemSet.TryGetValue(item, out var foundItem))
                 return;
-            var (center, _) = boundMes.Center;
-            var radius = boundMes.Radius;
+            var (center, _) = reqMes.Center;
+            var radius = reqMes.Radius;
             Sphere range = new(center, radius);
-            ExplosionHitReq req = new(foundItem, range,udpHeader.Time);
+            ExplosionHitReq req = new(foundItem,reqMes.ElementType, range,udpHeader.Time);
             lock (_explosionHitReqLock)
                 _explosionHitReqQueue.Enqueue(req, udpHeader.Time);
         }
@@ -91,7 +93,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             foreach (var item in hitSpaceItem)
                 if (item is IOnExplosionHit hitItem)
                     if(hitItem.TryExplosionHit(req))
-                        hitItem.OnExplosionHit(req.range, _sendList);
+                        hitItem.OnExplosionHit(req, _sendList);
         }
     }
 }

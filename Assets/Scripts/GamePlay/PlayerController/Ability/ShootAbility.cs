@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 
 public class ShootAbility : BaseAbility
 {
+    private static ElementType _elementType = ElementType.Fire;
+    public static void SetShootElementType(ElementType element)
+    => _elementType = element;
     public float delayTime = 0.2f;// s
     private bool _isShoot;
     private float _preShootTime;
     private Camera _mainCamera;
-    private Vector3Message _originMes = new();
-    private Vector3Message _dirMes = new();
-    private ShootRequestMessage _shootReqMes = new();
+    private ShootRequestMessage _shootReqMes = new() { Origin = new(), Dir = new() };
     public override void InitAbility(AbilitySystem abilitySystem, PlayerInput playerInput, Blackboard blackboard)
     {
         base.InitAbility(abilitySystem, playerInput, blackboard);
@@ -50,11 +51,9 @@ public class ShootAbility : BaseAbility
         Vector3 origin = _mainCamera.ScreenToWorldPoint(screenOrigin);
         Vector3 dir = _mainCamera.transform.forward;
 
-        _originMes.Switch(origin);
-        _dirMes.Switch(dir);
-
-        _shootReqMes.Origin = _originMes;
-        _shootReqMes.Dir = _dirMes;
+        _shootReqMes.Origin.Switch(origin);
+        _shootReqMes.Dir.Switch(dir);
+        _shootReqMes.ElementType = ElementUtility.ToNumber(_elementType);
 
         UdpHeader udpHeader = new() { IsResponse = true };
         EventBus.Instance.Trigger<NetPackage>(EventType.SendTo, new(udpHeader, _shootReqMes));

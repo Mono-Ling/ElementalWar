@@ -25,14 +25,14 @@ namespace Message {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1FeHBsb3Npb25SZXF1ZXN0TWVzc2FnZS5wcm90bxIHTWVzc2FnZRoUVmVj",
-            "dG9yM01lc3NhZ2UucHJvdG8ibwoXRXhwbG9zaW9uUmVxdWVzdE1lc3NhZ2US",
-            "GwoTY2xpZW50RHluYW1pY0l0ZW1JZBgBIAEoBRInCgZjZW50ZXIYAiABKAsy",
-            "Fy5NZXNzYWdlLlZlY3RvcjNNZXNzYWdlEg4KBnJhZGl1cxgDIAEoAmIGcHJv",
-            "dG8z"));
+            "dG9yM01lc3NhZ2UucHJvdG8ihAEKF0V4cGxvc2lvblJlcXVlc3RNZXNzYWdl",
+            "EhsKE2NsaWVudER5bmFtaWNJdGVtSWQYASABKAUSJwoGY2VudGVyGAIgASgL",
+            "MhcuTWVzc2FnZS5WZWN0b3IzTWVzc2FnZRIOCgZyYWRpdXMYAyABKAISEwoL",
+            "ZWxlbWVudFR5cGUYBCABKAViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Message.Vector3MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ExplosionRequestMessage), global::Message.ExplosionRequestMessage.Parser, new[]{ "ClientDynamicItemId", "Center", "Radius" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ExplosionRequestMessage), global::Message.ExplosionRequestMessage.Parser, new[]{ "ClientDynamicItemId", "Center", "Radius", "ElementType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -80,6 +80,7 @@ namespace Message {
       clientDynamicItemId_ = other.clientDynamicItemId_;
       center_ = other.center_ != null ? other.center_.Clone() : null;
       radius_ = other.radius_;
+      elementType_ = other.elementType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -125,6 +126,18 @@ namespace Message {
       }
     }
 
+    /// <summary>Field number for the "elementType" field.</summary>
+    public const int ElementTypeFieldNumber = 4;
+    private int elementType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ElementType {
+      get { return elementType_; }
+      set {
+        elementType_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -143,6 +156,7 @@ namespace Message {
       if (ClientDynamicItemId != other.ClientDynamicItemId) return false;
       if (!object.Equals(Center, other.Center)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Radius, other.Radius)) return false;
+      if (ElementType != other.ElementType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -153,6 +167,7 @@ namespace Message {
       if (ClientDynamicItemId != 0) hash ^= ClientDynamicItemId.GetHashCode();
       if (center_ != null) hash ^= Center.GetHashCode();
       if (Radius != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Radius);
+      if (ElementType != 0) hash ^= ElementType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,6 +198,10 @@ namespace Message {
         output.WriteRawTag(29);
         output.WriteFloat(Radius);
       }
+      if (ElementType != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(ElementType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -205,6 +224,10 @@ namespace Message {
         output.WriteRawTag(29);
         output.WriteFloat(Radius);
       }
+      if (ElementType != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(ElementType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -223,6 +246,9 @@ namespace Message {
       }
       if (Radius != 0F) {
         size += 1 + 4;
+      }
+      if (ElementType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ElementType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -247,6 +273,9 @@ namespace Message {
       }
       if (other.Radius != 0F) {
         Radius = other.Radius;
+      }
+      if (other.ElementType != 0) {
+        ElementType = other.ElementType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -282,6 +311,10 @@ namespace Message {
             Radius = input.ReadFloat();
             break;
           }
+          case 32: {
+            ElementType = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -314,6 +347,10 @@ namespace Message {
           }
           case 29: {
             Radius = input.ReadFloat();
+            break;
+          }
+          case 32: {
+            ElementType = input.ReadInt32();
             break;
           }
         }

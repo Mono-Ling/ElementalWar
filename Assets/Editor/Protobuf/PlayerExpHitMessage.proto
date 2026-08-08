@@ -6,4 +6,5 @@ message PlayerExpHitMessage
 {
 	Vector3Message center = 1;
 	float radius = 2;
+	int32 elementType = 3;
 }

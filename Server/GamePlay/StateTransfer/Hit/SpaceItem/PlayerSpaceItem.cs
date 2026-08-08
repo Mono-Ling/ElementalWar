@@ -17,15 +17,15 @@ namespace Server.GamePlay.StateTransfer
         public HistoryBuffer<AABB> history { get; private set; } = new(WINDOW_SIZE);
         public PlayerSpaceItem(int playerId) => this.playerId = playerId;
 
-        public void OnShootHit(Ray ray, List<int> sendList)
+        public void OnShootHit(ShootHitReq req, List<int> sendList)
         {
             Vector3Message originMes = new();
             Vector3Message dirMes = new();
 
-            originMes.Switch(ray.origin);
-            dirMes.Switch(ray.dir);
+            originMes.Switch(req.ray.origin);
+            dirMes.Switch(req.ray.dir);
 
-            PlayerShootHitMessage hitMes = new() { Origin = originMes, Dir = dirMes };
+            PlayerShootHitMessage hitMes = new() { Origin = originMes, Dir = dirMes,ElementType = req.elementType };
             UdpHeader udpHeader = new();
             udpHeader.IsResponse = true;
 
@@ -33,10 +33,15 @@ namespace Server.GamePlay.StateTransfer
             Console.WriteLine($"【玩家空间物体】命中玩家{playerId}");
         }
 
-        public void OnExplosionHit(Sphere range, List<int> sendList)
+        public void OnExplosionHit(ExplosionHitReq req, List<int> sendList)
         {
-            PlayerExpHitMessage hitMes = new() { Center = new(), Radius = range.radius };
-            hitMes.Center.Switch(range.center);
+            PlayerExpHitMessage hitMes = new()
+            {
+                Center = new(),
+                Radius = req.range.radius,
+                ElementType = req.elementType,
+            };
+            hitMes.Center.Switch(req.range.center);
 
             UdpHeader udpHeader = new() { IsResponse = true };
 

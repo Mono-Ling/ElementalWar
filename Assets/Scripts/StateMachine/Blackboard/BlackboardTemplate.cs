@@ -44,6 +44,7 @@ public class BlackboardTemplate : ScriptableObject
         BlackboardArgType.Animator => new BlackboardArg<Animator>(),
         BlackboardArgType.AbilitySystem => new BlackboardArg<AbilitySystem>(),
         BlackboardArgType.PlayerGunController => new BlackboardArg<PlayerGunController>(),
+        BlackboardArgType.ElementType => new BlackboardArg<ElementType>(),
         _ => null,
     };
 }
@@ -70,4 +71,5 @@ public enum BlackboardArgType
     Animator,
     AbilitySystem,
     PlayerGunController,
+    ElementType,
 }

@@ -11,7 +11,7 @@ public class SingleSO<T> : ScriptableObject where T : Object
         {
             if (_instance == null)
             {
-                _instance = Resources.Load<T>(nameof(T).ToString());
+                _instance = Resources.Load<T>(typeof(T).ToString());
                 if (_instance == null)
                     Debug.LogError("【SO单例加载失败】" + typeof(T));
             }

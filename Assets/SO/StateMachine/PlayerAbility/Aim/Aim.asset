@@ -24,6 +24,7 @@ MonoBehaviour:
   - rid: 5110485043599376476
   - rid: 5110485043599376478
   - rid: 5110485043599376479
+  - rid: 5110485043599376491
   references:
     version: 2
     RefIds:
@@ -67,3 +68,6 @@ MonoBehaviour:
       type: {class: ReloadAbility, ns: , asm: ElementalWar.GamePlay}
       data:
         reloadTime: 3
+    - rid: 5110485043599376491
+      type: {class: ElementTypeSelectAbility, ns: , asm: ElementalWar.GamePlay}
+      data: 

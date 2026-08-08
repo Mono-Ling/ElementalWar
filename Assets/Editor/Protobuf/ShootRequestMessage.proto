@@ -6,4 +6,5 @@ message ShootRequestMessage
 {
 	Vector3Message origin = 1;
 	Vector3Message dir = 2;
+	int32 elementType = 3;
 }

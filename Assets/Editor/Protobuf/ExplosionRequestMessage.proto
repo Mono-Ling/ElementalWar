@@ -8,4 +8,5 @@ message ExplosionRequestMessage
 	int32 clientDynamicItemId = 1;
 	Vector3Message center = 2;
 	float radius = 3;
+	int32 elementType = 4;
 }

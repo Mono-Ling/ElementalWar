@@ -25,13 +25,13 @@ namespace Message {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlQbGF5ZXJFeHBIaXRNZXNzYWdlLnByb3RvEgdNZXNzYWdlGhRWZWN0b3Iz",
-            "TWVzc2FnZS5wcm90byJOChNQbGF5ZXJFeHBIaXRNZXNzYWdlEicKBmNlbnRl",
+            "TWVzc2FnZS5wcm90byJjChNQbGF5ZXJFeHBIaXRNZXNzYWdlEicKBmNlbnRl",
             "chgBIAEoCzIXLk1lc3NhZ2UuVmVjdG9yM01lc3NhZ2USDgoGcmFkaXVzGAIg",
-            "ASgCYgZwcm90bzM="));
+            "ASgCEhMKC2VsZW1lbnRUeXBlGAMgASgFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Message.Vector3MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PlayerExpHitMessage), global::Message.PlayerExpHitMessage.Parser, new[]{ "Center", "Radius" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PlayerExpHitMessage), global::Message.PlayerExpHitMessage.Parser, new[]{ "Center", "Radius", "ElementType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,6 +78,7 @@ namespace Message {
     public PlayerExpHitMessage(PlayerExpHitMessage other) : this() {
       center_ = other.center_ != null ? other.center_.Clone() : null;
       radius_ = other.radius_;
+      elementType_ = other.elementType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -111,6 +112,18 @@ namespace Message {
       }
     }
 
+    /// <summary>Field number for the "elementType" field.</summary>
+    public const int ElementTypeFieldNumber = 3;
+    private int elementType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ElementType {
+      get { return elementType_; }
+      set {
+        elementType_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -128,6 +141,7 @@ namespace Message {
       }
       if (!object.Equals(Center, other.Center)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Radius, other.Radius)) return false;
+      if (ElementType != other.ElementType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -137,6 +151,7 @@ namespace Message {
       int hash = 1;
       if (center_ != null) hash ^= Center.GetHashCode();
       if (Radius != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Radius);
+      if (ElementType != 0) hash ^= ElementType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -163,6 +178,10 @@ namespace Message {
         output.WriteRawTag(21);
         output.WriteFloat(Radius);
       }
+      if (ElementType != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(ElementType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -181,6 +200,10 @@ namespace Message {
         output.WriteRawTag(21);
         output.WriteFloat(Radius);
       }
+      if (ElementType != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(ElementType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -196,6 +219,9 @@ namespace Message {
       }
       if (Radius != 0F) {
         size += 1 + 4;
+      }
+      if (ElementType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ElementType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -217,6 +243,9 @@ namespace Message {
       }
       if (other.Radius != 0F) {
         Radius = other.Radius;
+      }
+      if (other.ElementType != 0) {
+        ElementType = other.ElementType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -248,6 +277,10 @@ namespace Message {
             Radius = input.ReadFloat();
             break;
           }
+          case 24: {
+            ElementType = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -276,6 +309,10 @@ namespace Message {
           }
           case 21: {
             Radius = input.ReadFloat();
+            break;
+          }
+          case 24: {
+            ElementType = input.ReadInt32();
             break;
           }
         }

@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class StaticSceneItem : MonoBehaviour
 {
-    private const string HIT_EFF_PATH = "HitWallEff";
-    private const float DELAY_EFF_DESTROY = 0.5f;
-    private const float EFF_OFFSET_NORMAL = 0.1f;
+    private const string HIT_EFF_PATH = "HitEff";
     public Vector3 offset;
     public Vector3 extents;
     public StaticSceneInfo info { get; private set; } = new();
@@ -35,7 +33,7 @@ public class StaticSceneItem : MonoBehaviour
         transform.localScale = info.scale;
         _isUpdate = false;
     }
-    public void OnHit(Space.Ray ray)
+    public void OnHit(Space.Ray ray, ElementType elementType)
     {
         Debug.Log("【命中】", gameObject);
         Vector3 hitPos = SpaceUtility.GetHitPosition(info.bound, ray);
@@ -47,13 +45,8 @@ public class StaticSceneItem : MonoBehaviour
             Debug.LogError("【StaticSceneItem】枪击特效加载失败", gameObject);
             return;
         }
-        obj.transform.forward = hitNor;
-        obj.transform.position = hitPos + EFF_OFFSET_NORMAL * hitNor;
-        StartCoroutine(DelayToDestroy(obj));
-    }
-    private IEnumerator DelayToDestroy(GameObject effObj)
-    {
-        yield return new WaitForSeconds(DELAY_EFF_DESTROY);
-        MonoObjectPool.Instance.PutObject(effObj);
+        var eff = obj.GetComponent<HitEff>();
+        if (eff != null)
+            eff.ShowEff(hitPos, hitNor, elementType);
     }
 }

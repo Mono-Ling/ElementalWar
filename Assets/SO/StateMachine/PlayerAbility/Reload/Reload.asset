@@ -22,6 +22,7 @@ MonoBehaviour:
   - rid: 5110485043599376467
   - rid: 5110485043599376474
   - rid: 5110485043599376480
+  - rid: 5110485043599376492
   references:
     version: 2
     RefIds:
@@ -60,4 +61,7 @@ MonoBehaviour:
         smoothTime: 0.1
     - rid: 5110485043599376480
       type: {class: AimAbility, ns: , asm: ElementalWar.GamePlay}
+      data: 
+    - rid: 5110485043599376492
+      type: {class: ElementTypeSelectAbility, ns: , asm: ElementalWar.GamePlay}
       data: 

@@ -14,7 +14,7 @@ public class ExpHitFeedbackReceive : BaseFeedbackReceive
     {
         if (message == null)
             return;
-        Debug.Log("【玩家受爆炸波及】");
+        Debug.Log($"【玩家受爆炸波及】{(ElementType)message.ElementType}");
     }
     public override void OnRemove()
     => RemoveListener<PlayerExpHitMessage>(OnExpHit);

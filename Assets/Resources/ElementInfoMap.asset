@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df941f04ab7c5c4b831ee61aac55ed6, type: 3}
+  m_Name: ElementInfoMap
+  m_EditorClassIdentifier: 
+  infoList:
+  - elementType: 0
+    name: 
+    color: {r: 0.59956515, g: 0.6226415, b: 0.59327155, a: 1}
+  - elementType: 1
+    name: "\u706B"
+    color: {r: 1, g: 0, b: 0, a: 1}
+  - elementType: 2
+    name: "\u6C34"
+    color: {r: 0, g: 0.50140023, b: 1, a: 1}
+  - elementType: 4
+    name: "\u51B0"
+    color: {r: 0.27987415, g: 0.8362068, b: 1, a: 1}
+  - elementType: 8
+    name: "\u98CE"
+    color: {r: 0, g: 1, b: 0.62300205, a: 1}
+  - elementType: 16
+    name: "\u96F7"
+    color: {r: 0.7214613, g: 0, b: 1, a: 1}
+  - elementType: 32
+    name: "\u5CA9"
+    color: {r: 0.7610062, g: 0.59839803, b: 0, a: 1}
+  - elementType: 64
+    name: "\u8349"
+    color: {r: 0.20829575, g: 1, b: 0.022012413, a: 1}

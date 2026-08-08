@@ -18,15 +18,15 @@ namespace Server.GamePlay.StateTransfer
             this.bound = bound;
         }
 
-        public void OnShootHit(Ray ray, List<int> sendList)
+        public void OnShootHit(ShootHitReq req, List<int> sendList)
         {
             Vector3Message originMes = new();
             Vector3Message dirMes = new();
 
-            originMes.Switch(ray.origin);
-            dirMes.Switch(ray.dir);
+            originMes.Switch(req.ray.origin);
+            dirMes.Switch(req.ray.dir);
 
-            WallShootHitMessage hitMes = new() { WallId = wallId, Origin = originMes, Dir = dirMes };
+            WallShootHitMessage hitMes = new() { WallId = wallId, Origin = originMes, Dir = dirMes ,ElementType = req.elementType};
             // 后期可优化为AOI控制流量
             foreach (int player in sendList)
             {

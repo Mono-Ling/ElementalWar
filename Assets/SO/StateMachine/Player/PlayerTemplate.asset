@@ -49,3 +49,5 @@ MonoBehaviour:
     type: 3
   - name: IsAim
     type: 5
+  - name: ElementType
+    type: 15

@@ -53,6 +53,8 @@ public class ReloadAbility : BaseAbility
     private void OnReloadOver()
     {
         Debug.Log("换弹结束");
+        if (blackboard.GetValue<ElementType>("ElementType", out var type))
+            ShootAbility.SetShootElementType(type);
     }
     private void OnReloadEnd()
     {

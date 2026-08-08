@@ -25,13 +25,14 @@ namespace Message {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlTaG9vdFJlcXVlc3RNZXNzYWdlLnByb3RvEgdNZXNzYWdlGhRWZWN0b3Iz",
-            "TWVzc2FnZS5wcm90byJkChNTaG9vdFJlcXVlc3RNZXNzYWdlEicKBm9yaWdp",
+            "TWVzc2FnZS5wcm90byJ5ChNTaG9vdFJlcXVlc3RNZXNzYWdlEicKBm9yaWdp",
             "bhgBIAEoCzIXLk1lc3NhZ2UuVmVjdG9yM01lc3NhZ2USJAoDZGlyGAIgASgL",
-            "MhcuTWVzc2FnZS5WZWN0b3IzTWVzc2FnZWIGcHJvdG8z"));
+            "MhcuTWVzc2FnZS5WZWN0b3IzTWVzc2FnZRITCgtlbGVtZW50VHlwZRgDIAEo",
+            "BWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Message.Vector3MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ShootRequestMessage), global::Message.ShootRequestMessage.Parser, new[]{ "Origin", "Dir" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ShootRequestMessage), global::Message.ShootRequestMessage.Parser, new[]{ "Origin", "Dir", "ElementType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,6 +79,7 @@ namespace Message {
     public ShootRequestMessage(ShootRequestMessage other) : this() {
       origin_ = other.origin_ != null ? other.origin_.Clone() : null;
       dir_ = other.dir_ != null ? other.dir_.Clone() : null;
+      elementType_ = other.elementType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -111,6 +113,18 @@ namespace Message {
       }
     }
 
+    /// <summary>Field number for the "elementType" field.</summary>
+    public const int ElementTypeFieldNumber = 3;
+    private int elementType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ElementType {
+      get { return elementType_; }
+      set {
+        elementType_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -128,6 +142,7 @@ namespace Message {
       }
       if (!object.Equals(Origin, other.Origin)) return false;
       if (!object.Equals(Dir, other.Dir)) return false;
+      if (ElementType != other.ElementType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -137,6 +152,7 @@ namespace Message {
       int hash = 1;
       if (origin_ != null) hash ^= Origin.GetHashCode();
       if (dir_ != null) hash ^= Dir.GetHashCode();
+      if (ElementType != 0) hash ^= ElementType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -163,6 +179,10 @@ namespace Message {
         output.WriteRawTag(18);
         output.WriteMessage(Dir);
       }
+      if (ElementType != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(ElementType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -181,6 +201,10 @@ namespace Message {
         output.WriteRawTag(18);
         output.WriteMessage(Dir);
       }
+      if (ElementType != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(ElementType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -196,6 +220,9 @@ namespace Message {
       }
       if (dir_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Dir);
+      }
+      if (ElementType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ElementType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -220,6 +247,9 @@ namespace Message {
           Dir = new global::Message.Vector3Message();
         }
         Dir.MergeFrom(other.Dir);
+      }
+      if (other.ElementType != 0) {
+        ElementType = other.ElementType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -254,6 +284,10 @@ namespace Message {
             input.ReadMessage(Dir);
             break;
           }
+          case 24: {
+            ElementType = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -285,6 +319,10 @@ namespace Message {
               Dir = new global::Message.Vector3Message();
             }
             input.ReadMessage(Dir);
+            break;
+          }
+          case 24: {
+            ElementType = input.ReadInt32();
             break;
           }
         }

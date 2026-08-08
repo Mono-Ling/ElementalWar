@@ -10,12 +10,14 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     public struct ShootHitReq
     {
         public int playerId;
+        public int elementType;
         public long tick;
         public int maskSpaceId;
         public Ray ray;
-        public ShootHitReq(int playerId, Ray ray, int maskSpaceId,long tick)
+        public ShootHitReq(int playerId, Ray ray,int elementType, int maskSpaceId,long tick)
         {
             this.playerId = playerId;
+            this.elementType = elementType;
             this.ray = ray;
             this.maskSpaceId = maskSpaceId;
             this.tick = tick;
@@ -24,7 +26,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     public interface IOnShootHit
     {
         float TryShootHit(ShootHitReq req);
-        void OnShootHit(Ray ray, List<int> sendList);
+        void OnShootHit(ShootHitReq req, List<int> sendList);
     }
     public class ShootHitTransferItemcs : BaseSpaceTransferItem
     {
@@ -47,7 +49,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             => RemoveListener<ShootRequestMessage>(OnShootReqReceive);
         private void OnShootReqReceive(ClientPackage package)
         {
-            if (package.message == null || package.message is not ShootRequestMessage boundMes)
+            if (package.message == null || package.message is not ShootRequestMessage reqMes)
                 return;
             if (package.header is not UdpHeader udpHeader)
                 return;
@@ -55,10 +57,10 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             // 过滤无效玩家
             if (playerSpaceItemDic.TryGetValue(package.playerId, out var playerSpace))
             {
-                var (origin, _) = boundMes.Origin;
-                var (dir, _) = boundMes.Dir;
+                var (origin, _) = reqMes.Origin;
+                var (dir, _) = reqMes.Dir;
                 Ray ray = new(origin, dir);
-                ShootHitReq req = new(package.playerId, ray, playerSpace.spaceId,udpHeader.Time);
+                ShootHitReq req = new(package.playerId, ray,reqMes.ElementType, playerSpace.spaceId,udpHeader.Time);
 
                 lock (_shootHitReqLock)
                     _shootHitReqQueue.Enqueue(req, udpHeader.Time);
@@ -93,7 +95,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 }
             }
 
-            minHitItem?.OnShootHit(req.ray, _sendList);
+            minHitItem?.OnShootHit(req, _sendList);
         }
     }
 }

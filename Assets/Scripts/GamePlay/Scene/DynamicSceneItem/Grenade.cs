@@ -24,6 +24,7 @@ public class Grenade : BaseDynamicSceneItem
     private Vector3Message _posMes = new();
     private GrenadePositionMessage _grenadeMes = new();
     private Color _expEffColor = Color.blue;
+    private ElementType _elementType;
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -31,8 +32,10 @@ public class Grenade : BaseDynamicSceneItem
             Debug.LogError("【手榴弹】刚体获取失败");
     }
     #region Local
-    public void Fire(Vector3 pos, Vector3 force)
+    public void Fire(Vector3 pos, Vector3 force, ElementType elementType)
     {
+        _elementType = elementType;
+
         transform.position = pos;
         _rigidbody.AddForce(force, ForceMode.Impulse);
 
@@ -42,7 +45,7 @@ public class Grenade : BaseDynamicSceneItem
             OnGrendeExplosion();
 
             DynamicSceneItemMgr.Instance.DestroyLocalDynamicSceneItem(this);
-        }, _expEffColor));
+        }));
     }
     void LateUpdate()
     {
@@ -74,7 +77,8 @@ public class Grenade : BaseDynamicSceneItem
         {
             ClientDynamicItemId = dynamicSceneItemId,
             Center = new(),
-            Radius = expRadius
+            Radius = expRadius,
+            ElementType = ElementUtility.ToNumber(_elementType),
         };
         mes.Center.Switch(_rigidbody.position);
 
@@ -122,11 +126,12 @@ public class Grenade : BaseDynamicSceneItem
     }
     #endregion
     #region General
-    private IEnumerator DelayToDestroy(Action action, Color effColor)
+    private IEnumerator DelayToDestroy(Action action)
     {
         yield return new WaitForSeconds(delayExp);
 
-        CreateExpEff(effColor);
+        if (ElementInfoMap.Instance.TryGetElementInfo(_elementType, out var info))
+            CreateExpEff(info.color);
 
         action?.Invoke();
     }
