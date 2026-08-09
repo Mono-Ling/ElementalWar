@@ -87,10 +87,14 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\JumpAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AutoInject\IAutoInject.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\RotationAbility.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ReactionPriorityTable.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\AimAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraFOVAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementUtility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ShootStateSynSend.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuffSet.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\BaseElementBuff.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementListener.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\RemoteStateSynTest.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneInfo.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\MoveAbility.cs" />

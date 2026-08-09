@@ -7,14 +7,20 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
 {
     public ElementType TotalElement { get; private set; }
     public Dictionary<ElementType, float> elementContentDic { get; private set; } = new();
+    [Header("元素反应对照表")]
     public ElementReactionMap elementReactionMap;
+    [Header("元素反应优先级表")]
+    public ReactionPriorityTable reactionPriorityTable;
     private Dictionary<ElementType, Coroutine> _attenuationDic = new();
     private Blackboard _blackboard;
-    private Array _elementArray = Enum.GetValues(typeof(ElementType));
+
+    private BlackboardArg<ElementBuffSet> _elementBuffSetArg;
     void Awake()
     {
         if (elementReactionMap == null)
             Debug.LogError("【元素接收器】元素反应对照表为空");
+        if (reactionPriorityTable == null)
+            Debug.LogError("【元素接收器】元素反应优先级表为空");
     }
     public void AutoInject(Blackboard blackboard)
     {
@@ -107,13 +113,15 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
         }
 
         var afterContent = content;
-        foreach (var item in _elementArray)
+
+        if (!reactionPriorityTable.TryGetPriorityTable(elementType, out var elementPriorityList))
+            Debug.LogWarning($"【元素接收器】不存在{elementType}的反应优先级列表");
+
+        foreach (var beforeElement in elementPriorityList)
         {
             if (afterContent <= 0)
                 break;
-            if (item is not ElementType beforeElement ||
-                beforeElement == ElementType.None ||
-                !TotalElement.HasFlag(beforeElement))
+            if (beforeElement == ElementType.None || !TotalElement.HasFlag(beforeElement))
                 continue;
             if (!elementContentDic.TryGetValue(beforeElement, out var beforeContent) || beforeContent <= 0)
                 continue;
@@ -132,7 +140,13 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
         }
 
         if (afterContent > 0)
+        {
             AddNewElementType(elementType, afterContent);
+
+            if (_elementBuffSetArg == null)
+                _blackboard.GetBlackboardArg("ElementBuffSet", out _elementBuffSetArg);
+            _elementBuffSetArg?.value?.OnElementTrigger(elementType);
+        }
     }
     void OnDestroy()
     => StopAllCoroutines();
