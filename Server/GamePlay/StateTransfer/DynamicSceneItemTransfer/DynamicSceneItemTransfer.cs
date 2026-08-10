@@ -106,7 +106,7 @@ namespace Server.GamePlay.StateTransfer
             foreach (var player in _playerSet)
             {
 #if !LOCALDEBUG
-                iif (player == key.Item1)
+                if (player == key.Item1)
                     continue;
 #endif
                 SendTo(new(player, SetHeader(), message));
