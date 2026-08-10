@@ -19,4 +19,4 @@ MonoBehaviour:
   anyState: {fileID: 0}
   initState: {fileID: 11400000, guid: 294ad74cc3e692248bc183d29b793bf7, type: 2}
   endState: {fileID: 11400000, guid: c92f630f2ce8f994498b23569df288ef, type: 2}
-  isDebug: 1
+  isDebug: 0

@@ -57,3 +57,5 @@ MonoBehaviour:
     type: 16
   - name: ElementBuffSet
     type: 17
+  - name: IsFrozen
+    type: 5

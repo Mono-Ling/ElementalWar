@@ -9,7 +9,7 @@ public static class ElementUtility
     {
         public const float STRONG = 2f;
         public const float WEAK = 1f;
-        public const float ATTENUA_SPEED = 0.8f;// c/s
+        public const float ATTENUA_SPEED = 0.2f;// c/s
         public const float ATTENUA_DELAY = 1f;
     }
     public static bool TryToElementType(int number, out ElementType elementType)

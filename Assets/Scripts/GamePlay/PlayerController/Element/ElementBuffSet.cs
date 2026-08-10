@@ -42,10 +42,23 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
         foreach (var buff in _buffSet)
             buff.OnFixedUpdate();
     }
+    public void AddElementBuff<T>() where T : BaseElementBuff, new()
+    => AddElementBuff(new T());
+    public void AddElementBuff<T>(System.Func<T> creator) where T : BaseElementBuff
+    => AddElementBuff(creator?.Invoke());
+    public bool TryRemoveElementBuff<T>() where T : BaseElementBuff, new()
+    => TryRemoveElementBuff(new T());
+    public bool TryRemoveElementBuff<T>(System.Func<T> creator) where T : BaseElementBuff
+    => TryRemoveElementBuff(creator?.Invoke());
     public void AddElementBuff(BaseElementBuff elementBuff)
     {
-        if (elementBuff == null || _buffSet.Contains(elementBuff))
+        if (elementBuff == null)
             return;
+        if (_buffSet.TryGetValue(elementBuff, out var buff))
+        {
+            buff.OnConflict();
+            return;
+        }
         if (!_blackboard.GetValue<ElementReceiver>("ElementReceiver", out var receiver))
         {
             Debug.LogWarning("【元素Buff集合】元素接收器获取失败");
@@ -56,6 +69,19 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
         _buffSet.Add(elementBuff);
 
         Debug.Log($"【元素Buff集合】新增buff:{elementBuff.GetType()}");
+    }
+    public bool TryRemoveElementBuff(BaseElementBuff elementBuff)
+    {
+        if (elementBuff == null)
+            return false;
+        if (_buffSet.TryGetValue(elementBuff, out var buff))
+        {
+            buff.OnExit();
+            _buffSet.Remove(buff);
+            return true;
+        }
+        else
+            return false;
     }
     public bool Contains(BaseElementBuff elementBuff)
     => _buffSet.Contains(elementBuff);

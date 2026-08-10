@@ -19,6 +19,14 @@ public abstract class BaseElementBuff
     public virtual void OnLateUpdate() { }
     public virtual void OnFixedUpdate() { }
     public virtual void OnExit() { }
+    /// <summary>
+    /// 集合中已存在，重复添加buff时调用
+    /// </summary>
+    public virtual void OnConflict() { }
+    /// <summary>
+    /// 尝试退出buff
+    /// </summary>
+    /// <returns>是否退出</returns>
     public abstract bool TryExit();
     protected void AddListener(ElementType elementType, Action<ElementType> action)
     => elementListener?.AddListener(elementType, action);

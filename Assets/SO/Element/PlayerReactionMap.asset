@@ -12,7 +12,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126c1945887cb71498cb83648c481128, type: 3}
   m_Name: PlayerReactionMap
   m_EditorClassIdentifier: 
-  _serializedReactions: []
+  _serializedReactions:
+  - key: 3
+    reaction:
+      rid: 5110485200715382784
+  - key: 5
+    reaction:
+      rid: 5110485200715382785
+  - key: 17
+    reaction:
+      rid: 5110485200715382787
+  - key: 20
+    reaction:
+      rid: 5110485200715382788
+  - key: 6
+    reaction:
+      rid: 5110485200715382789
+  - key: 18
+    reaction:
+      rid: 5110485200715382940
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5110485200715382784
+      type: {class: EvaporationReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u84B8\u53D1"
+        color: {r: 0.76729554, g: 0.6606066, b: 0.19544312, a: 1}
+    - rid: 5110485200715382785
+      type: {class: MeltReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u878D\u5316"
+        color: {r: 0.76862746, g: 0.65882355, b: 0.19607843, a: 1}
+    - rid: 5110485200715382787
+      type: {class: OverloadReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u8D85\u8F7D"
+        color: {r: 0.66666657, g: 0.14884688, b: 0.14884688, a: 1}
+    - rid: 5110485200715382788
+      type: {class: SuperconductionReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u8D85\u5BFC"
+        color: {r: 0, g: 0.8057289, b: 1, a: 1}
+    - rid: 5110485200715382789
+      type: {class: FrozenReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u51BB\u7ED3"
+        color: {r: 0, g: 0.4320469, b: 1, a: 1}
+        frozenTime: 10
+    - rid: 5110485200715382940
+      type: {class: ElectrificationReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u611F\u7535"
+        color: {r: 0.4552597, g: 0.14779866, b: 1, a: 1}
+        delay: 1

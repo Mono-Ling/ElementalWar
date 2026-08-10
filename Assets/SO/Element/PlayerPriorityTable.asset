@@ -14,4 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priorityInfos:
   - afterElement: 1
-    seqList: 
+    seqList: 02000000040000001000000040000000
+  - afterElement: 2
+    seqList: 01000000040000001000000040000000
+  - afterElement: 4
+    seqList: 020000000100000010000000
+  - afterElement: 16
+    seqList: 02000000010000004000000004000000

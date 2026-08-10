@@ -64,6 +64,7 @@
     <Analyzer Include="D:\Unity\2022.3.62\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\FrozenBuff.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\And.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\OtherPlayer.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\SubStateMachine.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementListener.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\RemoteStateSynTest.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneInfo.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\SuperconductionReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\MoveAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\PlayerGunController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Obj\Eff\HitEff.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ThrowStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\AbilitySystemState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\GrenadeTempItem\GrenadeExp.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\ElectrificationBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\BaseDynamicSceneItem.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\Test.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Manager\StaticSceneManager.cs" />
@@ -124,15 +127,19 @@
     <Compile Include="Assets\Scripts\StateMachine\Blackboard\BlackboardTemplate.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayerNetSyn.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Manager\ManagedPlayerMgr.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\EvaporationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ReloadAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BoundState\BoundStateSynSend.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\MeltReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\JumpStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReceiver.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ElementTypeSelectAbility.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Shoot\FireState.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\State.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\OverloadReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneItem.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\ElectrificationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReactionMap.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneAsset.cs" />
     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
@@ -143,6 +150,7 @@
     <Compile Include="Assets\Scripts\StateMachine\State\Shoot\CoolingState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AbilitySystem.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ReceiveItem\NetReceiver.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\FrozenReaction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\ElementalWar.GamePlay.asmdef" />
