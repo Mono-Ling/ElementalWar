@@ -21,3 +21,5 @@ MonoBehaviour:
     seqList: 020000000100000010000000
   - afterElement: 16
     seqList: 02000000010000004000000004000000
+  - afterElement: 64
+    seqList: 100000000200000001000000

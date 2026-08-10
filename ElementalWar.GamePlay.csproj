@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\StateMachine\Blackboard\Blackboard.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\IsTrue.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementType.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\BurnBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ShootAbility.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\Or.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\BaseFeedbackReceive.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\RotationAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ReactionPriorityTable.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\AimAbility.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\BloomReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraFOVAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementUtility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ShootStateSynSend.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\Test.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Manager\StaticSceneManager.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Throw\ThrowFireState.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\BurnReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Manager\DynamicSceneItemMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ShootStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Edge\Edge.cs" />
@@ -141,11 +144,13 @@
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneItem.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\ElectrificationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReactionMap.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\IntensificationBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneAsset.cs" />
     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BaseSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ThrowAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ReceiveItem\ReceiveEvent.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\OriginalIntensificationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\PosStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Shoot\CoolingState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AbilitySystem.cs" />

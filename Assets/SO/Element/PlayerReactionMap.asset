@@ -31,6 +31,15 @@ MonoBehaviour:
   - key: 18
     reaction:
       rid: 5110485200715382940
+  - key: 80
+    reaction:
+      rid: 5110485200715382941
+  - key: 65
+    reaction:
+      rid: 5110485200715382942
+  - key: 66
+    reaction:
+      rid: 5110485200715382943
   references:
     version: 2
     RefIds:
@@ -66,3 +75,22 @@ MonoBehaviour:
         name: "\u611F\u7535"
         color: {r: 0.4552597, g: 0.14779866, b: 1, a: 1}
         delay: 1
+    - rid: 5110485200715382941
+      type: {class: OriginalIntensificationReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u539F\u6FC0\u5316"
+        color: {r: 0.016474698, g: 0.7484276, b: 0.17434694, a: 1}
+        duration: 10
+    - rid: 5110485200715382942
+      type: {class: BurnReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u71C3\u70E7"
+        color: {r: 0.7484276, g: 0, b: 0, a: 1}
+        delay: 0.25
+        speed: 0.125
+        num: 0.5
+    - rid: 5110485200715382943
+      type: {class: BloomReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u539F\u7EFD\u653E"
+        color: {r: 0, g: 0.8553459, b: 0.24126388, a: 1}
