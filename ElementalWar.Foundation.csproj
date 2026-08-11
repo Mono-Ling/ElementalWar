@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Manager\Space\Tree\SpaceTreeNode.cs" />
     <Compile Include="Assets\Scripts\Manager\Event\EventBus.cs" />
     <Compile Include="Assets\Scripts\Manager\Pool\ObjectPool.cs" />
+    <Compile Include="Assets\Scripts\Manager\Base\BaseUI.cs" />
     <Compile Include="Assets\Scripts\Manager\Space\Bounds\AABB.cs" />
     <Compile Include="Assets\Scripts\Manager\Space\Tree\SpaceItem.cs" />
     <Compile Include="Assets\Scripts\Manager\Event\EventType.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets\Scripts\Manager\Tool\Math.cs" />
     <Compile Include="Assets\Scripts\Manager\Pool\PoolObj.cs" />
     <Compile Include="Assets\Scripts\Manager\Space\Tree\SpaceDicItem.cs" />
+    <Compile Include="Assets\Scripts\Manager\Framework\UIManager.cs" />
     <Compile Include="Assets\Scripts\Manager\Base\SingleSO.cs" />
   </ItemGroup>
   <ItemGroup>
