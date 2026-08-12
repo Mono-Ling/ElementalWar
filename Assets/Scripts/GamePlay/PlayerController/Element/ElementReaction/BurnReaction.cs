@@ -14,7 +14,7 @@ public class BurnReaction : BaseElementReaction
     [Header("先手元素消耗量/后手元素消耗量")]
     public float num = 0.5f;
     private ElementBuffSet _elementBuffSet;
-    public override void OnReaction(
+    public override bool OnReaction(
         ElementType beforeElement, ElementType afterElement,
         ref float beforeContent, ref float afterContent)
     {
@@ -25,9 +25,10 @@ public class BurnReaction : BaseElementReaction
         }
         BurnBuff buff = new(delay, speed);
         if (_elementBuffSet?.Contains(buff) ?? true)
-            return;
+            return false;
 
         GetContentDelta(ref beforeContent, ref afterContent, num);
         _elementBuffSet.AddElementBuff(buff);
+        return true;
     }
 }

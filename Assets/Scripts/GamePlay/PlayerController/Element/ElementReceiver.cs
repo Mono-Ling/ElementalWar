@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
 {
@@ -11,6 +12,8 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
     public ElementReactionMap elementReactionMap;
     [Header("元素反应优先级表")]
     public ReactionPriorityTable reactionPriorityTable;
+    public Vector3 uiPostionOffset = Vector3.up;
+    public float uiRadius = 0.5f;
     private Dictionary<ElementType, Coroutine> _attenuationDic = new();
     private Blackboard _blackboard;
 
@@ -131,12 +134,15 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
                 continue;
 
             var delta = beforeContent;
-            reaction.OnReaction(beforeElement, elementType, ref beforeContent, ref afterContent);
+            if (!reaction.OnReaction(beforeElement, elementType, ref beforeContent, ref afterContent))
+                continue;
             beforeContent = Mathf.Max(beforeContent, 0);
             delta -= beforeContent;
 
             ReduceElementContent(beforeElement, delta);
             Debug.Log($"【元素接收器】触发反应{reaction.name}");
+
+            ShowTextUI(reaction.name, reaction.color);
         }
 
         if (afterContent > 0)
@@ -147,6 +153,16 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
                 _blackboard.GetBlackboardArg("ElementBuffSet", out _elementBuffSetArg);
             _elementBuffSetArg?.value?.OnElementTrigger(elementType);
         }
+    }
+    private void ShowTextUI(string text, Color color)
+    {
+        var angle = Random.Range(0, Mathf.PI + Mathf.PI);
+        var radius = Random.Range(0, uiRadius);
+        Vector3 pos = transform.position + uiPostionOffset;
+        pos += new Vector3(Mathf.Cos(angle) * radius,
+                            Mathf.Sin(angle) * radius, 0);
+        DynamicTextInfo info = new(text, color, pos);
+        DynamicTextManager.Instance.LocalShowTextUI(info);
     }
     void OnDestroy()
     => StopAllCoroutines();

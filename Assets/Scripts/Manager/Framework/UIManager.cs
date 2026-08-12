@@ -174,6 +174,20 @@ public class UIManager : SingleMono<UIManager>
         action += BufferDestroyUI;
         uI.Hide(action, isAnimation);
     }
+    /// <summary>
+    /// 屏幕坐标 → 动态画布平面世界坐标
+    /// </summary>
+    public bool ScreenPointToDynamicCanvasWorld(Vector2 screenPoint, out Vector3 worldPoint)
+    {
+        worldPoint = default;
+        var rect = _dynamicCanvas as RectTransform;
+        if (rect == null)
+            return false;
+        var canvas = rect.GetComponentInParent<Canvas>();
+        if (canvas == null)
+            return false;
+        return RectTransformUtility.ScreenPointToWorldPointInRectangle(rect, screenPoint, canvas.rootCanvas.worldCamera, out worldPoint);
+    }
     private bool InitPanel<T>(GameObject panelObj, out T panel) where T : BaseUI
     {
         panel = null;

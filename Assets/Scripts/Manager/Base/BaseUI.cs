@@ -55,8 +55,9 @@ public abstract class BaseUI : MonoBehaviour
     {
         if (Time.time - startAnimationTime > showTime)
         {
-            callback?.Invoke(this);
+            var cb = callback;
             callback = null;
+            cb?.Invoke(this);
             canvasGroup.alpha = 1;
             return;
         }
@@ -68,8 +69,9 @@ public abstract class BaseUI : MonoBehaviour
     {
         if (Time.time - startAnimationTime > hideTime)
         {
-            callback?.Invoke(this);
+            var cb = callback;
             callback = null;
+            cb?.Invoke(this);
             canvasGroup.alpha = 0;
             return;
         }

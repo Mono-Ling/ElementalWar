@@ -10,7 +10,7 @@ using UnityEngine;
 public class MeltReaction : BaseElementReaction
 {
     private ElementBuffSet _elementBuffSet;
-    public override void OnReaction(
+    public override bool OnReaction(
         ElementType beforeElement, ElementType afterElement,
         ref float beforeContent, ref float afterContent)
     {
@@ -20,5 +20,6 @@ public class MeltReaction : BaseElementReaction
             _elementBuffSet?.TryRemoveElementBuff<FrozenBuff>(() => new(default));
         else
             Debug.Log("【融化反应】元素Buff集合获取失败");
+        return true;
     }
 }

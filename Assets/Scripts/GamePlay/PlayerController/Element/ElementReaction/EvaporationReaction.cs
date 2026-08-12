@@ -9,10 +9,5 @@ using UnityEngine;
 /// </summary>
 public class EvaporationReaction : BaseElementReaction
 {
-    public override void OnReaction(
-        ElementType beforeElement, ElementType afterElement,
-        ref float beforeContent, ref float afterContent)
-    {
-        base.OnReaction(beforeElement, afterElement, ref beforeContent, ref afterContent);
-    }
+
 }

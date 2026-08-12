@@ -73,9 +73,9 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\JumpStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\BaseSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Blackboard\Blackboard.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\BurnBuff.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\IsTrue.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementType.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\BurnBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ShootAbility.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\Or.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\BaseFeedbackReceive.cs" />
@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AutoInject\IAutoInject.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\RotationAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ReactionPriorityTable.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\UI\DynamicUI\DynamicText\DynamicText.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\AimAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\BloomReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraFOVAbility.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Assets\Scripts\StateMachine\Condition\Not.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Throw\ThrowLoopState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Manager\DynamicTextManager.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementInfoMap.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\BaseAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\ExpHitFeedbackReceive.cs" />
@@ -129,8 +131,8 @@
     <Compile Include="Assets\Scripts\StateMachine\Edge\Edge.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Blackboard\BlackboardTemplate.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayerNetSyn.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Manager\ManagedPlayerMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\EvaporationReaction.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Manager\ManagedPlayerMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ReloadAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BoundState\BoundStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\MeltReaction.cs" />
@@ -147,6 +149,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\IntensificationBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneAsset.cs" />
     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\UI\DynamicUI\DynamicText\DynamicTextInfo.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BaseSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ThrowAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ReceiveItem\ReceiveEvent.cs" />
@@ -1067,6 +1070,10 @@
     </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">

@@ -28,6 +28,8 @@ namespace Server.GamePlay
             _stateTransferList.Add(new DynamicSceneItemTransfer());
             _stateTransferList.Add(new GrenadePositionTransfer());
 
+            _stateTransferList.Add(new DynamicTextUITransfer());
+
             foreach (var stateTransfer in _stateTransferList)
                 stateTransfer.Start(this,playerIdList);
 

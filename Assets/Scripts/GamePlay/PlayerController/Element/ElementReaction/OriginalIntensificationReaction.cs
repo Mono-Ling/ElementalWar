@@ -12,7 +12,7 @@ public class OriginalIntensificationReaction : BaseElementReaction
     public float duration = 10f;
     public float delayListen = 0.1f;
     private ElementBuffSet _elementBuffSet;
-    public override void OnReaction(
+    public override bool OnReaction(
         ElementType beforeElement, ElementType afterElement,
         ref float beforeContent, ref float afterContent)
     {
@@ -23,8 +23,9 @@ public class OriginalIntensificationReaction : BaseElementReaction
         }
         IntensificationBuff buff = new(duration, delayListen);
         if (_elementBuffSet?.Contains(buff) ?? true)
-            return;
+            return false;
         base.OnReaction(beforeElement, afterElement, ref beforeContent, ref afterContent);
         _elementBuffSet?.AddElementBuff(buff);
+        return true;
     }
 }

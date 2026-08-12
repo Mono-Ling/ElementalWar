@@ -22,10 +22,14 @@ public abstract class BaseElementReaction
     /// <param name="afterElement">后手元素</param>
     /// <param name="beforeContent">先手元素量</param>
     /// <param name="afterContent">后手元素量</param>
-    public virtual void OnReaction(
+    /// <returns>是否能够反应</returns>
+    public virtual bool OnReaction(
         ElementType beforeElement, ElementType afterElement,
         ref float beforeContent, ref float afterContent)
-    => GetContentDelta(ref beforeContent, ref afterContent);
+    {
+        GetContentDelta(ref beforeContent, ref afterContent);
+        return true;
+    }
     /// <summary>
     /// 按比例消耗
     /// </summary>
