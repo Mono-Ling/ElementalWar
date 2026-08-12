@@ -9,11 +9,11 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
     public ElementReactionMap elementReactionMap;
     [Header("元素反应优先级表")]
     public ReactionPriorityTable reactionPriorityTable;
-    public Vector3 uiPostionOffset = Vector3.up;
-    public float uiRadius = 0.5f;
     private Blackboard _blackboard;
     private ElementAttachment _attachment;
     private ElementBuffSet _elementBuffSet;
+
+    private DynamicTextCreator _dynamicTextCreator;
     void Awake()
     {
         if (elementReactionMap == null)
@@ -24,6 +24,10 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
         _elementBuffSet = GetComponent<ElementBuffSet>();
         if (_elementBuffSet == null)
             Debug.LogError("【元素接收器】元素Buff集合组件获取失败");
+
+        _dynamicTextCreator = GetComponent<DynamicTextCreator>();
+        if (_dynamicTextCreator == null)
+            Debug.LogError("【元素接收器】动态文本UI创建组件获取失败");
     }
     public void AutoInject(Blackboard blackboard)
     {
@@ -85,7 +89,7 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             attachment.ReduceElementContent(beforeElement, delta);
             Debug.Log($"【元素接收器】触发反应{reaction.name}");
 
-            ShowTextUI(reaction.name, reaction.color);
+            _dynamicTextCreator?.ShowTextUI(reaction.name, reaction.color);
         }
 
         if (afterContent > 0)
@@ -93,15 +97,5 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             attachment.AddNewElementType(elementType, afterContent);
             _elementBuffSet?.OnElementTrigger(elementType);
         }
-    }
-    private void ShowTextUI(string text, Color color)
-    {
-        var angle = Random.Range(0, Mathf.PI + Mathf.PI);
-        var radius = Random.Range(0, uiRadius);
-        Vector3 pos = transform.position + uiPostionOffset;
-        pos += new Vector3(Mathf.Cos(angle) * radius,
-                            Mathf.Sin(angle) * radius, 0);
-        DynamicTextInfo info = new(text, color, pos);
-        DynamicTextManager.Instance.LocalShowTextUI(info);
     }
 }

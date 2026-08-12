@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 50067457}
   - component: {fileID: 50067459}
   - component: {fileID: 50067458}
+  - component: {fileID: 50067460}
   - component: {fileID: 50067455}
   - component: {fileID: 50067453}
   - component: {fileID: 50067448}
@@ -367,8 +368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementReactionMap: {fileID: 11400000, guid: 7901d34fa8bb7924bbe01248d313d1b7, type: 2}
   reactionPriorityTable: {fileID: 11400000, guid: 2ccba42631d40214aaf41e40409dda2c, type: 2}
-  uiPostionOffset: {x: 0, y: 1, z: 0}
-  uiRadius: 0.5
 --- !u!114 &50067458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +392,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ff4d5054a05ed478255d72d6d63e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &50067460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50067447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f20756757e37854ea9de425f385a9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPostionOffset: {x: 0, y: 1, z: 0}
+  uiRadius: 0.2
 --- !u!1 &161104267
 GameObject:
   m_ObjectHideFlags: 0

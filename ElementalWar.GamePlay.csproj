@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementUtility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ShootStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuffSet.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\DynamicTextCreator.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\BaseElementBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementListener.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\RemoteStateSynTest.cs" />

@@ -6,10 +6,6 @@ using UnityEngine;
 public class DynamicTextManager : SingleMono<DynamicTextManager>
 {
     private Camera _camera;
-    void Awake()
-    {
-        StartTextManager();
-    }
     public void StartTextManager()
     {
         _camera = Camera.main;

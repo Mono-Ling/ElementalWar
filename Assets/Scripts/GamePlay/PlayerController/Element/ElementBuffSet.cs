@@ -10,15 +10,24 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
     private ElementReceiver _elementReceiver;
     private ElementListener _elementListener = new();
 
+    private DynamicTextCreator _dynamicTextCreator;
+
     private List<BaseElementBuff> _lostList = new();
+    void Awake()
+    {
+        _elementReceiver = GetComponent<ElementReceiver>();
+        if (_elementReceiver == null)
+            Debug.LogError("【元素Buff集合】元素接收器组件获取失败");
+
+        _dynamicTextCreator = GetComponent<DynamicTextCreator>();
+        if (_dynamicTextCreator == null)
+            Debug.LogError("【元素Buff集合】动态字体UI创建组件获取失败");
+    }
     public void AutoInject(Blackboard inject)
     {
         if (inject == null)
             Debug.LogError("【元素Buff集合】黑板注入为空");
         this._blackboard = inject;
-        _elementReceiver = GetComponent<ElementReceiver>();
-        if (_elementReceiver == null)
-            Debug.LogError("【元素Buff集合】元素接收器组件获取失败");
     }
     void Update()
     {
@@ -73,7 +82,10 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
             Debug.LogWarning("【元素Buff集合】元素附着组件获取失败");
             return;
         }
-        elementBuff.Init(_blackboard, _elementReceiver, attachment, this, _elementListener);
+        elementBuff.Init(
+            _blackboard, _elementReceiver,
+            attachment, this,
+            _elementListener, _dynamicTextCreator);
         elementBuff.OnEnter();
         _buffSet.Add(elementBuff);
 

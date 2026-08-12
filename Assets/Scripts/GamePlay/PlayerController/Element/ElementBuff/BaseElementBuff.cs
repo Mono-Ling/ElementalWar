@@ -10,13 +10,18 @@ public abstract class BaseElementBuff
     protected ElementAttachment elementAttachment;
     protected ElementBuffSet elementBuffSet;
     protected ElementListener elementListener;
-    public virtual void Init(Blackboard blackboard, ElementReceiver receiver, ElementAttachment attachment, ElementBuffSet buffSet, ElementListener listener)
+
+    protected DynamicTextCreator dynamicTextCreator;
+    public virtual void Init(Blackboard blackboard, ElementReceiver receiver,
+    ElementAttachment attachment, ElementBuffSet buffSet,
+    ElementListener listener, DynamicTextCreator dynamicTextCreator)
     {
         this.blackboard = blackboard;
         this.elementReceiver = receiver;
         this.elementAttachment = attachment;
         this.elementBuffSet = buffSet;
         this.elementListener = listener;
+        this.dynamicTextCreator = dynamicTextCreator;
     }
     public virtual void OnEnter() { }
     public virtual void OnUpdate() { }
