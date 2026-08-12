@@ -13,7 +13,7 @@ public class BurnBuff : BaseElementBuff
         _speed = speed;
     }
     public override bool TryExit()
-    => !elementReceiver.TotalElement.HasFlag(ElementType.Grass);
+    => !elementAttachment.TotalElement.HasFlag(ElementType.Grass);
     public override void OnUpdate()
     {
         if (Time.time - _preTime < _delay)

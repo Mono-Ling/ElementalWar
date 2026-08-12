@@ -53,9 +53,7 @@ MonoBehaviour:
     type: 15
   - name: AttachTotalElement
     type: 15
-  - name: ElementReceiver
+  - name: ElementAttachment
     type: 16
-  - name: ElementBuffSet
-    type: 17
   - name: IsFrozen
     type: 5

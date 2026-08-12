@@ -10,9 +10,11 @@ public abstract class BaseElementReaction
     public Color color;
     protected Blackboard blackboard;
     protected ElementReceiver elementReceiver;
-    public virtual void Init(ElementReceiver receiver, Blackboard blackboard)
+    protected ElementBuffSet elementBuffSet;
+    public virtual void Init(ElementReceiver receiver, ElementBuffSet buffSet, Blackboard blackboard)
     {
         elementReceiver = receiver;
+        elementBuffSet = buffSet;
         this.blackboard = blackboard;
     }
     /// <summary>

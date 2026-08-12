@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ElementReceiver))]
 public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
 {
     private HashSet<BaseElementBuff> _buffSet = new();
     private Blackboard _blackboard;
+    private ElementReceiver _elementReceiver;
     private ElementListener _elementListener = new();
 
     private List<BaseElementBuff> _lostList = new();
@@ -14,7 +16,9 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
         if (inject == null)
             Debug.LogError("【元素Buff集合】黑板注入为空");
         this._blackboard = inject;
-        _blackboard?.SetValue("ElementBuffSet", this);
+        _elementReceiver = GetComponent<ElementReceiver>();
+        if (_elementReceiver == null)
+            Debug.LogError("【元素Buff集合】元素接收器组件获取失败");
     }
     void Update()
     {
@@ -59,12 +63,17 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
             buff.OnConflict();
             return;
         }
-        if (!_blackboard.GetValue<ElementReceiver>("ElementReceiver", out var receiver))
+        if (_elementReceiver == null)
         {
             Debug.LogWarning("【元素Buff集合】元素接收器获取失败");
             return;
         }
-        elementBuff.Init(_blackboard, receiver, _elementListener);
+        if (!_blackboard.GetValue<ElementAttachment>("ElementAttachment", out var attachment))
+        {
+            Debug.LogWarning("【元素Buff集合】元素附着组件获取失败");
+            return;
+        }
+        elementBuff.Init(_blackboard, _elementReceiver, attachment, this, _elementListener);
         elementBuff.OnEnter();
         _buffSet.Add(elementBuff);
 

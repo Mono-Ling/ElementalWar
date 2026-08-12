@@ -53,10 +53,5 @@ public class IntensificationBuff : BaseElementBuff
         Debug.Log("【原激化Buff】蔓激化");
     }
     private void OnRemove(ElementType elementType)
-    {
-        if (blackboard.GetValue<ElementBuffSet>("ElementBuffSet", out var elementBuffSet))
-            elementBuffSet?.TryRemoveElementBuff(this);
-        else
-            Debug.Log("【激化Buff】元素Buff集合获取失败");
-    }
+    => elementBuffSet?.TryRemoveElementBuff(this);
 }

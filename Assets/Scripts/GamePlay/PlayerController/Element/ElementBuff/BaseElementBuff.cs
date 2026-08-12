@@ -7,11 +7,15 @@ public abstract class BaseElementBuff
 {
     protected Blackboard blackboard;
     protected ElementReceiver elementReceiver;
+    protected ElementAttachment elementAttachment;
+    protected ElementBuffSet elementBuffSet;
     protected ElementListener elementListener;
-    public virtual void Init(Blackboard blackboard, ElementReceiver receiver, ElementListener listener)
+    public virtual void Init(Blackboard blackboard, ElementReceiver receiver, ElementAttachment attachment, ElementBuffSet buffSet, ElementListener listener)
     {
         this.blackboard = blackboard;
         this.elementReceiver = receiver;
+        this.elementAttachment = attachment;
+        this.elementBuffSet = buffSet;
         this.elementListener = listener;
     }
     public virtual void OnEnter() { }

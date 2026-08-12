@@ -15,8 +15,8 @@ public class ElectrificationBuff : BaseElementBuff
     /// </summary>
     /// <returns>是否退出</returns>
     public override bool TryExit()
-    => !elementReceiver.TotalElement.HasFlag(ElementType.Water)
-    || !elementReceiver.TotalElement.HasFlag(ElementType.Thunder);
+    => !elementAttachment.TotalElement.HasFlag(ElementType.Water)
+    || !elementAttachment.TotalElement.HasFlag(ElementType.Thunder);
     public override void OnEnter() => Debug.Log("【感电Buff】进入感电buff");
     public override void OnExit() => Debug.Log("【感电Buff】退出感电buff");
     public override void OnUpdate()

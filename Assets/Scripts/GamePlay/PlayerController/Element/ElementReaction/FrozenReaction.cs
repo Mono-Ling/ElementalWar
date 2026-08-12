@@ -10,7 +10,6 @@ using UnityEngine;
 public class FrozenReaction : BaseElementReaction
 {
     public float frozenTime = 3f;
-    private ElementBuffSet _elementBuffSet;
     public override bool OnReaction(
         ElementType beforeElement, ElementType afterElement,
         ref float beforeContent, ref float afterContent)
@@ -18,10 +17,7 @@ public class FrozenReaction : BaseElementReaction
         base.OnReaction(beforeElement, afterElement, ref beforeContent, ref afterContent);
 
         // 添加冻结buff
-        if (blackboard.GetValue("ElementBuffSet", out _elementBuffSet))
-            _elementBuffSet?.AddElementBuff<FrozenBuff>(() => new(frozenTime));
-        else
-            Debug.LogWarning("【冻结反应】元素Buff集合获取失败");
+        elementBuffSet?.AddElementBuff<FrozenBuff>(() => new(frozenTime));
         return true;
     }
 }
