@@ -2,12 +2,12 @@
     "name": "ElementalWar.GamePlay.Element.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:09cebf05877b465b9eadda0f337e6345"
+        "ElementalWar.GamePlay"
     ],
-    "includePlatforms": [],
-    "excludePlatforms": [
+    "includePlatforms": [
         "Editor"
     ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
