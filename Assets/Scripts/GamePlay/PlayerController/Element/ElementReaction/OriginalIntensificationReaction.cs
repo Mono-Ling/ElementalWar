@@ -9,17 +9,14 @@ using UnityEngine;
 /// </summary>
 public class OriginalIntensificationReaction : BaseElementReaction
 {
-    public float duration = 10f;
-    public float delayListen = 0.1f;
     public override bool OnReaction(
         ElementType beforeElement, ElementType afterElement,
         ref float beforeContent, ref float afterContent)
     {
-        IntensificationBuff buff = new(duration, delayListen);
-        if (elementBuffSet?.Contains(buff) ?? true)
+        if (elementBuffSet?.Contains<IntensificationBuff>() ?? true)
             return false;
         base.OnReaction(beforeElement, afterElement, ref beforeContent, ref afterContent);
-        elementBuffSet?.AddElementBuff(buff);
+        elementBuffSet?.AddElementBuff<IntensificationBuff>();
         return true;
     }
 }

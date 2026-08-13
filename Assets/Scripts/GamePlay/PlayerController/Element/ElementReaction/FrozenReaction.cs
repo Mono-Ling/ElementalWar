@@ -9,7 +9,6 @@ using UnityEngine;
 /// </summary>
 public class FrozenReaction : BaseElementReaction
 {
-    public float frozenTime = 3f;
     public override bool OnReaction(
         ElementType beforeElement, ElementType afterElement,
         ref float beforeContent, ref float afterContent)
@@ -17,7 +16,7 @@ public class FrozenReaction : BaseElementReaction
         base.OnReaction(beforeElement, afterElement, ref beforeContent, ref afterContent);
 
         // 添加冻结buff
-        elementBuffSet?.AddElementBuff<FrozenBuff>(() => new(frozenTime));
+        elementBuffSet?.AddElementBuff<FrozenBuff>();
         return true;
     }
 }

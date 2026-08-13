@@ -61,7 +61,7 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
         }
         item.OnRemoteCreate(_netReceiver, mes);
         _remoteDynamicItemDic.Add(mes.DynamicItemId, item);
-        Debug.Log($"【动态物体管理器】远程动态物体注册{mes.DynamicItemId}");
+        // Debug.Log($"【动态物体管理器】远程动态物体注册{mes.DynamicItemId}");
     }
     private void OnRemoteDestroy(DynamicItemStateMes mes)
     {

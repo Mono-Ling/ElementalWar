@@ -9,12 +9,11 @@ using UnityEngine;
 /// </summary>
 public class ElectrificationReaction : BaseElementReaction
 {
-    public float delay = 1f;
     public override bool OnReaction(
         ElementType beforeElement, ElementType afterElement,
         ref float beforeContent, ref float afterContent)
     {
-        elementBuffSet?.AddElementBuff<ElectrificationBuff>(() => new(delay));
+        elementBuffSet?.AddElementBuff<ElectrificationBuff>();
         return true;
     }
 }

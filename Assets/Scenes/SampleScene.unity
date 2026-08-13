@@ -380,6 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649c508bb307b7c438af7fb2f9ad1024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementBuffMap: {fileID: 11400000, guid: cd25b32d228f5e0498958b108c972741, type: 2}
 --- !u!114 &50067459
 MonoBehaviour:
   m_ObjectHideFlags: 0

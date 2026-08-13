@@ -15,7 +15,7 @@ public class MeltReaction : BaseElementReaction
     {
         base.OnReaction(beforeElement, afterElement, ref beforeContent, ref afterContent);
 
-        elementBuffSet?.TryRemoveElementBuff<FrozenBuff>(() => new(default));
+        elementBuffSet?.TryRemoveElementBuff<FrozenBuff>();
         return true;
     }
 }

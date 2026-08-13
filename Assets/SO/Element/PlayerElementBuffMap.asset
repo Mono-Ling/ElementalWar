@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923b085be098e7746b154d9aadf0a9f3, type: 3}
+  m_Name: PlayerElementBuffMap
+  m_EditorClassIdentifier: 
+  _serializeList:
+  - rid: 5110485252109238374
+  - rid: 5110485252109238375
+  - rid: 5110485252109238376
+  - rid: 5110485252109238377
+  references:
+    version: 2
+    RefIds:
+    - rid: 5110485252109238374
+      type: {class: BurnBuff, ns: , asm: ElementalWar.GamePlay}
+      data:
+        delay: 0.25
+        speed: 0.125
+    - rid: 5110485252109238375
+      type: {class: IntensificationBuff, ns: , asm: ElementalWar.GamePlay}
+      data:
+        veryIntensificationName: "\u8D85\u6FC0\u5316"
+        veryIntensificationColor: {r: 0.5688286, g: 0, b: 1, a: 1}
+        vineIntensificationName: "\u8513\u6FC0\u5316"
+        vineIntensificationColor: {r: 0, g: 1, b: 0.05080223, a: 1}
+        duration: 10
+        delayListen: 0.1
+    - rid: 5110485252109238376
+      type: {class: ElectrificationBuff, ns: , asm: ElementalWar.GamePlay}
+      data:
+        electrificationName: "\u611F\u7535"
+        electrificationColor: {r: 0.5691165, g: 0.18553454, b: 1, a: 1}
+        delay: 1
+    - rid: 5110485252109238377
+      type: {class: FrozenBuff, ns: , asm: ElementalWar.GamePlay}
+      data:
+        frozenTime: 10

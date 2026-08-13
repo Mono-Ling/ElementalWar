@@ -7,10 +7,8 @@ using UnityEngine;
 /// </summary>
 public class FrozenBuff : BaseElementBuff
 {
-    private float _frozenTime;
+    public float frozenTime;
     private float _startTime;
-    public FrozenBuff(float frozenTime)
-    => _frozenTime = Mathf.Abs(frozenTime);
     public override void OnEnter()
     {
         _startTime = Time.time;
@@ -25,5 +23,5 @@ public class FrozenBuff : BaseElementBuff
     public override void OnConflict()
     => _startTime = Time.time;
     public override bool TryExit()
-    => Time.time - _startTime >= _frozenTime;
+    => Time.time - _startTime >= frozenTime;
 }

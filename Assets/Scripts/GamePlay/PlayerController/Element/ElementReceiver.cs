@@ -56,11 +56,6 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             return;
         if (!TryGetAttachment(out var attachment))
             return;
-        if (attachment.TotalElement.HasFlag(elementType))
-        {
-            attachment.AddElementContent(elementType, content);
-            return;
-        }
 
         var afterContent = content;
 
@@ -94,7 +89,11 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
 
         if (afterContent > 0)
         {
-            attachment.AddNewElementType(elementType, afterContent);
+            if (attachment.TotalElement.HasFlag(elementType))
+                attachment.AddElementContent(elementType, afterContent);
+            else
+                attachment.AddNewElementType(elementType, afterContent);
+
             _elementBuffSet?.OnElementTrigger(elementType);
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ElementReceiver))]
 public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
 {
+    public ElementBuffMap elementBuffMap;
     private HashSet<BaseElementBuff> _buffSet = new();
     private Blackboard _blackboard;
     private ElementReceiver _elementReceiver;
@@ -15,6 +16,9 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
     private List<BaseElementBuff> _lostList = new();
     void Awake()
     {
+        if (elementBuffMap == null)
+            Debug.LogError("【元素Buff集合】元素Buff注册表为空");
+
         _elementReceiver = GetComponent<ElementReceiver>();
         if (_elementReceiver == null)
             Debug.LogError("【元素Buff集合】元素接收器组件获取失败");
@@ -55,15 +59,26 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
         foreach (var buff in _buffSet)
             buff.OnFixedUpdate();
     }
-    public void AddElementBuff<T>() where T : BaseElementBuff, new()
-    => AddElementBuff(new T());
-    public void AddElementBuff<T>(System.Func<T> creator) where T : BaseElementBuff
-    => AddElementBuff(creator?.Invoke());
-    public bool TryRemoveElementBuff<T>() where T : BaseElementBuff, new()
-    => TryRemoveElementBuff(new T());
-    public bool TryRemoveElementBuff<T>(System.Func<T> creator) where T : BaseElementBuff
-    => TryRemoveElementBuff(creator?.Invoke());
-    public void AddElementBuff(BaseElementBuff elementBuff)
+    public void AddElementBuff<T>() where T : BaseElementBuff
+    {
+        if (elementBuffMap == null)
+            return;
+        if (elementBuffMap.TryGetElementBuff<T>(out var buff))
+            AddElementBuff(buff);
+        else
+            Debug.LogWarning($"【元素Buff集合】{typeof(T)}未注册");
+    }
+    public bool TryRemoveElementBuff<T>() where T : BaseElementBuff
+    {
+        if (elementBuffMap == null)
+            return false;
+        if (elementBuffMap.TryGetElementBuff<T>(out var buff))
+            return TryRemoveElementBuff(buff);
+        else
+            Debug.LogWarning($"【元素Buff集合】{typeof(T)}未注册");
+        return false;
+    }
+    private void AddElementBuff(BaseElementBuff elementBuff)
     {
         if (elementBuff == null)
             return;
@@ -103,6 +118,16 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
         }
         else
             return false;
+    }
+    public bool Contains<T>() where T : BaseElementBuff
+    {
+        if (elementBuffMap == null)
+            return false;
+        if (elementBuffMap.TryGetElementBuff<T>(out var buff))
+            return Contains(buff);
+        else
+            Debug.LogWarning($"【元素Buff集合】{typeof(T)}未注册");
+        return false;
     }
     public bool Contains(BaseElementBuff elementBuff)
     => _buffSet.Contains(elementBuff);

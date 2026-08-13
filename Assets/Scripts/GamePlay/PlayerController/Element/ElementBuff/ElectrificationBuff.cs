@@ -7,9 +7,11 @@ using UnityEngine;
 /// </summary>
 public class ElectrificationBuff : BaseElementBuff
 {
-    private float _delay;
+    [Header("感电UI显示")]
+    public string electrificationName = "感电";
+    public Color electrificationColor;
+    public float delay;
     private float _preTime;
-    public ElectrificationBuff(float delay) => _delay = Mathf.Abs(delay);
     /// <summary>
     /// 水或雷元素附着消失退出
     /// </summary>
@@ -21,7 +23,7 @@ public class ElectrificationBuff : BaseElementBuff
     public override void OnExit() => Debug.Log("【感电Buff】退出感电buff");
     public override void OnUpdate()
     {
-        if (Time.time - _preTime < _delay)
+        if (Time.time - _preTime < delay)
             return;
         OnElectrification();
         _preTime = Time.time;
@@ -29,5 +31,6 @@ public class ElectrificationBuff : BaseElementBuff
     private void OnElectrification()
     {
         Debug.Log("【感电Buff】感电伤害");
+        dynamicTextCreator?.ShowTextUI(electrificationName, electrificationColor);
     }
 }

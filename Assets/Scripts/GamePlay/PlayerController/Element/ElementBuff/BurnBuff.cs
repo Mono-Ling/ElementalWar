@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class BurnBuff : BaseElementBuff
 {
-    private float _delay;
-    private float _speed;
+    public float delay;
+    public float speed;
     private float _preTime;
-    public BurnBuff(float delay, float speed)
-    {
-        _delay = delay;
-        _speed = speed;
-    }
     public override bool TryExit()
     => !elementAttachment.TotalElement.HasFlag(ElementType.Grass);
     public override void OnUpdate()
     {
-        if (Time.time - _preTime < _delay)
+        if (Time.time - _preTime < delay)
             return;
         _preTime = Time.time;
 
-        elementReceiver.ReceiveElement(ElementType.Grass, _speed);
+        elementReceiver.ReceiveElement(ElementType.Grass, speed);
         Debug.Log("【燃烧Buff】燃烧伤害");
     }
 }
