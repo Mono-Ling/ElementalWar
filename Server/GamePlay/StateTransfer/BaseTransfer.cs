@@ -25,6 +25,10 @@ namespace Server.GamePlay.StateTransfer
             => playerStateTransfer?.AddListener<T>(action);
         protected void RemoveListener<T>(Action<ClientPackage> action) where T : IMessage
             => playerStateTransfer?.RemoveListener<T>(action);
+        protected void AddListener(Type type, Action<ClientPackage> action)
+            => playerStateTransfer?.AddListener(type, action);
+        protected void RemoveListener(Type type, Action<ClientPackage> action)
+            => playerStateTransfer?.RemoveListener(type, action);
         protected void SendTo(ClientPackage message)
             => EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, message);
     }

@@ -20,10 +20,9 @@ namespace Server.GamePlay
         public PlayerStateTransfer(List<int> playerIdList)
         {
             _stateTransferList.Add(new PlayerPositionStateTransfer());
-            _stateTransferList.Add(new PlayerShootStateTransfer());
-            _stateTransferList.Add(new PlayerJumpStateTransfer());
-            _stateTransferList.Add(new PlayerThrowStateTransfer());
             _stateTransferList.Add(new SpaceStateTransfer());
+
+            _stateTransferList.Add(new PlayerStateTransmitTransfer());
 
             _stateTransferList.Add(new DynamicSceneItemTransfer());
             _stateTransferList.Add(new GrenadePositionTransfer());
@@ -59,22 +58,26 @@ namespace Server.GamePlay
             _cancel.Cancel();
         }
         public void AddListener<T>(Action<ClientPackage> action) where T : IMessage
+            => AddListener(typeof(T), action);
+        public void AddListener(Type type, Action<ClientPackage> action)
         {
-            if (_stateSynEventDic.TryGetValue(typeof(T), out var synEvent))
+            if (_stateSynEventDic.TryGetValue(type, out var synEvent))
                 synEvent.action += action;
             else
             {
                 StateSynReceiveEvent newSynEvent = new();
                 newSynEvent.action += action;
-                _stateSynEventDic.Add(typeof(T), newSynEvent);
+                _stateSynEventDic.Add(type, newSynEvent);
             }
         }
         public void RemoveListener<T>(Action<ClientPackage> action) where T : IMessage
+            => RemoveListener(typeof(T), action);
+        public void RemoveListener(Type type, Action<ClientPackage> action)
         {
-            if (_stateSynEventDic.TryGetValue(typeof(T), out var synEvent))
+            if (_stateSynEventDic.TryGetValue(type, out var synEvent))
                 synEvent.action -= action;
             else
-                Console.WriteLine($"【网络玩家中转】不存在{typeof(T)}消息的监听");
+                Console.WriteLine($"【网络玩家中转】不存在{type}消息的监听");
         }
         private void OnStateSynMessageReceive(ClientPackage package)
         {
