@@ -68,7 +68,7 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
                 break;
             if (beforeElement == ElementType.None || !attachment.TotalElement.HasFlag(beforeElement))
                 continue;
-            if (!attachment.elementContentDic.TryGetValue(beforeElement, out var beforeContent) || beforeContent <= 0)
+            if (!attachment.ElementContentDic.TryGetValue(beforeElement, out var beforeContent) || beforeContent <= 0)
                 continue;
 
             var group = beforeElement | elementType;

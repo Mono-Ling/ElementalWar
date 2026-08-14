@@ -55,5 +55,7 @@ MonoBehaviour:
     type: 15
   - name: ElementAttachment
     type: 16
+  - name: ElementAttachmentInfo
+    type: 17
   - name: IsFrozen
     type: 5

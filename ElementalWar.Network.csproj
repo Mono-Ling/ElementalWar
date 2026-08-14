@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Net\Message\PlayerShootHitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\DynamicSceneItemType.cs" />
     <Compile Include="Assets\Scripts\Net\UdpManager.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\ElementAttachmentMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Package\UdpPackage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ThrowStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ExplosionRequestMessage.cs" />

@@ -23,9 +23,22 @@ public class Blackboard : MonoBehaviour
         value = temp;
         return result;
     }
-    public bool SetValue<T>(string name, T value)
+    /// <summary>
+    /// 设置黑板参数
+    /// </summary>
+    /// <param name="name">参数名</param>
+    /// <param name="value">值</param>
+    /// <param name="isManualNotify">是否手动触发值变更事件（用于引用类型设置）</param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns>是否设置成功</returns>
+    public bool SetValue<T>(string name, T value, bool isManualNotify = false)
     {
-        return VisitArgDic<T>(name, (arg) => { arg.value = value; });
+        return VisitArgDic<T>(name, (arg) =>
+        {
+            arg.value = value;
+            if (isManualNotify)
+                arg?.NotifyChanged();
+        });
     }
     public bool GetBlackboardArg<T>(string name, out BlackboardArg<T> arg)
     {
@@ -85,6 +98,11 @@ public class BlackboardArg<T> : BaseBlackboardArg, IClearAllListeners
         }
     }
     public event Action<T> OnValueChange;
+    /// <summary>
+    /// 用于引用类型变更通知
+    /// </summary>
+    public void NotifyChanged()
+        => OnValueChange?.Invoke(_value);
 
     public void ClearAllListeners()
     {

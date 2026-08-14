@@ -46,6 +46,7 @@ public class BlackboardTemplate : ScriptableObject
         BlackboardArgType.PlayerGunController => new BlackboardArg<PlayerGunController>(),
         BlackboardArgType.ElementType => new BlackboardArg<ElementType>(),
         BlackboardArgType.ElementAttachment => new BlackboardArg<ElementAttachment>(),
+        BlackboardArgType.ElementAttachmentInfo => new BlackboardArg<ElementAttachmentInfo>(),
         _ => null,
     };
 }
@@ -74,4 +75,5 @@ public enum BlackboardArgType
     PlayerGunController,
     ElementType,
     ElementAttachment,
+    ElementAttachmentInfo,
 }

@@ -49,6 +49,7 @@ MonoBehaviour:
   - rid: 4855355946654236673
   - rid: 4855355946654236674
   - rid: 4855356032389742689
+  - rid: 5110485252109238477
   references:
     version: 2
     RefIds:
@@ -64,4 +65,7 @@ MonoBehaviour:
       data: 
     - rid: 4855356032389742689
       type: {class: ThrowStateSynReceive, ns: , asm: ElementalWar.GamePlay}
+      data: 
+    - rid: 5110485252109238477
+      type: {class: ElementAttachmentReceive, ns: , asm: ElementalWar.GamePlay}
       data: 

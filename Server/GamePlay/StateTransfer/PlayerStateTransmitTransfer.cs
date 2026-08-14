@@ -14,7 +14,8 @@ namespace Server.GamePlay.StateTransfer
         public PlayerStateTransmitTransfer() : this(
             typeof(JumpStateMessage),
             typeof(ShootStateMessage),
-            typeof(ThrowStateMessage)) { }
+            typeof(ThrowStateMessage),
+            typeof(ElementAttachmentMessage)) { }
         public PlayerStateTransmitTransfer(params Type[] types)
         {
             foreach (Type type in types)

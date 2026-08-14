@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,10 @@ using UnityEngine;
 /// </summary>
 public class ElementAttachment : MonoBehaviour, IAutoInject<Blackboard>
 {
+    public IReadOnlyDictionary<ElementType, float> ElementContentDic
+        => _elementContentDic;
     public ElementType TotalElement { get; private set; }
-    public Dictionary<ElementType, float> elementContentDic { get; private set; } = new();
+    private Dictionary<ElementType, float> _elementContentDic = new();
     private Dictionary<ElementType, Coroutine> _attenuationDic = new();
     private Blackboard _blackboard;
 
@@ -33,19 +36,21 @@ public class ElementAttachment : MonoBehaviour, IAutoInject<Blackboard>
             return;
         if (TotalElement.HasFlag(elementType))
             return;
-        if (_attenuationDic.ContainsKey(elementType) || elementContentDic.ContainsKey(elementType))
+        if (_attenuationDic.ContainsKey(elementType) || _elementContentDic.ContainsKey(elementType))
         {
             Debug.LogError("【元素附着】计数器重入");
             return;
         }
         TotalElement |= elementType;
-        elementContentDic.Add(elementType, content);
+        _elementContentDic.Add(elementType, content);
 
         var cor = StartCoroutine(ElementAttenuation(elementType));
         _attenuationDic.Add(elementType, cor);
 
         _blackboard.SetValue("AttachTotalElement", TotalElement);
         Debug.Log($"【元素附着】元素附着{elementType}|Total:{TotalElement}");
+
+        _blackboard.SetValue("ElementAttachment", this, true);
     }
     private IEnumerator ElementAttenuation(ElementType elementType)
     {
@@ -62,10 +67,12 @@ public class ElementAttachment : MonoBehaviour, IAutoInject<Blackboard>
     {
         if (elementType == ElementType.None || delta <= 0)
             return;
-        if (elementContentDic.TryGetValue(elementType, out var content))
+        if (_elementContentDic.TryGetValue(elementType, out var content))
         {
             var curr = content + delta;
-            elementContentDic[elementType] = Mathf.Min(curr, ElementUtility.Content.STRONG);
+            _elementContentDic[elementType] = Mathf.Min(curr, ElementUtility.Content.STRONG);
+
+            _blackboard.SetValue("ElementAttachment", this, true);
         }
         else
             Debug.LogWarning($"【元素附着】不存在{elementType}元素附着量计数器");
@@ -74,17 +81,19 @@ public class ElementAttachment : MonoBehaviour, IAutoInject<Blackboard>
     {
         if (elementType == ElementType.None || delta <= 0)
             return;
-        if (elementContentDic.TryGetValue(elementType, out var content))
+        if (_elementContentDic.TryGetValue(elementType, out var content))
         {
             var curr = content - delta;
             if (curr <= 0)
             {
-                elementContentDic.Remove(elementType);
+                _elementContentDic.Remove(elementType);
                 TotalElement &= ~elementType;
             }
             else
-                elementContentDic[elementType] = curr;
+                _elementContentDic[elementType] = curr;
             _blackboard.SetValue("AttachTotalElement", TotalElement);
+
+            _blackboard.SetValue("ElementAttachment", this, true);
         }
         else
             Debug.LogWarning($"【元素附着】不存在{elementType}元素附着量计数器");

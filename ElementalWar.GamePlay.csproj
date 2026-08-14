@@ -65,10 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\FrozenBuff.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerView\Element\ElementAttachmentInfo.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\And.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\OtherPlayer.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\SubStateMachine.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\Editor\ElementReactionMapEditor.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\PosStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\JumpStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\BaseSynReceive.cs" />
@@ -84,7 +84,6 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\LocalStateSynTest.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayer.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\BaseElementReaction.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\Editor\ElementReactionListDrawer.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\Grenade.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\Base\BaseCondition.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\JumpAbility.cs" />
@@ -102,7 +101,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementListener.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\RemoteStateSynTest.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneInfo.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\Editor\ElementBuffMapEditor.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\UI\DynamicUI\ElementAttachmentText.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\SuperconductionReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\MoveAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\PlayerGunController.cs" />
@@ -121,6 +120,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ThrowStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\AbilitySystemState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\GrenadeTempItem\GrenadeExp.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ElementAttachmentSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\ElectrificationBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\BaseDynamicSceneItem.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\Test.cs" />
@@ -137,7 +137,6 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\EvaporationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Manager\ManagedPlayerMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ReloadAbility.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\Editor\ElementBuffListDrawer.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BoundState\BoundStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\MeltReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\PlayerMove.cs" />
@@ -149,6 +148,7 @@
     <Compile Include="Assets\Scripts\StateMachine\State\State.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\OverloadReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneItem.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ElementAttachmentReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\SO\ReactionPriorityTable.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\ElectrificationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\IntensificationBuff.cs" />
@@ -158,6 +158,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BaseSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ThrowAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ReceiveItem\ReceiveEvent.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerView\Element\PlayerElementView.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\OriginalIntensificationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\PosStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Shoot\CoolingState.cs" />
