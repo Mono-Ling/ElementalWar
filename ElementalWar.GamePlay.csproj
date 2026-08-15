@@ -107,6 +107,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\PlayerGunController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Obj\Eff\HitEff.cs" />
     <Compile Include="Assets\Scripts\StateMachine\ManualStateMachine.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\DiffusionReaction.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\Not.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Throw\ThrowLoopState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\PlayerController.cs" />

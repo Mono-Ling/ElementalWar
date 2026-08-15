@@ -19,7 +19,11 @@ public class ElectrificationBuff : BaseElementBuff
     public override bool TryExit()
     => !elementAttachment.TotalElement.HasFlag(ElementType.Water)
     || !elementAttachment.TotalElement.HasFlag(ElementType.Thunder);
-    public override void OnEnter() => Debug.Log("【感电Buff】进入感电buff");
+    public override void OnEnter()
+    {
+        Debug.Log("【感电Buff】进入感电buff");
+        _preTime = Time.time - delay;
+    }
     public override void OnExit() => Debug.Log("【感电Buff】退出感电buff");
     public override void OnUpdate()
     {

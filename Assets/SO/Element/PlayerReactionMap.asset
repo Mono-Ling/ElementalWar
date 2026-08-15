@@ -40,6 +40,18 @@ MonoBehaviour:
   - key: 66
     reaction:
       rid: 5110485200715382943
+  - key: 9
+    reaction:
+      rid: 5110485252109238478
+  - key: 10
+    reaction:
+      rid: 5110485252109238479
+  - key: 12
+    reaction:
+      rid: 5110485252109238480
+  - key: 24
+    reaction:
+      rid: 5110485252109238481
   references:
     version: 2
     RefIds:
@@ -68,29 +80,52 @@ MonoBehaviour:
       data:
         name: "\u51BB\u7ED3"
         color: {r: 0, g: 0.4320469, b: 1, a: 1}
-        frozenTime: 10
     - rid: 5110485200715382940
       type: {class: ElectrificationReaction, ns: , asm: ElementalWar.GamePlay}
       data:
         name: "\u611F\u7535"
         color: {r: 0.4552597, g: 0.14779866, b: 1, a: 1}
-        delay: 1
     - rid: 5110485200715382941
       type: {class: OriginalIntensificationReaction, ns: , asm: ElementalWar.GamePlay}
       data:
         name: "\u539F\u6FC0\u5316"
         color: {r: 0.016474698, g: 0.7484276, b: 0.17434694, a: 1}
-        duration: 10
     - rid: 5110485200715382942
       type: {class: BurnReaction, ns: , asm: ElementalWar.GamePlay}
       data:
         name: "\u71C3\u70E7"
         color: {r: 0.7484276, g: 0, b: 0, a: 1}
-        delay: 0.25
-        speed: 0.125
         num: 0.5
     - rid: 5110485200715382943
       type: {class: BloomReaction, ns: , asm: ElementalWar.GamePlay}
       data:
         name: "\u539F\u7EFD\u653E"
         color: {r: 0, g: 0.8553459, b: 0.24126388, a: 1}
+    - rid: 5110485252109238478
+      type: {class: DiffusionReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u6269\u6563"
+        color: {r: 0, g: 1, b: 0.70492196, a: 1}
+        diffuseNum: 0.5
+        _diffuseAbleList: 01000000020000001000000004000000
+    - rid: 5110485252109238479
+      type: {class: DiffusionReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u6269\u6563"
+        color: {r: 0, g: 1, b: 0.7058824, a: 1}
+        diffuseNum: 0.5
+        _diffuseAbleList: 01000000020000001000000004000000
+    - rid: 5110485252109238480
+      type: {class: DiffusionReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u6269\u6563"
+        color: {r: 0, g: 1, b: 0.7058824, a: 1}
+        diffuseNum: 0.5
+        _diffuseAbleList: 01000000020000001000000004000000
+    - rid: 5110485252109238481
+      type: {class: DiffusionReaction, ns: , asm: ElementalWar.GamePlay}
+      data:
+        name: "\u6269\u6563"
+        color: {r: 0, g: 1, b: 0.7058824, a: 1}
+        diffuseNum: 0.5
+        _diffuseAbleList: 01000000020000001000000004000000
