@@ -9,7 +9,7 @@ using Space;
 
 namespace Server.GamePlay.StateTransfer
 {
-    public class PlayerSpaceItem : SpaceItem,IOnShootHit,IOnExplosionHit
+    public class PlayerSpaceItem : SpaceItem,IOnShootHit,IOnExplosionHit,IOnAreaElementDamage
     {
         private const int WINDOW_SIZE = 150;
         public int playerId { get;private set;  }
@@ -68,6 +68,19 @@ namespace Server.GamePlay.StateTransfer
             if(!history.TryGetLerp(req.tick, out var bound, (a, b, num) => AABB.Lerp(a, b, num)))
                 return false;
             return SpaceUtility.IsIntersect(req.range, bound);
+        }
+
+        public bool TryAreaElementDamage(AreaElementDamageReq req)
+        {
+            if (!history.TryGetLerp(req.tick, out var bound, (a, b, num) => AABB.Lerp(a, b, num)))
+                return false;
+            return SpaceUtility.IsIntersect(req.area, bound);
+        }
+        public void OnAreaElementDamageHit(AreaElementDamageReq req)
+        {
+            UdpHeader udpHeader = new() { IsResponse = true };
+            EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(playerId, udpHeader, req.damageMes));
+            Console.WriteLine($"【玩家空间物体】范围元素伤害命中玩家{playerId}");
         }
     }
 }

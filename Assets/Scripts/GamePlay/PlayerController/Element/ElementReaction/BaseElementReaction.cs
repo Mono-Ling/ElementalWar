@@ -68,4 +68,20 @@ public abstract class BaseElementReaction
         UdpHeader udpHeader = new() { IsResponse = isResponse };
         EventBus.Instance.Trigger<NetPackage>(EventType.SendTo, new(udpHeader, message));
     }
+    protected void SetAreaDamage(
+        AreaElementDamageMes areaMes,
+        float radius, params ElementAttackMessage[] attackMes)
+    {
+        if (areaMes == null || attackMes == null)
+            return;
+        areaMes.Center = areaMes.Center ?? new();
+        areaMes.Center.Switch(elementReceiver?.transform.position ?? Vector3.zero);
+        areaMes.Radius = radius;
+        areaMes.ElementAttack.Clear();
+        foreach (var attack in attackMes)
+        {
+            if (attack != null)
+                areaMes.ElementAttack.Add(attack);
+        }
+    }
 }

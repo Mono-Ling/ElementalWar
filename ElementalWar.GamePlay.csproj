@@ -133,6 +133,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ShootStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\SO\ElementInfoMap.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Edge\Edge.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\AOEFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Blackboard\BlackboardTemplate.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayerNetSyn.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\EvaporationReaction.cs" />

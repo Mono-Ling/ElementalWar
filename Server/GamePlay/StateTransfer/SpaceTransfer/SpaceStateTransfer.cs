@@ -24,6 +24,7 @@ namespace Server.GamePlay.StateTransfer
             _spaceTransferItemList.Add(new PlayerBoundTransferItem());
             _spaceTransferItemList.Add(new ShootHitTransferItemcs());
             _spaceTransferItemList.Add(new ExplosionHitTransferItem());
+            _spaceTransferItemList.Add(new AreaElementDamageTransferItem());
         }
 
         public override void Start(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
