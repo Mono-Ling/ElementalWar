@@ -57,12 +57,12 @@ public class DiffusionReaction : BaseElementReaction, ISerializationCallbackRece
             Debug.LogError("【扩散反应】元素附着组件为空");
             return;
         }
-        _currDiffuseList.Clear();
+        elements?.Clear();
         foreach (var element in _diffuseAbleSet)
         {
             if (elementAttachment.ElementContentDic.ContainsKey(element))
             {
-                elements.Add(element);
+                elements?.Add(element);
                 elementAttachment.ReduceElementContent(element, diffusContent);
             }
         }

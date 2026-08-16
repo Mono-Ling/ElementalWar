@@ -75,13 +75,17 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             if (!elementReactionMap.TryGetReaction(group, out var reaction))
                 continue;
 
-            var delta = beforeContent;
-            if (!reaction.OnReaction(beforeElement, elementType, ref beforeContent, ref afterContent))
+            var beforeDelta = beforeContent;
+            var afterDelta = afterContent;
+            if (!reaction.OnReaction(beforeElement, elementType,
+                ref beforeContent, ref afterContent))
                 continue;
             beforeContent = Mathf.Max(beforeContent, 0);
-            delta -= beforeContent;
+            afterContent = Mathf.Max(afterContent, 0);
+            beforeDelta -= beforeContent;
+            afterDelta -= afterContent;
 
-            attachment.ReduceElementContent(beforeElement, delta);
+            attachment.ReduceElementContent(beforeElement, beforeDelta);
             Debug.Log($"【元素接收器】触发反应{reaction.name}");
 
             _dynamicTextCreator?.ShowTextUI(reaction.name, reaction.color);
