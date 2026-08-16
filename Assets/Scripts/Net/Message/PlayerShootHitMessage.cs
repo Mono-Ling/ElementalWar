@@ -25,14 +25,15 @@ namespace Message {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtQbGF5ZXJTaG9vdEhpdE1lc3NhZ2UucHJvdG8SB01lc3NhZ2UaFFZlY3Rv",
-            "cjNNZXNzYWdlLnByb3RvInsKFVBsYXllclNob290SGl0TWVzc2FnZRInCgZv",
-            "cmlnaW4YASABKAsyFy5NZXNzYWdlLlZlY3RvcjNNZXNzYWdlEiQKA2RpchgC",
-            "IAEoCzIXLk1lc3NhZ2UuVmVjdG9yM01lc3NhZ2USEwoLZWxlbWVudFR5cGUY",
-            "AyABKAViBnByb3RvMw=="));
+            "cjNNZXNzYWdlLnByb3RvGhpFbGVtZW50QXR0YWNrTWVzc2FnZS5wcm90byKc",
+            "AQoVUGxheWVyU2hvb3RIaXRNZXNzYWdlEicKBm9yaWdpbhgBIAEoCzIXLk1l",
+            "c3NhZ2UuVmVjdG9yM01lc3NhZ2USJAoDZGlyGAIgASgLMhcuTWVzc2FnZS5W",
+            "ZWN0b3IzTWVzc2FnZRI0Cg1lbGVtZW50QXR0YWNrGAMgASgLMh0uTWVzc2Fn",
+            "ZS5FbGVtZW50QXR0YWNrTWVzc2FnZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Message.Vector3MessageReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Message.Vector3MessageReflection.Descriptor, global::Message.ElementAttackMessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PlayerShootHitMessage), global::Message.PlayerShootHitMessage.Parser, new[]{ "Origin", "Dir", "ElementType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.PlayerShootHitMessage), global::Message.PlayerShootHitMessage.Parser, new[]{ "Origin", "Dir", "ElementAttack" }, null, null, null, null)
           }));
     }
     #endregion
@@ -79,7 +80,7 @@ namespace Message {
     public PlayerShootHitMessage(PlayerShootHitMessage other) : this() {
       origin_ = other.origin_ != null ? other.origin_.Clone() : null;
       dir_ = other.dir_ != null ? other.dir_.Clone() : null;
-      elementType_ = other.elementType_;
+      elementAttack_ = other.elementAttack_ != null ? other.elementAttack_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -113,15 +114,15 @@ namespace Message {
       }
     }
 
-    /// <summary>Field number for the "elementType" field.</summary>
-    public const int ElementTypeFieldNumber = 3;
-    private int elementType_;
+    /// <summary>Field number for the "elementAttack" field.</summary>
+    public const int ElementAttackFieldNumber = 3;
+    private global::Message.ElementAttackMessage elementAttack_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int ElementType {
-      get { return elementType_; }
+    public global::Message.ElementAttackMessage ElementAttack {
+      get { return elementAttack_; }
       set {
-        elementType_ = value;
+        elementAttack_ = value;
       }
     }
 
@@ -142,7 +143,7 @@ namespace Message {
       }
       if (!object.Equals(Origin, other.Origin)) return false;
       if (!object.Equals(Dir, other.Dir)) return false;
-      if (ElementType != other.ElementType) return false;
+      if (!object.Equals(ElementAttack, other.ElementAttack)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -152,7 +153,7 @@ namespace Message {
       int hash = 1;
       if (origin_ != null) hash ^= Origin.GetHashCode();
       if (dir_ != null) hash ^= Dir.GetHashCode();
-      if (ElementType != 0) hash ^= ElementType.GetHashCode();
+      if (elementAttack_ != null) hash ^= ElementAttack.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -179,9 +180,9 @@ namespace Message {
         output.WriteRawTag(18);
         output.WriteMessage(Dir);
       }
-      if (ElementType != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(ElementType);
+      if (elementAttack_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ElementAttack);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -201,9 +202,9 @@ namespace Message {
         output.WriteRawTag(18);
         output.WriteMessage(Dir);
       }
-      if (ElementType != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(ElementType);
+      if (elementAttack_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ElementAttack);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -221,8 +222,8 @@ namespace Message {
       if (dir_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Dir);
       }
-      if (ElementType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ElementType);
+      if (elementAttack_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ElementAttack);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -248,8 +249,11 @@ namespace Message {
         }
         Dir.MergeFrom(other.Dir);
       }
-      if (other.ElementType != 0) {
-        ElementType = other.ElementType;
+      if (other.elementAttack_ != null) {
+        if (elementAttack_ == null) {
+          ElementAttack = new global::Message.ElementAttackMessage();
+        }
+        ElementAttack.MergeFrom(other.ElementAttack);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -284,8 +288,11 @@ namespace Message {
             input.ReadMessage(Dir);
             break;
           }
-          case 24: {
-            ElementType = input.ReadInt32();
+          case 26: {
+            if (elementAttack_ == null) {
+              ElementAttack = new global::Message.ElementAttackMessage();
+            }
+            input.ReadMessage(ElementAttack);
             break;
           }
         }
@@ -321,8 +328,11 @@ namespace Message {
             input.ReadMessage(Dir);
             break;
           }
-          case 24: {
-            ElementType = input.ReadInt32();
+          case 26: {
+            if (elementAttack_ == null) {
+              ElementAttack = new global::Message.ElementAttackMessage();
+            }
+            input.ReadMessage(ElementAttack);
             break;
           }
         }

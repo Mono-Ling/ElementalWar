@@ -19,7 +19,10 @@ namespace Server.GamePlay.StateTransfer
         public PlayerStateTransmitTransfer(params Type[] types)
         {
             foreach (Type type in types)
-                _transmitMessageSet.Add(type);
+                if (type.IsAssignableTo(typeof(IPlayerStateMessage)))
+                    _transmitMessageSet.Add(type);
+                else
+                    Debug.LogWarning($"【玩家状态转发】{type}不是玩家状态，注册失败");
         }
         public override void Start(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
         {
@@ -37,18 +40,12 @@ namespace Server.GamePlay.StateTransfer
         }
         private void OnTransmitMessage(ClientPackage package)
         {
-            if (package.message == null)
-                return;
-            var type = package.message.GetType();
-            if (!_transmitMessageSet.Contains(type))
-                return;
-            var playerId = type.GetProperty("PlayerId");
-            if (playerId == null)
+            if (package.message is not IPlayerStateMessage stateMes)
             {
-                Debug.LogWarning($"【玩家状态转发】状态{type}不存在PlayerId属性");
+                Debug.LogWarning($"【玩家状态转发】{package.message?.GetType()}不是玩家状态");
                 return;
             }
-            playerId.SetValue(package.message, package.playerId);
+            stateMes.PlayerId = package.playerId;
             foreach (int id in _playerSet)
             {
 #if !LOCALDEBUG

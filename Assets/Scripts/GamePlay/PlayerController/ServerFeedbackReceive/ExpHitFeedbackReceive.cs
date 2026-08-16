@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ExpHitFeedbackReceive : BaseFeedbackReceive
 {
-    public float elementContent = ElementUtility.Content.STRONG;
     private ElementReceiver _elementReceiver;
     public override void Init(MainPlayerNetSyn mainPlayer, Blackboard blackboard)
     {
@@ -17,9 +16,9 @@ public class ExpHitFeedbackReceive : BaseFeedbackReceive
     {
         if (message == null)
             return;
-        if (!ElementUtility.TryToElementType(message.ElementType, out var element))
+        if (!ElementUtility.TryToElementType(message.ElementAttack.ElementType, out var element))
             return;
-        _elementReceiver?.ReceiveElement(element, elementContent);
+        _elementReceiver?.ReceiveElement(element, message.ElementAttack.Content);
         Debug.Log($"【玩家受爆炸波及】{element}");
     }
     public override void OnRemove()

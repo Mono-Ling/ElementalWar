@@ -61,6 +61,7 @@ public class StaticSceneManager : SingleMono<StaticSceneManager>
         (var origin, _) = message.Origin;
         (var dir, _) = message.Dir;
         Space.Ray ray = new(origin, dir);
-        _sceneItemList[message.WallId].OnHit(ray, (ElementType)message.ElementType);
+        if (ElementUtility.TryToElementType(message.ElementAttack.ElementType, out var element))
+            _sceneItemList[message.WallId].OnHit(ray, element);
     }
 }

@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Net\Message\ThrowStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ExplosionRequestMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\GrenadePositionMessage.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\ElementAttackMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\WallShootHitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\GrenadeExpInitMes.cs" />
     <Compile Include="Assets\Scripts\Net\Message\QuaternionMessage.cs" />

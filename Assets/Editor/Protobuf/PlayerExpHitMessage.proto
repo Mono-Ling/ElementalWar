@@ -1,10 +1,12 @@
 syntax = "proto3";
 package Message;
 import "Vector3Message.proto";
+import "ElementAttackMessage.proto";
+
 // 玩家爆炸波及反馈消息,S -> C
 message PlayerExpHitMessage
 {
 	Vector3Message center = 1;
 	float radius = 2;
-	int32 elementType = 3;
+	ElementAttackMessage elementAttack = 3;
 }

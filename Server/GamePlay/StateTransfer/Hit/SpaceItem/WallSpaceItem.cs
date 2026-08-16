@@ -26,7 +26,13 @@ namespace Server.GamePlay.StateTransfer
             originMes.Switch(req.ray.origin);
             dirMes.Switch(req.ray.dir);
 
-            WallShootHitMessage hitMes = new() { WallId = wallId, Origin = originMes, Dir = dirMes ,ElementType = req.elementType};
+            WallShootHitMessage hitMes = new()
+            {
+                WallId = wallId,
+                Origin = originMes,
+                Dir = dirMes,
+                ElementAttack = req.elementAttack,
+            };
             // 后期可优化为AOI控制流量
             foreach (int player in sendList)
             {

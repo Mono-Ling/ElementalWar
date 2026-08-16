@@ -9,11 +9,13 @@ public class ShootAbility : BaseAbility
     private static ElementType _elementType = ElementType.Fire;
     public static void SetShootElementType(ElementType element)
     => _elementType = element;
+    [Range(0, ElementUtility.Content.STRONG)]
+    public float attackElementContent = ElementUtility.Content.WEAK;
     public float delayTime = 0.2f;// s
     private bool _isShoot;
     private float _preShootTime;
     private Camera _mainCamera;
-    private ShootRequestMessage _shootReqMes = new() { Origin = new(), Dir = new() };
+    private ShootRequestMessage _shootReqMes = new() { Origin = new(), Dir = new(), ElementAttack = new() };
     public override void InitAbility(AbilitySystem abilitySystem, PlayerInput playerInput, Blackboard blackboard)
     {
         base.InitAbility(abilitySystem, playerInput, blackboard);
@@ -53,7 +55,8 @@ public class ShootAbility : BaseAbility
 
         _shootReqMes.Origin.Switch(origin);
         _shootReqMes.Dir.Switch(dir);
-        _shootReqMes.ElementType = ElementUtility.ToNumber(_elementType);
+        _shootReqMes.ElementAttack.ElementType = ElementUtility.ToNumber(_elementType);
+        _shootReqMes.ElementAttack.Content = attackElementContent;
 
         UdpHeader udpHeader = new() { IsResponse = true };
         EventBus.Instance.Trigger<NetPackage>(EventType.SendTo, new(udpHeader, _shootReqMes));

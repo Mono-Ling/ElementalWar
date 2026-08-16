@@ -1,0 +1,7 @@
+syntax = "proto3";
+package Message;
+message ElementAttackMessage
+{
+	int32 elementType = 1;
+	float content = 2;
+}

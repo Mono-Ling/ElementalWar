@@ -11,14 +11,14 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     public struct ExplosionHitReq
     {
         public DynamicSceneItem dynamicItem;
-        public int elementType;
+        public ElementAttackMessage elementAttack;
         public long tick;
         public Sphere range;
-        public ExplosionHitReq(DynamicSceneItem item,int elementType, Sphere range,long tick)
+        public ExplosionHitReq(DynamicSceneItem item, ElementAttackMessage elementAttack, Sphere range,long tick)
         {
             this.dynamicItem = item;
             this.range = range;
-            this.elementType = elementType;
+            this.elementAttack = elementAttack;
             this.tick = tick;
         }
     }
@@ -63,7 +63,8 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
         }
         private void OnExpReqReceive(ClientPackage package)
         {
-            if (package.message is not ExplosionRequestMessage reqMes)
+            if (package.message is not ExplosionRequestMessage reqMes
+                || reqMes.ElementAttack == null)
                 return;
             if (package.header is not UdpHeader udpHeader)
                 return;
@@ -73,7 +74,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             var (center, _) = reqMes.Center;
             var radius = reqMes.Radius;
             Sphere range = new(center, radius);
-            ExplosionHitReq req = new(foundItem,reqMes.ElementType, range,udpHeader.Time);
+            ExplosionHitReq req = new(foundItem,reqMes.ElementAttack, range,udpHeader.Time);
             lock (_explosionHitReqLock)
                 _explosionHitReqQueue.Enqueue(req, udpHeader.Time);
         }
@@ -81,7 +82,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
         {
             if(spaceTree == null)
             {
-                Console.WriteLine("【爆炸命中检测中转】空间树未初始化");
+                Debug.LogError("【爆炸命中检测中转】空间树未初始化");
                 return;
             }
             if(!_grenadeItemSet.TryGetValue(req.dynamicItem,out var foundItem))

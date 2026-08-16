@@ -10,6 +10,9 @@ public class Grenade : BaseDynamicSceneItem
     public float delayExp = 5f;
     [Header("爆炸半径")]
     public float expRadius = 5f;
+    [Header("爆炸元素量")]
+    [Range(0, ElementUtility.Content.STRONG)]
+    public float attackElementContent = ElementUtility.Content.STRONG;
     [Header("位置同步发送时间间隔")]
     public float delaySend = 0.02f;
     public float positionSmoothTime = 0.06f;
@@ -78,7 +81,11 @@ public class Grenade : BaseDynamicSceneItem
             ClientDynamicItemId = dynamicSceneItemId,
             Center = new(),
             Radius = expRadius,
-            ElementType = ElementUtility.ToNumber(_elementType),
+            ElementAttack = new()
+            {
+                ElementType = ElementUtility.ToNumber(_elementType),
+                Content = attackElementContent,
+            }
         };
         mes.Center.Switch(_rigidbody.position);
 

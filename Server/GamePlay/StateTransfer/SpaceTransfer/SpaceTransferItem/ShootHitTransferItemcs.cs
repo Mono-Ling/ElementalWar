@@ -10,14 +10,14 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     public struct ShootHitReq
     {
         public int playerId;
-        public int elementType;
+        public ElementAttackMessage elementAttack;
         public long tick;
         public int maskSpaceId;
         public Ray ray;
-        public ShootHitReq(int playerId, Ray ray,int elementType, int maskSpaceId,long tick)
+        public ShootHitReq(int playerId, Ray ray, ElementAttackMessage elementAttack, int maskSpaceId,long tick)
         {
             this.playerId = playerId;
-            this.elementType = elementType;
+            this.elementAttack = elementAttack;
             this.ray = ray;
             this.maskSpaceId = maskSpaceId;
             this.tick = tick;
@@ -49,7 +49,9 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             => RemoveListener<ShootRequestMessage>(OnShootReqReceive);
         private void OnShootReqReceive(ClientPackage package)
         {
-            if (package.message == null || package.message is not ShootRequestMessage reqMes)
+            if (package.message == null
+                || package.message is not ShootRequestMessage reqMes
+                || reqMes.ElementAttack == null)
                 return;
             if (package.header is not UdpHeader udpHeader)
                 return;
@@ -60,20 +62,20 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 var (origin, _) = reqMes.Origin;
                 var (dir, _) = reqMes.Dir;
                 Ray ray = new(origin, dir);
-                ShootHitReq req = new(package.playerId, ray,reqMes.ElementType, playerSpace.spaceId,udpHeader.Time);
+                ShootHitReq req = new(package.playerId, ray,reqMes.ElementAttack, playerSpace.spaceId,udpHeader.Time);
 
                 lock (_shootHitReqLock)
                     _shootHitReqQueue.Enqueue(req, udpHeader.Time);
-                Console.WriteLine("【命中检测中转】射击请求");
+                // Console.WriteLine("【命中检测中转】射击请求");
             }
             else
-                Console.WriteLine($"【命中检测中转】玩家{package.playerId}不存在，无效射击判定请求");
+                Debug.LogWarning($"【命中检测中转】玩家{package.playerId}不存在，无效射击判定请求");
         }
         private void OnShootHitCheck(ShootHitReq req)
         {
             if(spaceTree == null)
             {
-                Console.WriteLine("【命中检测中转】空间树未初始化");
+                Debug.LogError("【命中检测中转】空间树未初始化");
                 return;
             }
             // 启用时需将mask设为玩家spaceId

@@ -1,6 +1,7 @@
 syntax = "proto3";
 package Message;
 import "Vector3Message.proto";
+import "ElementAttackMessage.proto";
 
 // 爆炸请求消息，C -> S
 message ExplosionRequestMessage
@@ -8,5 +9,5 @@ message ExplosionRequestMessage
 	int32 clientDynamicItemId = 1;
 	Vector3Message center = 2;
 	float radius = 3;
-	int32 elementType = 4;
+	ElementAttackMessage elementAttack = 4;
 }

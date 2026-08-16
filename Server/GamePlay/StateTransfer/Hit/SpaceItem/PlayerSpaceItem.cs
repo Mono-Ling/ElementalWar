@@ -25,7 +25,12 @@ namespace Server.GamePlay.StateTransfer
             originMes.Switch(req.ray.origin);
             dirMes.Switch(req.ray.dir);
 
-            PlayerShootHitMessage hitMes = new() { Origin = originMes, Dir = dirMes,ElementType = req.elementType };
+            PlayerShootHitMessage hitMes = new()
+            {
+                Origin = originMes,
+                Dir = dirMes,
+                ElementAttack = req.elementAttack,
+            };
             UdpHeader udpHeader = new();
             udpHeader.IsResponse = true;
 
@@ -39,7 +44,7 @@ namespace Server.GamePlay.StateTransfer
             {
                 Center = new(),
                 Radius = req.range.radius,
-                ElementType = req.elementType,
+                ElementAttack = req.elementAttack,
             };
             hitMes.Center.Switch(req.range.center);
 
