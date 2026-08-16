@@ -15,7 +15,7 @@ public class BurnBuff : BaseElementBuff
             return;
         _preTime = Time.time;
 
-        elementReceiver.ReceiveElement(ElementType.Grass, speed);
+        elementReceiver.ReceiveElement(ElementType.Fire, speed);
         Debug.Log("【燃烧Buff】燃烧伤害");
     }
 }
