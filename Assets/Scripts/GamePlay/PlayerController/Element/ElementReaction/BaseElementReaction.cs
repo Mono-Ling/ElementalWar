@@ -32,17 +32,8 @@ public abstract class BaseElementReaction
         GetContentDelta(ref beforeContent, ref afterContent);
         return true;
     }
-    /// <summary>
-    /// 获取元素反应伤害
-    /// </summary>
-    /// <param name="damage">初始伤害值</param>
-    /// <param name="beforeDelta">附着元素消耗量</param>
-    /// <param name="afterDelta">攻击元素消耗量</param>
-    /// <returns>元素反应伤害</returns>
-    public virtual int GetDamage(int damage, float beforeDelta, float afterDelta)
-    {
-        return damage + Mathf.CeilToInt(damage * afterDelta);
-    }
+    public virtual int GetDamage(ElementType attackElement, int damage)
+    => damage;
     /// <summary>
     /// 按比例消耗
     /// </summary>
@@ -50,7 +41,7 @@ public abstract class BaseElementReaction
     /// <param name="contentB"></param>
     /// <param name="num">消耗比例a/b</param>
     /// <returns></returns>
-    protected float GetContentDelta(ref float contentA, ref float contentB,
+    protected static float GetContentDelta(ref float contentA, ref float contentB,
     float num = 1)
     {
         num = Mathf.Clamp01(num);

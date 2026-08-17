@@ -21,4 +21,6 @@ public class BurnReaction : BaseElementReaction
         elementBuffSet?.AddElementBuff<BurnBuff>();
         return true;
     }
+    public override int GetDamage(ElementType attackElement, int damage)
+    => 0;
 }

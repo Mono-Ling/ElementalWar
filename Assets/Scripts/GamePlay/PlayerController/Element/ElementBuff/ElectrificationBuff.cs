@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class ElectrificationBuff : BaseElementBuff
 {
+    [Range(0, ElementUtility.Content.STRONG)]
+    public float content = ElementUtility.Content.WEAK;
+    public int damage = 50;
     [Header("感电UI显示")]
     public string electrificationName = "感电";
     public Color electrificationColor;
@@ -35,6 +38,12 @@ public class ElectrificationBuff : BaseElementBuff
     private void OnElectrification()
     {
         Debug.Log("【感电Buff】感电伤害");
+        var finalDamage = damage;
+        var finalContent = content;
+        TriggerAttackListener(ElementType.Thunder, ref finalContent, ref finalDamage);
+        if (finalDamage == 0 || finalContent < 0.001)
+            return;
+        playerHP?.ReduceHP(finalDamage, electrificationColor);
         dynamicTextCreator?.ShowTextUI(electrificationName, electrificationColor);
     }
 }

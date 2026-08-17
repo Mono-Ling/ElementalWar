@@ -28,6 +28,8 @@ public class MainPlayerHP : MonoBehaviour, IAutoInject<Blackboard>
     }
     public void ReduceHP(int damage, Color color)
     {
+        if (damage == 0)
+            return;
         _playerHP -= damage;
         _playerHP = Mathf.Max(_playerHP, 0);
         _blackboard.SetValue("HP", _playerHP);

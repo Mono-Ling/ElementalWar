@@ -25,18 +25,23 @@ MonoBehaviour:
       data:
         delay: 0.25
         speed: 0.125
+        damage: 5
     - rid: 5110485252109238375
       type: {class: IntensificationBuff, ns: , asm: ElementalWar.GamePlay}
       data:
+        elementContent: 1
         veryIntensificationName: "\u8D85\u6FC0\u5316"
         veryIntensificationColor: {r: 0.5688286, g: 0, b: 1, a: 1}
+        veryIntensificationDamage: 60
         vineIntensificationName: "\u8513\u6FC0\u5316"
         vineIntensificationColor: {r: 0, g: 1, b: 0.05080223, a: 1}
+        vineIntensificationDamage: 70
         duration: 10
         delayListen: 0.1
     - rid: 5110485252109238376
       type: {class: ElectrificationBuff, ns: , asm: ElementalWar.GamePlay}
       data:
+        damage: 50
         electrificationName: "\u611F\u7535"
         electrificationColor: {r: 0.5691165, g: 0.18553454, b: 1, a: 1}
         delay: 1

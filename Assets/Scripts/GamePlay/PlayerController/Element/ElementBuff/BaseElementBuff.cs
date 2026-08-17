@@ -11,11 +11,13 @@ public abstract class BaseElementBuff
     protected ElementAttachment elementAttachment;
     protected ElementBuffSet elementBuffSet;
     protected ElementListener elementListener;
+    protected MainPlayerHP playerHP;
 
     protected DynamicTextCreator dynamicTextCreator;
     public virtual void Init(Blackboard blackboard, ElementReceiver receiver,
     ElementAttachment attachment, ElementBuffSet buffSet,
-    ElementListener listener, DynamicTextCreator dynamicTextCreator)
+    ElementListener listener, DynamicTextCreator dynamicTextCreator,
+    MainPlayerHP mainPlayerHP)
     {
         this.blackboard = blackboard;
         this.elementReceiver = receiver;
@@ -23,6 +25,7 @@ public abstract class BaseElementBuff
         this.elementBuffSet = buffSet;
         this.elementListener = listener;
         this.dynamicTextCreator = dynamicTextCreator;
+        this.playerHP = mainPlayerHP;
     }
     public virtual void OnEnter() { }
     public virtual void OnUpdate() { }
@@ -46,6 +49,12 @@ public abstract class BaseElementBuff
     => elementListener?.AddAttackListener(elementType, action);
     protected void RemoveAttackListener(ElementType elementType, RefAction<float, int> action)
     => elementListener?.RemoveAttackListener(elementType, action);
+    protected void TriggerAttackListener(ElementType elementType, ref float content, ref int damage)
+    {
+        elementListener?.TriggerAttackListener(elementType, ref content, ref damage);
+        content = Mathf.Max(content, 0);
+        damage = Mathf.Max(damage, 0);
+    }
     public override bool Equals(object obj)
     => obj is BaseElementBuff other && GetType() == other.GetType();
     public override int GetHashCode()

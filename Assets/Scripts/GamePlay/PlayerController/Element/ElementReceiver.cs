@@ -97,7 +97,7 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             beforeDelta -= beforeContent;
             afterDelta -= afterContent;
 
-            var reactionDamage = reaction.GetDamage(elementDamage, beforeDelta, afterDelta);
+            var reactionDamage = reaction.GetDamage(elementType, elementDamage);
 
             attachment.ReduceElementContent(beforeElement, beforeDelta);
             _mainPlayerHP?.ReduceHP(reactionDamage, reaction.color);

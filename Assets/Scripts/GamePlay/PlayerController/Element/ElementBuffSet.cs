@@ -12,6 +12,7 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
     private ElementListener _elementListener = new();
 
     private DynamicTextCreator _dynamicTextCreator;
+    private MainPlayerHP _mainPlayerHP;
 
     private List<BaseElementBuff> _lostList = new();
     void Awake()
@@ -26,6 +27,10 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
         _dynamicTextCreator = GetComponent<DynamicTextCreator>();
         if (_dynamicTextCreator == null)
             Debug.LogError("【元素Buff集合】动态字体UI创建组件获取失败");
+
+        _mainPlayerHP = GetComponent<MainPlayerHP>();
+        if (_mainPlayerHP == null)
+            Debug.LogError("【元素Buff集合】玩家血量组件获取失败");
     }
     public void AutoInject(Blackboard inject)
     {
@@ -100,7 +105,8 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
         elementBuff.Init(
             _blackboard, _elementReceiver,
             attachment, this,
-            _elementListener, _dynamicTextCreator);
+            _elementListener, _dynamicTextCreator,
+            _mainPlayerHP);
         elementBuff.OnEnter();
         _buffSet.Add(elementBuff);
 

@@ -60,11 +60,15 @@ MonoBehaviour:
       data:
         name: "\u84B8\u53D1"
         color: {r: 0.76729554, g: 0.6606066, b: 0.19544312, a: 1}
+        fireToWhaterNum: 1.5
+        waterToFireNum: 2
     - rid: 5110485200715382785
       type: {class: MeltReaction, ns: , asm: ElementalWar.GamePlay}
       data:
         name: "\u878D\u5316"
         color: {r: 0.76862746, g: 0.65882355, b: 0.19607843, a: 1}
+        fireToIceNum: 2
+        iceToFireNum: 1.5
     - rid: 5110485200715382787
       type: {class: OverloadReaction, ns: , asm: ElementalWar.GamePlay}
       data:
@@ -75,6 +79,9 @@ MonoBehaviour:
       data:
         name: "\u8D85\u5BFC"
         color: {r: 0, g: 0.8057289, b: 1, a: 1}
+        damage: 50
+        areaDamageContent: 1
+        radius: 3
     - rid: 5110485200715382789
       type: {class: FrozenReaction, ns: , asm: ElementalWar.GamePlay}
       data:
@@ -106,26 +113,38 @@ MonoBehaviour:
       data:
         name: "\u6269\u6563"
         color: {r: 0, g: 1, b: 0.70492196, a: 1}
-        diffuseNum: 0.5
+        damageNum: 1.2
+        radius: 3
+        diffuseDamage: 50
+        reduceNum: 0.5
         _diffuseAbleList: 01000000020000001000000004000000
     - rid: 5110485252109238479
       type: {class: DiffusionReaction, ns: , asm: ElementalWar.GamePlay}
       data:
         name: "\u6269\u6563"
         color: {r: 0, g: 1, b: 0.7058824, a: 1}
-        diffuseNum: 0.5
+        damageNum: 1.2
+        radius: 3
+        diffuseDamage: 50
+        reduceNum: 0.5
         _diffuseAbleList: 01000000020000001000000004000000
     - rid: 5110485252109238480
       type: {class: DiffusionReaction, ns: , asm: ElementalWar.GamePlay}
       data:
         name: "\u6269\u6563"
         color: {r: 0, g: 1, b: 0.7058824, a: 1}
-        diffuseNum: 0.5
+        damageNum: 1.2
+        radius: 3
+        diffuseDamage: 50
+        reduceNum: 0.5
         _diffuseAbleList: 01000000020000001000000004000000
     - rid: 5110485252109238481
       type: {class: DiffusionReaction, ns: , asm: ElementalWar.GamePlay}
       data:
         name: "\u6269\u6563"
         color: {r: 0, g: 1, b: 0.7058824, a: 1}
-        diffuseNum: 0.5
+        damageNum: 1.2
+        radius: 3
+        diffuseDamage: 50
+        reduceNum: 0.5
         _diffuseAbleList: 01000000020000001000000004000000

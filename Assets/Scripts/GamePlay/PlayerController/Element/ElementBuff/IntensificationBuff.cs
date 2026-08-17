@@ -8,12 +8,17 @@ using UnityEngine;
 /// </summary>
 public class IntensificationBuff : BaseElementBuff
 {
+    [Header("元素量")]
+    [Range(0, ElementUtility.Content.STRONG)]
+    public float elementContent = ElementUtility.Content.WEAK;
     [Header("超激化")]
     public string veryIntensificationName = "超激化";
     public Color veryIntensificationColor;
+    public int veryIntensificationDamage = 60;
     [Header("蔓激化")]
     public string vineIntensificationName = "蔓激化";
     public Color vineIntensificationColor;
+    public int vineIntensificationDamage = 70;
     public float duration;
     public float delayListen;
     private float _startTime;
@@ -54,14 +59,26 @@ public class IntensificationBuff : BaseElementBuff
     }
     private void OnThunderTrigger(ElementType elementType)
     {
-        _startTime = Time.time;
+        // _startTime = Time.time;
         // Debug.Log("【原激化Buff】超激化");
+        var content = elementContent;
+        var damage = vineIntensificationDamage;
+        TriggerAttackListener(ElementType.Thunder, ref content, ref damage);
+        if (damage == 0 || content < 0.001)
+            return;
+        playerHP?.ReduceHP(damage, veryIntensificationColor);
         dynamicTextCreator?.ShowTextUI(veryIntensificationName, veryIntensificationColor);
     }
     private void OnGrassTrigger(ElementType elementType)
     {
-        _startTime = Time.time;
+        // _startTime = Time.time;
         // Debug.Log("【原激化Buff】蔓激化");
+        var content = elementContent;
+        var damage = vineIntensificationDamage;
+        TriggerAttackListener(ElementType.Grass, ref content, ref damage);
+        if (damage == 0 || content < 0.001)
+            return;
+        playerHP?.ReduceHP(damage, vineIntensificationColor);
         dynamicTextCreator?.ShowTextUI(vineIntensificationName, vineIntensificationColor);
     }
     private void OnRemove(ElementType elementType)

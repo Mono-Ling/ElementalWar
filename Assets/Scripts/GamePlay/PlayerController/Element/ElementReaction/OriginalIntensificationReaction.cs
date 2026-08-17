@@ -19,4 +19,6 @@ public class OriginalIntensificationReaction : BaseElementReaction
         elementBuffSet?.AddElementBuff<IntensificationBuff>();
         return true;
     }
+    public override int GetDamage(ElementType attackElement, int damage)
+    => 0;
 }
