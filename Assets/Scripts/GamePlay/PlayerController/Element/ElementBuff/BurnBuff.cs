@@ -6,6 +6,7 @@ public class BurnBuff : BaseElementBuff
 {
     public float delay;
     public float speed;
+    public int damage = 10;
     private float _preTime;
     public override bool TryExit()
     => !elementAttachment.TotalElement.HasFlag(ElementType.Grass);
@@ -15,7 +16,7 @@ public class BurnBuff : BaseElementBuff
             return;
         _preTime = Time.time;
 
-        elementReceiver.ReceiveElement(ElementType.Fire, speed);
+        elementReceiver.ReceiveElement(ElementType.Fire, speed, damage);
         Debug.Log("【燃烧Buff】燃烧伤害");
     }
 }

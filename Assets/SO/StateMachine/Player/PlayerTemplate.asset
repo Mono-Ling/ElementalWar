@@ -59,3 +59,7 @@ MonoBehaviour:
     type: 17
   - name: IsFrozen
     type: 5
+  - name: HP
+    type: 0
+  - name: MaxHP
+    type: 0

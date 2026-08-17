@@ -22,7 +22,7 @@ public class AOEFeedbackReceive : BaseFeedbackReceive
         {
             if (!ElementUtility.TryToElementType(attack.ElementType, out var element))
                 return;
-            _elementReceiver?.ReceiveElement(element, attack.Content);
+            _elementReceiver?.ReceiveElement(element, attack.Content, attack.Damage);
             Debug.Log($"【玩家受元素范围伤害】{element}");
         }
     }

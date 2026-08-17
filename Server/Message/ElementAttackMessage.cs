@@ -24,13 +24,13 @@ namespace Message {
     static ElementAttackMessageReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpFbGVtZW50QXR0YWNrTWVzc2FnZS5wcm90bxIHTWVzc2FnZSI8ChRFbGVt",
+            "ChpFbGVtZW50QXR0YWNrTWVzc2FnZS5wcm90bxIHTWVzc2FnZSJMChRFbGVt",
             "ZW50QXR0YWNrTWVzc2FnZRITCgtlbGVtZW50VHlwZRgBIAEoBRIPCgdjb250",
-            "ZW50GAIgASgCYgZwcm90bzM="));
+            "ZW50GAIgASgCEg4KBmRhbWFnZRgDIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ElementAttackMessage), global::Message.ElementAttackMessage.Parser, new[]{ "ElementType", "Content" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ElementAttackMessage), global::Message.ElementAttackMessage.Parser, new[]{ "ElementType", "Content", "Damage" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,6 +74,7 @@ namespace Message {
     public ElementAttackMessage(ElementAttackMessage other) : this() {
       elementType_ = other.elementType_;
       content_ = other.content_;
+      damage_ = other.damage_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -107,6 +108,18 @@ namespace Message {
       }
     }
 
+    /// <summary>Field number for the "damage" field.</summary>
+    public const int DamageFieldNumber = 3;
+    private int damage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Damage {
+      get { return damage_; }
+      set {
+        damage_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -124,6 +137,7 @@ namespace Message {
       }
       if (ElementType != other.ElementType) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Content, other.Content)) return false;
+      if (Damage != other.Damage) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,6 +147,7 @@ namespace Message {
       int hash = 1;
       if (ElementType != 0) hash ^= ElementType.GetHashCode();
       if (Content != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Content);
+      if (Damage != 0) hash ^= Damage.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -159,6 +174,10 @@ namespace Message {
         output.WriteRawTag(21);
         output.WriteFloat(Content);
       }
+      if (Damage != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Damage);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -177,6 +196,10 @@ namespace Message {
         output.WriteRawTag(21);
         output.WriteFloat(Content);
       }
+      if (Damage != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Damage);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -192,6 +215,9 @@ namespace Message {
       }
       if (Content != 0F) {
         size += 1 + 4;
+      }
+      if (Damage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Damage);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -210,6 +236,9 @@ namespace Message {
       }
       if (other.Content != 0F) {
         Content = other.Content;
+      }
+      if (other.Damage != 0) {
+        Damage = other.Damage;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -238,6 +267,10 @@ namespace Message {
             Content = input.ReadFloat();
             break;
           }
+          case 24: {
+            Damage = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -263,6 +296,10 @@ namespace Message {
           }
           case 21: {
             Content = input.ReadFloat();
+            break;
+          }
+          case 24: {
+            Damage = input.ReadInt32();
             break;
           }
         }

@@ -133,4 +133,6 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
     => _buffSet.Contains(elementBuff);
     public void OnElementTrigger(ElementType elementType)
     => _elementListener?.Trigger(elementType);
+    public void OnElementAttackTrigger(ElementType elementType, ref float content, ref int damage)
+    => _elementListener?.TriggerAttackListener(elementType, ref content, ref damage);
 }

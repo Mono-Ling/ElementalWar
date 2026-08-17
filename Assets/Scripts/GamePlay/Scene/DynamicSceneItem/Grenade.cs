@@ -13,6 +13,8 @@ public class Grenade : BaseDynamicSceneItem
     [Header("爆炸元素量")]
     [Range(0, ElementUtility.Content.STRONG)]
     public float attackElementContent = ElementUtility.Content.STRONG;
+    [Header("爆炸元素伤害")]
+    public int attackDamage = 100;
     [Header("位置同步发送时间间隔")]
     public float delaySend = 0.02f;
     public float positionSmoothTime = 0.06f;
@@ -26,7 +28,6 @@ public class Grenade : BaseDynamicSceneItem
 
     private Vector3Message _posMes = new();
     private GrenadePositionMessage _grenadeMes = new();
-    private Color _expEffColor = Color.blue;
     private ElementType _elementType;
     void Awake()
     {
@@ -85,6 +86,7 @@ public class Grenade : BaseDynamicSceneItem
             {
                 ElementType = ElementUtility.ToNumber(_elementType),
                 Content = attackElementContent,
+                Damage = attackDamage,
             }
         };
         mes.Center.Switch(_rigidbody.position);

@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Manager\Space\Bounds\Ray.cs" />
     <Compile Include="Assets\Scripts\Manager\Base\SingleMono.cs" />
     <Compile Include="Assets\Scripts\Manager\Space\Tree\TreeItem.cs" />
+    <Compile Include="Assets\Scripts\Manager\Event\RefAction.cs" />
     <Compile Include="Assets\Scripts\Manager\Tool\Math.cs" />
     <Compile Include="Assets\Scripts\Manager\Pool\PoolObj.cs" />
     <Compile Include="Assets\Scripts\Manager\Space\Tree\SpaceDicItem.cs" />

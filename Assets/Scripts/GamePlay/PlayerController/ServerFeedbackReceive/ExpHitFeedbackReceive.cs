@@ -18,7 +18,8 @@ public class ExpHitFeedbackReceive : BaseFeedbackReceive
             return;
         if (!ElementUtility.TryToElementType(message.ElementAttack.ElementType, out var element))
             return;
-        _elementReceiver?.ReceiveElement(element, message.ElementAttack.Content);
+        var attack = message.ElementAttack;
+        _elementReceiver?.ReceiveElement(element, attack.Content, attack.Damage);
         Debug.Log($"【玩家受爆炸波及】{element}");
     }
     public override void OnRemove()

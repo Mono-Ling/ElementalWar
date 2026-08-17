@@ -42,6 +42,10 @@ public abstract class BaseElementBuff
     => elementListener?.AddListener(elementType, action);
     protected void RemoveListener(ElementType elementType, Action<ElementType> action)
     => elementListener?.RemoveListener(elementType, action);
+    protected void AddAttackListener(ElementType elementType, RefAction<float, int> action)
+    => elementListener?.AddAttackListener(elementType, action);
+    protected void RemoveAttackListener(ElementType elementType, RefAction<float, int> action)
+    => elementListener?.RemoveAttackListener(elementType, action);
     public override bool Equals(object obj)
     => obj is BaseElementBuff other && GetType() == other.GetType();
     public override int GetHashCode()

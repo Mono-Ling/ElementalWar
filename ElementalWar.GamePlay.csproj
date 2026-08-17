@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementType.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementAttachment.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ShootAbility.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayerHP.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\Or.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\BaseFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BoundState\BoxBound.cs" />

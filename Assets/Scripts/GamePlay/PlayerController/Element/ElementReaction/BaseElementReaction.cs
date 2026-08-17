@@ -33,6 +33,17 @@ public abstract class BaseElementReaction
         return true;
     }
     /// <summary>
+    /// 获取元素反应伤害
+    /// </summary>
+    /// <param name="damage">初始伤害值</param>
+    /// <param name="beforeDelta">附着元素消耗量</param>
+    /// <param name="afterDelta">攻击元素消耗量</param>
+    /// <returns>元素反应伤害</returns>
+    public virtual int GetDamage(int damage, float beforeDelta, float afterDelta)
+    {
+        return damage + Mathf.CeilToInt(damage * afterDelta);
+    }
+    /// <summary>
     /// 按比例消耗
     /// </summary>
     /// <param name="contentA"></param>

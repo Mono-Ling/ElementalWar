@@ -13,6 +13,8 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
     private ElementAttachment _attachment;
     private ElementBuffSet _elementBuffSet;
 
+    private MainPlayerHP _mainPlayerHP;
+
     private DynamicTextCreator _dynamicTextCreator;
     void Awake()
     {
@@ -28,6 +30,10 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
         _dynamicTextCreator = GetComponent<DynamicTextCreator>();
         if (_dynamicTextCreator == null)
             Debug.LogError("【元素接收器】动态文本UI创建组件获取失败");
+
+        _mainPlayerHP = GetComponent<MainPlayerHP>();
+        if (_mainPlayerHP == null)
+            Debug.LogError("【元素接收器】主玩家生命值组件获取失败");
     }
     public void AutoInject(Blackboard blackboard)
     {
@@ -50,7 +56,7 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             Debug.LogError("【元素接收器】元素附着组件获取失败");
         return attachment != null;
     }
-    public void ReceiveElement(ElementType elementType, float content)
+    public void ReceiveElement(ElementType elementType, float content, int damage)
     {
         if (elementType == ElementType.None || content <= 0)
             return;
@@ -58,6 +64,12 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             return;
 
         var afterContent = content;
+        var elementDamage = damage;
+
+        // 触发元素攻击监听，用于伤害减免效果
+        _elementBuffSet?.OnElementAttackTrigger(elementType, ref afterContent, ref elementDamage);
+        afterContent = Mathf.Max(afterContent, 0);
+        elementDamage = Mathf.Max(elementDamage, 0);
 
         if (!reactionPriorityTable.TryGetPriorityTable(elementType, out var elementPriorityList))
             Debug.LogWarning($"【元素接收器】不存在{elementType}的反应优先级列表");
@@ -66,7 +78,7 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
         {
             if (afterContent <= 0)
                 break;
-            if (beforeElement == ElementType.None || !attachment.TotalElement.HasFlag(beforeElement))
+            if (!attachment.TotalElement.HasFlag(beforeElement))
                 continue;
             if (!attachment.ElementContentDic.TryGetValue(beforeElement, out var beforeContent) || beforeContent <= 0)
                 continue;
@@ -85,7 +97,10 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             beforeDelta -= beforeContent;
             afterDelta -= afterContent;
 
+            var reactionDamage = reaction.GetDamage(elementDamage, beforeDelta, afterDelta);
+
             attachment.ReduceElementContent(beforeElement, beforeDelta);
+            _mainPlayerHP?.ReduceHP(reactionDamage, reaction.color);
             Debug.Log($"【元素接收器】触发反应{reaction.name}");
 
             _dynamicTextCreator?.ShowTextUI(reaction.name, reaction.color);
@@ -98,6 +113,9 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             else
                 attachment.AddNewElementType(elementType, afterContent);
 
+            float damageNum = Mathf.Clamp01(afterContent / content);
+            elementDamage = Mathf.CeilToInt(elementDamage * damageNum);
+            _mainPlayerHP?.ElementDamage(elementDamage, elementType);
             _elementBuffSet?.OnElementTrigger(elementType);
         }
     }

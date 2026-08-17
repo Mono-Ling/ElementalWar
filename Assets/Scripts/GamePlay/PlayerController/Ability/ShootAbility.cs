@@ -11,6 +11,7 @@ public class ShootAbility : BaseAbility
     => _elementType = element;
     [Range(0, ElementUtility.Content.STRONG)]
     public float attackElementContent = ElementUtility.Content.WEAK;
+    public int attackDamage = 20;
     public float delayTime = 0.2f;// s
     private bool _isShoot;
     private float _preShootTime;
@@ -57,6 +58,7 @@ public class ShootAbility : BaseAbility
         _shootReqMes.Dir.Switch(dir);
         _shootReqMes.ElementAttack.ElementType = ElementUtility.ToNumber(_elementType);
         _shootReqMes.ElementAttack.Content = attackElementContent;
+        _shootReqMes.ElementAttack.Damage = attackDamage;
 
         UdpHeader udpHeader = new() { IsResponse = true };
         EventBus.Instance.Trigger<NetPackage>(EventType.SendTo, new(udpHeader, _shootReqMes));
