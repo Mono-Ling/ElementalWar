@@ -4,6 +4,7 @@ using System.Text;
 using Message;
 using Server.Message.Tools;
 using Space;
+using AOEType = Message.AreaElementDamageMes.Types.AOEType;
 
 namespace Server.GamePlay.StateTransfer.SpaceTransfer
 {
@@ -13,6 +14,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
         public long tick;
         public AreaElementDamageMes damageMes;
         public Sphere area;
+        public AOEType aoeType;
     }
     public interface IOnAreaElementDamage
     {
@@ -53,6 +55,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                     tick = udpHeader.Time,
                     damageMes = areaMes,
                     area = range,
+                    aoeType = areaMes.AoeType,
                 };
 
                 lock (_areaHitReqLock)
@@ -70,9 +73,32 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             var hitSpaceItem = spaceTree.SphereOverlap(req.area, maskId);
 
             foreach (var item in hitSpaceItem)
-                if (item is IOnAreaElementDamage elementDamage)
-                    if (elementDamage.TryAreaElementDamage(req))
-                        elementDamage.OnAreaElementDamageHit(req);
+            {
+                switch(req.aoeType)
+                {
+                    case AOEType.Normal:
+                        if (item is IOnAreaElementDamage normalHitItem)
+                            if (normalHitItem.TryAreaElementDamage(req))
+                                normalHitItem.OnAreaElementDamageHit(req);
+                        break;
+                    case AOEType.Explosion:
+                        var attacks = req.damageMes.ElementAttack;
+                        if (attacks .Count == 0)
+                            break;
+                        ExplosionHitReq expReq = new()
+                        {
+                            elementAttack = attacks[0],
+                            tick = req.tick,
+                            range = req.area,
+                        };
+                        if (item is IOnExplosionHit expHitItem)
+                            if (expHitItem.TryExplosionHit(expReq))
+                                expHitItem.OnExplosionHit(expReq);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

@@ -5,7 +5,13 @@ import "ElementAttackMessage.proto";
 
 message AreaElementDamageMes
 {
+	enum AOEType
+	{
+		Normal = 0;
+		Explosion = 1;
+	}
 	Vector3Message center = 1;
 	float radius = 2;
 	repeated ElementAttackMessage elementAttack = 3;
+	AOEType aoeType = 4;
 }

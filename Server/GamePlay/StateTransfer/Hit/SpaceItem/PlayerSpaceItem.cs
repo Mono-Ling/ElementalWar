@@ -38,7 +38,7 @@ namespace Server.GamePlay.StateTransfer
             Console.WriteLine($"【玩家空间物体】命中玩家{playerId}");
         }
 
-        public void OnExplosionHit(ExplosionHitReq req, List<int> sendList)
+        public void OnExplosionHit(ExplosionHitReq req)
         {
             PlayerExpHitMessage hitMes = new()
             {

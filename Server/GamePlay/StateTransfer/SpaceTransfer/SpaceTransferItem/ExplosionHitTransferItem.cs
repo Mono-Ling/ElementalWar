@@ -25,21 +25,18 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     public interface IOnExplosionHit
     {
         bool TryExplosionHit(ExplosionHitReq req);
-        void OnExplosionHit(ExplosionHitReq req, List<int> sendList);
+        void OnExplosionHit(ExplosionHitReq req);
     }
     public class ExplosionHitTransferItem : BaseSpaceTransferItem
     {
         private PriorityQueue<ExplosionHitReq, long> _explosionHitReqQueue = new();
         private object _explosionHitReqLock = new();
 
-        private List<int> _sendList = new();
-
         private HashSet<DynamicSceneItem> _grenadeItemSet = new();
 
         public override void Start(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
         {
             base.Start(playerStateTransfer, playerList);
-            _sendList = playerList;
 
             EventBus.Instance.AddListener<DynamicSceneItem>(EventType.OnDynamicSceneItemAdd, OnDynamicAdd);
             AddListener<ExplosionRequestMessage>(OnExpReqReceive);
@@ -94,7 +91,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             foreach (var item in hitSpaceItem)
                 if (item is IOnExplosionHit hitItem)
                     if(hitItem.TryExplosionHit(req))
-                        hitItem.OnExplosionHit(req, _sendList);
+                        hitItem.OnExplosionHit(req);
         }
     }
 }

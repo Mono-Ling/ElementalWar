@@ -25,15 +25,17 @@ namespace Message {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpBcmVhRWxlbWVudERhbWFnZU1lcy5wcm90bxIHTWVzc2FnZRoUVmVjdG9y",
-            "M01lc3NhZ2UucHJvdG8aGkVsZW1lbnRBdHRhY2tNZXNzYWdlLnByb3RvIoUB",
+            "M01lc3NhZ2UucHJvdG8aGkVsZW1lbnRBdHRhY2tNZXNzYWdlLnByb3RvIuMB",
             "ChRBcmVhRWxlbWVudERhbWFnZU1lcxInCgZjZW50ZXIYASABKAsyFy5NZXNz",
             "YWdlLlZlY3RvcjNNZXNzYWdlEg4KBnJhZGl1cxgCIAEoAhI0Cg1lbGVtZW50",
-            "QXR0YWNrGAMgAygLMh0uTWVzc2FnZS5FbGVtZW50QXR0YWNrTWVzc2FnZWIG",
-            "cHJvdG8z"));
+            "QXR0YWNrGAMgAygLMh0uTWVzc2FnZS5FbGVtZW50QXR0YWNrTWVzc2FnZRI2",
+            "Cgdhb2VUeXBlGAQgASgOMiUuTWVzc2FnZS5BcmVhRWxlbWVudERhbWFnZU1l",
+            "cy5BT0VUeXBlIiQKB0FPRVR5cGUSCgoGTm9ybWFsEAASDQoJRXhwbG9zaW9u",
+            "EAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Message.Vector3MessageReflection.Descriptor, global::Message.ElementAttackMessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.AreaElementDamageMes), global::Message.AreaElementDamageMes.Parser, new[]{ "Center", "Radius", "ElementAttack" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.AreaElementDamageMes), global::Message.AreaElementDamageMes.Parser, new[]{ "Center", "Radius", "ElementAttack", "AoeType" }, null, new[]{ typeof(global::Message.AreaElementDamageMes.Types.AOEType) }, null, null)
           }));
     }
     #endregion
@@ -78,6 +80,7 @@ namespace Message {
       center_ = other.center_ != null ? other.center_.Clone() : null;
       radius_ = other.radius_;
       elementAttack_ = other.elementAttack_.Clone();
+      aoeType_ = other.aoeType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -122,6 +125,18 @@ namespace Message {
       get { return elementAttack_; }
     }
 
+    /// <summary>Field number for the "aoeType" field.</summary>
+    public const int AoeTypeFieldNumber = 4;
+    private global::Message.AreaElementDamageMes.Types.AOEType aoeType_ = global::Message.AreaElementDamageMes.Types.AOEType.Normal;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Message.AreaElementDamageMes.Types.AOEType AoeType {
+      get { return aoeType_; }
+      set {
+        aoeType_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -140,6 +155,7 @@ namespace Message {
       if (!object.Equals(Center, other.Center)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Radius, other.Radius)) return false;
       if(!elementAttack_.Equals(other.elementAttack_)) return false;
+      if (AoeType != other.AoeType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -150,6 +166,7 @@ namespace Message {
       if (center_ != null) hash ^= Center.GetHashCode();
       if (Radius != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Radius);
       hash ^= elementAttack_.GetHashCode();
+      if (AoeType != global::Message.AreaElementDamageMes.Types.AOEType.Normal) hash ^= AoeType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -177,6 +194,10 @@ namespace Message {
         output.WriteFloat(Radius);
       }
       elementAttack_.WriteTo(output, _repeated_elementAttack_codec);
+      if (AoeType != global::Message.AreaElementDamageMes.Types.AOEType.Normal) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) AoeType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -196,6 +217,10 @@ namespace Message {
         output.WriteFloat(Radius);
       }
       elementAttack_.WriteTo(ref output, _repeated_elementAttack_codec);
+      if (AoeType != global::Message.AreaElementDamageMes.Types.AOEType.Normal) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) AoeType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -213,6 +238,9 @@ namespace Message {
         size += 1 + 4;
       }
       size += elementAttack_.CalculateSize(_repeated_elementAttack_codec);
+      if (AoeType != global::Message.AreaElementDamageMes.Types.AOEType.Normal) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AoeType);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -235,6 +263,9 @@ namespace Message {
         Radius = other.Radius;
       }
       elementAttack_.Add(other.elementAttack_);
+      if (other.AoeType != global::Message.AreaElementDamageMes.Types.AOEType.Normal) {
+        AoeType = other.AoeType;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -267,6 +298,10 @@ namespace Message {
           }
           case 26: {
             elementAttack_.AddEntriesFrom(input, _repeated_elementAttack_codec);
+            break;
+          }
+          case 32: {
+            AoeType = (global::Message.AreaElementDamageMes.Types.AOEType) input.ReadEnum();
             break;
           }
         }
@@ -303,10 +338,27 @@ namespace Message {
             elementAttack_.AddEntriesFrom(ref input, _repeated_elementAttack_codec);
             break;
           }
+          case 32: {
+            AoeType = (global::Message.AreaElementDamageMes.Types.AOEType) input.ReadEnum();
+            break;
+          }
         }
       }
     }
     #endif
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the AreaElementDamageMes message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static partial class Types {
+      public enum AOEType {
+        [pbr::OriginalName("Normal")] Normal = 0,
+        [pbr::OriginalName("Explosion")] Explosion = 1,
+      }
+
+    }
+    #endregion
 
   }
 
