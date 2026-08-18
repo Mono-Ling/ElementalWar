@@ -3,33 +3,20 @@ using System.Collections.Generic;
 using System.Text;
 using Message;
 using Server.Event;
+using Server.GamePlay.AttackRequest;
 using Server.Message.Tools;
 using Space;
 
 namespace Server.GamePlay.StateTransfer.SpaceTransfer
 {
-    public struct ExplosionHitReq
-    {
-        public DynamicSceneItem dynamicItem;
-        public ElementAttackMessage elementAttack;
-        public long tick;
-        public Sphere range;
-        public ExplosionHitReq(DynamicSceneItem item, ElementAttackMessage elementAttack, Sphere range,long tick)
-        {
-            this.dynamicItem = item;
-            this.range = range;
-            this.elementAttack = elementAttack;
-            this.tick = tick;
-        }
-    }
     public interface IOnExplosionHit
     {
-        bool TryExplosionHit(ExplosionHitReq req);
-        void OnExplosionHit(ExplosionHitReq req);
+        bool TryExplosionHit(IExplosionHitReq req);
+        void OnExplosionHit(IExplosionHitReq req);
     }
     public class ExplosionHitTransferItem : BaseSpaceTransferItem
     {
-        private PriorityQueue<ExplosionHitReq, long> _explosionHitReqQueue = new();
+        private PriorityQueue<DynamicExpHitReq, long> _explosionHitReqQueue = new();
         private object _explosionHitReqLock = new();
 
         private HashSet<DynamicSceneItem> _grenadeItemSet = new();
@@ -71,11 +58,11 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             var (center, _) = reqMes.Center;
             var radius = reqMes.Radius;
             Sphere range = new(center, radius);
-            ExplosionHitReq req = new(foundItem,reqMes.ElementAttack, range,udpHeader.Time);
+            DynamicExpHitReq req = new(foundItem,reqMes.ElementAttack, range,udpHeader.Time);
             lock (_explosionHitReqLock)
                 _explosionHitReqQueue.Enqueue(req, udpHeader.Time);
         }
-        private void OnExpHitCheck(ExplosionHitReq req)
+        private void OnExpHitCheck(DynamicExpHitReq req)
         {
             if(spaceTree == null)
             {

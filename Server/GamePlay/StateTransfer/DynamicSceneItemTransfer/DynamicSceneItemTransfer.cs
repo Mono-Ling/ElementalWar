@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using Google.Protobuf.WellKnownTypes;
 using Message;
 using Server.Event;
 
@@ -14,6 +15,7 @@ namespace Server.GamePlay.StateTransfer
         public int clientDynamicItemId { get; private set; }
         public int dynamicItemId { get; private set; }
         public DynamicSceneItemType itemType { get; private set; }
+        public Any? customParams;
         public DynamicSceneItem(int playerId, int clientDynamicItemId, int dynamicItemId, DynamicSceneItemType itemType)
         {
             this.playerId = playerId;
@@ -112,8 +114,9 @@ namespace Server.GamePlay.StateTransfer
                 SendTo(new(player, SetHeader(), message));
             }
             Console.WriteLine($"【场景动态物体中转】玩家{key.Item1}创建动态物体{key.Item2}类型{message.ItemType}，分配动态物体Id{dynamicItemId}");
-
-            EventBus.Instance.Trigger(EventType.OnDynamicSceneItemAdd, new DynamicSceneItem(key.Item1, key.Item2, dynamicItemId, message.ItemType));
+            var item = new DynamicSceneItem(key.Item1, key.Item2, dynamicItemId, message.ItemType);
+            item.customParams = message.CustomParams;
+            EventBus.Instance.Trigger(EventType.OnDynamicSceneItemAdd, item);
         }
         private void OnDynamicDestroyMes((int, int) key, DynamicItemStateMes message)
         {
@@ -143,7 +146,9 @@ namespace Server.GamePlay.StateTransfer
                 SendTo(new(player, SetHeader(), message));
             }
 
-            EventBus.Instance.Trigger(EventType.OnDynamicSceneItemRemove, new DynamicSceneItem(key.Item1, key.Item2, dynamicItemId, message.ItemType));
+            var item = new DynamicSceneItem(key.Item1, key.Item2, dynamicItemId, message.ItemType);
+            item.customParams = message.CustomParams;
+            EventBus.Instance.Trigger(EventType.OnDynamicSceneItemRemove,item );
         }
     }
 }

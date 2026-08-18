@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Message;
 using Server.Event;
+using Server.GamePlay.AttackRequest;
 using Server.GamePlay.StateTransfer.SpaceTransfer;
 using Server.Message.Tools;
 using Space;

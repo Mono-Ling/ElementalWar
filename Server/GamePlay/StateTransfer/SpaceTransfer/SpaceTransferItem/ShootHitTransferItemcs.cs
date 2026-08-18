@@ -4,25 +4,10 @@ using System.Text;
 using Message;
 using Server.Message.Tools;
 using Space;
+using Server.GamePlay.AttackRequest;
 
 namespace Server.GamePlay.StateTransfer.SpaceTransfer
 {
-    public struct ShootHitReq
-    {
-        public int playerId;
-        public ElementAttackMessage elementAttack;
-        public long tick;
-        public int maskSpaceId;
-        public Ray ray;
-        public ShootHitReq(int playerId, Ray ray, ElementAttackMessage elementAttack, int maskSpaceId,long tick)
-        {
-            this.playerId = playerId;
-            this.elementAttack = elementAttack;
-            this.ray = ray;
-            this.maskSpaceId = maskSpaceId;
-            this.tick = tick;
-        }
-    }
     public interface IOnShootHit
     {
         float TryShootHit(ShootHitReq req);

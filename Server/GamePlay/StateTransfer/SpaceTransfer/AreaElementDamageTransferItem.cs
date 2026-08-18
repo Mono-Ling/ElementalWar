@@ -2,20 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Message;
+using Server.GamePlay.AttackRequest;
 using Server.Message.Tools;
 using Space;
 using AOEType = Message.AreaElementDamageMes.Types.AOEType;
 
 namespace Server.GamePlay.StateTransfer.SpaceTransfer
 {
-    public struct AreaElementDamageReq
-    {
-        public int playerSpaceId;
-        public long tick;
-        public AreaElementDamageMes damageMes;
-        public Sphere area;
-        public AOEType aoeType;
-    }
     public interface IOnAreaElementDamage
     {
         bool TryAreaElementDamage(AreaElementDamageReq areaElementDamageReq);
@@ -51,7 +44,8 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 Sphere range = new(center, radius);
                 AreaElementDamageReq req = new()
                 {
-                    playerSpaceId = playerSpace.spaceId,
+                    fromPlayerId = -1,
+                    maskSpaceId = playerSpace.spaceId,
                     tick = udpHeader.Time,
                     damageMes = areaMes,
                     area = range,
@@ -69,35 +63,39 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 Debug.LogError("【元素范围伤害命中检测中转】空间树未初始化");
                 return;
             }
-            var maskId = req.playerSpaceId;
-            var hitSpaceItem = spaceTree.SphereOverlap(req.area, maskId);
 
-            foreach (var item in hitSpaceItem)
+            List<SpaceItem>? hitSpaceItem = null;
+
+            switch (req.aoeType)
             {
-                switch(req.aoeType)
-                {
-                    case AOEType.Normal:
+                case AOEType.Normal:
+                    var maskId = req.maskSpaceId;
+                    hitSpaceItem = spaceTree.SphereOverlap(req.area, maskId);
+                    foreach (var item in hitSpaceItem)
                         if (item is IOnAreaElementDamage normalHitItem)
                             if (normalHitItem.TryAreaElementDamage(req))
                                 normalHitItem.OnAreaElementDamageHit(req);
+                    
+                    break;
+                case AOEType.Explosion:
+                    hitSpaceItem = spaceTree.SphereOverlap(req.area);
+                    var attacks = req.damageMes.ElementAttack;
+                    if (attacks.Count == 0)
                         break;
-                    case AOEType.Explosion:
-                        var attacks = req.damageMes.ElementAttack;
-                        if (attacks .Count == 0)
-                            break;
-                        ExplosionHitReq expReq = new()
-                        {
-                            elementAttack = attacks[0],
-                            tick = req.tick,
-                            range = req.area,
-                        };
+                    PlayerExpHitReq expReq = new()
+                    {
+                        fromPlayerId = req.fromPlayerId,
+                        elementAttack = attacks[0],
+                        tick = req.tick,
+                        range = req.area,
+                    };
+                    foreach(var item in hitSpaceItem)
                         if (item is IOnExplosionHit expHitItem)
                             if (expHitItem.TryExplosionHit(expReq))
                                 expHitItem.OnExplosionHit(expReq);
-                        break;
-                    default:
-                        break;
-                }
+                    break;
+                default:
+                    break;
             }
         }
     }

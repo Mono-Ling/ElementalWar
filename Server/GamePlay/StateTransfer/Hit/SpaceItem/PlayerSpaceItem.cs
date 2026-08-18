@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Message;
 using Server.Event;
+using Server.GamePlay.AttackRequest;
 using Server.GamePlay.StateTransfer.SpaceTransfer;
 using Server.Message.Tools;
 using Space;
@@ -38,7 +39,7 @@ namespace Server.GamePlay.StateTransfer
             Console.WriteLine($"【玩家空间物体】命中玩家{playerId}");
         }
 
-        public void OnExplosionHit(ExplosionHitReq req)
+        public void OnExplosionHit(IExplosionHitReq req)
         {
             PlayerExpHitMessage hitMes = new()
             {
@@ -63,7 +64,7 @@ namespace Server.GamePlay.StateTransfer
             return -1;
         }
 
-        public bool TryExplosionHit(ExplosionHitReq req)
+        public bool TryExplosionHit(IExplosionHitReq req)
         {
             if(!history.TryGetLerp(req.tick, out var bound, (a, b, num) => AABB.Lerp(a, b, num)))
                 return false;
