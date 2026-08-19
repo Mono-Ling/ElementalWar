@@ -12,6 +12,10 @@ public abstract class BaseDynamicSceneItem : MonoBehaviour
     protected bool isRemote;
     protected NetReceiver netReceiver;
     protected DynamicSceneItemType itemType;
+    /// <summary>
+    /// 当前物体类型，ItemNone 表示尚未完成创建初始化
+    /// </summary>
+    public DynamicSceneItemType ItemType => itemType;
     protected int dynamicSceneItemId;
     public virtual void LocalCreate(DynamicSceneItemType itemType)
     {
@@ -33,6 +37,8 @@ public abstract class BaseDynamicSceneItem : MonoBehaviour
         this.itemType = itemType;
         dynamicSceneItemId = id;
     }
+    public virtual void LocalCreate<T>(DynamicSceneItemType itemType, T arg)
+    => LocalCreate(itemType);
     public virtual void LocalDestroy()
     {
         if (itemType == DynamicSceneItemType.ItemNone)

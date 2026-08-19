@@ -146,9 +146,9 @@ public class Grenade : BaseDynamicSceneItem
     }
     private void CreateExpEff(Color effColor)
     {
-        var item = DynamicSceneItemMgr.Instance.CreateLocalDynamicSceneItem(DynamicSceneItemType.GrenadeExp);
-        if (item is GrenadeExp exp)
-            exp.ManualCreate(_rigidbody.position, effColor);
+        var arg = (_rigidbody.position, effColor);
+        DynamicSceneItemMgr.Instance.
+        CreateLocalDynamicSceneItem<(Vector3, Color)>(DynamicSceneItemType.GrenadeExp, arg);
     }
     private void Reset()
     {

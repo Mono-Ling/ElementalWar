@@ -76,23 +76,28 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
     }
     public BaseDynamicSceneItem CreateLocalDynamicSceneItem(DynamicSceneItemType type)
     {
-        var path = GetItemPath(type);
-        GameObject obj = null;
-        if (path != null)
-            obj = MonoObjectPool.Instance.GetObject(path);
-        if (obj == null)
-        {
-            Debug.LogError("【动态物体管理器】本地动态物体创建失败");
-            return null;
-        }
-        BaseDynamicSceneItem item = obj.GetComponent<BaseDynamicSceneItem>();
+        var item = CreateItem(type);
         if (item == null)
+            return null;
+        item.LocalCreate(type);
+        _localDynamicItemSet.Add(item);
+        return item;
+    }
+    /// <summary>
+    /// 创建本地动态物体并携带自定义参数，T 必须与目标物体的参数化创建实现匹配，否则创建失败并返回 null
+    /// </summary>
+    public BaseDynamicSceneItem CreateLocalDynamicSceneItem<T>(DynamicSceneItemType type, T arg)
+    {
+        var item = CreateItem(type);
+        if (item == null)
+            return null;
+        item.LocalCreate<T>(type, arg);
+        if (item.ItemType == DynamicSceneItemType.ItemNone)
         {
-            Debug.LogError("【动态物体管理器】BaseDynamicSceneItem获取失败");
-            MonoObjectPool.Instance.PutObject(obj);
+            Debug.LogError($"【动态物体管理器】本地动态物体{type}参数化创建失败");
+            MonoObjectPool.Instance.PutObject(item.gameObject);
             return null;
         }
-        item.LocalCreate(type);
         _localDynamicItemSet.Add(item);
         return item;
     }
@@ -114,6 +119,26 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
         var localList = _localDynamicItemSet.ToList();
         foreach (var item in localList)
             DestroyLocalDynamicSceneItem(item);
+    }
+    private BaseDynamicSceneItem CreateItem(DynamicSceneItemType type)
+    {
+        var path = GetItemPath(type);
+        GameObject obj = null;
+        if (path != null)
+            obj = MonoObjectPool.Instance.GetObject(path);
+        if (obj == null)
+        {
+            Debug.LogError("【动态物体管理器】本地动态物体创建失败");
+            return null;
+        }
+        BaseDynamicSceneItem item = obj.GetComponent<BaseDynamicSceneItem>();
+        if (item == null)
+        {
+            Debug.LogError("【动态物体管理器】BaseDynamicSceneItem获取失败");
+            MonoObjectPool.Instance.PutObject(obj);
+            return null;
+        }
+        return item;
     }
     private string GetItemPath(DynamicSceneItemType type) => type switch
     {

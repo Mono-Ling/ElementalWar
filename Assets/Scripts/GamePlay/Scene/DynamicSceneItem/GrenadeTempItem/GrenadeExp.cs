@@ -74,7 +74,14 @@ public class GrenadeExp : BaseDynamicSceneItem
         Init(pos, color);
     }
     public override void LocalCreate(DynamicSceneItemType itemType) { }
-    public void ManualCreate(Vector3 position, Color color)
+    public override void LocalCreate<T>(DynamicSceneItemType itemType, T arg)
+    {
+        if (arg is ValueTuple<Vector3, Color> value)
+            ManualCreate(value.Item1, value.Item2);
+        else
+            Debug.LogError($"【手榴弹爆炸特效】参数化创建参数类型不匹配，期望({typeof(Vector3)}, {typeof(Color)})");
+    }
+    private void ManualCreate(Vector3 position, Color color)
     {
         int id = GetDynamicSceneItemId;
         this.itemType = DynamicSceneItemType.GrenadeExp;
