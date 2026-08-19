@@ -13,7 +13,7 @@ public class BoxBound : MonoBehaviour
     => UpdateBound();
     void OnValidate()
     => UpdateBound();
-    private void UpdateBound()
+    public void UpdateBound()
     => bound = new(transform.position + offset, extents);
     void OnDrawGizmosSelected()
     => bound.Draw(debugColor);

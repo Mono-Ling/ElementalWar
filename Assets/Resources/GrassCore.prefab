@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 414623522505386339}
   - component: {fileID: 6629473599228466360}
+  - component: {fileID: -5610810802486068296}
+  - component: {fileID: 4856470385344640292}
   m_Layer: 0
   m_Name: GrassCore
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 642127860436042463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35386655, y: 0.3477369, z: 0.6758932}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,6 +48,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50841add0eec90428efd1057f23be7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5610810802486068296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642127860436042463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d826e4f17dc1ba949846343b8d8db572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayToTrigger: 10
+  createRadius: 0.5
+  damageRadius: 5
+  damageElementContent: 1
+  damage: 60
+  burgeonName: "\u5217\u7EFD\u653E"
+  burgeonColor: {r: 1, g: 0.53205943, b: 0, a: 1}
+  burgeonDamageNum: 1.5
+  hyperBloomName: "\u8D85\u7EFD\u653E"
+  hyperBloomColor: {r: 0.47301292, g: 0, b: 1, a: 1}
+  hyperRadius: 7
+--- !u!114 &4856470385344640292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642127860436042463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23995054d504b694889e687f3bda6829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: -0.38, y: -0.14, z: -0.66}
+  extents: {x: 0.3, y: 0.3, z: 0.3}
+  debugColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!1001 &4179878637932777902
 PrefabInstance:
   m_ObjectHideFlags: 0

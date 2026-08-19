@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Net\Message\PositionStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\UdpResponseMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\Vector3Message.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\DynamicItemHitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\UdpHeader.cs" />
     <Compile Include="Assets\Scripts\Net\Message\Tools\ExpandFunc.cs" />
     <Compile Include="Assets\Scripts\Net\Message\PlayerPosStateMesMap.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\Scripts\Net\Message\WallShootHitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\GrenadeExpInitMes.cs" />
     <Compile Include="Assets\Scripts\Net\Message\QuaternionMessage.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\HyperBloomRequestMessage.cs" />
     <Compile Include="Assets\Scripts\Net\TcpManager.cs" />
   </ItemGroup>
   <ItemGroup>

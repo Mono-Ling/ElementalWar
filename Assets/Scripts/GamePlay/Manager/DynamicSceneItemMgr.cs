@@ -79,26 +79,20 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
         var item = CreateItem(type);
         if (item == null)
             return null;
-        item.LocalCreate(type);
         _localDynamicItemSet.Add(item);
+        item.LocalCreate(type);
         return item;
     }
     /// <summary>
-    /// 创建本地动态物体并携带自定义参数，T 必须与目标物体的参数化创建实现匹配，否则创建失败并返回 null
+    /// 创建本地动态物体并携带自定义参数
     /// </summary>
     public BaseDynamicSceneItem CreateLocalDynamicSceneItem<T>(DynamicSceneItemType type, T arg)
     {
         var item = CreateItem(type);
         if (item == null)
             return null;
-        item.LocalCreate<T>(type, arg);
-        if (item.ItemType == DynamicSceneItemType.ItemNone)
-        {
-            Debug.LogError($"【动态物体管理器】本地动态物体{type}参数化创建失败");
-            MonoObjectPool.Instance.PutObject(item.gameObject);
-            return null;
-        }
         _localDynamicItemSet.Add(item);
+        item.LocalCreate<T>(type, arg);
         return item;
     }
     public void DestroyLocalDynamicSceneItem(BaseDynamicSceneItem dynamicSceneItem)
@@ -144,6 +138,7 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
     {
         DynamicSceneItemType.Grenade => "Grenade",
         DynamicSceneItemType.GrenadeExp => "GrenadeExp",
+        DynamicSceneItemType.GrassCore => "GrassCore",
         _ => null,
     };
 }

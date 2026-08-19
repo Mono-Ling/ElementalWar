@@ -1,0 +1,14 @@
+syntax = "proto3";
+package Message;
+import "Vector3Message.proto";
+import "ElementAttackMessage.proto";
+
+// 超绽放请求消息，C -> S
+message HyperBloomRequestMessage
+{
+	int32 clientDynamicItemId = 1;
+	int32 maskPlayerId = 2;
+	Vector3Message center = 3;
+	float radius = 4;
+	ElementAttackMessage elementAttack = 5;
+}

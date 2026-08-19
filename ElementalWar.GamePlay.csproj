@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\StateMachine\Condition\And.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\OtherPlayer.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\SubStateMachine.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\GrassCore.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\PosStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\JumpStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\BaseSynReceive.cs" />

@@ -79,7 +79,7 @@ public class GrenadeExp : BaseDynamicSceneItem
         if (arg is ValueTuple<Vector3, Color> value)
             ManualCreate(value.Item1, value.Item2);
         else
-            Debug.LogError($"【手榴弹爆炸特效】参数化创建参数类型不匹配，期望({typeof(Vector3)}, {typeof(Color)})");
+            DynamicSceneItemMgr.Instance.DestroyLocalDynamicSceneItem(this);
     }
     private void ManualCreate(Vector3 position, Color color)
     {
