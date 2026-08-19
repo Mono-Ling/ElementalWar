@@ -105,26 +105,32 @@ public class GrassCore : BaseDynamicSceneItem
             message.ElementAttack == null ||
             message.ClientDynamicItemId != dynamicSceneItemId)
             return;
-        if (!ElementUtility.TryToElementType(message.ElementAttack.ElementType, out var element))
-            return;
-        string text = default;
-        Color color = default;
-        switch (element)
+        // if (!ElementUtility.TryToElementType(message.ElementAttack.ElementType, out var element))
+        //     return;
+        foreach (var elementMes in message.ElementAttack)
         {
-            case ElementType.Fire:
-                OnBurgeon();
-                text = burgeonName;
-                color = burgeonColor;
-                break;
-            case ElementType.Thunder:
-                OnHyperBloom(message.FromPlayerId);
-                text = hyperBloomName;
-                color = hyperBloomColor;
-                break;
-            default:
-                return;
+            if (!ElementUtility.TryToElementType(elementMes.ElementType, out var element))
+                continue;
+            string text = default;
+            Color color = default;
+            switch (element)
+            {
+                case ElementType.Fire:
+                    OnBurgeon();
+                    text = burgeonName;
+                    color = burgeonColor;
+                    break;
+                case ElementType.Thunder:
+                    OnHyperBloom(message.FromPlayerId);
+                    text = hyperBloomName;
+                    color = hyperBloomColor;
+                    break;
+                default:
+                    continue;
+            }
+            DynamicTextManager.Instance.LocalShowTextUI(new(text, color, transform.position));
+            return;
         }
-        DynamicTextManager.Instance.LocalShowTextUI(new(text, color, transform.position));
     }
     private void OnBurgeon()
     => Trigger(Mathf.CeilToInt(damage * burgeonDamageNum));

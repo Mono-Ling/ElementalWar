@@ -16,6 +16,7 @@ public class BloomReaction : BaseElementReaction
     public override void Init(ElementReceiver receiver, ElementBuffSet buffSet, Blackboard blackboard)
     {
         base.Init(receiver, buffSet, blackboard);
+        _preTime = Time.time - delay;
     }
     public override bool OnReaction(
         ElementType beforeElement, ElementType afterElement,

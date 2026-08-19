@@ -7,5 +7,5 @@ message DynamicItemHitMessage
 {
 	int32 clientDynamicItemId = 1;
 	int32 fromPlayerId = 2;
-	ElementAttackMessage elementAttack = 3;
+	repeated ElementAttackMessage elementAttack = 3;
 }

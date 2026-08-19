@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using Message;
 using Server.Event;
@@ -10,7 +11,7 @@ using Space;
 
 namespace Server.GamePlay.StateTransfer
 {
-    public class PlayerSpaceItem : SpaceItem,IOnShootHit,IOnExplosionHit,IOnAreaElementDamage
+    public class PlayerSpaceItem : SpaceItem,IOnShootHit,IOnExplosionHit,IOnAreaElementDamage,IOnHyperBloomHit
     {
         private const int WINDOW_SIZE = 150;
         public int playerId { get;private set;  }
@@ -82,6 +83,33 @@ namespace Server.GamePlay.StateTransfer
             UdpHeader udpHeader = new() { IsResponse = true };
             EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(playerId, udpHeader, req.damageMes));
             Console.WriteLine($"【玩家空间物体】范围元素伤害命中玩家{playerId}");
+        }
+
+        public float TryHyperBloomHit(HyperBloomHitReq req)
+        {
+            if (!history.TryGetLerp(req.tick, out var bound, (a, b, num) => AABB.Lerp(a, b, num)))
+                return -1;
+            if (req.range.IntersectAABB(bound))
+                return Vector3.Distance(bound.center,req.range.center);
+            return -1;
+        }
+        public void OnHyperBloomHit(HyperBloomHitReq req)
+        {
+            if(req.attackMessage == null)
+                return;
+            if (!history.TryGetLerp(req.tick, out var bound, (a, b, num) => AABB.Lerp(a, b, num)))
+                return;
+            PlayerShootHitMessage hitMes = new()
+            {
+                Origin = new(),
+                Dir = new(),
+                ElementAttack = req.attackMessage
+            };
+            hitMes.Origin.Switch(req.range.center);
+            hitMes.Dir.Switch(Vector3.Normalize(bound.center - req.range.center));
+            UdpHeader udpHeader = new() { IsResponse = true };
+            EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(playerId, udpHeader, hitMes));
+            Console.WriteLine($"【玩家空间物体】蔓生弹命中玩家{playerId}");
         }
     }
 }

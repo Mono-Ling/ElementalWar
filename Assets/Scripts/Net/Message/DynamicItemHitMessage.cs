@@ -27,7 +27,7 @@ namespace Message {
             "ChtEeW5hbWljSXRlbUhpdE1lc3NhZ2UucHJvdG8SB01lc3NhZ2UaGkVsZW1l",
             "bnRBdHRhY2tNZXNzYWdlLnByb3RvIoABChVEeW5hbWljSXRlbUhpdE1lc3Nh",
             "Z2USGwoTY2xpZW50RHluYW1pY0l0ZW1JZBgBIAEoBRIUCgxmcm9tUGxheWVy",
-            "SWQYAiABKAUSNAoNZWxlbWVudEF0dGFjaxgDIAEoCzIdLk1lc3NhZ2UuRWxl",
+            "SWQYAiABKAUSNAoNZWxlbWVudEF0dGFjaxgDIAMoCzIdLk1lc3NhZ2UuRWxl",
             "bWVudEF0dGFja01lc3NhZ2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Message.ElementAttackMessageReflection.Descriptor, },
@@ -79,7 +79,7 @@ namespace Message {
     public DynamicItemHitMessage(DynamicItemHitMessage other) : this() {
       clientDynamicItemId_ = other.clientDynamicItemId_;
       fromPlayerId_ = other.fromPlayerId_;
-      elementAttack_ = other.elementAttack_ != null ? other.elementAttack_.Clone() : null;
+      elementAttack_ = other.elementAttack_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -115,14 +115,13 @@ namespace Message {
 
     /// <summary>Field number for the "elementAttack" field.</summary>
     public const int ElementAttackFieldNumber = 3;
-    private global::Message.ElementAttackMessage elementAttack_;
+    private static readonly pb::FieldCodec<global::Message.ElementAttackMessage> _repeated_elementAttack_codec
+        = pb::FieldCodec.ForMessage(26, global::Message.ElementAttackMessage.Parser);
+    private readonly pbc::RepeatedField<global::Message.ElementAttackMessage> elementAttack_ = new pbc::RepeatedField<global::Message.ElementAttackMessage>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Message.ElementAttackMessage ElementAttack {
+    public pbc::RepeatedField<global::Message.ElementAttackMessage> ElementAttack {
       get { return elementAttack_; }
-      set {
-        elementAttack_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -142,7 +141,7 @@ namespace Message {
       }
       if (ClientDynamicItemId != other.ClientDynamicItemId) return false;
       if (FromPlayerId != other.FromPlayerId) return false;
-      if (!object.Equals(ElementAttack, other.ElementAttack)) return false;
+      if(!elementAttack_.Equals(other.elementAttack_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -152,7 +151,7 @@ namespace Message {
       int hash = 1;
       if (ClientDynamicItemId != 0) hash ^= ClientDynamicItemId.GetHashCode();
       if (FromPlayerId != 0) hash ^= FromPlayerId.GetHashCode();
-      if (elementAttack_ != null) hash ^= ElementAttack.GetHashCode();
+      hash ^= elementAttack_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -179,10 +178,7 @@ namespace Message {
         output.WriteRawTag(16);
         output.WriteInt32(FromPlayerId);
       }
-      if (elementAttack_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(ElementAttack);
-      }
+      elementAttack_.WriteTo(output, _repeated_elementAttack_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -201,10 +197,7 @@ namespace Message {
         output.WriteRawTag(16);
         output.WriteInt32(FromPlayerId);
       }
-      if (elementAttack_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(ElementAttack);
-      }
+      elementAttack_.WriteTo(ref output, _repeated_elementAttack_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -221,9 +214,7 @@ namespace Message {
       if (FromPlayerId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(FromPlayerId);
       }
-      if (elementAttack_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ElementAttack);
-      }
+      size += elementAttack_.CalculateSize(_repeated_elementAttack_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -242,12 +233,7 @@ namespace Message {
       if (other.FromPlayerId != 0) {
         FromPlayerId = other.FromPlayerId;
       }
-      if (other.elementAttack_ != null) {
-        if (elementAttack_ == null) {
-          ElementAttack = new global::Message.ElementAttackMessage();
-        }
-        ElementAttack.MergeFrom(other.ElementAttack);
-      }
+      elementAttack_.Add(other.elementAttack_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -276,10 +262,7 @@ namespace Message {
             break;
           }
           case 26: {
-            if (elementAttack_ == null) {
-              ElementAttack = new global::Message.ElementAttackMessage();
-            }
-            input.ReadMessage(ElementAttack);
+            elementAttack_.AddEntriesFrom(input, _repeated_elementAttack_codec);
             break;
           }
         }
@@ -310,10 +293,7 @@ namespace Message {
             break;
           }
           case 26: {
-            if (elementAttack_ == null) {
-              ElementAttack = new global::Message.ElementAttackMessage();
-            }
-            input.ReadMessage(ElementAttack);
+            elementAttack_.AddEntriesFrom(ref input, _repeated_elementAttack_codec);
             break;
           }
         }
