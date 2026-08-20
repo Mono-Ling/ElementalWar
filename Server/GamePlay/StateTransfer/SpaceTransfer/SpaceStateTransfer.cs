@@ -28,6 +28,7 @@ namespace Server.GamePlay.StateTransfer
 
             _spaceTransferItemList.Add(new DynamicSpaceItemTransferItem());
             _spaceTransferItemList.Add(new HyperBloomHitTransferItem());
+            _spaceTransferItemList.Add(new TriggerItemTransferItem());
         }
 
         public override void Start(PlayerStateTransfer? playerStateTransfer, List<int> playerList)

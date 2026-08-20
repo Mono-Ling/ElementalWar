@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Net\Message\DynamicTextMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\JumpStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\PlayerRegistryMes.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\ElementCrystalInitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ColorMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\HeartMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\DynamicItemStateMes.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets\Scripts\Net\Package\UdpPackage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ThrowStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ExplosionRequestMessage.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\OnTriggerMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\GrenadePositionMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ElementAttackMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\WallShootHitMessage.cs" />

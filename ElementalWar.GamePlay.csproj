@@ -75,9 +75,9 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\BaseSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Blackboard\Blackboard.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\BurnBuff.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementAttachment.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\IsTrue.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementType.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementAttachment.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ShootAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayerHP.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\Or.cs" />
@@ -167,6 +167,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\PosStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Shoot\CoolingState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AbilitySystem.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\ElementCrystal.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ReceiveItem\NetReceiver.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\FrozenReaction.cs" />
   </ItemGroup>

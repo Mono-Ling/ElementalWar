@@ -1,0 +1,7 @@
+syntax = "proto3";
+package Message;
+// 触发回调消息，S -> C
+message OnTriggerMessage
+{
+	int32 clientDynamicItemId = 1;
+}

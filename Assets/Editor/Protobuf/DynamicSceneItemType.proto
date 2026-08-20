@@ -6,4 +6,5 @@ enum DynamicSceneItemType
 	Grenade = 1;
 	GrenadeExp = 2;
 	GrassCore = 3;
+	ElementCrystal = 4;
 }

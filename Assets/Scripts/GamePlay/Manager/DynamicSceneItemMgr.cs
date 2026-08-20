@@ -139,6 +139,7 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
         DynamicSceneItemType.Grenade => "Grenade",
         DynamicSceneItemType.GrenadeExp => "GrenadeExp",
         DynamicSceneItemType.GrassCore => "GrassCore",
+        DynamicSceneItemType.ElementCrystal => "ElementCrystal",
         _ => null,
     };
 }
