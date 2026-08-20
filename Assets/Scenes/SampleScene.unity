@@ -204,6 +204,7 @@ MonoBehaviour:
   - rid: 4855356032389742603
   - rid: 5110485043599376463
   - rid: 5110485252109238482
+  - rid: 5110485433627967488
   references:
     version: 2
     RefIds:
@@ -237,6 +238,9 @@ MonoBehaviour:
       data: 
     - rid: 5110485252109238482
       type: {class: AOEFeedbackReceive, ns: , asm: ElementalWar.GamePlay}
+      data: 
+    - rid: 5110485433627967488
+      type: {class: ElementShieldFeedbackReceive, ns: , asm: ElementalWar.GamePlay}
       data: 
 --- !u!4 &50067450
 Transform:

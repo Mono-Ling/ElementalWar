@@ -100,7 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alpha: 0.7
   localOffset: {x: 0, y: 0.3, z: 0}
-  createRadius: 0.5
+  createNearRadius: 0.5
+  createFarRadius: 2
 --- !u!114 &200243906627310175
 MonoBehaviour:
   m_ObjectHideFlags: 0

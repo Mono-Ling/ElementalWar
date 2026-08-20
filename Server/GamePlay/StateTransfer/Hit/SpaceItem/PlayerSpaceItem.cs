@@ -5,13 +5,14 @@ using System.Text;
 using Message;
 using Server.Event;
 using Server.GamePlay.AttackRequest;
+using Server.GamePlay.StateTransfer.Hit.TriggerItem;
 using Server.GamePlay.StateTransfer.SpaceTransfer;
 using Server.Message.Tools;
 using Space;
 
 namespace Server.GamePlay.StateTransfer
 {
-    public class PlayerSpaceItem : SpaceItem,IOnShootHit,IOnExplosionHit,IOnAreaElementDamage,IOnHyperBloomHit
+    public class PlayerSpaceItem : SpaceItem,IOnShootHit,IOnExplosionHit,IOnAreaElementDamage,IOnHyperBloomHit,IOnTrigger
     {
         private const int WINDOW_SIZE = 150;
         public int playerId { get;private set;  }
@@ -110,6 +111,26 @@ namespace Server.GamePlay.StateTransfer
             UdpHeader udpHeader = new() { IsResponse = true };
             EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(playerId, udpHeader, hitMes));
             Console.WriteLine($"【玩家空间物体】蔓生弹命中玩家{playerId}");
+        }
+
+        public float TryTrigger(TriggerItem triggerItem,long tick)
+        {
+            if (triggerItem is not ElementCrystalTriggerItem)
+                return -1;
+            if (!history.TryGetLerp(tick, out var bound, (a, b, num) => AABB.Lerp(a, b, num)))
+                return -1;
+            if (triggerItem.Bound.IsIntersect(bound))
+                return Vector3.Distance(bound.center, triggerItem.Bound.center);
+            return -1;
+        }
+        public void OnTrigger(TriggerItem triggerItem)
+        {
+            if (triggerItem is not ElementCrystalTriggerItem ecTriggerItem)
+                return;
+            PlayerElementShieldMessage message = new() { ElementType = ecTriggerItem.elementType };
+            UdpHeader udpHeader = new() { IsResponse = true };
+            EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(playerId, udpHeader, message));
+            Console.WriteLine($"【玩家空间物体】玩家{playerId}触发元素护盾");
         }
     }
 }

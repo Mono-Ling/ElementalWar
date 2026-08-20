@@ -8,15 +8,18 @@ using Random = UnityEngine.Random;
 
 public class ElementCrystal : BaseDynamicSceneItem
 {
+    public float delay = 20f;
     public float alpha = 0.7f;
     [Header("本地创建位置偏移")]
     public Vector3 localOffset = new(0, 0.3f, 0);
     [Header("生成位置偏移半径")]
-    public float createRadius = 0.5f;
+    public float createNearRadius = 0.5f;
+    public float createFarRadius = 2f;
     private int _colorPropertyID = Shader.PropertyToID("_Color");
     private Renderer _renderer;
     private MaterialPropertyBlock _propertyBlock;
     private BoxBound _boxBound;
+    private Coroutine _coroutine;
     void Awake()
     {
         _renderer = GetComponent<Renderer>();
@@ -51,7 +54,7 @@ public class ElementCrystal : BaseDynamicSceneItem
         _renderer?.SetPropertyBlock(_propertyBlock);
 
         var angle = Random.Range(0, Mathf.PI + Mathf.PI);
-        var r = Random.Range(0, createRadius);
+        var r = Random.Range(createNearRadius, createFarRadius);
         var center = value.Item2;
         center += new Vector3(Mathf.Cos(angle) * r, 0, Mathf.Sin(angle) * r);
         center += localOffset;
@@ -79,6 +82,8 @@ public class ElementCrystal : BaseDynamicSceneItem
         };
         SendTo(mes, true);
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnTrigger);
+
+        _coroutine = StartCoroutine(DelayToDestroy());
     }
     public override void LocalDestroy()
     {
@@ -109,6 +114,14 @@ public class ElementCrystal : BaseDynamicSceneItem
         if (package.message is not OnTriggerMessage message ||
            message.ClientDynamicItemId != dynamicSceneItemId)
             return;
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+        DynamicSceneItemMgr.Instance.DestroyLocalDynamicSceneItem(this);
+    }
+    private IEnumerator DelayToDestroy()
+    {
+        yield return new WaitForSeconds(delay);
+        _coroutine = null;
         DynamicSceneItemMgr.Instance.DestroyLocalDynamicSceneItem(this);
     }
 }

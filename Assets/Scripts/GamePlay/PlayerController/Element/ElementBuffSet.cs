@@ -64,14 +64,18 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
         foreach (var buff in _buffSet)
             buff.OnFixedUpdate();
     }
-    public void AddElementBuff<T>() where T : BaseElementBuff
+    public T AddElementBuff<T>() where T : BaseElementBuff
     {
         if (elementBuffMap == null)
-            return;
+            return null;
         if (elementBuffMap.TryGetElementBuff<T>(out var buff))
+        {
             AddElementBuff(buff);
+            return buff;
+        }
         else
             Debug.LogWarning($"【元素Buff集合】{typeof(T)}未注册");
+        return null;
     }
     public bool TryRemoveElementBuff<T>() where T : BaseElementBuff
     {
@@ -133,6 +137,17 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
             return Contains(buff);
         else
             Debug.LogWarning($"【元素Buff集合】{typeof(T)}未注册");
+        return false;
+    }
+    public bool TryGetElementBuff<T>(out T buff) where T : BaseElementBuff
+    {
+        buff = default;
+        if (elementBuffMap.TryGetElementBuff<T>(out var findBuff))
+            if (Contains(findBuff))
+            {
+                buff = findBuff;
+                return true;
+            }
         return false;
     }
     public bool Contains(BaseElementBuff elementBuff)

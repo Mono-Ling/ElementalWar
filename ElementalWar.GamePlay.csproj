@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerView\Element\ElementAttachmentInfo.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\And.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\OtherPlayer.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\CrystalReaction.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\SubStateMachine.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\GrassCore.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\PosStateSynSend.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\BaseAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\ExpHitFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ThrowStateSynSend.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\ElementShieldFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Obj\Eff\ThrowTrack.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\HitFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraControlAbility.cs" />
@@ -154,6 +156,7 @@
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneItem.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ElementAttachmentReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\SO\ReactionPriorityTable.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\ElementShieldBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\ElectrificationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\IntensificationBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneAsset.cs" />

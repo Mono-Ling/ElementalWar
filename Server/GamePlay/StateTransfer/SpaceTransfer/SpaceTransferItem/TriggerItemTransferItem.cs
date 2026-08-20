@@ -10,7 +10,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
 {
     public interface IOnTrigger
     {
-        float TryTrigger(TriggerItem triggerItem);
+        float TryTrigger(TriggerItem triggerItem,long tick);
         void OnTrigger(TriggerItem triggerItem);
     }
     public class TriggerItemTransferItem : BaseSpaceTransferItem
@@ -82,7 +82,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 {
                     if(spaceItem is IOnTrigger onTrigger)
                     {
-                        var dis = onTrigger.TryTrigger(triggerItem);
+                        var dis = onTrigger.TryTrigger(triggerItem,DateTime.UtcNow.Ticks);
                         if (dis < 0)
                             continue;
                         if(dis < minDis)

@@ -17,6 +17,7 @@ MonoBehaviour:
   - rid: 5110485252109238375
   - rid: 5110485252109238376
   - rid: 5110485252109238377
+  - rid: 5110485433627967489
   references:
     version: 2
     RefIds:
@@ -41,6 +42,7 @@ MonoBehaviour:
     - rid: 5110485252109238376
       type: {class: ElectrificationBuff, ns: , asm: ElementalWar.GamePlay}
       data:
+        content: 1
         damage: 50
         electrificationName: "\u611F\u7535"
         electrificationColor: {r: 0.5691165, g: 0.18553454, b: 1, a: 1}
@@ -49,3 +51,7 @@ MonoBehaviour:
       type: {class: FrozenBuff, ns: , asm: ElementalWar.GamePlay}
       data:
         frozenTime: 10
+    - rid: 5110485433627967489
+      type: {class: ElementShieldBuff, ns: , asm: ElementalWar.GamePlay}
+      data:
+        content: 4
