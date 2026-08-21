@@ -38,7 +38,8 @@ namespace Message {
   }
   #region Messages
   /// <summary>
-  /// 玩家元素护短消息，S -> C
+  /// 玩家元素护盾消息，S -> C
+  /// 通知主玩家注册元素护盾Buff
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class PlayerElementShieldMessage : pb::IMessage<PlayerElementShieldMessage>

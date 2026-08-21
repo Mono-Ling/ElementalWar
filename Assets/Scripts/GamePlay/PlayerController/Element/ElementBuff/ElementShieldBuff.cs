@@ -23,12 +23,18 @@ public class ElementShieldBuff : BaseElementBuff
         _currContent = maxContent;
         _startTime = Time.time;
 
-        Debug.Log($"【元素护盾】添加{element}元素护盾");
+        blackboard?.SetValue("ElementShieldType", _element);
+
+        Debug.Log($"【元素护盾Buff】添加{element}元素护盾");
     }
     public override void OnExit()
     {
         RemoveAttackListener(_element, OnElementAttack);
-        Debug.Log("【元素护盾】消失");
+
+        _element = ElementType.None;
+        blackboard?.SetValue("ElementShieldType", _element);
+
+        Debug.Log("【元素护盾Buff】消失");
     }
     private void OnElementAttack(ref float content, ref int damage)
     {

@@ -12,4 +12,5 @@ namespace Message
     public partial class ShootStateMessage : IPlayerStateMessage { }
     public partial class ThrowStateMessage : IPlayerStateMessage { }
     public partial class ElementAttachmentMessage : IPlayerStateMessage { }
+    public partial class ElementShieldViewStateMessage : IPlayerStateMessage { }
 }

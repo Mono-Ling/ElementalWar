@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Net\Message\PlayerPosStateMesMap.cs" />
     <Compile Include="Assets\Scripts\Net\Message\DynamicTextMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\JumpStateMessage.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\ElementShieldViewStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\PlayerRegistryMes.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ElementCrystalInitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ColorMessage.cs" />

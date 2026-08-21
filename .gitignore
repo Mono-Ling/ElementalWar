@@ -43,8 +43,9 @@ crashlytics-*.txt
 # ==============================
 # .NET / C# 构建产物
 # ==============================
-**/[Bb]in/
-**/[Oo]bj/
+# 根目录 bin（根 obj 已在 Unity 区屏蔽）；子项目产物由各自的 .gitignore 负责（如 Server/）
+# 避免使用 **/ 通配，以免误伤 Assets 下名为 bin/obj 的脚本目录
+/[Bb]in/
 *.user
 *.cache
 *.vspscc

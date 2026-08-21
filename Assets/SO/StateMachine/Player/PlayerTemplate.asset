@@ -63,3 +63,5 @@ MonoBehaviour:
     type: 0
   - name: MaxHP
     type: 0
+  - name: ElementShieldType
+    type: 15

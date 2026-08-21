@@ -200,6 +200,7 @@ MonoBehaviour:
   - rid: 4855356032389742592
   - rid: 4855356032389742688
   - rid: 5110485252109238466
+  - rid: 5110485433627967494
   feedbackReceives:
   - rid: 4855356032389742603
   - rid: 5110485043599376463
@@ -241,6 +242,9 @@ MonoBehaviour:
       data: 
     - rid: 5110485433627967488
       type: {class: ElementShieldFeedbackReceive, ns: , asm: ElementalWar.GamePlay}
+      data: 
+    - rid: 5110485433627967494
+      type: {class: ElementShieldStateSynSend, ns: , asm: ElementalWar.GamePlay}
       data: 
 --- !u!4 &50067450
 Transform:
@@ -1226,10 +1230,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5662762968172714004, guid: e8f90446ebf5981479eab2c9b149a621, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7605992845348808515, guid: e8f90446ebf5981479eab2c9b149a621, type: 3}
-      propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

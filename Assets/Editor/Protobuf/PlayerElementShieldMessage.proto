@@ -1,7 +1,8 @@
 syntax = "proto3";
 package Message;
 
-// 玩家元素护短消息，S -> C
+// 玩家元素护盾消息，S -> C
+// 通知主玩家注册元素护盾Buff
 message PlayerElementShieldMessage
 {
 	int32 elementType = 1;

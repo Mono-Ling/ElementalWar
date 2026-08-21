@@ -1,0 +1,9 @@
+syntax = "proto3";
+package Message;
+
+// 玩家护盾显示状态同步消息
+message ElementShieldViewStateMessage
+{
+	int32 elementType = 1;
+	int32 playerId = 2;
+}

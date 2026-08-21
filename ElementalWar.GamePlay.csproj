@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayer.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\BaseElementReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\Grenade.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Obj\Eff\ElementShield.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\Base\BaseCondition.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\JumpAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AutoInject\IAutoInject.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\HitFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraControlAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ThrowStateSynReceive.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerView\Element\ElementShieldView.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\AbilitySystemState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\GrenadeTempItem\GrenadeExp.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ElementAttachmentSend.cs" />
@@ -130,6 +132,7 @@
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\BaseDynamicSceneItem.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\Test.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Manager\StaticSceneManager.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ElementShieldStateSynSend.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Throw\ThrowFireState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\SO\ElementBuffMap.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\BurnReaction.cs" />
@@ -160,6 +163,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\ElectrificationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\IntensificationBuff.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneAsset.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ElementShieldStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\DynamicUI\DynamicText\DynamicTextInfo.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\BaseSynSend.cs" />
