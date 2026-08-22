@@ -28,7 +28,6 @@ MonoBehaviour:
   - rid: 5110485043599376473
   - rid: 5110485043599376477
   - rid: 5110485043599376490
-  - rid: 5110485433627967496
   references:
     version: 2
     RefIds:
@@ -96,7 +95,3 @@ MonoBehaviour:
       type: {class: ElementTypeSelectAbility, ns: , asm: ElementalWar.GamePlay}
       data:
         isDebug: 0
-    - rid: 5110485433627967496
-      type: {class: FrontSightView, ns: , asm: ElementalWar.GamePlay}
-      data:
-        frontSightType: 1

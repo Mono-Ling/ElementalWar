@@ -75,7 +75,7 @@ public class UIManager : SingleMono<UIManager>
             return null;
         }
 
-        var panelObj = Instantiate(panelPrefab, _staticCanvas, true);
+        var panelObj = Instantiate(panelPrefab, _staticCanvas, false);
         if (panelObj == null)
         {
             Debug.LogError($"【UI管理器】面板{typeof(T)}创建失败");
@@ -145,7 +145,8 @@ public class UIManager : SingleMono<UIManager>
         action += DestroyPanel;
         CurrentPanel.Hide(action, isAnimation);
         _panelStack.Pop();
-        CurrentPanel?.Show(EnablePanel, isAnimation);
+        EnablePanel(CurrentPanel);
+        CurrentPanel?.Show(null, isAnimation);
     }
     public T BufferShowUI<T>(Action<BaseUI> action = null, bool isAnimation = true) where T : BaseUI
     {
@@ -188,6 +189,15 @@ public class UIManager : SingleMono<UIManager>
             return false;
         return RectTransformUtility.ScreenPointToWorldPointInRectangle(rect, screenPoint, canvas.rootCanvas.worldCamera, out worldPoint);
     }
+    public static void InitUIPosition(BaseUI uI)
+    {
+        if (uI == null)
+            return;
+        if (uI.transform is not RectTransform rect)
+            return;
+        rect.anchoredPosition = Vector2.zero;
+        rect.localScale = Vector3.one;
+    }
     private bool InitPanel<T>(GameObject panelObj, out T panel) where T : BaseUI
     {
         panel = null;
@@ -203,9 +213,9 @@ public class UIManager : SingleMono<UIManager>
         return true;
     }
     private void DisablePanel(BaseUI uI)
-    => uI.gameObject.SetActive(false);
+    => uI?.gameObject?.SetActive(false);
     private void EnablePanel(BaseUI uI)
-    => uI.gameObject.SetActive(true);
+    => uI?.gameObject?.SetActive(true);
     private void DestroyPanel(BaseUI uI)
     => Destroy(uI.gameObject);
     private void BufferDestroyUI(BaseUI uI)
