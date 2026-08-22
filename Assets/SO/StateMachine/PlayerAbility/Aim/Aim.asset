@@ -25,6 +25,7 @@ MonoBehaviour:
   - rid: 5110485043599376478
   - rid: 5110485043599376479
   - rid: 5110485043599376491
+  - rid: 5110485433627967497
   references:
     version: 2
     RefIds:
@@ -60,6 +61,8 @@ MonoBehaviour:
     - rid: 5110485043599376476
       type: {class: ShootAbility, ns: , asm: ElementalWar.GamePlay}
       data:
+        attackElementContent: 1
+        attackDamage: 20
         delayTime: 0.2
     - rid: 5110485043599376478
       type: {class: AimAbility, ns: , asm: ElementalWar.GamePlay}
@@ -70,4 +73,9 @@ MonoBehaviour:
         reloadTime: 3
     - rid: 5110485043599376491
       type: {class: ElementTypeSelectAbility, ns: , asm: ElementalWar.GamePlay}
-      data: 
+      data:
+        isDebug: 0
+    - rid: 5110485433627967497
+      type: {class: FrontSightView, ns: , asm: ElementalWar.GamePlay}
+      data:
+        frontSightType: 2

@@ -130,7 +130,7 @@ public class UIManager : SingleMono<UIManager>
         }
         CurrentPanel?.Hide(DisablePanel, isAnimation);
 
-        panelObj.transform.SetParent(_staticCanvas, true);
+        panelObj.transform.SetParent(_staticCanvas, false);
         panel.Show(showCallback, isAnimation);
         _panelStack.Push(panel);
         asyncCallback?.Invoke(panel);
@@ -163,7 +163,7 @@ public class UIManager : SingleMono<UIManager>
             MonoObjectPool.Instance.PutObject(obj);
             return null;
         }
-        obj.transform.SetParent(_dynamicCanvas, true);
+        obj.transform.SetParent(_dynamicCanvas, false);
         ui.Show(action, isAnimation);
         return ui;
     }
