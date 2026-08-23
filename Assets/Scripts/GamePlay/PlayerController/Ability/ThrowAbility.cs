@@ -43,9 +43,17 @@ public class ThrowAbility : BaseAbility
     }
     private void OnThrowCanceled(InputAction.CallbackContext context)
     {
-        blackboard.SetValue<bool>("IsThrow", false);
+        // blackboard.SetValue<bool>("IsThrow", false);
         if (!_canFire)
             return;
+        if (!blackboard.GetValue("GrenadeCount", out int count) || count <= 0)
+        {
+            OnThrowEnd();
+            return;
+        }
+        else
+            blackboard.SetValue("GrenadeCount", --count);
+
         blackboard.SetValue<bool>("IsThrowFire", true);
 
         blackboard.GetValue<ElementType>("AttackElementType", out var elementType);

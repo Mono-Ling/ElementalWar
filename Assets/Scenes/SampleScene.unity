@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 50067450}
   - component: {fileID: 50067456}
+  - component: {fileID: 50067463}
   - component: {fileID: 50067449}
   - component: {fileID: 50067454}
   - component: {fileID: 50067461}
@@ -449,6 +450,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd6b55b609c2bd442a396c05e9d9431a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &50067463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50067447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d454d1082644314ba96c0e8de2eea4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBulletCount: 30
+  maxGrenadeCount: 15
+  defaultElement: 1
 --- !u!1 &161104267
 GameObject:
   m_ObjectHideFlags: 0

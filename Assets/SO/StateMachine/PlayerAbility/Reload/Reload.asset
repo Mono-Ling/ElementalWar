@@ -29,7 +29,8 @@ MonoBehaviour:
     - rid: 5110485043599376464
       type: {class: ReloadAbility, ns: , asm: ElementalWar.GamePlay}
       data:
-        reloadTime: 3
+        reloadTime: 1
+        maxBulletCount: 30
     - rid: 5110485043599376465
       type: {class: CameraControlAbility, ns: , asm: ElementalWar.GamePlay}
       data:

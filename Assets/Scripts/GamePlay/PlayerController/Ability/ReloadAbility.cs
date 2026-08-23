@@ -54,7 +54,9 @@ public class ReloadAbility : BaseAbility
     {
         Debug.Log("换弹结束");
         if (blackboard.GetValue<ElementType>("AttackElementType", out var type))
-            ShootAbility.SetShootElementType(type);
+            blackboard.SetValue("ShootElementType", type);
+        if (blackboard.GetValue<int>("MaxBulletCount", out var maxCount))
+            blackboard.SetValue("BulletCount", maxCount);
     }
     private void OnReloadEnd()
     {

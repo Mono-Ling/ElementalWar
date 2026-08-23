@@ -69,7 +69,7 @@ MonoBehaviour:
     - rid: 5110485043599376479
       type: {class: ReloadAbility, ns: , asm: ElementalWar.GamePlay}
       data:
-        reloadTime: 3
+        reloadTime: 1
     - rid: 5110485043599376491
       type: {class: ElementTypeSelectAbility, ns: , asm: ElementalWar.GamePlay}
       data:

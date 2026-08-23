@@ -6,6 +6,13 @@ public class MainPlayer : MonoBehaviour
 {
     public PlayerController playerController;
     private Blackboard _blackboard;
+    private InitBlackboardArg _initBlackboardArg;
+    void Awake()
+    {
+        _initBlackboardArg = GetComponent<InitBlackboardArg>();
+        if (_initBlackboardArg == null)
+            Debug.LogError("【主玩家】黑板参数初始化器获取失败");
+    }
     void Start()
     {
         if (playerController == null)
@@ -24,8 +31,10 @@ public class MainPlayer : MonoBehaviour
     }
     private void InjectBlackboard()
     {
-        if (_blackboard == null)
+        if (_blackboard == null || _initBlackboardArg == null)
             return;
+        _initBlackboardArg.InitArg(_blackboard);
+
         var components = GetComponents<IAutoInject<Blackboard>>();
         foreach (var item in components)
             item.AutoInject(_blackboard);

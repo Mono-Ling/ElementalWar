@@ -13,7 +13,9 @@ public class ElementTypeSelectAbility : BaseAbility
         base.InitAbility(abilitySystem, playerInput, blackboard);
         AddInputStartedListener("ElementType", OnElementTypeStarted);
 
-        blackboard.SetValue("AttackElementType", _elementType);
+        if (blackboard.GetValue<ElementType>("AttackElementType", out var element))
+            _elementType = element;
+        // blackboard.SetValue("AttackElementType", _elementType);
     }
     private void OnElementTypeStarted(InputAction.CallbackContext context)
     {
