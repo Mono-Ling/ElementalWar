@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d1ec4950a30844a949256541e89981, type: 3}
+  m_Name: Frozen
+  m_EditorClassIdentifier: 
+  edgeList:
+  - {fileID: 11400000, guid: 71b1fb25dec93164288fd5a3bc307716, type: 2}
+  abilitySystemArgName: AbilitySystem
+  abilities:
+  - rid: 5110485497458982912
+  - rid: 5110485497458982913
+  - rid: 5110485497458982914
+  references:
+    version: 2
+    RefIds:
+    - rid: 5110485497458982912
+      type: {class: CameraControlAbility, ns: , asm: ElementalWar.GamePlay}
+      data:
+        followOffset: {x: 0, y: 1, z: 0}
+        targetOffset: {x: 0, y: 1.5, z: -1.5}
+        pitch: 15
+        maxPitch: 50
+        minPitch: -50
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 128
+        posSmoothTime: 0.05
+        rotSmoothTime: 0.1
+        pitchSpeed: 3
+        maxRadius: 0.1
+        pitchAddSpeed: -3
+    - rid: 5110485497458982913
+      type: {class: CameraFOVAbility, ns: , asm: ElementalWar.GamePlay}
+      data:
+        FOV: 80
+        smoothTime: 0.1
+    - rid: 5110485497458982914
+      type: {class: ElementTypeSelectAbility, ns: , asm: ElementalWar.GamePlay}
+      data:
+        isDebug: 0

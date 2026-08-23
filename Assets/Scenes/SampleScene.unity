@@ -203,6 +203,7 @@ MonoBehaviour:
   - rid: 4855356032389742688
   - rid: 5110485252109238466
   - rid: 5110485433627967494
+  - rid: 5110485497458982915
   feedbackReceives:
   - rid: 4855356032389742603
   - rid: 5110485043599376463
@@ -247,6 +248,9 @@ MonoBehaviour:
       data: 
     - rid: 5110485433627967494
       type: {class: ElementShieldStateSynSend, ns: , asm: ElementalWar.GamePlay}
+      data: 
+    - rid: 5110485497458982915
+      type: {class: FrozenStateSynSend, ns: , asm: ElementalWar.GamePlay}
       data: 
 --- !u!4 &50067450
 Transform:
@@ -356,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51849815c23023d4c8f9bd8cacf343a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anyState: {fileID: 0}
+  anyState: {fileID: 11400000, guid: a6d56520bed240b47ad174ac6b520f7b, type: 2}
   initState: {fileID: 11400000, guid: 20e22ea12005f114888437b24fc31664, type: 2}
   isDebug: 0
 --- !u!114 &50067456
@@ -981,6 +985,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 310976570760935225, guid: e8f90446ebf5981479eab2c9b149a621, type: 3}
+      propertyPath: anyState
+      value: 
+      objectReference: {fileID: 11400000, guid: 24aacca3491c36a4ab1d38dd1dc9f434, type: 2}
     - target: {fileID: 3307565717817295942, guid: e8f90446ebf5981479eab2c9b149a621, type: 3}
       propertyPath: m_Name
       value: Player

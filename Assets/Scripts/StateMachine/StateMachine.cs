@@ -47,6 +47,8 @@ public class StateMachine : MonoBehaviour
                 Debug.LogWarning("【状态机】无效出边");
                 continue;
             }
+            if (edge.targetState.Equals(currState))
+                continue;
             if (edge.condition.IsCompleted(blackboard))
             {
                 if (state == anyState)

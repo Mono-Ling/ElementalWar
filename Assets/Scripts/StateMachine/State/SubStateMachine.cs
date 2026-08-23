@@ -49,6 +49,8 @@ public class SubStateMachine : State
                 Debug.LogWarning("【状态机】无效出边");
                 continue;
             }
+            if (edge.targetState.Equals(_currState))
+                continue;
             if (edge.condition.IsCompleted(blackboard))
             {
                 if (state == anyState)

@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\StateMachine\Condition\IsTrue.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementType.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ShootAbility.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\State\FrozenState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayerHP.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Condition\Or.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\BaseFeedbackReceive.cs" />
@@ -143,8 +144,10 @@
     <Compile Include="Assets\Scripts\GamePlay\Manager\DynamicSceneItemMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\ShootStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\SO\ElementInfoMap.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\FrozenStateSynSend.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Edge\Edge.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\AOEFeedbackReceive.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\FrozenStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Blackboard\BlackboardTemplate.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayerNetSyn.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\EvaporationReaction.cs" />

@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Net\Message\ShootRequestMessage.cs" />
     <Compile Include="Assets\Scripts\Net\NetManager.cs" />
     <Compile Include="Assets\Scripts\Net\Message\BoundStateMessage.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\FrozenStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Package\NetPackage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\TextMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\PlayerShootHitMessage.cs" />

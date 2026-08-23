@@ -1,0 +1,7 @@
+syntax = "proto3";
+package Message;
+message FrozenStateMessage
+{
+	bool isFrozen = 1;
+	int32 playerId = 2;
+}

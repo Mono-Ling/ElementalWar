@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ffa173b7d21f5f44b3f311be01e1a25, type: 3}
+  m_Name: Frozen2Idle
+  m_EditorClassIdentifier: 
+  condition: {fileID: 11400000, guid: f0fef669d27d5d342942beb30029606d, type: 2}
+  targetState: {fileID: 11400000, guid: 20e22ea12005f114888437b24fc31664, type: 2}
+  weight: 0
