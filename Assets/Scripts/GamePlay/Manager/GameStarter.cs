@@ -6,24 +6,33 @@ using UnityEngine;
 public class GameStarter : MonoBehaviour
 {
     public StaticSceneAsset sceneAsset;
+    private MainPlayer _mainPlayer;
     void Awake()
     {
         var dynamicMgr = DynamicSceneItemMgr.Instance;
         NetManager.Instance.StartClient();
         Cursor.lockState = CursorLockMode.Confined;
+        EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnRegistryReceive);
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnGameStartReceive);
     }
     void OnDestroy()
     {
+        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnRegistryReceive);
         EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnGameStartReceive);
     }
-    private void OnGameStartReceive(NetPackage package)
+    private void OnRegistryReceive(NetPackage package)
     {
         if (package.message is not PlayerRegistryMes message)
             return;
-        StartCoroutine(StartGame(message));
+        StartCoroutine(StartClient(message));
     }
-    private IEnumerator StartGame(PlayerRegistryMes message)
+    public void OnGameStartReceive(NetPackage package)
+    {
+        if (package.message is not GameStartMessage message)
+            return;
+        _mainPlayer?.StartMainPlayer();
+    }
+    private IEnumerator StartClient(PlayerRegistryMes message)
     {
         yield return StaticSceneManager.Instance.LoadWall(sceneAsset);
 
@@ -35,7 +44,10 @@ public class GameStarter : MonoBehaviour
 
         ManagedPlayerMgr.Instance.StartManagedPlayer();
         yield return ManagedPlayerMgr.Instance.CreateManagedPlayer(message);
-        Debug.Log("【游戏启动器】Game Start");
+
+        OnClientStart();
+
+        Debug.Log("【游戏启动器】Client Start");
     }
     private bool CreateMainPlayer(PlayerRegistryMes message)
     {
@@ -61,15 +73,20 @@ public class GameStarter : MonoBehaviour
             Debug.LogError("【游戏启动器】主玩家创建失败");
             return false;
         }
-        var mainPlayer = mainPlayerObj.GetComponent<MainPlayer>();
-        if (mainPlayer == null)
+        _mainPlayer = mainPlayerObj.GetComponent<MainPlayer>();
+        if (_mainPlayer == null)
         {
             MonoObjectPool.Instance.PutObject(mainPlayerObj);
             MonoObjectPool.Instance.PutObject(playerViewObj);
             Debug.LogError("【游戏启动器】主玩家显示控制器获取失败");
             return false;
         }
-        mainPlayer.SetMainPlayer(controller, message.ClientId);
+        _mainPlayer.SetMainPlayer(controller, message.ClientId);
         return true;
+    }
+    private void OnClientStart()
+    {
+        ClientStartMessage mes = new();
+        EventBus.Instance.Trigger<NetPackage>(EventType.SendTo, new(mes));
     }
 }

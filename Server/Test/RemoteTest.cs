@@ -28,6 +28,7 @@ namespace Server.Test
 
             List<int> players = new() { playerId };
             var transfer = new PlayerStateTransfer(players);
+            transfer.Start();
             _transferDic[playerId] = transfer;
 
             EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo, new(playerId, mes));

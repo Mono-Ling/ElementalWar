@@ -1,0 +1,8 @@
+syntax = "proto3";
+package Message;
+
+// 游戏开始消息，S -> C
+message GameStartMessage
+{
+	
+}

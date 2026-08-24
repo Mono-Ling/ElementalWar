@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 8190671545986169809}
   - component: {fileID: 6879350366235331878}
   - component: {fileID: 1803778817770047108}
+  - component: {fileID: -7358048883273875721}
   m_Layer: 6
   m_Name: MainPlayer
   m_TagString: Untagged
@@ -100,6 +101,7 @@ MonoBehaviour:
   - rid: 5110485043599376463
   - rid: 5110485252109238482
   - rid: 5110485433627967488
+  - rid: 5110485497458982953
   references:
     version: 2
     RefIds:
@@ -142,6 +144,9 @@ MonoBehaviour:
       data: 
     - rid: 5110485497458982915
       type: {class: FrozenStateSynSend, ns: , asm: ElementalWar.GamePlay}
+      data: 
+    - rid: 5110485497458982953
+      type: {class: PosFeedbackReceive, ns: , asm: ElementalWar.GamePlay}
       data: 
 --- !u!114 &3438979584704365449
 MonoBehaviour:
@@ -347,3 +352,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-7358048883273875721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209072903259143127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50841add0eec90428efd1057f23be7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Net\Message\Vector3Message.cs" />
     <Compile Include="Assets\Scripts\Net\Message\DynamicItemHitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\UdpHeader.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\ClientStartMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\Tools\ExpandFunc.cs" />
     <Compile Include="Assets\Scripts\Net\Message\PlayerPosStateMesMap.cs" />
     <Compile Include="Assets\Scripts\Net\Message\DynamicTextMessage.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Assets\Scripts\Net\Message\PlayerRegistryMes.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ElementCrystalInitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ColorMessage.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\GameStartMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\HeartMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\DynamicItemStateMes.cs" />
     <Compile Include="Assets\Scripts\Net\Message\PlayerElementShieldMessage.cs" />

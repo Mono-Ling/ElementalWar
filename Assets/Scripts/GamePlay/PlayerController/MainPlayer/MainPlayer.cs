@@ -32,6 +32,12 @@ public class MainPlayer : MonoBehaviour
 
         InjectBlackboard();
     }
+    public void StartMainPlayer()
+    {
+        var components = GetComponents<IGameStart>();
+        foreach (var item in components)
+            item?.OnGameStart();
+    }
     private void InjectBlackboard()
     {
         if (_blackboard == null || _initBlackboardArg == null)

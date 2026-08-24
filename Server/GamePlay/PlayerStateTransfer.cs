@@ -15,6 +15,7 @@ namespace Server.GamePlay
         private const int UPDATE_DELTA_TIMR = 10;// ms
 
         private Dictionary<Type, StateSynReceiveEvent> _stateSynEventDic = new();
+        private List<int> _playerList;
         private List<BaseTransfer> _stateTransferList = new();
         private CancellationTokenSource _cancel = new();
         public PlayerStateTransfer(List<int> playerIdList)
@@ -29,8 +30,15 @@ namespace Server.GamePlay
 
             _stateTransferList.Add(new DynamicTextUITransfer());
 
+            _playerList = playerIdList ?? new();
+
             foreach (var stateTransfer in _stateTransferList)
-                stateTransfer.Start(this,playerIdList);
+                stateTransfer.Init(this, _playerList);
+        }
+        public void Start()
+        {
+            foreach (var stateTransfer in _stateTransferList)
+                stateTransfer.Start(this, _playerList);
 
             Task.Run(Update);
             EventBus.Instance.AddListener<ClientPackage>(EventType.OnReceive, OnStateSynMessageReceive);

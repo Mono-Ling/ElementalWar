@@ -162,6 +162,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\SO\ElementReactionMap.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReceiver.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\ElementTypeSelectAbility.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\IGame.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Shoot\FireState.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\State.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\OverloadReaction.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\OriginalIntensificationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\PosStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Shoot\CoolingState.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\PosFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AbilitySystem.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\ElementCrystal.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ReceiveItem\NetReceiver.cs" />

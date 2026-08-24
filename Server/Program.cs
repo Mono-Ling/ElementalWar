@@ -18,7 +18,8 @@ class Program
         NetServer server = new();
         server.Start(tcpIpEndPoint,udpIpEndPoint);
 
-        RemoteTest test = new();
+        // RemoteTest test = new();
+        LocalOnlineTest test = new();
 
         while (true)
         {

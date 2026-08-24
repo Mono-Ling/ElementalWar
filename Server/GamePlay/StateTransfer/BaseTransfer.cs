@@ -11,6 +11,7 @@ namespace Server.GamePlay.StateTransfer
     {
         protected PlayerStateTransfer? playerStateTransfer;
         protected UdpHeader udpHeader = new();
+        public virtual void Init(PlayerStateTransfer? playerStateTransfer, List<int> playerList) { }
         public virtual void Start(PlayerStateTransfer? playerStateTransfer,List<int> playerList)
             => this.playerStateTransfer = playerStateTransfer;
         public virtual void Update() { }
