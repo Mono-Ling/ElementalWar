@@ -8,29 +8,24 @@ public class ManagedPlayerMgr : SingleMono<ManagedPlayerMgr>
 {
     private OtherPlayer _otherPlayer;
     private List<GameObject> _playerObjList = new();
-    // Start is called before the first frame update
-    void Awake()
+    void OnDestroy()
+    => StopManagedPlayer();
+    public void StartManagedPlayer()
     {
         var playerObj = Instantiate(Resources.Load<GameObject>("OtherPlayer"));
         playerObj.name = "OtherPlayer";
         _otherPlayer = playerObj.GetComponent<OtherPlayer>();
 
         _otherPlayer.transform.SetParent(transform);
-        EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnPlayerRegistryMes);
     }
-    void OnDestroy()
+    public void StopManagedPlayer()
     {
-        Clear();
-        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnPlayerRegistryMes);
-    }
-    private void OnPlayerRegistryMes(NetPackage package)
-    {
-        if (package.sendType != SendType.Tcp || package.message is not PlayerRegistryMes mes)
+        if (_otherPlayer == null)
             return;
-        CreateManagedPlayer(mes);
-        Debug.LogWarning("【托管玩家管理器】玩家注册");
+        Clear();
+        _otherPlayer.Clear();
     }
-    private void CreateManagedPlayer(PlayerRegistryMes mes)
+    public IEnumerator CreateManagedPlayer(PlayerRegistryMes mes)
     {
         Clear();
 
@@ -51,6 +46,7 @@ public class ManagedPlayerMgr : SingleMono<ManagedPlayerMgr>
             playerDic.Add(id, controller);
 
             _playerObjList.Add(playerViewObj);
+            yield return null;
         }
         _otherPlayer.InitOtherPlayer(playerDic);
     }

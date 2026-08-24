@@ -42,6 +42,9 @@ public class OtherPlayer : MonoBehaviour
                 Debug.LogError($"【网络玩家{id}】黑板获取失败");
                 return;
             }
+
+            blackboard.SetValue("PlayerId", id);
+
             blackboardDic.Add(id, blackboard);
         }
 

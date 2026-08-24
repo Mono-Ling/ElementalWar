@@ -15,16 +15,19 @@ public class StaticSceneManager : SingleMono<StaticSceneManager>
     {
         _netReceiver.StopReceive();
     }
-    public void LoadWall(StaticSceneAsset sceneAsset)
+    public IEnumerator LoadWall(StaticSceneAsset sceneAsset)
     {
         if (sceneAsset == null)
         {
             Debug.LogError("【静态场景管理器】场景资源为空");
-            return;
+            yield break;
         }
         int count = sceneAsset.sceneInfoList.Count;
         foreach (var info in sceneAsset.sceneInfoList)
+        {
             CreateWall(info);
+            yield return null;
+        }
 
         _netReceiver.AddListener<WallShootHitMessage>(OnWallHit);
     }

@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraFOVAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementUtility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ShootStateSynSend.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Manager\GameStarter.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuffSet.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\DynamicTextCreator.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\BaseElementBuff.cs" />

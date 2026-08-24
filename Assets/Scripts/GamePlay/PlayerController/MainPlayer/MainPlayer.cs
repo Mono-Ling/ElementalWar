@@ -13,19 +13,22 @@ public class MainPlayer : MonoBehaviour
         if (_initBlackboardArg == null)
             Debug.LogError("【主玩家】黑板参数初始化器获取失败");
     }
-    void Start()
+    public void SetMainPlayer(PlayerController controller, int mainPlayerId)
     {
-        if (playerController == null)
+        if (controller == null)
         {
             Debug.LogError("【主玩家】玩家控制器为空");
             return;
         }
+        playerController = controller;
         _blackboard = playerController.blackboard;
         if (_blackboard == null)
         {
             Debug.LogError("【主玩家】主玩家黑板为空");
             return;
         }
+
+        _blackboard.SetValue("PlayerId", mainPlayerId);
 
         InjectBlackboard();
     }
