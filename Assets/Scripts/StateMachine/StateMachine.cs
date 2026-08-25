@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public class StateMachine : MonoBehaviour, IGameStart, IGameEnd
 {
     public State anyState;
     public State initState;
@@ -23,9 +23,17 @@ public class StateMachine : MonoBehaviour
             Debug.LogWarning("【状态机】初始状态为空");
             return;
         }
+        OnGameStart();
+    }
+    public void OnGameStart()
+    {
+        if (blackboard == null)
+            return;
         currState = GameObject.Instantiate(initState);
         currState.OnEnter(blackboard);
     }
+    public void OnGameEnd()
+    => currState?.OnExit(blackboard);
 
     // Update is called once per frame
     protected virtual void Update()

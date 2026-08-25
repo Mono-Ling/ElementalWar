@@ -17,7 +17,8 @@ namespace Server.GamePlay.StateTransfer
             typeof(ThrowStateMessage),
             typeof(ElementAttachmentMessage),
             typeof(ElementShieldViewStateMessage),
-            typeof(FrozenStateMessage)) { }
+            typeof(FrozenStateMessage),
+            typeof(DeathStateMessage)) { }
         public PlayerStateTransmitTransfer(params Type[] types)
         {
             foreach (Type type in types)

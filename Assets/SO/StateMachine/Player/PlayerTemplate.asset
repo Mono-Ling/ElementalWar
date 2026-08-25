@@ -75,3 +75,5 @@ MonoBehaviour:
     type: 0
   - name: GrenadeCount
     type: 0
+  - name: IsDeath
+    type: 5

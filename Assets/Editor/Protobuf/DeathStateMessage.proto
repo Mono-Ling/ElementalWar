@@ -1,0 +1,9 @@
+syntax = "proto3";
+package Message;
+
+// 角色死亡状态同步消息
+message DeathStateMessage
+{
+	bool isDeath = 1;
+	int32 playerId = 2;
+}

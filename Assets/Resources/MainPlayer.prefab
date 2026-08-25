@@ -96,6 +96,7 @@ MonoBehaviour:
   - rid: 5110485252109238466
   - rid: 5110485433627967494
   - rid: 5110485497458982915
+  - rid: 5110485497458982956
   feedbackReceives:
   - rid: 4855356032389742603
   - rid: 5110485043599376463
@@ -147,6 +148,10 @@ MonoBehaviour:
       data: 
     - rid: 5110485497458982953
       type: {class: PosFeedbackReceive, ns: , asm: ElementalWar.GamePlay}
+      data:
+        smoothTime: 0.1
+    - rid: 5110485497458982956
+      type: {class: DeathStateSynSend, ns: , asm: ElementalWar.GamePlay}
       data: 
 --- !u!114 &3438979584704365449
 MonoBehaviour:

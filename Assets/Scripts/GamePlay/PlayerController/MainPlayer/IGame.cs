@@ -6,3 +6,7 @@ public interface IGameStart
 {
     void OnGameStart();
 }
+public interface IGameEnd
+{
+    void OnGameEnd();
+}

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53c9ba31eab9904bb8534e1da9d0be7, type: 3}
-  m_Name: Any
+  m_Script: {fileID: 11500000, guid: 8ffa173b7d21f5f44b3f311be01e1a25, type: 3}
+  m_Name: Any2Death
   m_EditorClassIdentifier: 
-  edgeList:
-  - {fileID: 11400000, guid: 751f3ef6004e91548a518f61646783e5, type: 2}
-  - {fileID: 11400000, guid: 37d9451650be9a54c8640c93175afab4, type: 2}
+  condition: {fileID: 11400000, guid: 26ab9beec99a1a34a96066bec1f6da01, type: 2}
+  targetState: {fileID: 11400000, guid: 05c49b66a939fa1489e6b4f36b1be442, type: 2}
+  weight: 5

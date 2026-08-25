@@ -14,4 +14,5 @@ namespace Message
     public partial class ElementAttachmentMessage : IPlayerStateMessage { }
     public partial class ElementShieldViewStateMessage : IPlayerStateMessage { }
     public partial class FrozenStateMessage : IPlayerStateMessage { }
+    public partial class DeathStateMessage : IPlayerStateMessage { }
 }

@@ -16,11 +16,23 @@ public class PlayerController : MonoBehaviour
             return;
         }
     }
+    void OnEnable()
+    {
+        var coms = GetComponents<IGameStart>();
+        foreach (var item in coms)
+            item?.OnGameStart();
+    }
     void Start()
     {
         Animator animator = GetComponent<Animator>();
         if (animator == null)
             Debug.LogError("【角色控制器】动画组件获取失败");
         blackboard.SetValue<Animator>(animatorName, animator);
+    }
+    void OnDisable()
+    {
+        var coms = GetComponents<IGameEnd>();
+        foreach (var item in coms)
+            item?.OnGameEnd();
     }
 }

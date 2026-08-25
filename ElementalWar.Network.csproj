@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Net\Message\ClientStartMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\Tools\ExpandFunc.cs" />
     <Compile Include="Assets\Scripts\Net\Message\PlayerPosStateMesMap.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\DeathStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\DynamicTextMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\JumpStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ElementShieldViewStateMessage.cs" />
