@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Server;
 using Space;
 
 public class SpaceTree
@@ -123,6 +124,13 @@ public class SpaceTree
     => Overlap((aabb) => SpaceUtility.IsIntersect(sphere, aabb),hitMaskId);
     public List<SpaceItem> RayOverlap(Ray ray, int hitMaskId = -1)
     => Overlap((aabb) => SpaceUtility.IsIntersect(ray, aabb),hitMaskId);
+
+    public List<SpaceItem> BoxOverlapMask(AABB bound, HashSet<int>? hitMaskId = null)
+    => Overlap((aabb) => SpaceUtility.IsIntersect(bound, aabb), hitMaskId);
+    public List<SpaceItem> SphereOverlapMask(Sphere sphere, HashSet<int>? hitMaskId = null)
+    => Overlap((aabb) => SpaceUtility.IsIntersect(sphere, aabb), hitMaskId);
+    public List<SpaceItem> RayOverlapMask(Ray ray, HashSet<int>? hitMaskId = null)
+    => Overlap((aabb) => SpaceUtility.IsIntersect(ray, aabb), hitMaskId);
     private List<SpaceItem> Overlap(Func<AABB, bool> func, int hitMaskId = -1)
     {
         List<TreeItem> itemList = new();
@@ -150,6 +158,36 @@ public class SpaceTree
                 ans.Add(dicItem.spaceItem);
             else
                 Console.WriteLine($"【空间八叉树】{treeItem.id}字典中查找失败");
+        }
+        return ans;
+    }
+    private List<SpaceItem> Overlap(Func<AABB, bool> func, HashSet<int>? hitMaskId = null)
+    {
+        List<TreeItem> itemList = new();
+        Stack<SpaceTreeNode> stack = new();
+        stack.Push(_root);
+        while (stack.Count > 0)
+        {
+            var node = stack.Pop();
+            if (!func.Invoke(node.bound))
+                continue;
+            foreach (var item in node.itemSet)
+                if (func.Invoke(item.bound) && (hitMaskId == null || !hitMaskId.Contains(item.id)))
+                    itemList.Add(item);
+
+            if (node.IsLeaf)
+                continue;
+            foreach (var child in node.childList)
+                if (func.Invoke(child.bound))
+                    stack.Push(child);
+        }
+        List<SpaceItem> ans = new();
+        foreach (var treeItem in itemList)
+        {
+            if (_itemDic.TryGetValue(treeItem.id, out var dicItem))
+                ans.Add(dicItem.spaceItem);
+            else
+                Debug.LogWarning($"【空间八叉树】{treeItem.id}字典中查找失败");
         }
         return ans;
     }

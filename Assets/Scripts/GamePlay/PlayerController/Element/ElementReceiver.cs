@@ -56,12 +56,14 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             Debug.LogError("【元素接收器】元素附着组件获取失败");
         return attachment != null;
     }
-    public void ReceiveElement(ElementType elementType, float content, int damage)
+    public void ReceiveElement(ElementType elementType, float content, int damage, int attackFrom = MainPlayerHP.DEFAULT_PLAYER_ID)
     {
         if (elementType == ElementType.None || content <= 0)
             return;
         if (!TryGetAttachment(out var attachment))
             return;
+
+        _mainPlayerHP?.SetAttackFrom(attackFrom);
 
         var afterContent = content;
         var elementDamage = damage;
@@ -118,5 +120,7 @@ public class ElementReceiver : MonoBehaviour, IAutoInject<Blackboard>
             _mainPlayerHP?.ElementDamage(elementDamage, elementType);
             _elementBuffSet?.OnElementTrigger(elementType);
         }
+
+        _mainPlayerHP.SetAttackFrom();
     }
 }

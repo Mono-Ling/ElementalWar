@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainPlayerHP : MonoBehaviour, IAutoInject<Blackboard>
 {
+    public const int DEFAULT_PLAYER_ID = -1;
+    public static int AttackFromPlayerId { get; private set; }
     public int maxHp = 1000;
     private int _playerHP;
     private Blackboard _blackboard;
@@ -25,6 +27,8 @@ public class MainPlayerHP : MonoBehaviour, IAutoInject<Blackboard>
         _playerHP = maxHp;
         _blackboard.SetValue("HP", _playerHP);
         _blackboard.SetValue("MaxHP", maxHp);
+
+        SetAttackFrom();
     }
     public void ReduceHP(int damage, Color color)
     {
@@ -42,4 +46,6 @@ public class MainPlayerHP : MonoBehaviour, IAutoInject<Blackboard>
         else
             ReduceHP(damage, Color.white);
     }
+    public void SetAttackFrom(int playerId = DEFAULT_PLAYER_ID)
+    => AttackFromPlayerId = playerId;
 }

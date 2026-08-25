@@ -18,6 +18,8 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     {
         private PriorityQueue<AreaElementDamageReq, long> _areaHitReqQueue = new();
         private object _areaHitReqLock = new();
+
+        private HashSet<int> _maskSet = new();
         public override void Start(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
         {
             base.Start(playerStateTransfer, playerList);
@@ -33,7 +35,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
         private void OnAreaElementDamageReceive(ClientPackage package)
         {
             if (package.message is not AreaElementDamageMes areaMes
-                || areaMes.ElementAttack == null)
+                || areaMes.ElementAttack.Count == 0)
                 return;
             if (package.header is not UdpHeader udpHeader)
                 return;
@@ -44,7 +46,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 Sphere range = new(center, radius);
                 AreaElementDamageReq req = new()
                 {
-                    fromPlayerId = -1,
+                    fromPlayerId = areaMes.ElementAttack[0].FromPlayerId,
                     maskSpaceId = playerSpace.spaceId,
                     tick = udpHeader.Time,
                     damageMes = areaMes,
@@ -69,8 +71,13 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             switch (req.aoeType)
             {
                 case AOEType.Normal:
+                    _maskSet.Clear();
                     var maskId = req.maskSpaceId;
-                    hitSpaceItem = spaceTree.SphereOverlap(req.area, maskId);
+                    _maskSet.Add(maskId);
+                    if (req.fromPlayerId >= 0 && playerSpaceItemDic.TryGetValue(req.fromPlayerId, out var spaceItem))
+                        _maskSet.Add(spaceItem.spaceId);
+
+                    hitSpaceItem = spaceTree.SphereOverlapMask(req.area, _maskSet);
                     foreach (var item in hitSpaceItem)
                         if (item is IOnAreaElementDamage normalHitItem)
                             if (normalHitItem.TryAreaElementDamage(req))

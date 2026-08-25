@@ -54,6 +54,7 @@ public class DiffusionReaction : BaseElementReaction, ISerializationCallbackRece
                 ElementType = ElementUtility.ToNumber(element),
                 Content = diffCContent,
                 Damage = diffuseDamage,
+                FromPlayerId = MainPlayerHP.AttackFromPlayerId,
             };
             _currAttackList.Add(attack);
         }

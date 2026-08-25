@@ -47,6 +47,9 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 var (origin, _) = reqMes.Origin;
                 var (dir, _) = reqMes.Dir;
                 Ray ray = new(origin, dir);
+
+                reqMes.ElementAttack.FromPlayerId = package.playerId;
+
                 ShootHitReq req = new(package.playerId, ray,reqMes.ElementAttack, playerSpace.spaceId,udpHeader.Time);
 
                 lock (_shootHitReqLock)

@@ -15,6 +15,7 @@ public class ElectrificationBuff : BaseElementBuff
     public Color electrificationColor;
     public float delay;
     private float _preTime;
+    private int _attackPlayerId;
     /// <summary>
     /// 水或雷元素附着消失退出
     /// </summary>
@@ -26,7 +27,10 @@ public class ElectrificationBuff : BaseElementBuff
     {
         Debug.Log("【感电Buff】进入感电buff");
         _preTime = Time.time - delay;
+        _attackPlayerId = MainPlayerHP.AttackFromPlayerId;
     }
+    public override void OnConflict()
+    => _attackPlayerId = MainPlayerHP.AttackFromPlayerId;
     public override void OnExit() => Debug.Log("【感电Buff】退出感电buff");
     public override void OnUpdate()
     {
@@ -43,7 +47,10 @@ public class ElectrificationBuff : BaseElementBuff
         TriggerAttackListener(ElementType.Thunder, ref finalContent, ref finalDamage);
         if (finalDamage == 0 || finalContent < 0.001)
             return;
+        playerHP?.SetAttackFrom(_attackPlayerId);
         playerHP?.ReduceHP(finalDamage, electrificationColor);
+        playerHP?.SetAttackFrom();
+
         dynamicTextCreator?.ShowTextUI(electrificationName, electrificationColor);
     }
 }

@@ -58,6 +58,9 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
             var (center, _) = reqMes.Center;
             var radius = reqMes.Radius;
             Sphere range = new(center, radius);
+
+            reqMes.ElementAttack.FromPlayerId = package.playerId;
+
             DynamicExpHitReq req = new(foundItem,reqMes.ElementAttack, range,udpHeader.Time);
             lock (_explosionHitReqLock)
                 _explosionHitReqQueue.Enqueue(req, udpHeader.Time);

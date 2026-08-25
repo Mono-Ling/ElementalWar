@@ -28,6 +28,7 @@ public class SuperconductionReaction : BaseElementReaction
         ElementType beforeElement, ElementType afterElement,
         ref float beforeContent, ref float afterContent)
     {
+        _elementAttack.FromPlayerId = MainPlayerHP.AttackFromPlayerId;
         SetAreaDamage(_areaAttack, radius, _elementAttack);
         SendTo(_areaAttack);
 

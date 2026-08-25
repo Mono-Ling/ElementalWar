@@ -21,8 +21,8 @@ public class AOEFeedbackReceive : BaseFeedbackReceive
         foreach (var attack in mes.ElementAttack)
         {
             if (!ElementUtility.TryToElementType(attack.ElementType, out var element))
-                return;
-            _elementReceiver?.ReceiveElement(element, attack.Content, attack.Damage);
+                continue;
+            _elementReceiver?.ReceiveElement(element, attack.Content, attack.Damage, attack.FromPlayerId);
             Debug.Log($"【玩家受元素范围伤害】{element}");
         }
     }

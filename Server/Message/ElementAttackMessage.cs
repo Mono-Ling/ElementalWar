@@ -24,13 +24,14 @@ namespace Message {
     static ElementAttackMessageReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpFbGVtZW50QXR0YWNrTWVzc2FnZS5wcm90bxIHTWVzc2FnZSJMChRFbGVt",
+            "ChpFbGVtZW50QXR0YWNrTWVzc2FnZS5wcm90bxIHTWVzc2FnZSJiChRFbGVt",
             "ZW50QXR0YWNrTWVzc2FnZRITCgtlbGVtZW50VHlwZRgBIAEoBRIPCgdjb250",
-            "ZW50GAIgASgCEg4KBmRhbWFnZRgDIAEoBWIGcHJvdG8z"));
+            "ZW50GAIgASgCEg4KBmRhbWFnZRgDIAEoBRIUCgxmcm9tUGxheWVySWQYBCAB",
+            "KAViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ElementAttackMessage), global::Message.ElementAttackMessage.Parser, new[]{ "ElementType", "Content", "Damage" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.ElementAttackMessage), global::Message.ElementAttackMessage.Parser, new[]{ "ElementType", "Content", "Damage", "FromPlayerId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,6 +76,7 @@ namespace Message {
       elementType_ = other.elementType_;
       content_ = other.content_;
       damage_ = other.damage_;
+      fromPlayerId_ = other.fromPlayerId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -120,6 +122,18 @@ namespace Message {
       }
     }
 
+    /// <summary>Field number for the "fromPlayerId" field.</summary>
+    public const int FromPlayerIdFieldNumber = 4;
+    private int fromPlayerId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int FromPlayerId {
+      get { return fromPlayerId_; }
+      set {
+        fromPlayerId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -138,6 +152,7 @@ namespace Message {
       if (ElementType != other.ElementType) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Content, other.Content)) return false;
       if (Damage != other.Damage) return false;
+      if (FromPlayerId != other.FromPlayerId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,6 +163,7 @@ namespace Message {
       if (ElementType != 0) hash ^= ElementType.GetHashCode();
       if (Content != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Content);
       if (Damage != 0) hash ^= Damage.GetHashCode();
+      if (FromPlayerId != 0) hash ^= FromPlayerId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -178,6 +194,10 @@ namespace Message {
         output.WriteRawTag(24);
         output.WriteInt32(Damage);
       }
+      if (FromPlayerId != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(FromPlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -200,6 +220,10 @@ namespace Message {
         output.WriteRawTag(24);
         output.WriteInt32(Damage);
       }
+      if (FromPlayerId != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(FromPlayerId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -218,6 +242,9 @@ namespace Message {
       }
       if (Damage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Damage);
+      }
+      if (FromPlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FromPlayerId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -239,6 +266,9 @@ namespace Message {
       }
       if (other.Damage != 0) {
         Damage = other.Damage;
+      }
+      if (other.FromPlayerId != 0) {
+        FromPlayerId = other.FromPlayerId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -271,6 +301,10 @@ namespace Message {
             Damage = input.ReadInt32();
             break;
           }
+          case 32: {
+            FromPlayerId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -300,6 +334,10 @@ namespace Message {
           }
           case 24: {
             Damage = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            FromPlayerId = input.ReadInt32();
             break;
           }
         }

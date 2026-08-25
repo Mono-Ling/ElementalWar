@@ -8,15 +8,20 @@ public class BurnBuff : BaseElementBuff
     public float speed;
     public int damage = 10;
     private float _preTime;
+    private int _attackPlayerId;
     public override bool TryExit()
     => !elementAttachment.TotalElement.HasFlag(ElementType.Grass);
+    public override void OnEnter()
+    => _attackPlayerId = MainPlayerHP.AttackFromPlayerId;
+    public override void OnConflict()
+    => _attackPlayerId = MainPlayerHP.AttackFromPlayerId;
     public override void OnUpdate()
     {
         if (Time.time - _preTime < delay)
             return;
         _preTime = Time.time;
 
-        elementReceiver.ReceiveElement(ElementType.Fire, speed, damage);
+        elementReceiver.ReceiveElement(ElementType.Fire, speed, damage, _attackPlayerId);
         Debug.Log("【燃烧Buff】燃烧伤害");
     }
 }

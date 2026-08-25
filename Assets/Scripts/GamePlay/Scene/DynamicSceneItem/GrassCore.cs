@@ -31,6 +31,7 @@ public class GrassCore : BaseDynamicSceneItem
     public float hyperRadius = 7f;
     private BoxBound _boxBound;
     private Coroutine _coroutine;
+    private int _attackPlayerId;
     void Awake()
     {
         _boxBound = GetComponent<BoxBound>();
@@ -49,6 +50,8 @@ public class GrassCore : BaseDynamicSceneItem
         this.itemType = itemType;
         isRemote = false;
         dynamicSceneItemId = id;
+
+        _attackPlayerId = MainPlayerHP.AttackFromPlayerId;
 
         var angle = Random.Range(0, Mathf.PI + Mathf.PI);
         var r = Random.Range(0, createRadius);
@@ -153,6 +156,7 @@ public class GrassCore : BaseDynamicSceneItem
                 ElementType = ElementUtility.ToNumber(ElementType.Thunder),
                 Content = damageElementContent,
                 Damage = damage,
+                FromPlayerId = _attackPlayerId,
             }
         };
         hyperMes.Center.Switch(transform.position);
@@ -179,6 +183,7 @@ public class GrassCore : BaseDynamicSceneItem
             ElementType = ElementUtility.ToNumber(ElementType.Grass),
             Content = damageElementContent,
             Damage = damage,
+            FromPlayerId = _attackPlayerId,
         });
         SendTo(damageMes, true);
 

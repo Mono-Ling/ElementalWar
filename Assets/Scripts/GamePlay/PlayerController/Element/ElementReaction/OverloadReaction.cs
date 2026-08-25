@@ -30,6 +30,7 @@ public class OverloadReaction : BaseElementReaction
             return damage;
         _attackMessage.Content = content;
         _attackMessage.Damage = Mathf.CeilToInt(damageNum * damage);
+        _attackMessage.FromPlayerId = MainPlayerHP.AttackFromPlayerId;
         SetAreaDamage(_damageMes, radius, _attackMessage);
         SendTo(_damageMes);
         return 0;

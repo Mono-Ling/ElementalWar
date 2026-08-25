@@ -5,4 +5,5 @@ message ElementAttackMessage
 	int32 elementType = 1;
 	float content = 2;
 	int32 damage = 3;
+	int32 fromPlayerId = 4;
 }
