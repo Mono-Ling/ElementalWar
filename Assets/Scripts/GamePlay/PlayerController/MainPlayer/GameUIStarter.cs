@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameUIStarter : MonoBehaviour, IAutoInject<Blackboard>
+public class GameUIStarter : MonoBehaviour, IAutoInject<Blackboard>, IGameEnd
 {
     public void AutoInject(Blackboard inject)
     {
@@ -15,4 +15,6 @@ public class GameUIStarter : MonoBehaviour, IAutoInject<Blackboard>
         UIManager.InitUIPosition(panel);
         panel?.SetBlackboard(inject);
     }
+    public void OnGameEnd()
+    => UIManager.Instance.HidePanel();
 }

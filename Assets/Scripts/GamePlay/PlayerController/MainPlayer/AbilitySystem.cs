@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
-public class AbilitySystem : MonoBehaviour, ISerializationCallbackReceiver, IAutoInject<Blackboard>
+public class AbilitySystem : MonoBehaviour, ISerializationCallbackReceiver, IAutoInject<Blackboard>, IGameEnd
 {
     [SerializeField]
     [SerializeReference]
@@ -73,13 +73,17 @@ public class AbilitySystem : MonoBehaviour, ISerializationCallbackReceiver, IAut
         foreach (var ability in abilities)
             ability.OnFixedUpdate();
     }
-    void OnDestroy()
+    public void OnGameEnd()
     {
         if (!IsStart)
             return;
         foreach (var ability in abilities)
             ability.OnRemove();
+
+        IsStart = false;
     }
+    void OnDestroy()
+    => OnGameEnd();
     /// <summary>
     /// 热更新能力列表，添加新的能力，移除不需要的能力（跨列表保留需重写Equals方法，确保能力唯一性）
     /// </summary>

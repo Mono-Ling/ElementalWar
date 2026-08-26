@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ElementReceiver))]
-public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
+public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>, IGameEnd
 {
     public ElementBuffMap elementBuffMap;
     private HashSet<BaseElementBuff> _buffSet = new();
@@ -63,6 +63,12 @@ public class ElementBuffSet : MonoBehaviour, IAutoInject<Blackboard>
     {
         foreach (var buff in _buffSet)
             buff.OnFixedUpdate();
+    }
+    public void OnGameEnd()
+    {
+        foreach (var buff in _buffSet)
+            buff?.OnExit();
+        _buffSet.Clear();
     }
     public T AddElementBuff<T>() where T : BaseElementBuff
     {

@@ -18,6 +18,7 @@ public class JumpStateSynSend : BaseSynSend
         _isJumpArg.OnValueChange += OnIsJumpChange;
         _isGroundedArg.OnValueChange += OnIsGroundedChange;
         SetHeader(true);
+        OnJumpStateChange(_isJumpArg.value, _isGroundedArg.value);
     }
     private void OnIsJumpChange(bool isJump)
     => OnJumpStateChange(isJump, _isGroundedArg.value);

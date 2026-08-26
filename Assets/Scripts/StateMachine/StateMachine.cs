@@ -9,6 +9,8 @@ public class StateMachine : MonoBehaviour, IGameStart, IGameEnd
     public bool isDebug;
     protected Blackboard blackboard;
     protected State currState;
+    void OnEnable()
+    => OnGameStart();
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -25,6 +27,10 @@ public class StateMachine : MonoBehaviour, IGameStart, IGameEnd
         }
         OnGameStart();
     }
+    void OnDisable()
+    => OnGameEnd();
+    void OnDestroy()
+    => OnGameEnd();
     public void OnGameStart()
     {
         if (blackboard == null)

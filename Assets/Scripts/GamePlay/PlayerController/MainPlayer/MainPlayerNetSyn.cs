@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MainPlayerNetSyn : MonoBehaviour, IAutoInject<Blackboard>, IGameStart
+public class MainPlayerNetSyn : MonoBehaviour, IAutoInject<Blackboard>, IGameStart, IGameEnd
 {
 
     [SerializeReference]
@@ -12,11 +12,11 @@ public class MainPlayerNetSyn : MonoBehaviour, IAutoInject<Blackboard>, IGameSta
     public NetReceiver netReceiver { get; private set; } = new();
     private Blackboard _blackboard;
     private bool _isStart;
-    void Start()
-    => netReceiver.StartReceive();
     public void AutoInject(Blackboard blackboard)
     {
         _blackboard = blackboard;
+
+        netReceiver.StartReceive();
 
         foreach (var receiver in feedbackReceives)
             receiver.Init(this, _blackboard);
@@ -51,7 +51,7 @@ public class MainPlayerNetSyn : MonoBehaviour, IAutoInject<Blackboard>, IGameSta
         foreach (var send in stateSynSends)
             send.OnFixedUpdate();
     }
-    void OnDestroy()
+    public void OnGameEnd()
     {
         if (_isStart)
             foreach (var send in stateSynSends)
@@ -60,6 +60,10 @@ public class MainPlayerNetSyn : MonoBehaviour, IAutoInject<Blackboard>, IGameSta
         foreach (var receiver in feedbackReceives)
             receiver.OnRemove();
 
-        netReceiver.StopReceive();
+        netReceiver?.StopReceive();
+
+        _isStart = false;
     }
+    void OnDestroy()
+    => OnGameEnd();
 }

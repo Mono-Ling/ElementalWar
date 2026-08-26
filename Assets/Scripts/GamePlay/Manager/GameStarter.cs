@@ -14,11 +14,13 @@ public class GameStarter : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnRegistryReceive);
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnGameStartReceive);
+        EventBus.Instance.AddListener(EventType.OnPlayerReset, OnPlayerReset);
     }
     void OnDestroy()
     {
         EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnRegistryReceive);
         EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnGameStartReceive);
+        EventBus.Instance.RemoveListener(EventType.OnPlayerReset, OnPlayerReset);
     }
     private void OnRegistryReceive(NetPackage package)
     {
@@ -48,6 +50,12 @@ public class GameStarter : MonoBehaviour
         OnClientStart();
 
         Debug.Log("【游戏启动器】Client Start");
+    }
+    private void OnPlayerReset()
+    {
+        _mainPlayer?.EndMainPlayer();
+        _mainPlayer?.InjectBlackboard();
+        _mainPlayer?.StartMainPlayer();
     }
     private bool CreateMainPlayer(PlayerRegistryMes message)
     {

@@ -13,4 +13,14 @@ public enum EventType
     /// NetPackage类型参数
     /// </summary>
     SendTo,
+    /// <summary>
+    /// 无参
+    /// 玩家死亡回调
+    /// </summary>
+    OnPlayerDeath,
+    /// <summary>
+    /// 无参
+    /// 玩家复活回调
+    /// </summary>
+    OnPlayerReset,
 }

@@ -38,7 +38,13 @@ public class MainPlayer : MonoBehaviour
         foreach (var item in components)
             item?.OnGameStart();
     }
-    private void InjectBlackboard()
+    public void EndMainPlayer()
+    {
+        var components = GetComponents<IGameEnd>();
+        foreach (var item in components)
+            item?.OnGameEnd();
+    }
+    public void InjectBlackboard()
     {
         if (_blackboard == null || _initBlackboardArg == null)
             return;

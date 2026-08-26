@@ -16,6 +16,7 @@ public class ThrowStateSynSend : BaseSynSend
         blackboard.GetBlackboardArg<bool>("IsThrowFire", out _isThrowFireArg);
         _isThrowArg.OnValueChange += OnIsThrowChanged;
         _isThrowFireArg.OnValueChange += OnIsThrowFireChanged;
+        OnThrowChanged(_isThrowArg.value, _isThrowFireArg.value);
     }
     private void OnIsThrowChanged(bool isThrow)
     => OnThrowChanged(isThrow, _isThrowFireArg.value);

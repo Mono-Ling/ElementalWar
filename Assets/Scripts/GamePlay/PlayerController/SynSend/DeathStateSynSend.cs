@@ -12,11 +12,13 @@ public class DeathStateSynSend : BaseSynSend
         base.Init(blackboard);
         if (!blackboard.GetBlackboardArg("IsDeath", out _deathArg))
         {
-            Debug.LogError("【死亡状态同步发送】冰冻黑板参数获取失败");
+            Debug.LogError("【死亡状态同步发送】死亡黑板参数获取失败");
             return;
         }
         _deathArg.OnValueChange += OnDeathChange;
         SetHeader(true);
+
+        OnDeathChange(_deathArg.value);
     }
     public override void OnRemove()
     {

@@ -14,6 +14,7 @@ public class ShootStateSynSend : BaseSynSend
         _shootArg = arg;
         _shootArg.OnValueChange += OnIsShootChange;
         SetHeader(true);
+        OnIsShootChange(_shootArg.value);
     }
     private void OnIsShootChange(bool isShoot)
     {

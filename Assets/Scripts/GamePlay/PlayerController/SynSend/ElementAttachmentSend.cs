@@ -17,6 +17,7 @@ public class ElementAttachmentSend : BaseSynSend
         }
         _elementAttachmentArg.OnValueChange += OnElementAttachmentChange;
         SetHeader(true);
+        OnElementAttachmentChange(_elementAttachmentArg.value);
     }
     private void OnElementAttachmentChange(ElementAttachment attachment)
     {

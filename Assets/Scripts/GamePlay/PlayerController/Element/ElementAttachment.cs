@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 元素附着组件：管理元素附着量与随时间衰减
 /// </summary>
-public class ElementAttachment : MonoBehaviour, IAutoInject<Blackboard>
+public class ElementAttachment : MonoBehaviour, IAutoInject<Blackboard>, IGameEnd
 {
     public IReadOnlyDictionary<ElementType, float> ElementContentDic
         => _elementContentDic;
@@ -22,6 +22,7 @@ public class ElementAttachment : MonoBehaviour, IAutoInject<Blackboard>
             Debug.LogError("【元素附着】传入黑板为空");
             return;
         }
+        TotalElement = ElementType.None;
         _blackboard = blackboard;
         _blackboard.SetValue("ElementAttachment", this);
     }
@@ -98,6 +99,12 @@ public class ElementAttachment : MonoBehaviour, IAutoInject<Blackboard>
         else
             Debug.LogWarning($"【元素附着】不存在{elementType}元素附着量计数器");
     }
+    public void OnGameEnd()
+    {
+        _elementContentDic.Clear();
+        _attenuationDic.Clear();
+        StopAllCoroutines();
+    }
     void OnDestroy()
-    => StopAllCoroutines();
+    => OnGameEnd();
 }

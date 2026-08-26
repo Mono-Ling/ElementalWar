@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98fc48b6d005d24c9b13baae555cced, type: 3}
-  m_Name: DeathState
+  m_Script: {fileID: 11500000, guid: d8b6fe599aa0a144d8b8d72629ca00e7, type: 3}
+  m_Name: NotDeath
   m_EditorClassIdentifier: 
-  edgeList:
-  - {fileID: 11400000, guid: 39e11103935f62f41a37c302675325c3, type: 2}
-  animatorArgName: Animator
-  additiveLayerName: UpperBody Additive
+  condition: {fileID: 11400000, guid: 374a50b44d2a8df4ab5c426c065f1f42, type: 2}

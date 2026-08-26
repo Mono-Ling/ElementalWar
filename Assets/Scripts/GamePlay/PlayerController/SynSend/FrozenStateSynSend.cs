@@ -17,6 +17,7 @@ public class FrozenStateSynSend : BaseSynSend
         }
         _frozenArg.OnValueChange += OnFrozenChange;
         SetHeader(true);
+        OnFrozenChange(_frozenArg.value);
     }
     public override void OnRemove()
     {

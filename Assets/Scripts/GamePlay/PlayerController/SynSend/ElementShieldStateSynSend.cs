@@ -10,11 +10,14 @@ public class ElementShieldStateSynSend : BaseSynSend
     public override void Init(Blackboard blackboard)
     {
         base.Init(blackboard);
-        if (blackboard.GetBlackboardArg("ElementShieldType", out _elementShieldTypeArg))
-            _elementShieldTypeArg.OnValueChange += OnElementShieldChange;
-        else
+        if (!blackboard.GetBlackboardArg("ElementShieldType", out _elementShieldTypeArg))
+        {
             Debug.LogError("【玩家元素护盾同步发送】护盾类型黑板参数获取失败");
+            return;
+        }
+        _elementShieldTypeArg.OnValueChange += OnElementShieldChange;
         SetHeader(true);
+        OnElementShieldChange(_elementShieldTypeArg.value);
     }
     public override void OnRemove()
     {
