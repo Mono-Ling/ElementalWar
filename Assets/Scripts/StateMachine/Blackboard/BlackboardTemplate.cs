@@ -47,6 +47,7 @@ public class BlackboardTemplate : ScriptableObject
         BlackboardArgType.ElementType => new BlackboardArg<ElementType>(),
         BlackboardArgType.ElementAttachment => new BlackboardArg<ElementAttachment>(),
         BlackboardArgType.ElementAttachmentInfo => new BlackboardArg<ElementAttachmentInfo>(),
+        BlackboardArgType.MainPlayer => new BlackboardArg<MainPlayer>(),
         _ => null,
     };
 }
@@ -76,4 +77,5 @@ public enum BlackboardArgType
     ElementType,
     ElementAttachment,
     ElementAttachmentInfo,
+    MainPlayer,
 }

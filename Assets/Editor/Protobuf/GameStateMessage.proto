@@ -1,0 +1,8 @@
+syntax = "proto3";
+package Message;
+
+// 游戏状态消息，S -> C
+message GameStateMessage
+{
+	bool isStart = 1;
+}

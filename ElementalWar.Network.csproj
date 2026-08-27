@@ -79,7 +79,6 @@
     <Compile Include="Assets\Scripts\Net\Message\PlayerRegistryMes.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ElementCrystalInitMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ColorMessage.cs" />
-    <Compile Include="Assets\Scripts\Net\Message\GameStartMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\HeartMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\DynamicItemStateMes.cs" />
     <Compile Include="Assets\Scripts\Net\Message\PlayerElementShieldMessage.cs" />
@@ -88,6 +87,7 @@
     <Compile Include="Assets\Scripts\Net\Package\SendType.cs" />
     <Compile Include="Assets\Scripts\Net\Package\TcpPackage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\ShootRequestMessage.cs" />
+    <Compile Include="Assets\Scripts\Net\Message\GameStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\NetManager.cs" />
     <Compile Include="Assets\Scripts\Net\Message\BoundStateMessage.cs" />
     <Compile Include="Assets\Scripts\Net\Message\FrozenStateMessage.cs" />

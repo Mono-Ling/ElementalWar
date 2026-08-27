@@ -3,82 +3,97 @@ using System.Collections.Generic;
 using Message;
 using UnityEngine;
 
-public class GameStarter : MonoBehaviour
+[CreateAssetMenu(fileName = "NewLoadingState", menuName = "StateMachine/State/Game/LoadingState")]
+public class LoadingState : State
 {
     public StaticSceneAsset sceneAsset;
+    private Blackboard _blackboard;
     private MainPlayer _mainPlayer;
-    void Awake()
+    private Coroutine _coroutine;
+    protected override void OnValidate()
     {
-        var dynamicMgr = DynamicSceneItemMgr.Instance;
-        NetManager.Instance.StartClient();
-        Cursor.lockState = CursorLockMode.Confined;
+        base.OnValidate();
+        if (sceneAsset == null)
+            Debug.LogError("【游戏流程-加载状态】场景资源为空");
+    }
+    public override void OnEnter(Blackboard blackboard)
+    {
+        if (blackboard == null)
+        {
+            Debug.LogError("【游戏流程-加载状态】OnEnter黑板为空");
+            return;
+        }
+        _blackboard = blackboard;
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnRegistryReceive);
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnGameStartReceive);
-        EventBus.Instance.AddListener(EventType.OnPlayerReset, OnPlayerReset);
     }
-    void OnDestroy()
+    public override void OnExit(Blackboard blackboard)
     {
+        if (_coroutine != null)
+        {
+            PublicMono.Instance.StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
         EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnRegistryReceive);
         EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnGameStartReceive);
-        EventBus.Instance.RemoveListener(EventType.OnPlayerReset, OnPlayerReset);
     }
     private void OnRegistryReceive(NetPackage package)
     {
-        if (package.message is not PlayerRegistryMes message)
+        if (package.message is not PlayerRegistryMes message || _coroutine != null)
             return;
-        StartCoroutine(StartClient(message));
+        _coroutine = PublicMono.Instance.StartCoroutine(StartClient(message));
     }
     public void OnGameStartReceive(NetPackage package)
     {
-        if (package.message is not GameStartMessage message)
+        if (package.message is not GameStateMessage message || !message.IsStart)
             return;
-        _mainPlayer?.StartMainPlayer();
+        _blackboard?.SetValue("IsGameStart", true);
     }
     private IEnumerator StartClient(PlayerRegistryMes message)
     {
         yield return StaticSceneManager.Instance.LoadWall(sceneAsset);
 
-        if (!CreateMainPlayer(message))
+        if (!CreateMainPlayer(message, out var viewObj))
         {
             StaticSceneManager.Instance.Uninstall();
+            _coroutine = null;
             yield break;
         }
+        _blackboard?.SetValue("MainPlayer", _mainPlayer);
+        _blackboard?.SetValue("PlayerView", viewObj);
 
         ManagedPlayerMgr.Instance.StartManagedPlayer();
         yield return ManagedPlayerMgr.Instance.CreateManagedPlayer(message);
 
         OnClientStart();
+        _coroutine = null;
 
-        Debug.Log("【游戏启动器】Client Start");
+        Debug.Log("【游戏流程-加载状态】Client Start");
     }
-    private void OnPlayerReset()
+    private bool CreateMainPlayer(PlayerRegistryMes message, out GameObject playerViewObj)
     {
-        _mainPlayer?.EndMainPlayer();
-        _mainPlayer?.InjectBlackboard();
-        _mainPlayer?.StartMainPlayer();
-    }
-    private bool CreateMainPlayer(PlayerRegistryMes message)
-    {
+        playerViewObj = default;
         if (message == null)
             return false;
-        var playerViewObj = MonoObjectPool.Instance.GetObject("Player");
+        playerViewObj = MonoObjectPool.Instance.GetObject("Player");
         if (playerViewObj == null)
         {
-            Debug.LogError("【游戏启动器】主玩家显示创建失败");
+            Debug.LogError("【游戏流程-加载状态】主玩家显示创建失败");
             return false;
         }
         var controller = playerViewObj.GetComponent<PlayerController>();
         if (controller == null)
         {
             MonoObjectPool.Instance.PutObject(playerViewObj);
-            Debug.LogError("【游戏启动器】主玩家显示控制器获取失败");
+            Debug.LogError("【游戏流程-加载状态】主玩家显示控制器获取失败");
             return false;
         }
 
         var mainPlayerObj = MonoObjectPool.Instance.GetObject("MainPlayer");
         if (mainPlayerObj == null)
         {
-            Debug.LogError("【游戏启动器】主玩家创建失败");
+            MonoObjectPool.Instance.PutObject(playerViewObj);
+            Debug.LogError("【游戏流程-加载状态】主玩家创建失败");
             return false;
         }
         _mainPlayer = mainPlayerObj.GetComponent<MainPlayer>();
@@ -86,7 +101,7 @@ public class GameStarter : MonoBehaviour
         {
             MonoObjectPool.Instance.PutObject(mainPlayerObj);
             MonoObjectPool.Instance.PutObject(playerViewObj);
-            Debug.LogError("【游戏启动器】主玩家显示控制器获取失败");
+            Debug.LogError("【游戏流程-加载状态】主玩家显示控制器获取失败");
             return false;
         }
         _mainPlayer.SetMainPlayer(controller, message.ClientId);

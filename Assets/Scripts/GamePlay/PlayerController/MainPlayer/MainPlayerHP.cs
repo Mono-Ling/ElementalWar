@@ -7,13 +7,11 @@ public class MainPlayerHP : MonoBehaviour, IAutoInject<Blackboard>
     public const int DEFAULT_PLAYER_ID = -1;
     public static int AttackFromPlayerId { get; private set; }
     public int maxHp = 1000;
-    public int delayToDeathReset = 5;
     private int _playerHP;
     private Blackboard _blackboard;
     private DynamicTextCreator _dynamicTextCreator;
-    private WaitForSeconds _delay = new(1f);
     private bool _isDeath;
-    void Start()
+    void Awake()
     {
         _dynamicTextCreator = GetComponent<DynamicTextCreator>();
         if (_dynamicTextCreator == null)
@@ -62,13 +60,5 @@ public class MainPlayerHP : MonoBehaviour, IAutoInject<Blackboard>
         _blackboard.SetValue("IsDeath", true);
         _isDeath = true;
         EventBus.Instance.Trigger(EventType.OnPlayerDeath);
-
-        StartCoroutine(DelayToPlayerReset());
-    }
-    private IEnumerator DelayToPlayerReset()
-    {
-        for (int i = 0; i < delayToDeathReset; i++)
-            yield return _delay;
-        EventBus.Instance.Trigger(EventType.OnPlayerReset);
     }
 }

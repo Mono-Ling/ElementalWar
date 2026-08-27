@@ -30,6 +30,7 @@ public class ElementAttachmentView : MonoBehaviour, IAutoInject<Blackboard>
             return;
         }
         _elementAttachmentArg.OnValueChange += OnElementAttachmentChange;
+        OnElementAttachmentChange(_elementAttachmentArg.value);
     }
     void OnDestroy()
     {

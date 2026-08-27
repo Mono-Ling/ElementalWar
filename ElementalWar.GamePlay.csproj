@@ -102,11 +102,12 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\CameraFOVAbility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementUtility.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ShootStateSynSend.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Manager\GameStarter.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuffSet.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\DynamicTextCreator.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementBuff\BaseElementBuff.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\State\Game\Game\PlayerDeathState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementListener.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\State\Game\Game\GameState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Test\RemoteStateSynTest.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\StaticSceneInfo.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\DynamicUI\ElementAttachmentText.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Assets\Scripts\GamePlay\Manager\DynamicTextManager.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Ability\BaseAbility.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\DeathState.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\State\Game\LoadingState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\ExpHitFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynSend\ThrowStateSynSend.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\ElementShieldFeedbackReceive.cs" />
@@ -153,6 +155,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\AOEFeedbackReceive.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\FrozenStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Blackboard\BlackboardTemplate.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\State\Game\BeginState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\MainPlayerNetSyn.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\EvaporationReaction.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Manager\ManagedPlayerMgr.cs" />
@@ -189,7 +192,9 @@
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\SynReceive\PosStateSynReceive.cs" />
     <Compile Include="Assets\Scripts\StateMachine\State\Shoot\CoolingState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ServerFeedbackReceive\PosFeedbackReceive.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\State\Game\EndState.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\MainPlayer\AbilitySystem.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Manager\Main.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Scene\DynamicSceneItem\ElementCrystal.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\ReceiveItem\NetReceiver.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PlayerController\Element\ElementReaction\FrozenReaction.cs" />

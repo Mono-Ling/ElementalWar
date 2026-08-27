@@ -64,7 +64,7 @@ namespace Server.GamePlay.Online
         private void StartRoom()
         {
             _playerStateTransfer?.Start();
-            GameStartMessage startMessage = new();
+            GameStateMessage startMessage = new() { IsStart = true };
             foreach(int player in _playerDic.Keys)
                 EventBus.Instance.Trigger<ClientPackage>(EventType.SendTo,new(player,startMessage));
         }
