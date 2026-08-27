@@ -21,6 +21,7 @@
 *.aab
 *.unitypackage
 *.app
+*.csproj
 
 # Unity 崩溃/临时文件
 sysinfo.txt
