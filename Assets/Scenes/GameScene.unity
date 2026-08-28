@@ -246,8 +246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anyState: {fileID: 0}
-  initState: {fileID: 11400000, guid: fde75fdc5a86f134da5008dfa06015fe, type: 2}
+  initState: {fileID: 11400000, guid: 0f4e1f1d285ef96439bca537ef8a50fe, type: 2}
   isDebug: 0
+  currState: {fileID: 0}
 --- !u!114 &1633019014
 MonoBehaviour:
   m_ObjectHideFlags: 0

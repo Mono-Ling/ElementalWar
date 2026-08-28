@@ -114,6 +114,16 @@ public class DynamicSceneItemMgr : SingleMono<DynamicSceneItemMgr>
         foreach (var item in localList)
             DestroyLocalDynamicSceneItem(item);
     }
+    public void ClearRemote()
+    {
+        var remoteList = _remoteDynamicItemDic.Values.ToList();
+        foreach (var item in remoteList)
+        {
+            item.OnRemoteDestroy(null);
+            MonoObjectPool.Instance.PutObject(item.gameObject);
+        }
+        _remoteDynamicItemDic.Clear();
+    }
     private BaseDynamicSceneItem CreateItem(DynamicSceneItemType type)
     {
         var path = GetItemPath(type);

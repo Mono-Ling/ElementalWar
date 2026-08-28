@@ -41,6 +41,9 @@ public class LoadingState : State
     {
         if (package.message is not PlayerRegistryMes message || _coroutine != null)
             return;
+
+        if (UIManager.Instance.TryGetCurrentPanel<BeginPanel>(out _))
+            UIManager.Instance.HidePanel();
         _coroutine = PublicMono.Instance.StartCoroutine(StartClient(message));
     }
     public void OnGameStartReceive(NetPackage package)
@@ -48,15 +51,19 @@ public class LoadingState : State
         if (package.message is not GameStateMessage message || !message.IsStart)
             return;
         _blackboard?.SetValue("IsGameStart", true);
+        _blackboard?.SetValue("IsMatch", false);
     }
     private IEnumerator StartClient(PlayerRegistryMes message)
     {
+        UIManager.Instance.ShowPanel<LoadingPanel>();
+
         yield return StaticSceneManager.Instance.LoadWall(sceneAsset);
 
         if (!CreateMainPlayer(message, out var viewObj))
         {
             StaticSceneManager.Instance.Uninstall();
             _coroutine = null;
+            _blackboard.SetValue("IsMatch", false);
             yield break;
         }
         _blackboard?.SetValue("MainPlayer", _mainPlayer);
@@ -67,6 +74,9 @@ public class LoadingState : State
 
         OnClientStart();
         _coroutine = null;
+
+        if (UIManager.Instance.TryGetCurrentPanel<LoadingPanel>(out _))
+            UIManager.Instance.HidePanel();
 
         Debug.Log("【游戏流程-加载状态】Client Start");
     }

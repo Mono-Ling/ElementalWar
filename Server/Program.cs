@@ -7,6 +7,7 @@ using Server.GamePlay;
 using Server.Test;
 using System.Text.Json;
 using Server.Scene;
+using Server.GamePlay.Online;
 
 class Program
 {
@@ -19,7 +20,8 @@ class Program
         server.Start(tcpIpEndPoint,udpIpEndPoint);
 
         // RemoteTest test = new();
-        LocalOnlineTest test = new();
+        // LocalOnlineTest test = new();
+        Lobby lobby = new();
 
         while (true)
         {

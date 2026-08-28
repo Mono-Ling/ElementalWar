@@ -1,0 +1,7 @@
+syntax = "proto3";
+package Message;
+// 玩家匹配消息，C -> S
+message PlayerMatchMessage
+{
+	bool isMatch = 1;
+}

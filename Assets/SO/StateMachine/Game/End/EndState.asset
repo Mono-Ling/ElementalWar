@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba5c301cca252bb46984c27f36d4804e, type: 3}
-  m_Name: GameState
+  m_Script: {fileID: 11500000, guid: d095a3323c3882d4f961a73e1998ca6e, type: 3}
+  m_Name: EndState
   m_EditorClassIdentifier: 
   edgeList:
-  - {fileID: 11400000, guid: 8b3698719e8ee58478df16ea8f8f18c3, type: 2}
-  - {fileID: 11400000, guid: 9dae289dbafc2644599424a43057b15e, type: 2}
+  - {fileID: 11400000, guid: 7618bc6c347d5e145bc707f6724e034a, type: 2}

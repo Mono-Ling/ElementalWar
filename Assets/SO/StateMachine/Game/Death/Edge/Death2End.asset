@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba5c301cca252bb46984c27f36d4804e, type: 3}
-  m_Name: GameState
+  m_Script: {fileID: 11500000, guid: 8ffa173b7d21f5f44b3f311be01e1a25, type: 3}
+  m_Name: Death2End
   m_EditorClassIdentifier: 
-  edgeList:
-  - {fileID: 11400000, guid: 8b3698719e8ee58478df16ea8f8f18c3, type: 2}
-  - {fileID: 11400000, guid: 9dae289dbafc2644599424a43057b15e, type: 2}
+  condition: {fileID: 11400000, guid: d66b2028fdac8a940bfd5038b644cb95, type: 2}
+  targetState: {fileID: 11400000, guid: 38043bac205ac88409ac3769127d52e7, type: 2}
+  weight: 5

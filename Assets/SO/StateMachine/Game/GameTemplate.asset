@@ -21,3 +21,7 @@ MonoBehaviour:
     type: 5
   - name: PlayerView
     type: 10
+  - name: IsMatch
+    type: 5
+  - name: IsQuit
+    type: 5

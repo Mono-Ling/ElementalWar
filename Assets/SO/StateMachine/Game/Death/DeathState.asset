@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: DeathState
   m_EditorClassIdentifier: 
   edgeList:
+  - {fileID: 11400000, guid: 4dda17e97269d364aaf6e303909cad41, type: 2}
   - {fileID: 11400000, guid: af1036222619a924ea4cdc3e511b34ef, type: 2}
   delayToReset: 5

@@ -148,6 +148,14 @@ public class UIManager : SingleMono<UIManager>
         EnablePanel(CurrentPanel);
         CurrentPanel?.Show(null, isAnimation);
     }
+    public void ClearPanel(bool isAnimation = true)
+    {
+        if (_panelStack.Count == 0)
+            return;
+        HidePanel(isAnimation: isAnimation);
+        while (_panelStack.Count > 0)
+            DestroyPanel(_panelStack.Pop());
+    }
     public T BufferShowUI<T>(Action<BaseUI> action = null, bool isAnimation = true) where T : BaseUI
     {
         var path = typeof(T).Name;

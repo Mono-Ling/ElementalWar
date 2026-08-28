@@ -30,6 +30,8 @@ public abstract class BaseUI : MonoBehaviour
         if (!isAnimation)
         {
             action?.Invoke(this);
+            isShow = true;
+            canvasGroup.alpha = 1f;
             return;
         }
         canvasGroup.alpha = 0f;
@@ -59,6 +61,11 @@ public abstract class BaseUI : MonoBehaviour
             callback = null;
             cb?.Invoke(this);
             canvasGroup.alpha = 1;
+            return;
+        }
+        if (1 - canvasGroup.alpha <= 0.0001f)
+        {
+            canvasGroup.alpha = 1f;
             return;
         }
         float t = (Time.time - startAnimationTime) / showTime;
