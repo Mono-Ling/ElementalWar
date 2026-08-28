@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour, IGameStart, IGameEnd
+public class StateMachine : MonoBehaviour
 {
     public State anyState;
     public State initState;
     public bool isDebug;
     protected Blackboard blackboard;
+    [SerializeField]
     protected State currState;
-    void OnEnable()
-    => OnGameStart();
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -25,20 +24,16 @@ public class StateMachine : MonoBehaviour, IGameStart, IGameEnd
             Debug.LogWarning("【状态机】初始状态为空");
             return;
         }
-        OnGameStart();
+        OnEnable();
     }
-    void OnDisable()
-    => OnGameEnd();
-    void OnDestroy()
-    => OnGameEnd();
-    public void OnGameStart()
+    void OnEnable()
     {
         if (blackboard == null)
             return;
         currState = GameObject.Instantiate(initState);
         currState.OnEnter(blackboard);
     }
-    public void OnGameEnd()
+    private void OnDisable()
     => currState?.OnExit(blackboard);
 
     // Update is called once per frame

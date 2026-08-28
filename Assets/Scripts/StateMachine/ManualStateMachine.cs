@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManualStateMachine : StateMachine, IAutoInject<Blackboard>
+public class ManualStateMachine : StateMachine, IAutoInject<Blackboard>, IGameStart, IGameEnd
 {
     private bool _isStart => blackboard != null;
     protected override void Start()
@@ -18,9 +18,14 @@ public class ManualStateMachine : StateMachine, IAutoInject<Blackboard>
             return;
         }
         this.blackboard = blackboard;
+    }
+    public void OnGameStart()
+    {
         currState = GameObject.Instantiate(initState);
         currState.OnEnter(this.blackboard);
     }
+    public void OnGameEnd()
+    => currState?.OnExit(blackboard);
     protected override void Update()
     {
         if (!_isStart)

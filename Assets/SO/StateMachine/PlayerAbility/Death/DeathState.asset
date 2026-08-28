@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d1ec4950a30844a949256541e89981, type: 3}
   m_Name: DeathState
   m_EditorClassIdentifier: 
-  edgeList: []
+  edgeList:
+  - {fileID: 11400000, guid: 14f111927b370274aa5dfe82e52b1396, type: 2}
   abilitySystemArgName: AbilitySystem
   abilities:
   - rid: 5110485497458982954
@@ -31,7 +32,7 @@ MonoBehaviour:
         layerMask:
           serializedVersion: 2
           m_Bits: 128
-        posSmoothTime: 0.05
+        posSmoothTime: 0.1
         rotSmoothTime: 0.1
         pitchSpeed: 3
         maxRadius: 0.5
