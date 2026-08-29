@@ -32,7 +32,7 @@ public class ManagedPlayerMgr : SingleMono<ManagedPlayerMgr>
         Dictionary<int, PlayerController> playerDic = new();
         foreach (int id in mes.PlayerList)
         {
-#if !LOCALDEBUG
+#if !LOCALDEBUG || !UNITY_EDITOR
             if(id == mes.ClientId)
                 continue;
 #endif

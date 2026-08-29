@@ -59,7 +59,7 @@ MonoBehaviour:
     - rid: 4855355946654236672
       type: {class: PosStateSynReceive, ns: , asm: ElementalWar.GamePlay}
       data:
-        posOffset: {x: 2, y: 0, z: 0}
+        posOffset: {x: 0, y: 0, z: 0}
     - rid: 4855355946654236673
       type: {class: ShootStateSynReceive, ns: , asm: ElementalWar.GamePlay}
       data: 

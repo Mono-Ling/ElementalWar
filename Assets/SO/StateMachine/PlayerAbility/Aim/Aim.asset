@@ -61,7 +61,7 @@ MonoBehaviour:
       type: {class: ShootAbility, ns: , asm: ElementalWar.GamePlay}
       data:
         attackElementContent: 1
-        attackDamage: 20
+        attackDamage: 10
         delayTime: 0.2
     - rid: 5110485043599376478
       type: {class: AimAbility, ns: , asm: ElementalWar.GamePlay}

@@ -48,7 +48,7 @@ public class DynamicTextManager : SingleMono<DynamicTextManager>
             Debug.LogError("【动态文字UI管理器】文字UI创建失败");
             return;
         }
-
+        UIManager.InitUIPosition(text);
         // 世界坐标 → 屏幕坐标 → 画布平面世界坐标
         var screenPoint = RectTransformUtility.WorldToScreenPoint(_camera, info.worldPoint);
         if (UIManager.Instance.ScreenPointToDynamicCanvasWorld(screenPoint, out var worldPoint))
