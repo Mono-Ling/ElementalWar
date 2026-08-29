@@ -14,6 +14,9 @@ public abstract class BaseFeedbackReceive
         this.mainPlayer = mainPlayer;
         this.blackboard = blackboard;
     }
+    public virtual void OnUpdate() { }
+    public virtual void OnLateUpdate() { }
+    public virtual void OnFixedUpdate() { }
     public virtual void OnRemove() { }
     protected void AddListener<T>(Action<T> action) where T : IMessage
     => mainPlayer?.netReceiver?.AddListener<T>(action);

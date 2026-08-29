@@ -36,6 +36,8 @@ public class MainPlayerNetSyn : MonoBehaviour, IAutoInject<Blackboard>, IGameSta
             return;
         foreach (var send in stateSynSends)
             send.OnUpdate();
+        foreach (var receive in feedbackReceives)
+            receive.OnUpdate();
     }
     void LateUpdate()
     {
@@ -43,6 +45,8 @@ public class MainPlayerNetSyn : MonoBehaviour, IAutoInject<Blackboard>, IGameSta
             return;
         foreach (var send in stateSynSends)
             send.OnLateUpdate();
+        foreach (var receive in feedbackReceives)
+            receive.OnLateUpdate();
     }
     void FixedUpdate()
     {
@@ -50,6 +54,8 @@ public class MainPlayerNetSyn : MonoBehaviour, IAutoInject<Blackboard>, IGameSta
             return;
         foreach (var send in stateSynSends)
             send.OnFixedUpdate();
+        foreach (var receive in feedbackReceives)
+            receive.OnFixedUpdate();
     }
     public void OnGameEnd()
     {

@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using System.Text;
+using System.Text.Json;
 using Message;
 using Server.Event;
+using Server.Message.Tools;
+using Server.Scene;
+using Server.Scene.Scripts;
 
 namespace Server.GamePlay.StateTransfer
 {
     public class PlayerPositionState
     {
-        public Vector3 pos;
+        public Vector3 pos = new(3, 0, 3);
         public Quaternion rot;
         public float pitch;
 
@@ -18,11 +22,12 @@ namespace Server.GamePlay.StateTransfer
     }
     public class PlayerPositionStateTransfer : BaseTransfer
     {
+        public const float THRESHOLD = 0.5f;
+        private const string BIRTH_POINT_PATH = @"D:\Unity\Project\ElementalWar\Server\Scene\BirthPoint.json";
         private Dictionary<int, PlayerPositionState> _posStateDic = new();
-        public override void Start(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
+        public override void Init(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
         {
-            base.Start(playerStateTransfer, playerList);
-            foreach(int id in  playerList)
+            foreach (int id in playerList)
             {
                 if (_posStateDic.ContainsKey(id))
                 {
@@ -31,6 +36,11 @@ namespace Server.GamePlay.StateTransfer
                 }
                 _posStateDic.Add(id, new());
             }
+            InitPosition(_posStateDic.Values.ToArray());
+        }
+        public override void Start(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
+        {
+            base.Start(playerStateTransfer, playerList);
             AddListener<PositionStateMessage>(OnPositionStateSyn);
         }
         public override void Update()
@@ -64,6 +74,9 @@ namespace Server.GamePlay.StateTransfer
             {
                 if (clientTIme < posState.preTime)
                     return;
+                (var pos, _) = posMes.Pos;
+                if ((pos - posState.pos).Length() > THRESHOLD)
+                    return;
                 posState.pos = new(posMes.Pos.X,posMes.Pos.Y,posMes.Pos.Z);
                 posState.rot = new(posMes.Rot.X, posMes.Rot.Y, posMes.Rot.Z, posMes.Rot.W);
                 posState.pitch = posMes.Pitch;
@@ -72,6 +85,33 @@ namespace Server.GamePlay.StateTransfer
             }
             else
                 Console.WriteLine($"【玩家位置状态中转】玩家{package.playerId}不存在");
+        }
+        private void InitPosition(PlayerPositionState[] posStates)
+        {
+            if(posStates.Length == 0)
+                return;
+            try
+            {
+                var json = File.ReadAllText(BIRTH_POINT_PATH);
+                var info = JsonSerializer.Deserialize<BirthPointInfo>(json);
+
+                if (info == null || info.positions == null || info.positions.Count == 0)
+                {
+                    Debug.LogError("【玩家位置状态中转】出生点加载失败");
+                    return;
+                }
+
+                int length = info.positions.Count;
+                for (int i = 0; i < posStates.Length; i++)
+                {
+                    int j = i % length;
+                    posStates[i].pos = info.positions[j].Switch();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("【玩家位置状态中转】位置初始化异常" + ex.Message);
+            }
         }
     }
 }
