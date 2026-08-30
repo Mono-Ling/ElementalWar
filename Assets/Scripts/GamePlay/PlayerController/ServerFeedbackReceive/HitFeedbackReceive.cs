@@ -21,6 +21,9 @@ public class HitFeedbackReceive : BaseFeedbackReceive
             return;
         var attack = message.ElementAttack;
         _elementReceiver?.ReceiveElement(element, attack.Content, attack.Damage, attack.FromPlayerId);
+
+        (var hitDir, _) = message.Dir;
+        HitDir.ShowHitDir(-hitDir, mainPlayer.transform.forward);
     }
     public override void OnRemove()
     => RemoveListener<PlayerShootHitMessage>(OnShootHit);

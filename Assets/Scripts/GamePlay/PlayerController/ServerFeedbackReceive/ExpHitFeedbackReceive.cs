@@ -21,6 +21,10 @@ public class ExpHitFeedbackReceive : BaseFeedbackReceive
         var attack = message.ElementAttack;
         _elementReceiver?.ReceiveElement(element, attack.Content, attack.Damage, attack.FromPlayerId);
         Debug.Log($"【玩家受爆炸波及】{element}");
+
+        (var pos, _) = message.Center;
+        var dir = pos - mainPlayer.transform.position;
+        HitDir.ShowHitDir(dir, mainPlayer.transform.forward);
     }
     public override void OnRemove()
     => RemoveListener<PlayerExpHitMessage>(OnExpHit);

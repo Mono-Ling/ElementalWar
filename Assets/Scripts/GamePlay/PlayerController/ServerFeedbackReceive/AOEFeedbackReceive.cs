@@ -25,5 +25,8 @@ public class AOEFeedbackReceive : BaseFeedbackReceive
             _elementReceiver?.ReceiveElement(element, attack.Content, attack.Damage, attack.FromPlayerId);
             Debug.Log($"【玩家受元素范围伤害】{element}");
         }
+        (var pos, _) = mes.Center;
+        var dir = pos - mainPlayer.transform.position;
+        HitDir.ShowHitDir(dir, mainPlayer.transform.forward);
     }
 }
