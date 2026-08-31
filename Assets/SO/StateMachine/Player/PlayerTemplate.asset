@@ -77,3 +77,5 @@ MonoBehaviour:
     type: 0
   - name: IsDeath
     type: 5
+  - name: IsRun
+    type: 5

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ffa173b7d21f5f44b3f311be01e1a25, type: 3}
-  m_Name: Idle2Throw
+  m_Name: Run2Idle
   m_EditorClassIdentifier: 
-  condition: {fileID: 11400000, guid: 7d17ce9a915de2742ab09434a40e7fb0, type: 2}
-  targetState: {fileID: 11400000, guid: 10f3c3184983b944c90aeef84f51bf1a, type: 2}
-  weight: 5
+  condition: {fileID: 11400000, guid: 508b5f2897ce59d44bef8121f0c970fb, type: 2}
+  targetState: {fileID: 11400000, guid: 20e22ea12005f114888437b24fc31664, type: 2}
+  weight: 0

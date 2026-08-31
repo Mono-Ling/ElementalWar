@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6d1ec4950a30844a949256541e89981, type: 3}
-  m_Name: IdleState
+  m_Name: RunState
   m_EditorClassIdentifier: 
   edgeList:
-  - {fileID: 11400000, guid: cc345a1b791bd564fb5cac5f41ac9de9, type: 2}
-  - {fileID: 11400000, guid: d56abfff4df736648990afb706e8445f, type: 2}
-  - {fileID: 11400000, guid: 42c3a518d20a36d40bb99db822f2a330, type: 2}
-  - {fileID: 11400000, guid: 6019c8844e805e94f87c147c5d98615b, type: 2}
+  - {fileID: 11400000, guid: f8075290da70b1a4891be7108c9d4375, type: 2}
+  - {fileID: 11400000, guid: 409a75ac5901de6428bd99cc762d902d, type: 2}
+  - {fileID: 11400000, guid: 300c2c49dffb3e94fb489f1fe4098cf0, type: 2}
+  - {fileID: 11400000, guid: b0954e38c57bece4bb86e5aa9d514892, type: 2}
   abilitySystemArgName: AbilitySystem
   abilities:
   - rid: 4855356032389742606
@@ -36,12 +36,12 @@ MonoBehaviour:
     - rid: 4855356032389742606
       type: {class: MoveAbility, ns: , asm: ElementalWar.GamePlay}
       data:
-        moveSpeed: 5
+        moveSpeed: 8
     - rid: 4855356032389742607
       type: {class: CameraControlAbility, ns: , asm: ElementalWar.GamePlay}
       data:
         followOffset: {x: 0, y: 1, z: 0}
-        targetOffset: {x: 0, y: 1.5, z: -1.5}
+        targetOffset: {x: 0, y: 1.5, z: -2}
         pitch: 15
         maxPitch: 50
         minPitch: -50
@@ -88,7 +88,7 @@ MonoBehaviour:
     - rid: 5110485043599376473
       type: {class: CameraFOVAbility, ns: , asm: ElementalWar.GamePlay}
       data:
-        FOV: 80
+        FOV: 60
         smoothTime: 0.1
     - rid: 5110485043599376477
       type: {class: AimAbility, ns: , asm: ElementalWar.GamePlay}

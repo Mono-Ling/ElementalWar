@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [System.Serializable]
-public class MoveAbility : BaseAbility
+public class MoveAbility : BaseAbility, IEquatable<MoveAbility>
 {
     public float moveSpeed;
     private Rigidbody _rigidbody;
@@ -15,6 +16,11 @@ public class MoveAbility : BaseAbility
         _rigidbody = abilitySystem.GetComponent<Rigidbody>();
         if (_rigidbody == null)
             _rigidbody = abilitySystem.gameObject.AddComponent<Rigidbody>();
+
+        // 状态切换时能力重建，主动读取当前输入
+        var moveAction = playerInput.actions["Move"];
+        if (moveAction.enabled)
+            _moveInput = moveAction.ReadValue<Vector2>();
 
         AddInputPerformedListener("Move", OnMovePerformed);
         AddInputCanceledListener("Move", OnMoveCanceled);
@@ -41,4 +47,15 @@ public class MoveAbility : BaseAbility
         RemoveInputPerformedListener("Move", OnMovePerformed);
         RemoveInputCanceledListener("Move", OnMoveCanceled);
     }
+
+    public bool Equals(MoveAbility other)
+    => moveSpeed == other.moveSpeed;
+    public override bool Equals(object obj)
+    {
+        if (obj is not MoveAbility move)
+            return false;
+        return moveSpeed == move.moveSpeed;
+    }
+    public override int GetHashCode()
+    => moveSpeed.GetHashCode();
 }

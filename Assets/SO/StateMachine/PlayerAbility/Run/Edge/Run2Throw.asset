@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ffa173b7d21f5f44b3f311be01e1a25, type: 3}
-  m_Name: Idle2Throw
+  m_Name: Run2Throw
   m_EditorClassIdentifier: 
-  condition: {fileID: 11400000, guid: 7d17ce9a915de2742ab09434a40e7fb0, type: 2}
+  condition: {fileID: 11400000, guid: e9d477049b8017747ae475d29ae81b47, type: 2}
   targetState: {fileID: 11400000, guid: 10f3c3184983b944c90aeef84f51bf1a, type: 2}
   weight: 5
