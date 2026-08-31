@@ -28,12 +28,12 @@ namespace Server.GamePlay.StateTransfer
             if (obj is not DynamicSceneItem item)
                 return false;
             return playerId == item.playerId
-                && clientDynamicItemId == item.clientDynamicItemId
-                && itemType == item.itemType;
+                && clientDynamicItemId == item.clientDynamicItemId;
+                //&& itemType == item.itemType;
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(playerId, clientDynamicItemId, itemType);
+            return HashCode.Combine(playerId, clientDynamicItemId);
         }
     }
     public class DynamicSceneItemTransfer : BaseTransfer

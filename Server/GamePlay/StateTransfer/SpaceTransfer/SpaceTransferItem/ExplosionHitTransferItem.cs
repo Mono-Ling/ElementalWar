@@ -16,10 +16,21 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
     }
     public class ExplosionHitTransferItem : BaseSpaceTransferItem
     {
+        private HashSet<DynamicSceneItemType> _activeItemTypeSet = new();
         private PriorityQueue<DynamicExpHitReq, long> _explosionHitReqQueue = new();
         private object _explosionHitReqLock = new();
 
         private HashSet<DynamicSceneItem> _grenadeItemSet = new();
+        public ExplosionHitTransferItem():this
+            (
+                DynamicSceneItemType.Grenade,
+                DynamicSceneItemType.GrassCore
+            ) { }
+        public ExplosionHitTransferItem(params DynamicSceneItemType[] items)
+        {
+            foreach(var item in items)
+                _activeItemTypeSet.Add(item);
+        }
 
         public override void Start(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
         {
@@ -40,7 +51,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
         }
         private void OnDynamicAdd(DynamicSceneItem item)
         {
-            if (item.itemType == DynamicSceneItemType.Grenade)
+            if (_activeItemTypeSet.Contains(item.itemType))
             {
                 _grenadeItemSet.Add(item);
             }
@@ -52,7 +63,7 @@ namespace Server.GamePlay.StateTransfer.SpaceTransfer
                 return;
             if (package.header is not UdpHeader udpHeader)
                 return;
-            DynamicSceneItem item = new(package.playerId, reqMes.ClientDynamicItemId, default, DynamicSceneItemType.Grenade);
+            DynamicSceneItem item = new(package.playerId, reqMes.ClientDynamicItemId, default, default);
             if (!_grenadeItemSet.TryGetValue(item, out var foundItem))
                 return;
             var (center, _) = reqMes.Center;

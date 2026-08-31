@@ -172,20 +172,20 @@ public class GrassCore : BaseDynamicSceneItem
             _coroutine = null;
         }
 
-        AreaElementDamageMes damageMes = new()
+        ExplosionRequestMessage mes = new()
         {
+            ClientDynamicItemId = dynamicSceneItemId,
             Center = new(),
-            Radius = damageRadius
+            Radius = damageRadius,
+            ElementAttack = new()
+            {
+                ElementType = ElementUtility.ToNumber(ElementType.Grass),
+                Content = damageElementContent,
+                Damage = damage,
+            }
         };
-        damageMes.Center.Switch(transform.position);
-        damageMes.ElementAttack.Add(new ElementAttackMessage()
-        {
-            ElementType = ElementUtility.ToNumber(ElementType.Grass),
-            Content = damageElementContent,
-            Damage = damage,
-            FromPlayerId = _attackPlayerId,
-        });
-        SendTo(damageMes, true);
+        mes.Center.Switch(transform.position);
+        SendTo(mes, true);
 
         DynamicSceneItemMgr.Instance.DestroyLocalDynamicSceneItem(this);
 
