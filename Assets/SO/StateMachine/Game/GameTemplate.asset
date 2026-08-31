@@ -25,3 +25,7 @@ MonoBehaviour:
     type: 5
   - name: IsQuit
     type: 5
+  - name: KillCount
+    type: 0
+  - name: DeathCount
+    type: 0

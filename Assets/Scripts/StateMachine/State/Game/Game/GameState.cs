@@ -4,17 +4,11 @@ using Message;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewGameState", menuName = "StateMachine/State/Game/GameState")]
-public class GameState : State
+public class GameState : BaseGameState
 {
-    private Blackboard _blackboard;
     public override void OnEnter(Blackboard blackboard)
     {
-        if (blackboard == null)
-        {
-            Debug.LogError("【游戏流程-游戏状态】OnEnter黑板为空");
-            return;
-        }
-        _blackboard = blackboard;
+        base.OnEnter(blackboard);
         _blackboard.SetValue("IsDeath", false);
 
         if (!_blackboard.GetValue<MainPlayer>("MainPlayer", out var mainPlayer))
@@ -28,21 +22,18 @@ public class GameState : State
         mainPlayer?.StartMainPlayer();
 
         EventBus.Instance.AddListener(EventType.OnPlayerDeath, OnPlayerDeath);
-        EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnGameEnd);
+
+        UpdateRecord();
     }
     public override void OnExit(Blackboard blackboard)
     {
         EventBus.Instance.RemoveListener(EventType.OnPlayerDeath, OnPlayerDeath);
-        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnGameEnd);
     }
     private void OnPlayerDeath()
     {
         _blackboard?.SetValue("IsDeath", true);
-    }
-    private void OnGameEnd(NetPackage netPackage)
-    {
-        if (netPackage.message is not GameStateMessage message || message.IsStart)
-            return;
-        _blackboard?.SetValue("IsGameStart", false);
+        if (_blackboard.GetValue("DeathCount", out int count))
+            _blackboard.SetValue("DeathCount", ++count);
+        UpdateRecord();
     }
 }

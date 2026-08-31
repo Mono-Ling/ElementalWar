@@ -149,7 +149,7 @@ MonoBehaviour:
     - rid: 5110485497458982953
       type: {class: PosFeedbackReceive, ns: , asm: ElementalWar.GamePlay}
       data:
-        smoothTime: 0.1
+        threshold: 0.5
     - rid: 5110485497458982956
       type: {class: DeathStateSynSend, ns: , asm: ElementalWar.GamePlay}
       data: 
@@ -262,6 +262,7 @@ MonoBehaviour:
   anyState: {fileID: 11400000, guid: a6d56520bed240b47ad174ac6b520f7b, type: 2}
   initState: {fileID: 11400000, guid: 20e22ea12005f114888437b24fc31664, type: 2}
   isDebug: 0
+  currState: {fileID: 0}
 --- !u!114 &1128799377664046280
 MonoBehaviour:
   m_ObjectHideFlags: 0

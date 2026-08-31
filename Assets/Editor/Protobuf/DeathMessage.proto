@@ -1,0 +1,8 @@
+syntax = "proto3";
+package Message;
+
+// 玩家死亡消息
+message DeathMessage
+{
+	int32 attackFromPlayerId = 1;
+}

@@ -29,6 +29,7 @@ namespace Server.GamePlay
             _stateTransferList.Add(new GrenadePositionTransfer());
 
             _stateTransferList.Add(new DynamicTextUITransfer());
+            _stateTransferList.Add(new PlayerDeathTransfer());
 
             _playerList = playerIdList ?? new();
 

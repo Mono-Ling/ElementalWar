@@ -4,26 +4,18 @@ using Message;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewPlayerDeathState", menuName = "StateMachine/State/Game/PlayerDeathState")]
-public class PlayerDeathState : State
+public class PlayerDeathState : BaseGameState
 {
     public int delayToReset = 5;
     private WaitForSeconds _wait = new(1f);
-    private Blackboard _blackboard;
     private Coroutine _coroutine;
     public override void OnEnter(Blackboard blackboard)
     {
-        if (blackboard == null)
-        {
-            Debug.LogError("【游戏流程-玩家死亡状态】OnEnter黑板为空");
-            return;
-        }
-        _blackboard = blackboard;
+        base.OnEnter(blackboard);
         _coroutine = PublicMono.Instance.StartCoroutine(DelayToPlayerReset());
-        EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnGameEnd);
     }
     public override void OnExit(Blackboard blackboard)
     {
-        EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnGameEnd);
         if (_coroutine != null)
         {
             PublicMono.Instance.StopCoroutine(_coroutine);
@@ -45,11 +37,5 @@ public class PlayerDeathState : State
 
         _blackboard?.SetValue("IsDeath", false);
         _coroutine = null;
-    }
-    private void OnGameEnd(NetPackage netPackage)
-    {
-        if (netPackage.message is not GameStateMessage message || message.IsStart)
-            return;
-        _blackboard?.SetValue("IsGameStart", false);
     }
 }

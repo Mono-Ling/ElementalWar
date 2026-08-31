@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Message;
 using UnityEngine;
 
 public class MainPlayerHP : MonoBehaviour, IAutoInject<Blackboard>
@@ -11,6 +12,8 @@ public class MainPlayerHP : MonoBehaviour, IAutoInject<Blackboard>
     private Blackboard _blackboard;
     private DynamicTextCreator _dynamicTextCreator;
     private bool _isDeath;
+
+    private DeathMessage _deathMessage = new();
     void Awake()
     {
         _dynamicTextCreator = GetComponent<DynamicTextCreator>();
@@ -59,6 +62,12 @@ public class MainPlayerHP : MonoBehaviour, IAutoInject<Blackboard>
         Debug.Log("【主玩家生命值组件】玩家死亡");
         _blackboard.SetValue("IsDeath", true);
         _isDeath = true;
+
+        // 发送角色死亡消息
+        _deathMessage.AttackFromPlayerId = AttackFromPlayerId;
+        UdpHeader udpHeader = new() { IsResponse = true };
+        EventBus.Instance.Trigger<NetPackage>(EventType.SendTo, new(udpHeader, _deathMessage));
+
         EventBus.Instance.Trigger(EventType.OnPlayerDeath);
     }
 }
