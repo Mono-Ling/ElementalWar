@@ -1,4 +1,4 @@
-#define LOCALDEBUG
+// #define LOCALDEBUG
 using System.Collections;
 using System.Collections.Generic;
 using Message;
@@ -33,7 +33,7 @@ public class ManagedPlayerMgr : SingleMono<ManagedPlayerMgr>
         foreach (int id in mes.PlayerList)
         {
 #if !LOCALDEBUG || !UNITY_EDITOR
-            if(id == mes.ClientId)
+            if (id == mes.ClientId)
                 continue;
 #endif
             if (playerDic.ContainsKey(id))

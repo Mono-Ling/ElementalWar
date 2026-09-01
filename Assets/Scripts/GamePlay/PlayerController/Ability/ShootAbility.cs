@@ -27,7 +27,10 @@ public class ShootAbility : BaseAbility
     private void OnFireStarted(InputAction.CallbackContext context)
     {
         if (!blackboard.GetValue("BulletCount", out int count) || count <= 0)
+        {
+            AudioManager.Instance.PlaySound("NoBullets");
             return;
+        }
         blackboard.SetValue<bool>("IsShoot", true);
         _isShoot = true;
         _preShootTime = 0;

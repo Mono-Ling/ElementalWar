@@ -42,6 +42,8 @@ public class GrenadeExp : BaseDynamicSceneItem
         _propertyBlock?.SetFloat(_progressPropertyIndex, _progress);
         _renderer.SetPropertyBlock(_propertyBlock);
 
+        AudioManager.Instance.PlaySound("Exp", gameObject);
+
         StartCoroutine(DelayToDestroy(destroyCallback));
     }
     private IEnumerator DelayToDestroy(Action action = null)

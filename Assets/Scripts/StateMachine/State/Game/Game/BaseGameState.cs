@@ -30,6 +30,8 @@ public abstract class BaseGameState : State
             _blackboard.SetValue("KillCount", ++count);
         KillView.ShowKillView();
         UpdateRecord();
+
+        AudioManager.Instance.PlaySound("Kill");
     }
     private void OnGameEnd(NetPackage netPackage)
     {

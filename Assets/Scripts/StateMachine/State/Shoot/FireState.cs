@@ -17,6 +17,8 @@ public class FireState : State
         _enterTime = Time.time;
         blackboard.GetValue<Animator>("Animator", out var animator);
         animator.SetLayerWeight(animator.GetLayerIndex(shootAdditiveLayerName), 1);
+
+        AudioManager.Instance.PlaySound("Fire", blackboard.gameObject);
     }
     public override void OnUpdate(Blackboard blackboard)
     {
