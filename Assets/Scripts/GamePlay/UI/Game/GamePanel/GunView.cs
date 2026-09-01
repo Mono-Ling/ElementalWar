@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GunView : MonoBehaviour, IAutoInject<Blackboard>
 {
-    public Image gunImage;
+    public TextMeshProUGUI elementText;
     public Image progressImage;
     public TextMeshProUGUI currCountText;
     public TextMeshProUGUI maxCountText;
@@ -18,7 +18,7 @@ public class GunView : MonoBehaviour, IAutoInject<Blackboard>
     private BlackboardArg<int> _maxBulletCountArg;
     void Awake()
     {
-        if (gunImage == null)
+        if (elementText == null)
             Debug.LogError("【枪械UI】枪械图片控件为空");
         if (progressImage == null)
             Debug.LogError("【枪械UI】进度图片控件为空");
@@ -68,9 +68,11 @@ public class GunView : MonoBehaviour, IAutoInject<Blackboard>
     }
     private void OnElementTypeChange(ElementType element)
     {
-        if (ElementInfoMap.Instance.TryGetElementInfo(element, out var info))
-            if (gunImage != null)
-                gunImage.color = info.color;
+        if (elementText == null ||
+            !ElementInfoMap.Instance.TryGetElementInfo(element, out var info))
+            return;
+        elementText.color = info.color;
+        elementText.text = info.name;
     }
     private void OnReloadProgressChange(float progress)
     {

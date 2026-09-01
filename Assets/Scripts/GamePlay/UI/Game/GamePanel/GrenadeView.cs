@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GrenadeView : MonoBehaviour, IAutoInject<Blackboard>
 {
-    public Image grenadeImage;
+    public TextMeshProUGUI elementText;
     public TextMeshProUGUI countText;
     private BlackboardArg<ElementType> _elementTypeArg;
     private BlackboardArg<int> _countArg;
@@ -14,7 +14,7 @@ public class GrenadeView : MonoBehaviour, IAutoInject<Blackboard>
     public Color warningColor = Color.red;
     void Awake()
     {
-        if (grenadeImage == null)
+        if (elementText == null)
             Debug.LogError("【手榴弹UI】手榴弹图片控件为空");
         if (countText == null)
             Debug.LogError("【手榴弹UI】文本控件为空");
@@ -48,10 +48,11 @@ public class GrenadeView : MonoBehaviour, IAutoInject<Blackboard>
     }
     private void OnElementTypeChange(ElementType element)
     {
-        if (grenadeImage == null)
+        if (elementText == null ||
+            !ElementInfoMap.Instance.TryGetElementInfo(element, out var info))
             return;
-        if (ElementInfoMap.Instance.TryGetElementInfo(element, out var info))
-            grenadeImage.color = info.color;
+        elementText.color = info.color;
+        elementText.text = info.name;
     }
     private void OnGrenadeCountChange(int count)
     {
