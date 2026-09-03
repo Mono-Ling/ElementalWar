@@ -8,6 +8,7 @@ using UnityEditor;
 
 public class VATAsset : ScriptableObject
 {
+    public const int MAX_WIDTH = 2048;
     public const string VAT_PATH = "Art/Texture";
     public const string ASSET_PATH = "Assets/SO/VAT";
     [field: SerializeField]
@@ -84,16 +85,21 @@ public class VATAsset : ScriptableObject
         }
         minPos = min;
         maxPos = max;
+        int width = Mathf.Min(vertexCount, MAX_WIDTH);
+        int rowFrame = Mathf.CeilToInt((float)vertexCount / width);
+        int height = rowFrame * frameCount;
 
-        _baked = new Texture2D(vertexCount, frameCount, TextureFormat.RGBA32, false, true);
-        var pixels = new Color[vertexCount * frameCount];
+        _baked = new Texture2D(width, height, TextureFormat.RGBA32, false, true);
+        var pixels = new Color[width * height];
         for (int f = 0; f < _frames.Count; f++)
         {
             var frame = _frames[f];
             for (int i = 0; i < frame.Length; i++)
             {
                 var v = frame[i];
-                pixels[f * vertexCount + i] = new Color
+                int x = i % width;
+                int y = f * rowFrame + i / width;
+                pixels[y * width + x] = new Color
                 (
                     Mathf.InverseLerp(min.x, max.x, v.x),
                     Mathf.InverseLerp(min.y, max.y, v.y),
@@ -131,7 +137,9 @@ public class VATAsset : ScriptableObject
         importer.wrapMode = TextureWrapMode.Clamp;
         importer.mipmapEnabled = false;
         importer.sRGBTexture = false;
-        importer.maxTextureSize = Mathf.Max(frameCount, vertexCount);
+        importer.maxTextureSize = Mathf.Max(
+            frameCount * Mathf.CeilToInt((float)vertexCount / MAX_WIDTH),
+            vertexCount);
         importer.npotScale = TextureImporterNPOTScale.None;
         importer.SaveAndReimport();
 

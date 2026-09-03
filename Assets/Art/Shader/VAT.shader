@@ -57,11 +57,17 @@ Shader "Unlit/VAT"
                 float3 minPos = UNITY_ACCESS_INSTANCED_PROP(Props, _MinPos);
                 float3 maxPos = UNITY_ACCESS_INSTANCED_PROP(Props, _MaxPos);
 
+                uint width = min(2048, vertexCount);
+                float rowFrame = ceil((float)vertexCount / width);
+                float height = rowFrame * frameCount;
+
                 // 半 texel 偏移：Point 采样落在 texel 边界时浮点舍入可能取错列/错帧
-                float x = (vid + 0.5) / vertexCount;
+                float x = (vid % width + 0.5) / width;
                 // 先按周期取模再换算帧号，避免长时间运行后 _Time.y*frameRate 的大数精度损失
                 float frame = fmod(_Time.y, frameCount / frameRate) * frameRate;
-                float y = (floor(frame) + 0.5) / frameCount;
+                
+                float row = floor(frame) * rowFrame + floor(vid / width);
+                float y = (row + 0.5) / height;
                 float3 pos = tex2Dlod(_VAT, float4(x, y, 0, 0)).rgb;
 
                 pos = pos * (maxPos - minPos) + minPos;
