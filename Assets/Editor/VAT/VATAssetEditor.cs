@@ -12,6 +12,7 @@ public class VATAssetEditor : Editor
     private SerializedProperty _vertexCount;
     private SerializedProperty _minPos;
     private SerializedProperty _maxPos;
+    private SerializedProperty _VATMaterial;
     void OnEnable()
     {
         _VAT = serializedObject.FindProperty("<VAT>k__BackingField");
@@ -20,6 +21,7 @@ public class VATAssetEditor : Editor
         _vertexCount = serializedObject.FindProperty("<vertexCount>k__BackingField");
         _minPos = serializedObject.FindProperty("<minPos>k__BackingField");
         _maxPos = serializedObject.FindProperty("<maxPos>k__BackingField");
+        _VATMaterial = serializedObject.FindProperty("<VATMaterial>k__BackingField");
     }
     public override void OnInspectorGUI()
     {
@@ -31,6 +33,7 @@ public class VATAssetEditor : Editor
         EditorGUILayout.PropertyField(_vertexCount);
         EditorGUILayout.PropertyField(_minPos);
         EditorGUILayout.PropertyField(_maxPos);
+        EditorGUILayout.PropertyField(_VATMaterial);
         EditorGUI.EndDisabledGroup();
         serializedObject.ApplyModifiedProperties();
     }

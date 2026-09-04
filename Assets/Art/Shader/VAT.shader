@@ -3,6 +3,7 @@ Shader "Unlit/VAT"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _VAT ("VAT", 2D) = "white" {}
     }
     SubShader
     {

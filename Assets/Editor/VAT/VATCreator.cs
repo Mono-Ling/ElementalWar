@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VATCreator : EditorWindow
 {
-    [MenuItem("Tools/VAT")]
+    [MenuItem("Tools/VAT/VATAsset")]
     private static void Creator()
     {
         var window = GetWindow<VATCreator>(title: typeof(VATCreator).ToString());

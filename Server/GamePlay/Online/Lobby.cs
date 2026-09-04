@@ -9,7 +9,7 @@ namespace Server.GamePlay.Online
 {
     public class Lobby : IDisposable
     {
-        public const int ROOM_PLAYER_COUNT = 1;
+        public const int ROOM_PLAYER_COUNT = 2;
         public const int DELAY_UPDATE = 10;// ms
         private HashSet<int> _totalPlayerSet = new();
         private HashSet<int> _sleepPlayerSet = new();

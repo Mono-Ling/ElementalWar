@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AA_sit_audience_cheer_17
   m_EditorClassIdentifier: 
   <VAT>k__BackingField: {fileID: 2800000, guid: f0c2f8cfa5519e84ea0f4d4a3b88a890, type: 3}
+  <VATMaterial>k__BackingField: {fileID: 2100000, guid: 3f27a723e5463584eb14bb7b243ec5bf, type: 2}
   <frameCount>k__BackingField: 576
   <frameRate>k__BackingField: 30
   <vertexCount>k__BackingField: 5801

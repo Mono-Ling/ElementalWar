@@ -11,8 +11,12 @@ public class VATAsset : ScriptableObject
     public const int MAX_WIDTH = 2048;
     public const string VAT_PATH = "Art/Texture";
     public const string ASSET_PATH = "Assets/SO/VAT";
+    public const string MATERIAL_PATH = "Assets/Art/Material/VAT";
+    public const string SHADER_NAME = "Unlit/VAT";
     [field: SerializeField]
     public Texture2D VAT { get; private set; }
+    [field: SerializeField]
+    public Material VATMaterial { get; private set; }
     [field: SerializeField]
     public int frameCount { get; private set; }
     [field: SerializeField]
@@ -145,6 +149,8 @@ public class VATAsset : ScriptableObject
 
         string assetPath = $"{ASSET_PATH}/{name}.asset";
         var loadedTex = AssetDatabase.LoadAssetAtPath<Texture2D>(texPath);
+        // 材质先落盘再入库，字段持有资产引用，CreateAsset 时不会被内嵌
+        VATMaterial = SaveMaterial(loadedTex);
         // 先清空 VAT 再入库：CreateAsset 时若持有内存纹理会被整块嵌入 .asset；
         // 已存在的资产用 CopySerialized 覆盖，保留 guid 以免场景引用断裂
         VAT = null;
@@ -161,6 +167,7 @@ public class VATAsset : ScriptableObject
             VAT = loadedTex;
             EditorUtility.SetDirty(this);
         }
+        // SaveMaterial(loadedTex);
         SyncReferencingMaterials(loadedTex);
         AssetDatabase.SaveAssets();
     }
@@ -183,6 +190,54 @@ public class VATAsset : ScriptableObject
             mat.SetVector("_MinPos", minPos);
             mat.SetVector("_MaxPos", maxPos);
             EditorUtility.SetDirty(mat);
+        }
+    }
+
+    /// <summary>
+    /// 将VAT纹理与动画参数写入同名材质并持久化到 MATERIAL_PATH，已存在时原位更新，保留 guid 以免引用断裂，返回落盘后的材质。
+    /// </summary>
+    public Material SaveMaterial(Texture2D tex)
+    {
+        if (tex == null)
+            return null;
+        var shader = Shader.Find(SHADER_NAME);
+        if (shader == null)
+        {
+            Debug.LogError("【VAT】未找到Unlit/VAT着色器，材质保存失败");
+            return null;
+        }
+        EnsureFolder(MATERIAL_PATH);
+        string matPath = $"{MATERIAL_PATH}/{name}.mat";
+        var mat = AssetDatabase.LoadAssetAtPath<Material>(matPath);
+        if (mat == null)
+        {
+            mat = new Material(shader);
+            AssetDatabase.CreateAsset(mat, matPath);
+        }
+        mat.shader = shader;
+        mat.SetTexture("_VAT", tex);
+        mat.SetFloat("_FrameCount", frameCount);
+        mat.SetFloat("_FrameRate", frameRate);
+        mat.SetFloat("_VertexCount", vertexCount);
+        mat.SetVector("_MinPos", minPos);
+        mat.SetVector("_MaxPos", maxPos);
+        EditorUtility.SetDirty(mat);
+        return mat;
+    }
+
+    /// <summary>
+    /// 逐级确保 Assets 下的文件夹存在。
+    /// </summary>
+    private static void EnsureFolder(string folderPath)
+    {
+        var parts = folderPath.Split('/');
+        string current = parts[0];
+        for (int i = 1; i < parts.Length; i++)
+        {
+            string next = $"{current}/{parts[i]}";
+            if (!AssetDatabase.IsValidFolder(next))
+                AssetDatabase.CreateFolder(current, parts[i]);
+            current = next;
         }
     }
 #endif

@@ -25,9 +25,9 @@ public class VATRenderer : MonoBehaviour
     => SetVATAsset(vatAsset);
     public void SetVATAsset(VATAsset asset)
     {
-        if (asset == null || asset.VAT == null)
+        if (asset == null || asset.VAT == null || asset.VATMaterial == null)
         {
-            Debug.LogError("【VAT渲染器】VAT资产或纹理为空", this);
+            Debug.LogError("【VAT渲染器】VAT资产、材质或纹理为空", this);
             return;
         }
         if (_renderer == null)
@@ -35,8 +35,14 @@ public class VATRenderer : MonoBehaviour
         if (_propertyBlock == null)
             _propertyBlock = new();
         vatAsset = asset;
+
+        var mats = _renderer.sharedMaterials;
+        for (int i = 0; i < mats.Length; i++)
+            mats[i] = asset.VATMaterial;
+        _renderer.sharedMaterials = mats;
+
         _renderer.GetPropertyBlock(_propertyBlock);
-        _propertyBlock.SetTexture(_vatPropertyID, asset.VAT);
+        // _propertyBlock.SetTexture(_vatPropertyID, asset.VAT);
         _propertyBlock.SetFloat(_frameCountPropertyID, asset.frameCount);
         _propertyBlock.SetFloat(_vertexCountPropertyID, asset.vertexCount);
         _propertyBlock.SetFloat(_frameRatePropertyID, asset.frameRate);
