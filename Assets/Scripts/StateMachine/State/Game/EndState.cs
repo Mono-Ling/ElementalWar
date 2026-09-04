@@ -35,6 +35,7 @@ public class EndState : State
         DynamicSceneItemMgr.Instance.ClearLocal();
         DynamicSceneItemMgr.Instance.ClearRemote();
         StaticSceneManager.Instance.Uninstall();
+        SceneBKManager.Instance.Uninstall();
         ManagedPlayerMgr.Instance.StopManagedPlayer();
     }
     private void ResetPosition(GameObject obj)

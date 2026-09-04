@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1059ebf9f26d004596771407c8be8b1, type: 3}
+  m_Name: AA_stand_audience_cheer_14
+  m_EditorClassIdentifier: 
+  <VAT>k__BackingField: {fileID: 2800000, guid: a27714aa5dd60cd4dbb64f423a17e26a, type: 3}
+  <frameCount>k__BackingField: 606
+  <frameRate>k__BackingField: 30
+  <vertexCount>k__BackingField: 5801
+  <maxPos>k__BackingField: {x: 0.63312757, y: 1.5810015, z: 0.6986214}
+  <minPos>k__BackingField: {x: -0.70572734, y: -0.3020104, z: -0.4007954}

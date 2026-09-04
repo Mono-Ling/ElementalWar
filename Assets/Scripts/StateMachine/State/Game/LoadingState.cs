@@ -7,6 +7,7 @@ using UnityEngine;
 public class LoadingState : State
 {
     public StaticSceneAsset sceneAsset;
+    public SceneBKAsset sceneBKAsset;
     private Blackboard _blackboard;
     private MainPlayer _mainPlayer;
     private Coroutine _coroutine;
@@ -15,6 +16,9 @@ public class LoadingState : State
         base.OnValidate();
         if (sceneAsset == null)
             Debug.LogError("【游戏流程-加载状态】场景资源为空");
+
+        if (sceneBKAsset == null)
+            Debug.LogError("【游戏流程-加载状态】场景背景资源为空");
     }
     public override void OnEnter(Blackboard blackboard)
     {
@@ -58,6 +62,7 @@ public class LoadingState : State
         UIManager.Instance.ShowPanel<LoadingPanel>();
 
         yield return StaticSceneManager.Instance.LoadWall(sceneAsset);
+        yield return SceneBKManager.Instance.LoadBK(sceneBKAsset);
 
         if (!CreateMainPlayer(message, out var viewObj))
         {

@@ -1,0 +1,3327 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a779f5ccf74304d4b87666e044026e7b, type: 3}
+  m_Name: Scene_BK_1
+  m_EditorClassIdentifier: 
+  infos:
+  - pos: {x: -31.54, y: 7.45, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 80}
+    vatAsset: {fileID: 0}
+  - pos: {x: -32.53, y: 8.45, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 82}
+    vatAsset: {fileID: 0}
+  - pos: {x: -33.53, y: 9.45, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 84}
+    vatAsset: {fileID: 0}
+  - pos: {x: -34.53, y: 10.45, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 86}
+    vatAsset: {fileID: 0}
+  - pos: {x: 31.3, y: 7.42, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 80}
+    vatAsset: {fileID: 0}
+  - pos: {x: 32.299995, y: 8.42, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 82}
+    vatAsset: {fileID: 0}
+  - pos: {x: 33.299995, y: 9.42, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 84}
+    vatAsset: {fileID: 0}
+  - pos: {x: 34.299995, y: 10.42, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 86}
+    vatAsset: {fileID: 0}
+  - pos: {x: 0, y: 7.42, z: -40.34}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 64, y: 1, z: 1}
+    vatAsset: {fileID: 0}
+  - pos: {x: 0, y: 8.42, z: -41.34}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 66, y: 1, z: 1}
+    vatAsset: {fileID: 0}
+  - pos: {x: 0, y: 9.42, z: -42.34}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 68, y: 1, z: 1}
+    vatAsset: {fileID: 0}
+  - pos: {x: 0, y: 10.42, z: -43.34}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 70, y: 1, z: 1}
+    vatAsset: {fileID: 0}
+  - pos: {x: 0, y: 7.42, z: 40.34}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 64, y: 1, z: 1}
+    vatAsset: {fileID: 0}
+  - pos: {x: 0, y: 8.42, z: 41.34}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 66, y: 1, z: 1}
+    vatAsset: {fileID: 0}
+  - pos: {x: 0, y: 9.42, z: 42.34}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 68, y: 1, z: 1}
+    vatAsset: {fileID: 0}
+  - pos: {x: 0, y: 10.42, z: 43.34}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 70, y: 1, z: 1}
+    vatAsset: {fileID: 0}
+  - pos: {x: 0, y: 0, z: 0}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 0}
+  - pos: {x: -31.455, y: 8.413, z: -24.203}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -31.23, y: 8.413, z: -25.67}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.14, y: 8.18, z: -27.09}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.29, y: 8.413, z: -28.65}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.25, y: 8.413, z: -29.9}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -31.28, y: 8.14, z: -31.01}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.2, y: 8.413, z: -32.18}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.2, y: 8.413, z: -33.25}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.292, y: 8.161, z: -34.33}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.38, y: 8.413, z: -35.34}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -31.23, y: 8.413, z: -36.55}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.43, y: 8.413, z: -37.65}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.48, y: 8.413, z: -38.78}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.46, y: 8.413, z: -22.73}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -31.53, y: 8.11, z: -21.47}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.31, y: 8.413, z: -19.78}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.51, y: 8.413, z: -18.35}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.4, y: 8.22, z: -16.92}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.44, y: 8.413, z: -15.7}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.4, y: 8.413, z: -14.52}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.42, y: 8.413, z: -13.16}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.59, y: 8.413, z: -11.62}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.31, y: 8.25, z: -9.92}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.63, y: 8.413, z: -8.52}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -31.4, y: 8.413, z: -7.27}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.57, y: 8.413, z: -5.83}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.53, y: 8.413, z: -4.35}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.54, y: 8.413, z: -3.05}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -31.42, y: 8.413, z: -1.77}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.48, y: 8.413, z: -0.14}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.37, y: 8.413, z: 1.72}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.14, y: 8.413, z: 3.18}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.34, y: 8.413, z: 4.48}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.27, y: 8.413, z: 6.24}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.34, y: 8.413, z: 7.86}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.19, y: 8.413, z: 9.14}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.31, y: 8.413, z: 10.4}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -31.31, y: 8.413, z: 12.09}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.52, y: 8.413, z: 13.64}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.32, y: 8.413, z: 14.76}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.29, y: 8.413, z: 15.65}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.48, y: 8.413, z: 17.05}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.72, y: 8.03, z: 18.67}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.45, y: 8.413, z: 20.18}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.41, y: 8.413, z: 21.94}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.42, y: 8.413, z: 23.73}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -31.47, y: 8.413, z: 25.31}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.54, y: 8.413, z: 26.66}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.39, y: 8.413, z: 27.96}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.38, y: 8.413, z: 29.37}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -31.22, y: 8.413, z: 30.62}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.39, y: 8.13, z: 32.32}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -31.56, y: 8.413, z: 33.82}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.43, y: 8.413, z: 34.9}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -31.52, y: 8.413, z: 36.05}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -31.36, y: 8.413, z: 37.11}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -31.41, y: 8.413, z: 38.56}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.55, y: 9.25, z: -24.46}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.53, y: 9.25, z: -25.84}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.29, y: 9.25, z: -27.33}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.65, y: 9.25, z: -28.89}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -32.155003, y: 9.25, z: -30.297}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.204998, y: 9.25, z: -31.407001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.105, y: 9.25, z: -32.577003}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.54, y: 9.25, z: -33.77}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.204998, y: 9.25, z: -34.727005}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.285, y: 9.25, z: -35.737}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -32.135, y: 9.25, z: -36.947}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.247, y: 9.138, z: -38.046}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -32.385, y: 9.25, z: -39.177002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.54, y: 9.25, z: -40.26}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.54, y: 9.25, z: -22.99}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -32.55, y: 9.25, z: -21.58}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.57, y: 9.25, z: -19.9}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.415, y: 9.25, z: -18.747002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.435, y: 9.25, z: -17.317001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.345, y: 9.25, z: -16.097}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.474, y: 9.143, z: -14.919}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -32.37, y: 9.25, z: -13.1}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.59, y: 9.25, z: -13.92}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.495, y: 9.25, z: -12.017001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.515003, y: 9.25, z: -10.567001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.535, y: 9.25, z: -8.917002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.305, y: 9.25, z: -7.6670012}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -32.475002, y: 9.25, z: -6.227001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -32.435, y: 9.25, z: -4.747001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.635, y: 9.026, z: -3.47}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -32.48, y: 9.25, z: -1.94}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.5, y: 9.25, z: -0.47}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -32.56, y: 9.25, z: 0.31}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.275, y: 9.25, z: 1.3229988}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.52, y: 9.08, z: 2.6}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -32.49, y: 9.25, z: 4.02}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.63, y: 9.25, z: 5.75}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.62, y: 9.25, z: 7.46}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -32.57, y: 9.25, z: 8.89}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.48, y: 9.25, z: 10.12}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.56, y: 9.25, z: 11.56}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.51, y: 9.25, z: 13.03}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -32.53, y: 9.13, z: 14.23}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -32.41, y: 9.25, z: 15.24}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.56, y: 9.25, z: 16.66}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.37, y: 9.25, z: 18.45}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.42, y: 9.25, z: 17.74}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.69, y: 9.25, z: 20.08}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -32.57, y: 9.31, z: 21.54}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.54, y: 9.31, z: 22.47}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.74, y: 9.25, z: 23.44}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -32.46, y: 9.04, z: 24.9}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -32.445004, y: 9.25, z: 26.262999}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.295002, y: 9.25, z: 27.562998}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.29, y: 9.33, z: 29.31}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.36, y: 9.25, z: 30.78}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.59, y: 9.25, z: 32}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.86, y: 9.25, z: 33.66}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.71, y: 9.05, z: 34.7}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -32.9, y: 9.25, z: 35.88}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.61, y: 9.25, z: 37.01}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -32.54, y: 9.25, z: 38.7}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -32.74, y: 9.25, z: 39.8}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -32.95, y: 9.25, z: 40.68}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -33.73, y: 10.29, z: -24.15}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.61, y: 10.03, z: -25.53}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.47, y: 10.29, z: -27.02}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.83, y: 10.29, z: -28.58}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.335003, y: 10.29, z: -29.987001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.385, y: 10.29, z: -31.097002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.285, y: 10.29, z: -32.267006}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.1, y: 10.11, z: -33.33}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.385, y: 10.29, z: -34.417007}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.465, y: 10.29, z: -35.427002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.43, y: 10.08, z: -36.64}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.515003, y: 10.29, z: -37.737007}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.6, y: 10.03, z: -38.87}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.72, y: 10.29, z: -39.949997}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -33.53, y: 10.29, z: -40.94}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -33.72, y: 10.29, z: -22.68}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.64, y: 10.04, z: -21.27}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.75, y: 10.29, z: -19.59}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.595, y: 10.29, z: -18.437002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.615, y: 10.29, z: -17.007002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.525, y: 10.29, z: -15.787001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.485, y: 10.29, z: -14.607002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -33.55, y: 10.29, z: -12.790001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.77, y: 10.29, z: -13.610001}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.68, y: 10.017, z: -11.707}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.695004, y: 10.29, z: -10.257002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -33.715, y: 10.29, z: -8.607002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.485, y: 10.29, z: -7.357002}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.655003, y: 10.29, z: -5.9170017}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.615, y: 10.29, z: -4.4370017}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.82, y: 10.29, z: -3.1600006}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -33.66, y: 10.29, z: -1.6300006}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.68, y: 10.29, z: -0.16000053}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.455, y: 10.29, z: 1.6329982}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.53, y: 10.29, z: 0.95}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.7, y: 10.29, z: 2.9099994}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.63, y: 10.05, z: 4.33}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.510002, y: 10.29, z: 5.89}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.8, y: 10.29, z: 7.7699995}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.530003, y: 10.29, z: 9.4}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -33.55, y: 10.29, z: 10.719999}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.56, y: 10.29, z: 11.71}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.48, y: 10.11, z: 13.34}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.7, y: 10.29, z: 14.539999}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.59, y: 10.29, z: 15.549999}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -33.74, y: 10.29, z: 16.97}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.43, y: 10.29, z: 19.16}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.6, y: 10.29, z: 18.05}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.87, y: 10.29, z: 20.39}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.920002, y: 10.29, z: 23.75}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.68, y: 10.29, z: 22.12}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.77, y: 10.29, z: 25.21}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.625004, y: 10.29, z: 26.572998}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -33.475002, y: 10.29, z: 27.872997}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.48, y: 10.05, z: 29.62}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.54, y: 10.29, z: 31.09}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.77, y: 10.29, z: 32.309998}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.59, y: 10.29, z: 33.99}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.55, y: 10.29, z: 35.14}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.56, y: 10.29, z: 36.23}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.61, y: 10.29, z: 37.5}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.67, y: 10.29, z: 39.19}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.62, y: 10.01, z: 38.39}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -33.71, y: 10.29, z: 40.19}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -33.66, y: 10.29, z: 40.98}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -33.6, y: 10.06, z: 42}
+    rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.47, y: 8.27, z: -39.38}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.355, y: 8.281, z: -38.04}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.22, y: 8.277, z: -36.957}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.33, y: 8.277, z: -35.91}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 31.336, y: 8.255, z: -34.92}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 31.28, y: 8.255, z: -34.04}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 31.35, y: 8, z: -33.14}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 31.3, y: 8, z: -32.26}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 31.2, y: 8, z: -31.47}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.2, y: 8, z: -30.68}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.24, y: 8.24, z: -29.63}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.22, y: 8.24, z: -28.71}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.19, y: 8.24, z: -27.42}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 31.17, y: 8.24, z: -26.37}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 31.285, y: 8.146, z: -25.201}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.15, y: 8.01, z: -24.29}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.238, y: 8.242, z: -23.46}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.223, y: 8.242, z: -22.618}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.137, y: 8.242, z: -21.843}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.297, y: 8.242, z: -20.878}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.12, y: 8.242, z: -20.03}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.29, y: 8, z: -19.01}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.208, y: 8.079, z: -17.949}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.2, y: 8.235, z: -16.863}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.36, y: 8.27, z: -15.69}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.245, y: 8.281, z: -14.349999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.11, y: 8.277, z: -13.266999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.220001, y: 8.277, z: -12.219998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 31.226002, y: 8.255, z: -11.229997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 31.170002, y: 8.255, z: -10.349999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 31.240002, y: 8, z: -9.449998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 31.19, y: 8, z: -8.569997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 31.090002, y: 8, z: -7.779998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.090002, y: 8, z: -6.989999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.130001, y: 8.24, z: -5.9399977}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.11, y: 8.24, z: -5.0199976}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.080002, y: 8.24, z: -3.7299986}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 31.060001, y: 8.24, z: -2.6799994}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 31.175001, y: 8.146, z: -1.5109987}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.04, y: 8.01, z: -0.5999994}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.128002, y: 8.242, z: 0.2300024}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.113, y: 8.242, z: 1.0720015}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.027, y: 8.242, z: 1.8470011}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.187002, y: 8.242, z: 2.8120012}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.010002, y: 8.242, z: 3.6600008}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.180002, y: 8, z: 4.6800013}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.098001, y: 8.079, z: 5.741002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.090002, y: 8.235, z: 6.8270006}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.52, y: 8.27, z: 7.66}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.385, y: 8.370999, z: 9}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.25, y: 8.367, z: 10.083}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.36, y: 8.367, z: 11.130001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 31.406, y: 8.291, z: 12.121}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 31.365, y: 8.282, z: 13.001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 31.380001, y: 8.089999, z: 13.900002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 31.33, y: 8.089999, z: 14.780003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 31.230001, y: 8.089999, z: 15.570002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.230001, y: 8.089999, z: 16.36}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.27, y: 8.329999, z: 17.410002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.25, y: 8.329999, z: 18.330002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.220001, y: 8.329999, z: 19.62}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 31.2, y: 8.329999, z: 20.67}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 31.28, y: 8.21, z: 21.84}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.18, y: 8.099999, z: 22.75}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.268002, y: 8.331999, z: 23.580002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.253, y: 8.331999, z: 24.422}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.167, y: 8.331999, z: 25.197}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.327002, y: 8.331999, z: 26.162}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.150002, y: 8.331999, z: 27.01}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.320002, y: 8.089999, z: 28.03}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.238, y: 8.169, z: 29.091002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.230001, y: 8.324999, z: 30.177}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.12, y: 8.331999, z: 30.93}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.105, y: 8.331999, z: 31.772}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.019, y: 8.331999, z: 32.546997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.179, y: 8.331999, z: 33.512}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.002, y: 8.331999, z: 34.36}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.172, y: 8.089999, z: 35.379997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.09, y: 8.169, z: 36.441}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 31.082, y: 8.324999, z: 37.527}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 31.131, y: 8.131, z: 38.449}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 31.167, y: 8.131, z: 39.494}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.44, y: 9.29, z: -39.65}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.325, y: 9.301, z: -38.31}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.19, y: 9.297, z: -37.227}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.3, y: 9.297, z: -36.18}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 32.306, y: 9.275, z: -35.19}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 32.25, y: 9.275, z: -34.31}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 32.32, y: 9.0199995, z: -33.41}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 32.27, y: 9.0199995, z: -32.53}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 32.170002, y: 9.0199995, z: -31.74}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.170002, y: 9.0199995, z: -30.95}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.21, y: 9.259999, z: -29.9}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.19, y: 9.259999, z: -28.98}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.16, y: 9.259999, z: -27.69}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 32.14, y: 9.259999, z: -26.640001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 32.255, y: 9.165999, z: -25.471}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.12, y: 9.03, z: -24.560001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.208, y: 9.261999, z: -23.73}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.192997, y: 9.261999, z: -22.888}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.107, y: 9.261999, z: -22.113}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.267002, y: 9.261999, z: -21.148}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.09, y: 9.261999, z: -20.300001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.26, y: 9.0199995, z: -19.28}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.177998, y: 9.099, z: -18.219}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.170002, y: 9.254999, z: -17.133001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.329998, y: 9.29, z: -15.96}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.215, y: 9.301, z: -14.62}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.079998, y: 9.297, z: -13.537}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.19, y: 9.297, z: -12.489999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 32.196003, y: 9.275, z: -11.499997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 32.140003, y: 9.275, z: -10.62}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 32.210003, y: 9.0199995, z: -9.719998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 32.16, y: 9.0199995, z: -8.839997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 32.06, y: 9.0199995, z: -8.049998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.06, y: 9.0199995, z: -7.2599993}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.100002, y: 9.259999, z: -6.209998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.079998, y: 9.259999, z: -5.289998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.05, y: 9.259999, z: -3.999999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 32.030003, y: 9.259999, z: -2.9499998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 32.145, y: 9.165999, z: -1.7809992}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.01, y: 9.03, z: -0.8699999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.098003, y: 9.261999, z: -0.039998055}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.083, y: 9.261999, z: 0.802001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.996998, y: 9.261999, z: 1.5770006}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.157, y: 9.261999, z: 2.5420008}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.98, y: 9.261999, z: 3.3900003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.15, y: 9.0199995, z: 4.410001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.068, y: 9.099, z: 5.4710016}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.06, y: 9.254999, z: 6.557}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.49, y: 9.29, z: 7.3899994}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.355, y: 9.390999, z: 8.73}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.219997, y: 9.386999, z: 9.813}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.329998, y: 9.386999, z: 10.860001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 32.376, y: 9.311, z: 11.851}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 32.335, y: 9.301999, z: 12.731}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 32.350002, y: 9.109999, z: 13.630001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 32.3, y: 9.109999, z: 14.510002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 32.2, y: 9.109999, z: 15.300001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.2, y: 9.109999, z: 16.09}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.24, y: 9.349998, z: 17.140001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.219997, y: 9.349998, z: 18.060001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.19, y: 9.349998, z: 19.35}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 32.170002, y: 9.349998, z: 20.4}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 32.25, y: 9.23, z: 21.57}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.149998, y: 9.119999, z: 22.48}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.238003, y: 9.351998, z: 23.310001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.223, y: 9.351998, z: 24.152}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.136997, y: 9.351998, z: 24.927}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.297, y: 9.351998, z: 25.892}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.12, y: 9.351998, z: 26.74}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.29, y: 9.109999, z: 27.76}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.208, y: 9.188999, z: 28.821001}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.2, y: 9.344998, z: 29.907}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.09, y: 9.351998, z: 30.66}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.075, y: 9.351998, z: 31.501999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.988998, y: 9.351998, z: 32.276997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 32.149, y: 9.351998, z: 33.242}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 31.972, y: 9.351998, z: 34.09}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.142002, y: 9.109999, z: 35.109997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.06, y: 9.188999, z: 36.171}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 32.052, y: 9.344998, z: 37.257}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 32.101, y: 9.150999, z: 38.179}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.136997, y: 9.150999, z: 39.224}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 32.18, y: 9.150999, z: 40.14}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.45, y: 10.26, z: -39.03}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.37, y: 10.26, z: -40.19}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.46, y: 10.26, z: -41.23}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 33.335003, y: 10.271, z: -37.69}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.2, y: 10.267, z: -36.607}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.31, y: 10.267, z: -35.559998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 33.316, y: 10.245, z: -34.569996}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 33.260002, y: 10.245, z: -33.69}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 33.33, y: 9.99, z: -32.789997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 33.280003, y: 9.99, z: -31.909996}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 33.180004, y: 9.99, z: -31.119997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.180004, y: 9.99, z: -30.329998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.22, y: 10.23, z: -29.279997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.2, y: 10.23, z: -28.359997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.170002, y: 10.23, z: -27.069998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 33.15, y: 10.23, z: -26.019999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 33.265003, y: 10.136, z: -24.850998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.13, y: 10, z: -23.939999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.218002, y: 10.231999, z: -23.109997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.203, y: 10.231999, z: -22.267998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.117, y: 10.231999, z: -21.492998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.277004, y: 10.231999, z: -20.527998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.100002, y: 10.231999, z: -19.679998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.27, y: 9.99, z: -18.659998}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.188, y: 10.069, z: -17.598997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.180004, y: 10.224999, z: -16.512999}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.34, y: 10.26, z: -15.339996}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.225002, y: 10.271, z: -13.999997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.09, y: 10.267, z: -12.916997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.2, y: 10.267, z: -11.869996}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 33.206005, y: 10.245, z: -10.879994}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 33.150005, y: 10.245, z: -9.999997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 33.220005, y: 9.99, z: -9.099996}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 33.170002, y: 9.99, z: -8.219995}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 33.070004, y: 9.99, z: -7.4299955}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.070004, y: 9.99, z: -6.6399965}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.110004, y: 10.23, z: -5.5899954}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.09, y: 10.23, z: -4.6699953}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.06, y: 10.23, z: -3.3799973}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 33.040005, y: 10.23, z: -2.329997}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 33.155003, y: 10.136, z: -1.1609964}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.02, y: 10, z: -0.24999714}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.108006, y: 10.231999, z: 0.5800047}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.093002, y: 10.231999, z: 1.4220037}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.007, y: 10.231999, z: 2.1970034}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.167004, y: 10.231999, z: 3.1620035}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.99, y: 10.231999, z: 4.010003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.160004, y: 9.99, z: 5.0300035}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.078003, y: 10.069, z: 6.0910044}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.070004, y: 10.224999, z: 7.177003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.500004, y: 10.26, z: 8.010002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.365, y: 10.360999, z: 9.350002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.23, y: 10.356999, z: 10.433002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.34, y: 10.356999, z: 11.480003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 33.386, y: 10.281, z: 12.471003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 33.345, y: 10.271999, z: 13.351003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 33.360004, y: 10.079999, z: 14.250004}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 33.31, y: 10.079999, z: 15.130005}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 33.210003, y: 10.079999, z: 15.920004}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.210003, y: 10.079999, z: 16.710003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.250004, y: 10.319999, z: 17.760004}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.23, y: 10.319999, z: 18.680004}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.2, y: 10.319999, z: 19.970003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 33.180004, y: 10.319999, z: 21.020002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 33.260002, y: 10.2, z: 22.190002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.16, y: 10.089999, z: 23.100002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.248005, y: 10.321999, z: 23.930004}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.233, y: 10.321999, z: 24.772003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.147, y: 10.321999, z: 25.547003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.307003, y: 10.321999, z: 26.512003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.13, y: 10.321999, z: 27.360003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.300003, y: 10.079999, z: 28.380003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.218002, y: 10.158999, z: 29.441004}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.210003, y: 10.314999, z: 30.527002}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.100002, y: 10.321999, z: 31.280003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 33.085003, y: 10.321999, z: 32.122}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.999, y: 10.321999, z: 32.897}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 33.159, y: 10.321999, z: 33.862003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.982002, y: 10.321999, z: 34.710003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.152004, y: 10.079999, z: 35.73}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.070004, y: 10.158999, z: 36.791004}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 33.062, y: 10.314999, z: 37.877003}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 33.111004, y: 10.120999, z: 38.799004}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.147, y: 10.120999, z: 39.844}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 33.08, y: 10.36, z: 40.75}
+    rot: {x: -0, y: -0.7143021, z: -0, w: 0.6998375}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 29.874, y: 8.33, z: 40.364}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 28.87, y: 8.33, z: 40.34}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 27.993, y: 8.33, z: 40.318}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 27.267, y: 8.33, z: 40.372}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 26.01, y: 8.33, z: 40.2}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 25.23, y: 8.33, z: 40.29}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 24.45, y: 8.09, z: 40.61}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 23.57, y: 8.09, z: 40.26}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 22.63, y: 8.09, z: 40.29}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 21.715, y: 8.09, z: 40.276}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 20.679, y: 8.326, z: 40.186}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 19.778, y: 8.335, z: 40.217}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 18.86, y: 8.335, z: 40.21}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 17.81, y: 8.335, z: 40.31}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 16.62, y: 8.335, z: 40.16}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 15.43, y: 8.25, z: 40.27}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 14.47, y: 8.28, z: 40.64}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 13.466001, y: 8.28, z: 40.616}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 12.589, y: 8.28, z: 40.594}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 11.863, y: 8.28, z: 40.648003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 10.606, y: 8.28, z: 40.476}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 9.825999, y: 8.28, z: 40.566}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 9.0460005, y: 8.04, z: 40.886}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 8.165999, y: 8.04, z: 40.536}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 7.225999, y: 8.04, z: 40.566}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 6.311, y: 8.04, z: 40.552002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 5.2750006, y: 8.276, z: 40.462}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 4.3739996, y: 8.285, z: 40.493}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 3.4560003, y: 8.285, z: 40.486}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 2.4059992, y: 8.285, z: 40.586002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 1.2160006, y: 8.285, z: 40.436}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 0.026000023, y: 8.2, z: 40.546}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -0.79, y: 8.28, z: 40.48}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -1.7939999, y: 8.28, z: 40.456}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -2.6710007, y: 8.28, z: 40.434002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -3.3970006, y: 8.28, z: 40.488003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -4.6540003, y: 8.28, z: 40.316}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -5.434001, y: 8.28, z: 40.406002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -6.2139997, y: 8.04, z: 40.726}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -7.094001, y: 8.04, z: 40.376}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -8.034001, y: 8.04, z: 40.406002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -8.949, y: 8.04, z: 40.392002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -9.985, y: 8.276, z: 40.302002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -10.886001, y: 8.285, z: 40.333}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -11.804, y: 8.285, z: 40.326}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -12.854001, y: 8.285, z: 40.426003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -14.044, y: 8.285, z: 40.276}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -15.234, y: 8.2, z: 40.386}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -16.01, y: 8.28, z: 40.4}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -17.014, y: 8.28, z: 40.376003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -17.891, y: 8.28, z: 40.354004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -18.617, y: 8.28, z: 40.408005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -19.874, y: 8.28, z: 40.236004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -20.654001, y: 8.28, z: 40.326004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -21.434, y: 8.04, z: 40.646004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -22.314001, y: 8.04, z: 40.296}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -23.254002, y: 8.04, z: 40.326004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -24.169, y: 8.04, z: 40.312004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -25.205, y: 8.276, z: 40.222004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -26.106, y: 8.285, z: 40.253002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -27.024, y: 8.285, z: 40.246002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -28.074001, y: 8.285, z: 40.346004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -29.264, y: 8.285, z: 40.196003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -30.454, y: 8.2, z: 40.306004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 29.45, y: 9.35, z: 41.24}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 30.667, y: 9.35, z: 41.291}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 28.446001, y: 9.35, z: 41.216003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 27.569, y: 9.35, z: 41.194004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 26.843, y: 9.35, z: 41.248005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 25.586, y: 9.35, z: 41.076004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 24.806, y: 9.35, z: 41.166004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 24.026001, y: 9.110001, z: 41.486004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 23.146, y: 9.110001, z: 41.136}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 22.206, y: 9.110001, z: 41.166004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 21.291, y: 9.110001, z: 41.152004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 20.255001, y: 9.346001, z: 41.062004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 19.354, y: 9.3550005, z: 41.093002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 18.436, y: 9.3550005, z: 41.086002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 17.386, y: 9.3550005, z: 41.186005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 16.196001, y: 9.3550005, z: 41.036003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 15.0060005, y: 9.27, z: 41.146004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 14.0460005, y: 9.3, z: 41.516003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 13.042001, y: 9.3, z: 41.492004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 12.165, y: 9.3, z: 41.470005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 11.439, y: 9.3, z: 41.524006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 10.182, y: 9.3, z: 41.352005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 9.401999, y: 9.3, z: 41.442005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 8.622001, y: 9.06, z: 41.762005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 7.7419996, y: 9.06, z: 41.412003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 6.801999, y: 9.06, z: 41.442005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 5.887, y: 9.06, z: 41.428005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 4.851001, y: 9.2960005, z: 41.338005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 3.9499998, y: 9.305, z: 41.369003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 3.0320005, y: 9.305, z: 41.362003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 1.9819994, y: 9.305, z: 41.462006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 0.7920008, y: 9.305, z: 41.312004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -0.39799976, y: 9.22, z: 41.422005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -1.2139997, y: 9.3, z: 41.356003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -2.2179997, y: 9.3, z: 41.332005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -3.0950005, y: 9.3, z: 41.310005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -3.8210003, y: 9.3, z: 41.364006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -5.078, y: 9.3, z: 41.192005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -5.8580008, y: 9.3, z: 41.282005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -6.6379995, y: 9.06, z: 41.602005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -7.5180006, y: 9.06, z: 41.252003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -8.458001, y: 9.06, z: 41.282005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -9.373, y: 9.06, z: 41.268005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -10.408999, y: 9.2960005, z: 41.178005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -11.31, y: 9.305, z: 41.209003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -12.228, y: 9.305, z: 41.202003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -13.278001, y: 9.305, z: 41.302006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -14.467999, y: 9.305, z: 41.152004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -15.658, y: 9.22, z: 41.262005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -16.434, y: 9.3, z: 41.276005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -17.438, y: 9.3, z: 41.252007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -18.315, y: 9.3, z: 41.230007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -19.041, y: 9.3, z: 41.284008}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -20.298, y: 9.3, z: 41.112007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -21.078001, y: 9.3, z: 41.202007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -21.858, y: 9.06, z: 41.522007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -22.738, y: 9.06, z: 41.172005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -23.678001, y: 9.06, z: 41.202007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -24.593, y: 9.06, z: 41.188007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -25.629, y: 9.2960005, z: 41.098007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -26.53, y: 9.305, z: 41.129005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -27.448, y: 9.305, z: 41.122005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -28.498001, y: 9.305, z: 41.222008}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -29.688, y: 9.305, z: 41.072006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -30.878, y: 9.22, z: 41.182007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -31.87, y: 9.22, z: 41.29}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 29.85, y: 10.35, z: 42.18}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 31.25, y: 10.35, z: 42.25}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.35, y: 10.35, z: 42.04}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 28.846, y: 10.35, z: 42.156002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 27.969, y: 10.35, z: 42.134003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 27.243, y: 10.35, z: 42.188004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 25.986, y: 10.35, z: 42.016003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 25.206, y: 10.35, z: 42.106003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 24.426, y: 10.110001, z: 42.426003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 23.546, y: 10.110001, z: 42.076}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 22.605999, y: 10.110001, z: 42.106003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 21.691, y: 10.110001, z: 42.092003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 20.655, y: 10.346001, z: 42.002003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 19.754, y: 10.3550005, z: 42.033}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 18.836, y: 10.3550005, z: 42.026}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 17.786, y: 10.3550005, z: 42.126003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 16.596, y: 10.3550005, z: 41.976}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 15.406, y: 10.27, z: 42.086002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 14.446, y: 10.3, z: 42.456}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 13.442, y: 10.3, z: 42.432003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 12.565, y: 10.3, z: 42.410004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 11.839, y: 10.3, z: 42.464005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 10.582, y: 10.3, z: 42.292004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 9.801999, y: 10.3, z: 42.382004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 9.022, y: 10.06, z: 42.702003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 8.141999, y: 10.06, z: 42.352}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 7.2019987, y: 10.06, z: 42.382004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 6.2869997, y: 10.06, z: 42.368004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 5.2510004, y: 10.2960005, z: 42.278004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 4.3499994, y: 10.305, z: 42.309002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 3.4320002, y: 10.305, z: 42.302002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 2.381999, y: 10.305, z: 42.402004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 1.1920004, y: 10.305, z: 42.252003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 0.001999855, y: 10.22, z: 42.362003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -0.8140001, y: 10.3, z: 42.296}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -1.8180001, y: 10.3, z: 42.272003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -2.695001, y: 10.3, z: 42.250004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -3.4210007, y: 10.3, z: 42.304005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -4.6780005, y: 10.3, z: 42.132004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -5.458001, y: 10.3, z: 42.222004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -6.238, y: 10.06, z: 42.542004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -7.118001, y: 10.06, z: 42.192}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -8.0580015, y: 10.06, z: 42.222004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -8.973001, y: 10.06, z: 42.208004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -10.009, y: 10.2960005, z: 42.118004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -10.910001, y: 10.305, z: 42.149002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -11.828, y: 10.305, z: 42.142002}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -12.878001, y: 10.305, z: 42.242004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -14.068, y: 10.305, z: 42.092003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -15.258, y: 10.22, z: 42.202003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -16.034, y: 10.3, z: 42.216003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -17.038, y: 10.3, z: 42.192005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -17.915, y: 10.3, z: 42.170006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -18.641, y: 10.3, z: 42.224007}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -19.898, y: 10.3, z: 42.052006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -20.678001, y: 10.3, z: 42.142006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -21.458, y: 10.06, z: 42.462006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -22.338001, y: 10.06, z: 42.112003}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -23.278002, y: 10.06, z: 42.142006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -24.193, y: 10.06, z: 42.128006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -25.229, y: 10.2960005, z: 42.038006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -26.130001, y: 10.305, z: 42.069004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -27.048, y: 10.305, z: 42.062004}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -28.098001, y: 10.305, z: 42.162006}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: -29.288, y: 10.305, z: 42.012005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -30.478, y: 10.22, z: 42.122005}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -31.57, y: 10.22, z: 42.12}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -32.48, y: 10.22, z: 42.21}
+    rot: {x: -0, y: 1, z: -0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 30.204, y: 8.326, z: -40.471}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 29.198, y: 8.326, z: -40.41}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 28.197, y: 8.326, z: -40.298}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 27.104, y: 8.326, z: -40.432}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 25.96, y: 8.29, z: -40.432}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 24.9, y: 8.29, z: -40.28}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 23.814, y: 8.291, z: -40.322}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 22.768, y: 8.191, z: -40.132}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 21.813, y: 8.19, z: -40.285}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 20.762, y: 8.183, z: -40.285}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 19.37, y: 8.117, z: -40.36}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 18.15, y: 8.33, z: -40.36}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 17.09, y: 8.27, z: -40.36}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 16.08, y: 8.326, z: -40.42}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 15.073999, y: 8.326, z: -40.358997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 14.073, y: 8.326, z: -40.246998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 12.98, y: 8.326, z: -40.380997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 11.835999, y: 8.29, z: -40.380997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 10.775999, y: 8.29, z: -40.228996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 9.689999, y: 8.291, z: -40.270996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 8.643999, y: 8.191, z: -40.080997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 7.688999, y: 8.19, z: -40.233997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 6.6379986, y: 8.183, z: -40.233997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 5.2460003, y: 8.117, z: -40.309}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 4.025999, y: 8.33, z: -40.309}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 2.9659996, y: 8.27, z: -40.309}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 1.96, y: 8.326, z: -40.38}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 0.9539995, y: 8.326, z: -40.319}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -0.04699993, y: 8.326, z: -40.207}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -1.1400003, y: 8.326, z: -40.341}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -2.2840014, y: 8.29, z: -40.341}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -3.3440008, y: 8.29, z: -40.189}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -4.4300013, y: 8.291, z: -40.231}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -5.476001, y: 8.191, z: -40.041}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -6.4310007, y: 8.19, z: -40.194}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -7.4820013, y: 8.028, z: -40.194}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -8.874, y: 8.117, z: -40.269}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -10.094001, y: 8.33, z: -40.269}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -11.153999, y: 8.27, z: -40.269}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -11.96, y: 8.271, z: -40.6}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -12.966001, y: 8.271, z: -40.538998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -13.967, y: 8.271, z: -40.427}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -15.06, y: 8.271, z: -40.560997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -16.204002, y: 8.235, z: -40.560997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -17.264, y: 8.235, z: -40.408997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -18.350002, y: 8.236, z: -40.450996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -19.396, y: 8.136, z: -40.260998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -20.351002, y: 8.134999, z: -40.413998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -21.402, y: 8.127999, z: -40.413998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -22.793999, y: 8.061999, z: -40.489}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -24.014, y: 8.275, z: -40.489}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -25.074, y: 8.215, z: -40.489}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -26.36, y: 8.215, z: -40.53}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -27.49, y: 8.215, z: -40.68}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -28.6, y: 8.215, z: -40.54}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -29.65, y: 8.215, z: -40.57}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -30.869, y: 8.244, z: -40.523}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 29.62, y: 9.31, z: -41.61}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 30.41, y: 9.31, z: -41.55}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 31.52, y: 9.31, z: -41.5}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 28.614, y: 9.31, z: -41.549}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 27.613, y: 9.31, z: -41.437}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 26.52, y: 9.31, z: -41.571}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 25.376, y: 9.274, z: -41.571}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 24.316, y: 9.274, z: -41.419}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 23.23, y: 9.275001, z: -41.461}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 22.184, y: 9.175, z: -41.271}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 21.229, y: 9.174, z: -41.424}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 20.178, y: 9.167, z: -41.424}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 18.786001, y: 9.101, z: -41.499}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 17.566, y: 9.314, z: -41.499}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 16.506, y: 9.254001, z: -41.499}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 15.496, y: 9.31, z: -41.559}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 14.49, y: 9.31, z: -41.497997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 13.489, y: 9.31, z: -41.385998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 12.396, y: 9.31, z: -41.519997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 11.251999, y: 9.274, z: -41.519997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 10.191999, y: 9.274, z: -41.367996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 9.105999, y: 9.275001, z: -41.409996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 8.059999, y: 9.175, z: -41.219997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 7.1049995, y: 9.174, z: -41.372997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 6.053999, y: 9.167, z: -41.372997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 4.6620007, y: 9.101, z: -41.447998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 3.4419994, y: 9.314, z: -41.447998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 2.382, y: 9.254001, z: -41.447998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 1.3760004, y: 9.31, z: -41.519}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 0.3699999, y: 9.31, z: -41.458}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -0.63099957, y: 9.31, z: -41.346}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -1.724, y: 9.31, z: -41.48}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -2.868001, y: 9.274, z: -41.48}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -3.9280005, y: 9.274, z: -41.328}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -5.014001, y: 9.275001, z: -41.37}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -6.0600004, y: 9.175, z: -41.18}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -7.0150003, y: 9.174, z: -41.333}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -8.066001, y: 9.02, z: -41.333}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -9.457999, y: 9.101, z: -41.408}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -10.678, y: 9.314, z: -41.408}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -11.737999, y: 9.254001, z: -41.408}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -12.544, y: 9.255, z: -41.739}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -13.55, y: 9.255, z: -41.677998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -14.551, y: 9.255, z: -41.565998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -15.644, y: 9.255, z: -41.699997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -16.788002, y: 9.219, z: -41.699997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -17.848, y: 9.219, z: -41.547997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -18.934002, y: 9.22, z: -41.589996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -19.98, y: 9.12, z: -41.399998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -20.935001, y: 9.1189995, z: -41.552998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -21.986, y: 9.1119995, z: -41.552998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -23.377998, y: 9.046, z: -41.628}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -24.598, y: 9.259, z: -41.628}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -25.657999, y: 9.199, z: -41.628}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -26.944, y: 9.199, z: -41.669}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -28.074, y: 9.199, z: -41.819}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -29.184, y: 9.199, z: -41.679}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -30.234, y: 9.199, z: -41.709}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -31.453, y: 9.228001, z: -41.662}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 29.62, y: 10.26, z: -42.52}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 30.64, y: 10.26, z: -42.56}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}
+  - pos: {x: 31.53, y: 10.26, z: -42.55}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 32.55, y: 10.3, z: -42.55}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 28.614, y: 10.26, z: -42.459}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 27.613, y: 10.26, z: -42.347}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 26.52, y: 10.26, z: -42.481}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 25.376, y: 10.224, z: -42.481}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 24.316, y: 10.224, z: -42.329}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 23.23, y: 10.225, z: -42.371}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 22.184, y: 10.125, z: -42.181}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 21.229, y: 10.124, z: -42.334}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 20.178, y: 10.117, z: -42.334}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 18.786001, y: 10.051, z: -42.409}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 17.566, y: 10.264, z: -42.409}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 16.506, y: 10.204, z: -42.409}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 15.496, y: 10.26, z: -42.468998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 14.49, y: 10.26, z: -42.407997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 13.489, y: 10.26, z: -42.295998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 12.396, y: 10.26, z: -42.429996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: 11.251999, y: 10.224, z: -42.429996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 10.191999, y: 10.224, z: -42.277996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 9.105999, y: 10.225, z: -42.319996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: 8.059999, y: 10.125, z: -42.129997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: 7.1049995, y: 10.124, z: -42.282997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 6.053999, y: 10.117, z: -42.282997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: 4.6620007, y: 10.051, z: -42.357998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: 3.4419994, y: 10.264, z: -42.357998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: 2.382, y: 10.204, z: -42.357998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: 1.3760004, y: 10.26, z: -42.429}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: 0.3699999, y: 10.26, z: -42.368}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -0.63099957, y: 10.26, z: -42.256}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -1.724, y: 10.26, z: -42.39}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -2.868001, y: 10.224, z: -42.39}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -3.9280005, y: 10.224, z: -42.238}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -5.014001, y: 10.225, z: -42.28}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -6.0600004, y: 10.125, z: -42.09}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -7.0150003, y: 10.124, z: -42.243}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -8.066001, y: 9.97, z: -42.243}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -9.457999, y: 10.051, z: -42.318}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -10.678, y: 10.264, z: -42.318}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -11.737999, y: 10.204, z: -42.318}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -12.544, y: 10.205, z: -42.649}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -13.55, y: 10.205, z: -42.587997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -14.551, y: 10.205, z: -42.475998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -15.644, y: 10.205, z: -42.609997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -16.788002, y: 10.169, z: -42.609997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -17.848, y: 10.169, z: -42.457996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -18.934002, y: 10.17, z: -42.499996}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 952b06738710e3948b529026a8412d27, type: 2}
+  - pos: {x: -19.98, y: 10.07, z: -42.309998}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c41ad9feabb93da418cca7d74b12a942, type: 2}
+  - pos: {x: -20.935001, y: 10.068999, z: -42.462997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -21.986, y: 10.061999, z: -42.462997}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 3731a132e8a38de49ba967ea10a03efa, type: 2}
+  - pos: {x: -23.377998, y: 9.995999, z: -42.538}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 8361edc547d31674ab6551e92c2a89ee, type: 2}
+  - pos: {x: -24.598, y: 10.209, z: -42.538}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -25.657999, y: 10.149, z: -42.538}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -26.944, y: 10.149, z: -42.579}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: a55d91bdc4865dc459179ecd3c3ac374, type: 2}
+  - pos: {x: -28.074, y: 10.149, z: -42.729}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: eb2d495eef945994ca60c54a683f3888, type: 2}
+  - pos: {x: -29.184, y: 10.149, z: -42.589}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: abc17a22a1bcc154780de0fc2d078e32, type: 2}
+  - pos: {x: -30.234, y: 10.149, z: -42.619}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: 28db92d0aebc83d489d522cf1aeb14d4, type: 2}
+  - pos: {x: -31.453, y: 10.178, z: -42.572}
+    rot: {x: -0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+    vatAsset: {fileID: 11400000, guid: c3ad8d06821b68a46ba37e4e4f050074, type: 2}

@@ -20,18 +20,20 @@ public class VATRenderer : MonoBehaviour
             Debug.LogError("【VAT渲染器】渲染器获取失败");
             return;
         }
-        if (vatAsset != null)
-            SetVATAsset(vatAsset);
     }
+    void OnValidate()
+    => SetVATAsset(vatAsset);
     public void SetVATAsset(VATAsset asset)
     {
         if (asset == null || asset.VAT == null)
         {
-            Debug.LogError("【VAT渲染器】VAT资产或纹理为空");
+            Debug.LogError("【VAT渲染器】VAT资产或纹理为空", this);
             return;
         }
         if (_renderer == null)
             _renderer = GetComponent<Renderer>();
+        if (_propertyBlock == null)
+            _propertyBlock = new();
         vatAsset = asset;
         _renderer.GetPropertyBlock(_propertyBlock);
         _propertyBlock.SetTexture(_vatPropertyID, asset.VAT);

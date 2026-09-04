@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class StaticSceneManager : SingleMono<StaticSceneManager>
 {
+    private const int MAX_BUFFER_COUNT = 100;
     private List<StaticSceneItem> _sceneItemList = new();
     private NetReceiver _netReceiver = new();
+    void Awake()
+    => MonoObjectPool.Instance.CreatePool("Wall", MAX_BUFFER_COUNT);
     void Start()
-    {
-        _netReceiver.StartReceive();
-    }
+    => _netReceiver.StartReceive();
     void OnDestroy()
-    {
-        _netReceiver.StopReceive();
-    }
+    => _netReceiver.StopReceive();
     public IEnumerator LoadWall(StaticSceneAsset sceneAsset)
     {
         if (sceneAsset == null)
@@ -38,7 +37,7 @@ public class StaticSceneManager : SingleMono<StaticSceneManager>
         foreach (var item in _sceneItemList)
             MonoObjectPool.Instance.PutObject(item.gameObject);
         _sceneItemList.Clear();
-        MonoObjectPool.Instance.ClearPool("Wall");
+        // MonoObjectPool.Instance.ClearPool("Wall");
     }
     private void CreateWall(StaticSceneInfo info)
     {
@@ -49,6 +48,7 @@ public class StaticSceneManager : SingleMono<StaticSceneManager>
             Debug.LogError("【静态场景管理器】StaticSceneItem获取失败");
             return;
         }
+        obj.transform.SetParent(transform);
         item.SetInfo(info);
         _sceneItemList.Add(item);
     }

@@ -8,7 +8,7 @@ namespace Server.GamePlay.Online
 {
     public class Room : IDisposable
     {
-        public const float TIME = 120f;// s
+        public const float TIME = 600f;// s
         public bool IsEnable => _isEnable;
         public IEnumerable<int> Players => _playerDic.Keys;
         private Dictionary<int,bool> _playerDic = new();
