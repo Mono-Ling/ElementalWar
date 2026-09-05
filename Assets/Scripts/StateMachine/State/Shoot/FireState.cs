@@ -10,7 +10,6 @@ public class FireState : State
     public string shootAdditiveLayerName = "Shoot Additive";
     public float delayTime = 0.2f;
     private float _enterTime;
-    private Animator _animator;
     public override void OnEnter(Blackboard blackboard)
     {
         blackboard.SetValue(isCoolingArgName, false);

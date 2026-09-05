@@ -22,12 +22,13 @@ public class AudioManager : SingleMono<AudioManager>
             return;
         }
         endAction += () => OnAudioEnd(path);
-        item.Play(clip, false, endAction);
         if (worldObj != null)
             item.transform.position = worldObj.transform.position;
         else
             item.transform.SetParent(transform, false);
+        // 空间音频相关设置必须在Play前
         item.SetWorld(worldObj != null);
+        item.Play(clip, false, endAction);
     }
     private AudioItem CreateAudioItem()
     {
