@@ -26,8 +26,8 @@ public class PosStateSynReceive : BaseSynReceive
         {
             if (blackboardDic.TryGetValue(item.Key, out var blackboard))
                 PositionStateSyn(blackboard, item.Value);
-            else
-                Debug.LogWarning($"【位置同步接收器】不存在网络玩家{item.Key}");
+            // else
+            //     Debug.LogWarning($"【位置同步接收器】不存在网络玩家{item.Key}");
         }
     }
     private void PositionStateSyn(Blackboard blackboard, PositionStateMessage message)
