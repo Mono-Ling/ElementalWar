@@ -77,10 +77,6 @@ MonoBehaviour:
     rot: {x: -0, y: -0, z: -0, w: 1}
     scale: {x: 70, y: 1, z: 1}
     vatAsset: {fileID: 0}
-  - pos: {x: 0, y: 0, z: 0}
-    rot: {x: -0, y: -0, z: -0, w: 1}
-    scale: {x: 1, y: 1, z: 1}
-    vatAsset: {fileID: 0}
   - pos: {x: -31.455, y: 8.413, z: -24.203}
     rot: {x: -0, y: 0.70305556, z: -0, w: 0.71113497}
     scale: {x: 1, y: 1, z: 1}
