@@ -95,6 +95,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UnlockCursor",
+                    "type": "Button",
+                    "id": "e9dbf76f-9ffc-4fdf-86db-4ecbddc92e1c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -315,6 +324,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c083bd82-1cf1-4ea9-b44f-311f58374042",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UnlockCursor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -23,14 +23,18 @@ MonoBehaviour:
   - rid: 5110485043599376474
   - rid: 5110485043599376480
   - rid: 5110485043599376492
+  - rid: 2849296529028022289
   references:
     version: 2
     RefIds:
+    - rid: 2849296529028022289
+      type: {class: CursorAbility, ns: , asm: ElementalWar.GamePlay}
+      data:
+        unlockInput: UnlockCursor
     - rid: 5110485043599376464
       type: {class: ReloadAbility, ns: , asm: ElementalWar.GamePlay}
       data:
         reloadTime: 1
-        maxBulletCount: 30
     - rid: 5110485043599376465
       type: {class: CameraControlAbility, ns: , asm: ElementalWar.GamePlay}
       data:

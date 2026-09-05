@@ -21,9 +21,14 @@ MonoBehaviour:
   - rid: 4855356032389742620
   - rid: 4855356032389742621
   - rid: 5110485043599376475
+  - rid: 2849296529028022287
   references:
     version: 2
     RefIds:
+    - rid: 2849296529028022287
+      type: {class: CursorAbility, ns: , asm: ElementalWar.GamePlay}
+      data:
+        unlockInput: UnlockCursor
     - rid: 4855356032389742618
       type: {class: MoveAbility, ns: , asm: ElementalWar.GamePlay}
       data:
