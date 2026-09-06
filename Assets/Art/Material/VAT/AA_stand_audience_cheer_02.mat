@@ -32,6 +32,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - _FrameCount: 326
+    - _FrameRate: 30
+    - _VertexCount: 5801
+    m_Colors:
+    - _MaxPos: {r: 0.5216426, g: 1.4010961, b: 0.5631944, a: 0}
+    - _MinPos: {r: -0.35391247, g: -0.2092526, b: -0.18182687, a: 0}
   m_BuildTextureStacks: []

@@ -87,6 +87,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MaxPos: {r: 0.586023, g: 1.337851, b: 0.3857394, a: 0}
-    - _MinPos: {r: -0.5860227, g: -0.001499593, b: -0.2105387, a: 0}
+    - _MaxPos: {r: 0.5184012, g: 1.0596454, b: 0.6568203, a: 0}
+    - _MinPos: {r: -0.5675279, g: -0.3576161, b: -0.29521358, a: 0}
   m_BuildTextureStacks: []

@@ -3,14 +3,10 @@ using UnityEngine;
 public class VATRenderer : MonoBehaviour
 {
     public VATAsset vatAsset;
+    public float timeOffsetRange = 3f;
     private Renderer _renderer;
     private MaterialPropertyBlock _propertyBlock;
-    private int _vatPropertyID = Shader.PropertyToID("_VAT");
-    private int _frameCountPropertyID = Shader.PropertyToID("_FrameCount");
-    private int _vertexCountPropertyID = Shader.PropertyToID("_VertexCount");
-    private int _frameRatePropertyID = Shader.PropertyToID("_FrameRate");
-    private int _minPosPropertyID = Shader.PropertyToID("_MinPos");
-    private int _maxPosPropertyID = Shader.PropertyToID("_MaxPos");
+    private int _timeOffsetPropertyID = Shader.PropertyToID("_TimeOffset");
     void Awake()
     {
         _propertyBlock = new();
@@ -22,7 +18,11 @@ public class VATRenderer : MonoBehaviour
         }
     }
     void OnValidate()
-    => SetVATAsset(vatAsset);
+    {
+        if (vatAsset == null || vatAsset.VAT == null || vatAsset.VATMaterial == null)
+            return;
+        SetVATAsset(vatAsset);
+    }
     public void SetVATAsset(VATAsset asset)
     {
         if (asset == null || asset.VAT == null || asset.VATMaterial == null)
@@ -42,12 +42,7 @@ public class VATRenderer : MonoBehaviour
         _renderer.sharedMaterials = mats;
 
         _renderer.GetPropertyBlock(_propertyBlock);
-        // _propertyBlock.SetTexture(_vatPropertyID, asset.VAT);
-        _propertyBlock.SetFloat(_frameCountPropertyID, asset.frameCount);
-        _propertyBlock.SetFloat(_vertexCountPropertyID, asset.vertexCount);
-        _propertyBlock.SetFloat(_frameRatePropertyID, asset.frameRate);
-        _propertyBlock.SetVector(_minPosPropertyID, asset.minPos);
-        _propertyBlock.SetVector(_maxPosPropertyID, asset.maxPos);
+        _propertyBlock.SetFloat(_timeOffsetPropertyID, Random.Range(0, timeOffsetRange));
         _renderer.SetPropertyBlock(_propertyBlock);
     }
 }
