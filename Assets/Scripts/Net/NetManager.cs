@@ -17,6 +17,13 @@ public class NetManager : SingleMono<NetManager>
     private ConcurrentQueue<NetPackage> _receiveQueue = new();
 
     private CancellationTokenSource _cancel;
+    void Awake()
+    {
+        _localIPEndPoint = new(NetUtility.GetLocalIPv4(), 0);
+
+        _tcpServerIPEndPoint = NetSettingData.Instance.ServerTCP;
+        _udpServerIPEndPoint = NetSettingData.Instance.ServerUDP;
+    }
     // Update is called once per frame
     void Update()
     {
