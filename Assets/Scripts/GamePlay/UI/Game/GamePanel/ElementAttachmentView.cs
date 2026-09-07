@@ -95,7 +95,7 @@ public class ElementAttachmentView : MonoBehaviour, IAutoInject<Blackboard>
             _tempList.Add(element);
         foreach (var element in _tempList)
             if (_elementTextDic.TryGetValue(element, out var text) && text != null)
-                UIManager.Instance.BufferHideUI(text, isAnimation: false);
+                UIManager.Instance.BufferHideUI(text, UIManager.InitUIPosition, false);
         _elementTextDic.Clear();
     }
 }

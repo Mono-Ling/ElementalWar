@@ -96,7 +96,7 @@ public class PlayerElementView : MonoBehaviour
 
         foreach (var element in _tempList)
         {
-            var text = UIManager.Instance.BufferShowUI<ElementAttachmentText>(UIManager.InitUIPosition, false);
+            var text = UIManager.Instance.BufferShowUI<ElementAttachmentText>(isAnimation: false);
             if (text == null)
             {
                 Debug.LogError("【元素附着显示】元素附着文字创建失败");
