@@ -39,6 +39,17 @@ public class PlayerElementView : MonoBehaviour
         }
         _attachmentInfoArg.OnValueChange += OnElementAttachmentInfoChange;
     }
+    void OnDisable()
+    {
+        _tempList.Clear();
+        foreach (var element in _elementTextDic.Keys)
+            _tempList.Add(element);
+        foreach (var element in _tempList)
+            if (_elementTextDic.TryGetValue(element, out var text))
+                UIManager.Instance.BufferHideUI(text, isAnimation: false);
+        _elementTextDic.Clear();
+        _tempList.Clear();
+    }
     private void LateUpdate()
     {
         if (_camera == null || elementViewCanvas == null) return;
@@ -85,7 +96,7 @@ public class PlayerElementView : MonoBehaviour
 
         foreach (var element in _tempList)
         {
-            var text = UIManager.Instance.BufferShowUI<ElementAttachmentText>(isAnimation: false);
+            var text = UIManager.Instance.BufferShowUI<ElementAttachmentText>(UIManager.InitUIPosition, false);
             if (text == null)
             {
                 Debug.LogError("【元素附着显示】元素附着文字创建失败");
