@@ -9,7 +9,8 @@ using UnityEngine;
 
 public class NetManager : SingleMono<NetManager>
 {
-    public bool IsStart { get; private set; }
+    public bool IsStart => _isStart;
+    private bool _isStart;
     private const int HEART_DELAY = 5000;// ms
     private static IPEndPoint _localIPEndPoint = new(IPAddress.Parse("127.0.0.1"), 0);
     private static IPEndPoint _tcpServerIPEndPoint = new(IPAddress.Parse("127.0.0.1"), 2026);
@@ -19,16 +20,15 @@ public class NetManager : SingleMono<NetManager>
     private CancellationTokenSource _cancel;
     void Awake()
     {
-        _localIPEndPoint = new(NetUtility.GetLocalIPv4(), 0);
-
-        _tcpServerIPEndPoint = NetSettingData.Instance.ServerTCP;
-        _udpServerIPEndPoint = NetSettingData.Instance.ServerUDP;
+        EventBus.Instance.AddListener(EventType.OnConnected, OnConnected);
+        EventBus.Instance.AddListener(EventType.OnDisConnected, OnDisConnected);
     }
     // Update is called once per frame
     void Update()
     {
-        if (!IsStart)
+        if (!_isStart)
             return;
+
         while (_receiveQueue.TryDequeue(out var package))
         {
             try
@@ -47,32 +47,50 @@ public class NetManager : SingleMono<NetManager>
             }
         }
     }
+    private void OnDestroy()
+    {
+        EventBus.Instance.RemoveListener(EventType.OnConnected, OnConnected);
+        EventBus.Instance.RemoveListener(EventType.OnDisConnected, OnDisConnected);
+        Close();
+    }
     public void StartClient()
     {
+        _localIPEndPoint = new(NetUtility.GetLocalIPv4(), 0);
+
+        _tcpServerIPEndPoint = NetSettingData.Instance.ServerTCP;
+        _udpServerIPEndPoint = NetSettingData.Instance.ServerUDP;
+
         TcpManager.Instance.StartClient(_localIPEndPoint, _tcpServerIPEndPoint);
+    }
+    public void Close()
+    {
+        OnDisConnected();
+        TcpManager.Instance.Close();
+    }
+    private void OnConnected()
+    {
         var ipEndPoint = TcpManager.Instance.LocalIPEndPoint;
         UdpManager.Instance.StartClient(ipEndPoint, _udpServerIPEndPoint);
-
         EventBus.Instance.AddListener<NetPackage>(EventType.SendTo, SendToServe);
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnNeedResponseMessage);
         _cancel = new();
         Task.Run(TcpHeartLoop);
-        IsStart = true;
+        _isStart = true;
     }
-    public void Close()
+    private void OnDisConnected()
     {
-        IsStart = false;
-        _cancel.Cancel();
+        _isStart = false;
+        _cancel?.Cancel();
         EventBus.Instance.RemoveListener<NetPackage>(EventType.OnReceive, OnNeedResponseMessage);
         EventBus.Instance.RemoveListener<NetPackage>(EventType.SendTo, SendToServe);
 
-        TcpManager.Instance.Close();
         UdpManager.Instance.Close();
+        Debug.Log("【网络管理器】网络连接断开");
     }
     public void AddReceivePackage(NetPackage package) => _receiveQueue.Enqueue(package);
     private void SendToServe(NetPackage netPackage)
     {
-        if (!IsStart)
+        if (!_isStart)
         {
             Debug.LogError("【发送失败】客户端网络未启动");
             return;
@@ -107,9 +125,5 @@ public class NetManager : SingleMono<NetManager>
             await Task.Delay(HEART_DELAY);
             TcpManager.Instance.Send(heartPackage);
         }
-    }
-    private void OnDestroy()
-    {
-        Close();
     }
 }

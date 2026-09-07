@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd153030fa6cad8429ed1f2a6b466b61, type: 3}
-  m_Name: BeginState
+  m_Script: {fileID: 11500000, guid: 8ffa173b7d21f5f44b3f311be01e1a25, type: 3}
+  m_Name: DisConnected2Begin
   m_EditorClassIdentifier: 
-  edgeList:
-  - {fileID: 11400000, guid: 766cb3f5a5c6a334d8a66a3906f931bb, type: 2}
-  - {fileID: 11400000, guid: f42e3f5ec2bf6c24e926f33ffe27a43c, type: 2}
+  condition: {fileID: 11400000, guid: a5ae34248be1fa040b31b2383e3589fa, type: 2}
+  targetState: {fileID: 11400000, guid: 0f4e1f1d285ef96439bca537ef8a50fe, type: 2}
+  weight: 0

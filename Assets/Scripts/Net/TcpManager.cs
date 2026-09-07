@@ -17,8 +17,28 @@ public class TcpManager : SingleMono<TcpManager>
     private SocketAsyncEventArgs _receiveArgs;
     private byte[] _receiveBuffer = new byte[MAX_SIZE];
     private TcpPackage _bufferPackage;
+
+    private bool _isNetThreadConnected;
+    private bool _isMainThreadConnected;
+    void Update()
+    {
+        if (_isMainThreadConnected == _isNetThreadConnected)
+            return;
+        if (!_isMainThreadConnected && _isNetThreadConnected)
+        {
+            EventBus.Instance.Trigger(EventType.OnConnected);
+            _isMainThreadConnected = true;
+        }
+        else if (_isMainThreadConnected && !_isNetThreadConnected)
+        {
+            EventBus.Instance.Trigger(EventType.OnDisConnected);
+            _isMainThreadConnected = false;
+        }
+    }
     public void StartClient(IPEndPoint local, IPEndPoint target)
     {
+        if (_socket != null)
+            Close();
         _socket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         _connectArgs = new();
@@ -45,7 +65,7 @@ public class TcpManager : SingleMono<TcpManager>
             return;
         }
 
-        IsStart = true;
+        // IsStart = true;
         Debug.Log("【客户端启动】");
     }
     public void Close()
@@ -63,6 +83,16 @@ public class TcpManager : SingleMono<TcpManager>
         _sendArgs?.Dispose();
         _receiveArgs?.Dispose();
     }
+    private void NetThreadConnected()
+    {
+        IsStart = true;
+        _isNetThreadConnected = true;
+    }
+    private void NetThreadDisConnected()
+    {
+        IsStart = false;
+        _isNetThreadConnected = false;
+    }
     private void StartReceive()
     {
         if (_socket == null) return;
@@ -73,7 +103,7 @@ public class TcpManager : SingleMono<TcpManager>
         catch (SocketException e)
         {
             Debug.LogError("【消息接收启动异常】" + e.SocketErrorCode);
-            Close();
+            NetThreadDisConnected();
             return;
         }
         Debug.Log("【启动TCP消息接收】");
@@ -105,6 +135,7 @@ public class TcpManager : SingleMono<TcpManager>
             Debug.LogError("【连接失败】" + args.SocketError);
             return;
         }
+        NetThreadConnected();
         StartReceive();
         Debug.Log($"【连接成功】Target:{_socket?.RemoteEndPoint}");
     }
@@ -114,6 +145,7 @@ public class TcpManager : SingleMono<TcpManager>
         if (args.SocketError != SocketError.Success)
         {
             Debug.LogError("【消息发送失败】" + args.SocketError);
+            NetThreadDisConnected();
             return;
         }
         // Debug.Log($"【消息发送成功】Target：{_socket.RemoteEndPoint}");
@@ -123,14 +155,15 @@ public class TcpManager : SingleMono<TcpManager>
         if (!IsStart) return;
         if (args.SocketError != SocketError.Success)
         {
-            Debug.LogError("【消息接收失败】" + args.SocketError);
+            // Debug.LogError("【消息接收失败】" + args.SocketError);
+            NetThreadDisConnected();
             return;
         }
         byte[] bytes = args.Buffer;
         int length = args.BytesTransferred;
         if (length == 0)
         {
-            Close();
+            NetThreadDisConnected();
             return;
         }
         ProcessReceive(bytes, length);

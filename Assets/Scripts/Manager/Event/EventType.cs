@@ -18,4 +18,14 @@ public enum EventType
     /// 玩家死亡回调
     /// </summary>
     OnPlayerDeath,
+    /// <summary>
+    /// 无参
+    /// 网络连接
+    /// </summary>
+    OnConnected,
+    /// <summary>
+    /// 无参
+    /// 网络连接断开
+    /// </summary>
+    OnDisConnected,
 }

@@ -223,7 +223,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633019016}
-  - component: {fileID: 1633019015}
   - component: {fileID: 1633019014}
   - component: {fileID: 1633019013}
   m_Layer: 0
@@ -246,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anyState: {fileID: 0}
-  initState: {fileID: 11400000, guid: 0f4e1f1d285ef96439bca537ef8a50fe, type: 2}
+  initState: {fileID: 11400000, guid: 0e6bba3b9647fcf40a515c541ad58de6, type: 2}
   isDebug: 0
   currState: {fileID: 0}
 --- !u!114 &1633019014
@@ -262,18 +261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   argTemplate: {fileID: 11400000, guid: d599c7a0bd7ea6f4d85e3d4de6b34550, type: 2}
---- !u!114 &1633019015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633019012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26a191ab084e08c41bdb42ac71f3cecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1633019016
 Transform:
   m_ObjectHideFlags: 0

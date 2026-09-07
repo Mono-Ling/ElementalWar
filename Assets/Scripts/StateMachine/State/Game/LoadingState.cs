@@ -30,6 +30,7 @@ public class LoadingState : State
         _blackboard = blackboard;
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnRegistryReceive);
         EventBus.Instance.AddListener<NetPackage>(EventType.OnReceive, OnGameStartReceive);
+        _blackboard?.SetValue("IsGameStart", false);
     }
     public override void OnExit(Blackboard blackboard)
     {
@@ -83,6 +84,7 @@ public class LoadingState : State
         if (UIManager.Instance.TryGetCurrentPanel<LoadingPanel>(out _))
             UIManager.Instance.HidePanel();
 
+        var dynamicMgr = DynamicSceneItemMgr.Instance;
         Debug.Log("【游戏流程-加载状态】Client Start");
     }
     private bool CreateMainPlayer(PlayerRegistryMes message, out GameObject playerViewObj)

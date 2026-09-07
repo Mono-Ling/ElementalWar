@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: EndState
   m_EditorClassIdentifier: 
   edgeList:
+  - {fileID: 11400000, guid: 766cb3f5a5c6a334d8a66a3906f931bb, type: 2}
   - {fileID: 11400000, guid: 7618bc6c347d5e145bc707f6724e034a, type: 2}
