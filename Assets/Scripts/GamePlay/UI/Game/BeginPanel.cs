@@ -4,10 +4,14 @@ using Message;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class BeginPanel : BaseUI
 {
     public Button butMatch;
+    public Button butQuit;
     public TextMeshProUGUI matchText;
     public string matchStr = "匹配";
     public string quitMatchStr = "取消匹配";
@@ -24,6 +28,12 @@ public class BeginPanel : BaseUI
             return;
         }
         butMatch.onClick.AddListener(OnMatchClick);
+        if (butQuit == null)
+        {
+            Debug.LogError("【BeginPanel】退出按钮为空");
+            return;
+        }
+        butQuit.onClick.AddListener(OnQuit);
 
         if (matchText == null)
             Debug.LogError("【BeginPanel】匹配文本为空");
@@ -48,6 +58,8 @@ public class BeginPanel : BaseUI
     {
         if (butMatch != null)
             butMatch.onClick.RemoveListener(OnMatchClick);
+        if (butQuit != null)
+            butQuit.onClick.RemoveListener(OnQuit);
         if (_isMatchArg != null)
             _isMatchArg.OnValueChange -= OnMatchChanged;
     }
@@ -64,6 +76,14 @@ public class BeginPanel : BaseUI
 
         _matchMes.IsMatch = !isMatch;
         EventBus.Instance.Trigger<NetPackage>(EventType.SendTo, new(_matchMes));
+    }
+    private void OnQuit()
+    {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
     private void OnMatchChanged(bool isMatch)
     {
