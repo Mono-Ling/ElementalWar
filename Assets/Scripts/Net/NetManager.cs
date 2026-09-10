@@ -12,7 +12,6 @@ public class NetManager : SingleMono<NetManager>
     public bool IsStart => _isStart;
     private bool _isStart;
     private const int HEART_DELAY = 5000;// ms
-    private static IPEndPoint _localIPEndPoint = new(IPAddress.Parse("127.0.0.1"), 0);
     private static IPEndPoint _tcpServerIPEndPoint = new(IPAddress.Parse("127.0.0.1"), 2026);
     private static IPEndPoint _udpServerIPEndPoint = new(IPAddress.Parse("127.0.0.1"), 2027);
     private ConcurrentQueue<NetPackage> _receiveQueue = new();
@@ -55,12 +54,10 @@ public class NetManager : SingleMono<NetManager>
     }
     public void StartClient()
     {
-        _localIPEndPoint = new(NetUtility.GetLocalIPv4(), 0);
-
         _tcpServerIPEndPoint = NetSettingData.Instance.ServerTCP;
         _udpServerIPEndPoint = NetSettingData.Instance.ServerUDP;
 
-        TcpManager.Instance.StartClient(_localIPEndPoint, _tcpServerIPEndPoint);
+        TcpManager.Instance.StartClient(_tcpServerIPEndPoint);
     }
     public void Close()
     {

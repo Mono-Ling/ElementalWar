@@ -49,7 +49,7 @@ MonoBehaviour:
         posSmoothTime: 0.05
         rotSmoothTime: 0.1
         pitchSpeed: 3
-        maxRadius: 0.5
+        maxRadius: 0.1
         pitchAddSpeed: -3
     - rid: 2849296662475833347
       type: {class: RotationAbility, ns: , asm: ElementalWar.GamePlay}

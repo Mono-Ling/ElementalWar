@@ -35,7 +35,7 @@ public class TcpManager : SingleMono<TcpManager>
             _isMainThreadConnected = false;
         }
     }
-    public void StartClient(IPEndPoint local, IPEndPoint target)
+    public void StartClient(IPEndPoint target)
     {
         if (_socket != null)
             Close();
@@ -53,8 +53,6 @@ public class TcpManager : SingleMono<TcpManager>
 
         try
         {
-            // _socket.Bind(local);
-
             _connectArgs.RemoteEndPoint = target;
             _socket.ConnectAsync(_connectArgs);
         }
