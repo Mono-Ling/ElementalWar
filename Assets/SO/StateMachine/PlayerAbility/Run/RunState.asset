@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8075290da70b1a4891be7108c9d4375, type: 2}
   - {fileID: 11400000, guid: 409a75ac5901de6428bd99cc762d902d, type: 2}
   - {fileID: 11400000, guid: 300c2c49dffb3e94fb489f1fe4098cf0, type: 2}
+  - {fileID: 11400000, guid: b14d3008bec1fa74a9789f804791ad9d, type: 2}
   - {fileID: 11400000, guid: b0954e38c57bece4bb86e5aa9d514892, type: 2}
   abilitySystemArgName: AbilitySystem
   abilities:

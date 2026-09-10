@@ -26,8 +26,10 @@ public class JumpAbility : BaseAbility
         _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         _isJump = true;
     }
-    public override void OnUpdate()
+    public override void OnFixedUpdate()
     {
+        if (_isJump)
+            blackboard.SetValue<Vector3>("Position", _rigidbody.position);
         if (Physics.Raycast(new Ray(_rigidbody.position, Vector3.down),
             out var hit, 100, layerMask))
         {
@@ -35,11 +37,19 @@ public class JumpAbility : BaseAbility
             //blackboard.SetValue("DisToGround", hit.distance);
             blackboard.SetValue("IsGrounded", _isGrounded);
         }
-        _isJump = _rigidbody.velocity.y > verticalVelocityThreshold;
+        _isJump = Mathf.Abs(_rigidbody.velocity.y) > verticalVelocityThreshold;
         blackboard.SetValue("IsJump", _isJump);
     }
     public override void OnRemove()
     {
         RemoveInputStartedListener("Jump", OnJumpInput);
     }
+    public override bool Equals(object obj)
+    {
+        if (obj is not JumpAbility ability)
+            return false;
+        return jumpPower == ability.jumpPower;
+    }
+    public override int GetHashCode()
+    => jumpPower.GetHashCode();
 }
