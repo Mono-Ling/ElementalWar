@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Google.Protobuf;
 using Message;
 using UnityEngine;
 
@@ -40,5 +41,12 @@ public static class ExpandFunc
     {
         color = new(message.R, message.G, message.B, message.A);
         _ = default;
+    }
+    public static void Clear(this IMessage message)
+    {
+        if (message == null)
+            return;
+        foreach (var field in message.Descriptor.Fields.InDeclarationOrder())
+            field.Accessor.Clear(message);
     }
 }
