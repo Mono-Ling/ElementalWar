@@ -53,7 +53,7 @@ public class TcpManager : SingleMono<TcpManager>
 
         try
         {
-            _socket.Bind(local);
+            // _socket.Bind(local);
 
             _connectArgs.RemoteEndPoint = target;
             _socket.ConnectAsync(_connectArgs);
