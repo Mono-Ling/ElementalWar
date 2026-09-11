@@ -39,6 +39,8 @@ public class NetManager : SingleMono<NetManager>
                 }
                 EventBus.Instance.Trigger<NetPackage>(EventType.OnReceive, package);
                 //Debug.Log($"【网络管理器】{package.sendType}消息{package.message.GetType()}");
+                MessagePool.Instance.Put(package.message);
+                MessagePool.Instance.Put(package.header);
             }
             catch (System.Exception e)
             {

@@ -88,4 +88,14 @@ public class ShootAbility : BaseAbility
             blackboard.SetValue<bool>("IsShoot", false);
         }
     }
+    public override bool Equals(object obj)
+    {
+        if (obj is not ShootAbility ability)
+            return false;
+        return attackElementContent == ability.attackElementContent
+            && attackDamage == ability.attackDamage
+            && delayTime == ability.delayTime;
+    }
+    public override int GetHashCode()
+    => (attackElementContent, attackDamage, delayTime).GetHashCode();
 }

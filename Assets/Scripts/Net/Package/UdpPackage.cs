@@ -19,7 +19,14 @@ public class UdpPackage
         int offset = 0;
         int headerLength = BitConverter.ToInt32(data, offset);
         offset += 4;
-        header = UdpHeader.Parser.ParseFrom(data, offset, headerLength);
+        // header = UdpHeader.Parser.ParseFrom(data, offset, headerLength);
+        var headerMes = MessagePool.Instance.Get(typeof(UdpHeader), data, offset, headerLength);
+        if (headerMes is not UdpHeader udpHeader)
+        {
+            Debug.LogError("【UDP消息包】UDP消息头创建失败");
+            return;
+        }
+        header = udpHeader;
         offset += headerLength;
         if (header == null)
         {
@@ -33,20 +40,7 @@ public class UdpPackage
             return;
         }
 
-        PropertyInfo parserPro = type.GetProperty("Parser", BindingFlags.Public | BindingFlags.Static);
-
-        if (parserPro == null)
-        {
-            Debug.LogError("【UDP消息解析失败】Protobuf解析器解析失败");
-            return;
-        }
-
-        if (parserPro.GetValue(null) is not MessageParser parse)
-        {
-            Debug.LogError("【数据包解析失败】目标类型Parser转换失败");
-            return;
-        }
-        message = parse.ParseFrom(data, offset, data.Length - offset);
+        message = MessagePool.Instance.Get(type, data, offset, data.Length - offset);
     }
     public UdpPackage(UdpHeader header, IMessage message)
     {

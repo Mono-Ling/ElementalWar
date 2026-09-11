@@ -47,8 +47,6 @@ public class NetReceiver
             return;
         IMessage message = package.message;
         if (_stateSynEventDic.TryGetValue(message.GetType(), out var baseEvent))
-        {
             baseEvent.Trigger(message);
-        }
     }
 }

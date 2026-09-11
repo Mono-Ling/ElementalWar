@@ -135,18 +135,6 @@ public class TcpPackage
             Debug.LogError($"【数据包解析失败】Type解析失败，解析字段：{typeStr}");
             return;
         }
-        PropertyInfo parsePro = type.GetProperty("Parser", BindingFlags.Public | BindingFlags.Static);
-        if (parsePro == null)
-        {
-            Debug.LogError("【数据包解析失败】目标类型不含Parser属性");
-            return;
-        }
-
-        if (parsePro.GetValue(null) is not MessageParser parse)
-        {
-            Debug.LogError("【数据包解析失败】目标类型Parser转换失败");
-            return;
-        }
-        message = parse.ParseFrom(data, offseet, data.Length - offseet);
+        message = MessagePool.Instance.Get(type, data, offseet, data.Length - offseet);
     }
 }

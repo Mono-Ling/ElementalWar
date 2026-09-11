@@ -24,6 +24,7 @@ MonoBehaviour:
   - rid: 2849296662475833349
   - rid: 2849296662475833355
   - rid: 2849296662475833356
+  - rid: 2849296677732089868
   references:
     version: 2
     RefIds:
@@ -72,3 +73,9 @@ MonoBehaviour:
     - rid: 2849296662475833356
       type: {class: RunAbility, ns: , asm: ElementalWar.GamePlay}
       data: 
+    - rid: 2849296677732089868
+      type: {class: ShootAbility, ns: , asm: ElementalWar.GamePlay}
+      data:
+        attackElementContent: 1
+        attackDamage: 20
+        delayTime: 0.2
