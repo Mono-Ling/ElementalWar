@@ -14,6 +14,17 @@ public class NetSettingDTO
     public string ServerIp = NetSettingData.DEFAULT_IP;
     public int TcpPort = NetSettingData.DEFAULT_TCP_POINT;
     public int UdpPort = NetSettingData.DEFAULT_UDP_POINT;
+    public NetSettingDTO() { }
+    public NetSettingDTO(NetSettingDTO other)
+    {
+        if (other == null)
+            return;
+        this.ServerIp = other.ServerIp;
+        this.TcpPort = other.TcpPort;
+        this.UdpPort = other.UdpPort;
+    }
+    public override string ToString()
+    => $"IP:{ServerIp} TcpPort:{TcpPort} UdpPort:{UdpPort}";
 }
 
 public class NetSettingData : SettingData<NetSettingData>
@@ -23,6 +34,7 @@ public class NetSettingData : SettingData<NetSettingData>
     public const int DEFAULT_UDP_POINT = 2027;
     public IPEndPoint ServerTCP => _serverTcp;
     public IPEndPoint ServerUDP => _serverUdp;
+    public NetSettingDTO DTO => new(_data);
     private IPEndPoint _serverTcp;
     private IPEndPoint _serverUdp;
     private NetSettingDTO _data = new();
@@ -70,9 +82,9 @@ public class NetSettingData : SettingData<NetSettingData>
 
         Debug.Log($"【网络设置信息】保存网络设置 {fullPath}");
     }
-    private void Apply(NetSettingDTO data)
+    public void Apply(NetSettingDTO data)
     {
-        _data = data;
+        _data = new(data);
         var ip = IPAddress.Parse(data.ServerIp);
         _serverTcp = new(ip, data.TcpPort);
         _serverUdp = new(ip, data.UdpPort);

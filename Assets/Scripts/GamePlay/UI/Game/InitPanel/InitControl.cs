@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartButton : MonoBehaviour, InitPanel.IShowInitPanel
+public class InitControl : MonoBehaviour, InitPanel.IShowInitPanel
 {
     public Button startButton;
+    public Button netSettingButton;
     public CanvasGroup butCanvasGroup;
     public float showTime = 1f;
     private bool _isShow;
     private float _startTime;
     void Start()
     {
-        if (startButton == null)
+        if (startButton == null || netSettingButton == null)
         {
-            Debug.LogError("【初始化面板-开始按钮】按钮控件为空");
+            Debug.LogError("【初始化面板-控件】按钮控件为空");
             return;
         }
         startButton.onClick.AddListener(OnStart);
+        netSettingButton.onClick.AddListener(OnNetSetting);
         if (butCanvasGroup == null)
-            Debug.LogError("【初始化面板-开始按钮】CanvasGroup为空");
+            Debug.LogError("【初始化面板-控件】CanvasGroup为空");
     }
     void Update()
     {
@@ -31,12 +33,13 @@ public class StartButton : MonoBehaviour, InitPanel.IShowInitPanel
     }
     void OnDestroy()
     {
-        if (startButton == null)
-            return;
-        startButton.onClick.RemoveAllListeners();
+        startButton?.onClick.RemoveAllListeners();
+        netSettingButton?.onClick.RemoveAllListeners();
     }
     private void OnStart()
     => NetManager.Instance.StartClient();
+    private void OnNetSetting()
+    => UIManager.Instance.ShowPanel<NetSettingPanel>();
     public void OnInitPanelShow()
     {
         _isShow = true;
