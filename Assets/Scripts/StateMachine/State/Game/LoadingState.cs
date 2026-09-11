@@ -49,7 +49,7 @@ public class LoadingState : State
 
         if (UIManager.Instance.TryGetCurrentPanel<BeginPanel>(out _))
             UIManager.Instance.HidePanel();
-        _coroutine = PublicMono.Instance.StartCoroutine(StartClient(message));
+        _coroutine = PublicMono.Instance.StartCoroutine(StartClient(message.Clone()));
     }
     public void OnGameStartReceive(NetPackage package)
     {
