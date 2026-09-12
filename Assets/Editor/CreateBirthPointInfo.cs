@@ -7,7 +7,6 @@ using UnityEngine;
 public class CreateBirthPointInfo : Editor
 {
     private const string NAME = "BirthPoint";
-    private const string PATH = @"D:\Unity\Project\ElementalWar\Server\Scene\";
     [MenuItem("Tools/Create/ServerBirthPointInfo")]
     private static void Create()
     {
@@ -20,6 +19,6 @@ public class CreateBirthPointInfo : Editor
             asset.positions.Add(obj.transform.position);
         }
         string json = JsonUtility.ToJson(asset);
-        File.WriteAllText($"{PATH}{NAME}.json", json);
+        File.WriteAllText(ServerScenePath.Resolve($"{NAME}.json"), json);
     }
 }

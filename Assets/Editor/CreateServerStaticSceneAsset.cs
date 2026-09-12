@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CreateServerStaticSceneAsset : Editor
 {
-    private const string PATH = @"D:\Unity\Project\ElementalWar\Server\Scene\";
     [MenuItem("Tools/Create/ServerStaticSceneAsset")]
     private static void Create()
     {
@@ -14,6 +13,6 @@ public class CreateServerStaticSceneAsset : Editor
         if (selObj is not StaticSceneAsset asset)
             return;
         string json = JsonUtility.ToJson(asset);
-        File.WriteAllText($"{PATH}{asset.name}.json", json);
+        File.WriteAllText(ServerScenePath.Resolve($"{asset.name}.json"), json);
     }
 }

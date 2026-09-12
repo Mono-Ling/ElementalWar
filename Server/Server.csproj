@@ -11,4 +11,10 @@
     <PackageReference Include="Google.Protobuf" Version="3.35.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- 场景烘焙产物：随构建/发布复制到输出目录的 Scene/，运行时由 ScenePath 以相对路径读取 -->
+    <None Remove="Scene\**\*.json" />
+    <Content Include="Scene\**\*.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

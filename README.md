@@ -1,6 +1,6 @@
 # ElementalWar · 元素战争
 
-> 一个基于 **Unity + 自研 .NET 服务端** 的多人联机 FPS 原型。  
+> 一个基于 **Unity + 自研 .NET 服务端** 的多人联机 TPS 原型。
 > 核心玩法是「**元素附着 + 元素反应**」：把火、水、冰、风、雷、岩、草七种元素打在目标身上，按优先级依次结算蒸发、融化、超载、结晶等 11 类反应。
 
 ---
@@ -138,6 +138,7 @@ ElementalWar/
 │  │  ├─ CreateStaticSceneAsset.cs     #   场景碰撞烘焙 → StaticSceneAsset
 │  │  ├─ CreateServerStaticSceneAsset.cs #  导出为 Server/Scene/*.json
 │  │  ├─ CreateBirthPointInfo.cs       #   导出出生点
+│  │  ├─ ProjectPath.cs / ServerScenePath.cs #  工程内相对路径解析（不写死盘符）
 │  │  ├─ CreateSceneBKAsset.cs / MeshMerge.cs
 │  │  └─ VAT/                          #   顶点动画贴图烘焙工具（VATCreator）
 │  ├─ SO/                             # ScriptableObject 配置
@@ -153,6 +154,7 @@ ElementalWar/
 │  ├─ Package/ Event/ Message/        #   与客户端对应的镜像实现（含 protoc 生成的消息）
 │  ├─ Space/                          #   几何库与八叉树（服务端版，独立于 Unity）
 │  ├─ Scene/                          #   Scene_1.json / BirthPoint.json（离线烘焙产物）
+│  │  ├─ ScenePath.cs                 #   运行期相对路径解析（相对程序集目录）
 │  ├─ GamePlay/
 │  │  ├─ Online/                      #   Lobby.cs / Room.cs 匹配与房间
 │  │  ├─ PlayerStateTransfer.cs       #   状态中转总调度（10ms 主循环）
@@ -387,6 +389,8 @@ Unity 场景摆放碰撞体
 
 出生点同理：`CreateBirthPointInfo` → `Server/Scene/BirthPoint.json`（示例内容为两个坐标点）。
 
+运行期读取不依赖盘符：`Server.csproj` 把 `Scene/**/*.json` 声明为 `Content`，随构建与 `dotnet publish` 复制到输出目录；服务端统一经 `Server/Scene/ScenePath.cs` 解析路径（相对程序集所在目录，而非当前工作目录），因此工程可任意迁移、发布目录可整体拷走运行。Unity 侧两个导出工具同样以工程根推导目标目录（`Assets/Editor/ServerScenePath.cs`），不再写死盘符。
+
 ### 7.7 测试入口
 
 `Server/Test/RemoteTest.cs`、`Server/Test/LocalOnlineTest.cs` 提供联调/压测用假客户端，在 `Program.cs` 里 `new` 出来后注释即可切换，例如：
@@ -425,7 +429,7 @@ message PlayerRegistryMes
   4. 在 `SynSend` / `SynReceive` / `StateTransfer` 中接入
 - **通道约定**：位置、包围盒、状态、命中、爆炸等高频数据走 UDP；心跳、注册、就绪、房间控制等低频且必须可靠的数据走 TCP。
 
-> ⚠️ `CreateCSharpMessage.cs` 中的 protoc 路径与输出路径是**硬编码绝对路径**（`D:\Unity\Project\ElementalWar\...`），迁移机器或换目录后需修改这些常量。
+> 路径说明：上述工具的输入输出目录统一由 `Assets/Editor/ProjectPath.cs` 以工程根推导，不含盘符硬编码；protoc 参数已加引号，工程位于含空格路径下亦可正常生成。
 
 ---
 
@@ -490,7 +494,7 @@ dotnet run
 | `Tools → Message → CSharp`                | `CreateCSharpMessage.cs`                                                                          | 调用 protoc 生成双端 C# 消息代码        |
 | `Tools → Create → StaticSceneAsset`       | `CreateStaticSceneAsset.cs`                                                                       | 场景碰撞体合并烘焙为 `StaticSceneAsset` |
 | `Tools → Create → ServerStaticSceneAsset` | `CreateServerStaticSceneAsset.cs`                                                                 | 导出场景 JSON 到 `Server/Scene/`   |
-| `Tools → Create → BirthPointInfo`         | `CreateBirthPointInfo.cs`                                                                         | 导出出生点 JSON                    |
+| `Tools → Create → ServerBirthPointInfo`   | `CreateBirthPointInfo.cs`                                                                         | 导出出生点 JSON                    |
 | `Tools → VAT → VATAsset`                  | `VAT/VATCreator.cs`                                                                               | 采样动画烘焙顶点动画贴图资产                |
 | —                                         | `MeshMerge.cs`                                                                                    | 静态网格合并                        |
 | —                                         | `StateMachine/Editor/AbilitySystemStateEditor.cs`、`AbilityListDrawer.cs`、`AbilitySystemEditor.cs` | 状态机与 Ability 列表的可视化编辑         |
@@ -520,15 +524,13 @@ dotnet run
 - 房间固定 2 人（`Lobby.ROOM_PLAYER_COUNT`），未做观战与房间复用
 - 场景几何常量硬编码在 `SpaceStateTransfer`（`SCENE_X/Y/Z`、`SCENE_CENTER_OFFSET`），换场景需改代码
 - 客户端与服务端各自维护一份 `Space` / `Message` / `Package` / `Event` 源码镜像，**改动需人工双端同步**，否则协议/几何实现会漂移
-- `CreateCSharpMessage.cs` 与 `CreateServerStaticSceneAsset.cs` 使用硬编码绝对路径
-- 服务端打包为 Debug 输出（`Server/bin/Debug/net10.0/`），尚无 Release 发布流程
+- 服务端日常以 Debug 输出运行（`Server/bin/Debug/net10.0/`），`dotnet publish` 已能连同 `Scene/*.json` 一起打包，但尚无正式发布流程（版本号、部署脚本）
 - 缺少自动化测试，`Server/Test/` 下为手工联调脚本
 
 **后续方向**
 
 - [ ] 把共享代码抽成 `Shared` 类库 + Unity `Packages` 本地包，消除双端镜像
 - [ ] 房间人数与场景参数改为配置下发，支持多地图
-- [ ] 为 protoc 路径与输出目录引入配置项（环境变量或 ScriptableObject）
 - [ ] 补充状态机 / 元素反应的 EditMode 单元测试
 - [ ] 服务端补充连接数与包量监控、日志分级输出
 

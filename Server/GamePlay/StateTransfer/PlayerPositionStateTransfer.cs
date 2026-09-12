@@ -23,7 +23,7 @@ namespace Server.GamePlay.StateTransfer
     public class PlayerPositionStateTransfer : BaseTransfer
     {
         public const float THRESHOLD = 0.5f;
-        private const string BIRTH_POINT_PATH = @"D:\Unity\Project\ElementalWar\Server\Scene\BirthPoint.json";
+        private const string BIRTH_POINT_FILE_NAME = "BirthPoint.json";
         private Dictionary<int, PlayerPositionState> _posStateDic = new();
         public override void Init(PlayerStateTransfer? playerStateTransfer, List<int> playerList)
         {
@@ -90,9 +90,10 @@ namespace Server.GamePlay.StateTransfer
         {
             if(posStates.Length == 0)
                 return;
+            string path = ScenePath.Resolve(BIRTH_POINT_FILE_NAME);
             try
             {
-                var json = File.ReadAllText(BIRTH_POINT_PATH);
+                var json = File.ReadAllText(path);
                 var info = JsonSerializer.Deserialize<BirthPointInfo>(json);
 
                 if (info == null || info.positions == null || info.positions.Count == 0)
@@ -110,7 +111,7 @@ namespace Server.GamePlay.StateTransfer
             }
             catch (Exception ex)
             {
-                Debug.LogError("【玩家位置状态中转】位置初始化异常" + ex.Message);
+                Debug.LogError($"【玩家位置状态中转】位置初始化异常｜{path}｜{ex.Message}");
             }
         }
     }

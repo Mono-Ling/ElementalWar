@@ -1,53 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
 using System.IO;
+using UnityEditor;
+using UnityEngine;
 using System.Diagnostics;
 
 public class CreateCSharpMessage
 {
-    const string PROTOBUF_PATH = @"D:\Unity\Project\ElementalWar\Assets\Editor\Protobuf";
-    const string OUTPUT_PATH_1 = @"D:\Unity\Project\ElementalWar\Assets\Scripts\Net\Message";
-    const string OUTPUT_PATH_2 = @"D:\Unity\Project\ElementalWar\Server\Message";
-    const string PROTOC_PATH = @"D:\Unity\Project\ElementalWar\Protoc\protoc.exe";
-    const string PROTOC_INCLUDE_PATH = @"D:\Unity\Project\ElementalWar\Protoc\include";
+    // 工程内相对路径，由 ProjectPath 以工程根推导为绝对路径（不再写死盘符）
+    static readonly string PROTOBUF_PATH = ProjectPath.ResolveDir("Assets/Editor/Protobuf");
+    static readonly string OUTPUT_PATH_1 = ProjectPath.ResolveDir("Assets/Scripts/Net/Message");
+    static readonly string OUTPUT_PATH_2 = ProjectPath.ResolveDir("Server/Message");
+    static readonly string PROTOC_PATH = ProjectPath.Resolve("Protoc/protoc.exe");
+    static readonly string PROTOC_INCLUDE_PATH = ProjectPath.Resolve("Protoc/include");
+
     [MenuItem("Tools/Message/CSharp")]
     private static void CreateCode()
     {
-        DirectoryInfo info = Directory.CreateDirectory(PROTOBUF_PATH);
+        if (!File.Exists(PROTOC_PATH))
+        {
+            UnityEngine.Debug.LogError($"【生成C#消息代码】未找到 protoc：{PROTOC_PATH}");
+            return;
+        }
+
+        DirectoryInfo info = new(PROTOBUF_PATH);
         FileInfo[] files = info.GetFiles();
         foreach (var file in files)
         {
             if (file.Extension != ".proto")
                 continue;
-            string arg = $"-I={PROTOBUF_PATH} -I={PROTOC_INCLUDE_PATH} --csharp_out={OUTPUT_PATH_1} {file.Name}";
-            RunProtoc(arg);
-            arg = $"-I={PROTOBUF_PATH} -I={PROTOC_INCLUDE_PATH} --csharp_out={OUTPUT_PATH_2} {file.Name}";
-            RunProtoc(arg);
+            RunProtoc(file.Name, OUTPUT_PATH_1);
+            RunProtoc(file.Name, OUTPUT_PATH_2);
             UnityEngine.Debug.Log($"【生成C#消息代码】{file.Name}");
         }
         AssetDatabase.Refresh();
     }
 
-    private static void RunProtoc(string arg)
+    private static void RunProtoc(string protoFileName, string outputPath)
     {
         using (Process process = new())
         {
             process.StartInfo.FileName = PROTOC_PATH;
-            process.StartInfo.Arguments = arg;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.CreateNoWindow = true;
+            // 手工加引号以兼容含空格的工程路径：Unity 引用的 unity-4.8-api 不提供 ProcessStartInfo.ArgumentList
+            process.StartInfo.Arguments =
+                $"-I=\"{PROTOBUF_PATH}\" -I=\"{PROTOC_INCLUDE_PATH}\" --csharp_out=\"{outputPath}\" \"{protoFileName}\"";
             process.Start();
             process.WaitForExit();
 
-            string stderr = process.StandardError.ReadToEnd();
             if (process.ExitCode != 0)
-            {
-                UnityEngine.Debug.LogError($"protoc 执行失败: {arg}\n{stderr}");
-            }
+                UnityEngine.Debug.LogError($"【生成C#消息代码】protoc 执行失败｜输出:{outputPath}｜{protoFileName}\n{process.StandardError.ReadToEnd()}");
         }
     }
 }

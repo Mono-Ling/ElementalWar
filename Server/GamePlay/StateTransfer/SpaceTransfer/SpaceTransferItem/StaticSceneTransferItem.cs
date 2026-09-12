@@ -9,7 +9,7 @@ namespace Server.GamePlay.StateTransfer
 {
     public class StaticSceneTransferItem : BaseSpaceTransferItem
     {
-        private const string SCENE_PATH = @"D:\Unity\Project\ElementalWar\Server\Scene\Scene_1.json";
+        private const string SCENE_FILE_NAME = "Scene_1.json";
         private List<WallSpaceItem> _wallSpaceItemList = new();
         public override void Start(Dictionary<int, PlayerSpaceItem>? playerSpaceItemDic, SpaceTree? spaceTree)
         {
@@ -18,7 +18,13 @@ namespace Server.GamePlay.StateTransfer
         }
         private void LoadStaticScene()
         {
-            var json = File.ReadAllText(SCENE_PATH);
+            string path = ScenePath.Resolve(SCENE_FILE_NAME);
+            if (!File.Exists(path))
+            {
+                Console.WriteLine($"【命中检测中转】场景文件缺失：{path}");
+                return;
+            }
+            var json = File.ReadAllText(path);
             var sceneAsset = JsonSerializer.Deserialize<StaticSceneAsset>(json);
             if (sceneAsset == null)
             {
